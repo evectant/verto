@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="la">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verto</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+
+<div class="translation-container">
+    <p id="currentPhrase"></p>
+    <input type="text" id="translationInput" placeholder="Hic verte" autofocus>
+    <p id="feedback"></p>
+    <p id="correctCounter"></p>
+</div>
+
+<div class="settings-container">
+    <label><input type="checkbox" id="randomizeCheckbox" checked>Ordo fortuitus</label>
+
+    <div class="lecture-group" id="group1">
+        <label><input type="checkbox" class="group-checkbox" data-group="group1" checked>Lectiones I-VI</label>
+
+        <div class="lecture-checkboxes">
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story1" checked>Fb I</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise1" checked>Ex I</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story2" checked>Fb II</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise2" checked>Ex II</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story3" checked>Fb III</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise3" checked>Ex III</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story4" disabled>Fb IV</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise4" disabled>Ex IV</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story5" disabled>Fb V</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise5" disabled>Ex V</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story6" disabled>Fb VI</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise6" disabled>Ex VI</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="lecture-group" id="group2">
+        <label><input type="checkbox" class="group-checkbox" data-group="group2" disabled>Lectiones VII-XII</label>
+
+        <div class="lecture-checkboxes">
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story7" disabled>Fb VII</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise7" disabled>Ex VII</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story8" disabled>Fb VIII</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise8" disabled>Ex VIII</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story9" disabled>Fb IX</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise9" disabled>Ex IX</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story10" disabled>Fb X</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise10" disabled>Ex X</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story11" disabled>Fb XI</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise11" disabled>Ex XI</label>
+            </div>
+            <div class="checkbox-subgroup">
+                <label><input type="checkbox" class="lecture-checkbox" value="story12" disabled>Fb XII</label>
+                <label><input type="checkbox" class="lecture-checkbox" value="exercise12" disabled>Ex XII</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/phrases.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+
+</html>
