@@ -28,7 +28,7 @@ body {
     font-size: 14px;
 }
 
-.lecture-checkboxes {
+.section-checkboxes {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;

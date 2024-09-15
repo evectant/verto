@@ -9,7 +9,7 @@ const correctCounterElement = document.getElementById("correctCounter");
 const randomizeCheckboxElement = document.getElementById("randomizeCheckbox");
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
-const lectureCheckboxes = document.querySelectorAll(".lecture-checkboxes .lecture-checkbox");
+const sectionCheckboxes = document.querySelectorAll(".section-checkboxes .section-checkbox");
 
 let loadedPhrases = [];
 let currentPhraseIndex = 0;
@@ -30,14 +30,22 @@ function displayPhrase() {
 // Makes the loaded phrases match the checkboxes.
 function updateLoadedPhrases() {
     loadedPhrases = [];
-    lectureCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            loadedPhrases = loadedPhrases.concat(phrases[checkbox.value]);
+    sectionCheckboxes.forEach(checkbox => {
+        if (!checkbox.checked) {
+            return;
         }
+
+        const phrasesToLoad = phrases[checkbox.value];
+        if (!phrasesToLoad) {
+            console.error(`Missing key: ${checkbox.value}`);
+            return;
+        }
+
+        loadedPhrases = loadedPhrases.concat(phrasesToLoad);
     });
 
     if (loadedPhrases.length === 0) {
-        currentPhraseElement.textContent = "⚠️ Selige leciones!";
+        currentPhraseElement.textContent = "⚠️ Selige sectiones!";
         return;
     }
 
@@ -113,16 +121,16 @@ function handleKeyDownNext(event) {
 // Event listeners.
 //
 
-lectureCheckboxes.forEach(lectureCheckbox => {
-    lectureCheckbox.addEventListener("change", updateLoadedPhrases);
+sectionCheckboxes.forEach(sectionCheckbox => {
+    sectionCheckbox.addEventListener("change", updateLoadedPhrases);
 });
 
 groupCheckboxes.forEach(groupCheckbox => {
     groupCheckbox.addEventListener("change", function () {
         const group = document.getElementById(this.dataset.group);
-        const checkboxes = group.querySelectorAll(".lecture-checkbox");
-        checkboxes.forEach(lectureCheckbox => {
-            lectureCheckbox.checked = this.checked;
+        const checkboxes = group.querySelectorAll(".section-checkbox");
+        checkboxes.forEach(sectionCheckbox => {
+            sectionCheckbox.checked = this.checked;
         });
         updateLoadedPhrases();
     });
@@ -139,5 +147,4 @@ translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
 //
 
 updateLoadedPhrases();
-displayPhrase();
 updateScore();
