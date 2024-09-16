@@ -537,17 +537,887 @@ phrases = {
         }
     ],
 
-    "story4": [],
+    "story4": [
+        {
+            "en": "After the Romans expelled Tarquinius, they had a war.",
+            "la": "Postquam Romani expulerunt Tarquinium bellum habuerunt."
+        },
+        {
+            "en": "For Tarquinius was an Etruscan.",
+            "la": "Tarquinius enim Etruscus fuit."
+        },
+        {
+            "en": "Therefore, the Etruscans came to war with the Romans.",
+            "la": "Ergo Etrusci venerunt ad bellum cum Romanis."
+        },
+        {
+            "en": "The Etruscans said that the Romans were evil: they expelled Tarquinius.",
+            "la": "Etrusci dixerunt quod Romani mali fuerunt: expulerunt Tarquinium."
+        },
+        {
+            "en": "The Romans said that Tarquinius was evil: therefore, they expelled Tarquinius.",
+            "la": "Romani dixerunt quod Tarquinius malus fuit: ergo expulerunt Tarquinium."
+        },
+        {
+            "en": "The war was not small.",
+            "la": "Bellum non parvum fuit."
+        },
+        {
+            "en": "The war was great.",
+            "la": "Bellum fuit magnum."
+        },
+        {
+            "en": "Many great men were in the war.",
+            "la": "Multi viri magni fuerunt in bello."
+        },
+        {
+            "en": "The Roman men loved Rome.",
+            "la": "Viri Romani amaverunt Romam."
+        },
+        {
+            "en": "They exclaimed that Tarquinius was an evil tyrant.",
+            "la": "Exclamaverunt quod Tarquinius malus tyrannus fuit."
+        },
+        {
+            "en": "The Roman men spoke the truth.",
+            "la": "Viri Romani dixerunt veritatem."
+        },
+        {
+            "en": "Tarquinius was an evil tyrant.",
+            "la": "Tarquinius fuit tyrannus malus."
+        },
+        {
+            "en": "Even the Etruscan king came to war with Tarquinius.",
+            "la": "Etiam rex Etruscus venit cum Tarquinio ad bellum."
+        },
+        {
+            "en": "The Etruscan king was Lars Porsenna.",
+            "la": "Rex Etruscus fuit Lars Porsenna."
+        },
+        {
+            "en": "The Romans saw the Etruscan army.",
+            "la": "Romani viderunt exercitum Etruscum."
+        },
+        {
+            "en": "The Etruscan army was large.",
+            "la": "Exercitus Etruscus magnus fuit."
+        },
+        {
+            "en": "The Romans saw that the Etruscan army was large.",
+            "la": "Romani viderunt quod exercitus Etruscus magnus fuit."
+        },
+        {
+            "en": "But the Roman army was also large.",
+            "la": "Sed exercitus Romanus etiam magnus fuit."
+        },
+        {
+            "en": "The Roman men were great.",
+            "la": "Viri Romani magni fuerunt."
+        },
+        {
+            "en": "But the Etruscan men were also great.",
+            "la": "Sed viri Etrusci etiam magni fuerunt."
+        },
+        {
+            "en": "They were not small.",
+            "la": "Non parvi fuerunt."
+        },
+        {
+            "en": "Therefore, the Roman men and the Etruscan men prepared for battle.",
+            "la": "Ergo viri Romani et viri Etrusci paraverunt ad pugnam."
+        },
+        {
+            "en": "The Etruscan men said: The Romans are evil: they expelled Tarquinius.",
+            "la": "Viri Etrusci dixerunt: Romani mali sunt: expulerunt Tarquinium."
+        },
+        {
+            "en": "But the Romans said that Tarquinius was evil.",
+            "la": "Sed Romani dixerunt quod Tarquinius malus fuit."
+        },
+        {
+            "en": "The Romans were not lambs — they were men.",
+            "la": "Romani non agni fuerunt — viri fuerunt."
+        },
+        {
+            "en": "The Romans went to the city.",
+            "la": "Romani fuerunt ad urbem."
+        },
+        {
+            "en": "They stood at the bridge.",
+            "la": "Steterunt ad pontem."
+        },
+        {
+            "en": "The Etruscans also stood at the Roman bridge.",
+            "la": "Etiam Etrusci steterunt ad pontem Romanum."
+        },
+        {
+            "en": "The Romans threw fire on the bridge.",
+            "la": "Romani iecerunt ignem in pontem."
+        },
+        {
+            "en": "A great Roman man stood on the bridge.",
+            "la": "Vir Romanus magnus stetit in ponte."
+        },
+        {
+            "en": "This man was Horatius.",
+            "la": "Hic vir fuit Horatius."
+        },
+        {
+            "en": "He loved Rome.",
+            "la": "Amavit Romam."
+        },
+        {
+            "en": "But the Etruscans came onto the bridge.",
+            "la": "Sed Etrusci venerunt in pontem."
+        },
+        {
+            "en": "Fire came to the bridge.",
+            "la": "Ignis venit in pontem."
+        },
+        {
+            "en": "The bridge fell into the water.",
+            "la": "Pons cecidit in aquam."
+        },
+        {
+            "en": "Horatius also fell into the water.",
+            "la": "Horatius etiam cecidit in aquam."
+        }
+    ],
 
-    "exercise4": [],
+    "exercise4": [
+        {
+            "en": "Tarquinius was an evil king.",
+            "la": "Tarquinius fuit rex malus."
+        },
+        {
+            "en": "Therefore, the Romans expelled the evil king.",
+            "la": "Ergo Romani expulerunt regem malum."
+        },
+        {
+            "en": "But Tarquinius came with the Etruscans against Rome.",
+            "la": "Sed Tarquinius venit cum Etruscis contra Romam."
+        },
+        {
+            "en": "The Etruscans prepared a large army.",
+            "la": "Etrusci paraverunt exercitum magnum."
+        },
+        {
+            "en": "The Romans also prepared a large army.",
+            "la": "Romani etiam paraverunt exercitum magnum."
+        },
+        {
+            "en": "Columbus did not come with the Etruscans.",
+            "la": "Columbus non venit cum Etruscis."
+        },
+        {
+            "en": "And the white lamb did not come with the Etruscans.",
+            "la": "Et agnus albus non venit cum Etruscis."
+        },
+        {
+            "en": "For the lamb did not love Tarquinius.",
+            "la": "Agnus enim Tarquinium non amavit."
+        },
+        {
+            "en": "For the lamb said baa to Tarquinius.",
+            "la": "Agnus enim dixit baa Tarquinio."
+        },
+        {
+            "en": "But Tarquinius did not throw the lamb into the water.",
+            "la": "Sed Tarquinius non iecit agnum in aquam."
+        },
+        {
+            "en": "For the lamb was not on the bridge.",
+            "la": "Agnus enim in ponte non fuit."
+        },
+        {
+            "en": "Was Tarquinius on the bridge?",
+            "la": "Fuitne Tarquinius in ponte?"
+        },
+        {
+            "en": "No. Tarquinius was not on the bridge.",
+            "la": "Non. Tarquinius in ponte non fuit."
+        },
+        {
+            "en": "Horatius was on the bridge.",
+            "la": "Horatius in ponte fuit."
+        },
+        {
+            "en": "But Horatius did not remain on the bridge.",
+            "la": "Sed Horatius non remansit in ponte."
+        },
+        {
+            "en": "For fire came onto the bridge.",
+            "la": "Ignis enim in pontem venit."
+        },
+        {
+            "en": "The Romans threw fire onto the bridge.",
+            "la": "Romani ignem iecerunt in pontem."
+        },
+        {
+            "en": "For the Etruscans were on the bridge.",
+            "la": "Etrusci enim in ponte fuerunt."
+        },
+        {
+            "en": "The bridge did not love fire.",
+            "la": "Pons non amavit ignem."
+        },
+        {
+            "en": "Therefore, the bridge fell into the water.",
+            "la": "Pons ergo cecidit in aquam."
+        },
+        {
+            "en": "Horatius also fell into the water.",
+            "la": "Horatius etiam in aquam cecidit."
+        },
+        {
+            "en": "For Horatius did not have a ship.",
+            "la": "Horatius enim non habuit navem."
+        },
+        {
+            "en": "Horatius did not stand on the bridge with the fire.",
+            "la": "Horatius non stetit in ponte cum igne."
+        },
+        {
+            "en": "The bridge also did not stand.",
+            "la": "Pons etiam non stetit."
+        },
+        {
+            "en": "Columbus did not see the fire on the bridge.",
+            "la": "Columbus non vidit ignem in ponte."
+        },
+        {
+            "en": "For Columbus was not on the bridge when the fire came.",
+            "la": "Columbus enim non fuit in ponte quando ignis venit."
+        },
+        {
+            "en": "Was Columbus in the Roman city when the fire came?",
+            "la": "Fuitne Columbus in urbe Romana quando ignis venit?"
+        },
+        {
+            "en": "No. Columbus was also not in America when the fire came.",
+            "la": "Non. Columbus etiam non fuit in America quando ignis venit."
+        },
+        {
+            "en": "Columbus did not say that he was in America when the fire came to the Roman bridge.",
+            "la": "Columbus non dixit quod fuit in America quando ignis venit in pontem Romanum."
+        },
+        {
+            "en": "Columbus told the truth.",
+            "la": "Columbus dixit veritatem."
+        },
+        {
+            "en": "For Columbus was not in the world in that year.",
+            "la": "Columbus enim non fuit in mundo in illo anno."
+        }
+    ],
 
-    "story5": [],
+    "story5": [
+        {
+            "en": "The Romans expelled the Etruscans.",
+            "la": "Romani expulerunt Etruscos."
+        },
+        {
+            "en": "Now the Etruscans are not kings in Roman land.",
+            "la": "Nunc Etrusci non sunt reges in terra Romana."
+        },
+        {
+            "en": "The Romans are not kings in Roman land, but the Romans made two consuls.",
+            "la": "Romani non sunt reges in terra Romana, sed Romani fecerunt consules duos."
+        },
+        {
+            "en": "The consuls were good men.",
+            "la": "Consules fuerunt viri boni."
+        },
+        {
+            "en": "The Etruscan kings were evil.",
+            "la": "Reges Etrusci fuerunt mali."
+        },
+        {
+            "en": "But the consuls are not evil — they are great men.",
+            "la": "Sed consules non sunt mali — viri magni sunt."
+        },
+        {
+            "en": "The consuls had great power.",
+            "la": "Consules habuerunt magnam potestatem."
+        },
+        {
+            "en": "In the Roman city, citizens fought with citizens.",
+            "la": "In urbe Romana cives pugnaverunt cum civibus."
+        },
+        {
+            "en": "The Roman patricians were rich: they had great wealth.",
+            "la": "Romani patricii fuerunt divites: magnam pecuniam habuerunt."
+        },
+        {
+            "en": "The patricians also had great power.",
+            "la": "Patricii etiam magnam potestatem habuerunt."
+        },
+        {
+            "en": "But the Roman plebs were poor.",
+            "la": "Sed plebs Romana fuerunt pauperes."
+        },
+        {
+            "en": "The plebs did not have money.",
+            "la": "Plebs non habuerunt pecuniam."
+        },
+        {
+            "en": "The plebs did not have power in the city.",
+            "la": "Plebs non habuerunt potestatem in urbe."
+        },
+        {
+            "en": "The plebs wanted power.",
+            "la": "Plebs voluerunt potestatem."
+        },
+        {
+            "en": "The plebs wanted money.",
+            "la": "Plebs voluerunt pecuniam."
+        },
+        {
+            "en": "The patricians did not give money.",
+            "la": "Patricii non dederunt pecuniam."
+        },
+        {
+            "en": "The patricians did not give power in the city.",
+            "la": "Patricii non dederunt potestatem in urbe."
+        },
+        {
+            "en": "Therefore, the plebs fought with the patricians.",
+            "la": "Ergo plebs pugnaverunt cum patriciis."
+        },
+        {
+            "en": "The plebs did not remain in the city.",
+            "la": "Plebs non remanserunt in urbe."
+        },
+        {
+            "en": "The plebs went to the Sacred Mountain.",
+            "la": "Plebs venerunt in Sacrum Montem."
+        },
+        {
+            "en": "The patricians shouted: Come to the city!",
+            "la": "Patricii exclamaverunt: Venite in urbem!"
+        },
+        {
+            "en": "But the plebs remained on the Sacred Mountain.",
+            "la": "Sed plebs remansit in Monte Sacro."
+        },
+        {
+            "en": "Great patricians came to the plebs.",
+            "la": "Magni patricii venerunt ad plebem."
+        },
+        {
+            "en": "They said: Come! come to the Roman city!",
+            "la": "Dixerunt: Venite! venite in urbem Romanam!"
+        },
+        {
+            "en": "But the plebs remained on the Sacred Mountain.",
+            "la": "Sed plebs remansit in Monte Sacro."
+        },
+        {
+            "en": "Therefore, the patricians created a new office.",
+            "la": "Ergo patricii creaverunt officium novum."
+        },
+        {
+            "en": "They created the tribunes of the plebs.",
+            "la": "Creaverunt tribunos plebis."
+        },
+        {
+            "en": "There were two tribunes of the plebs.",
+            "la": "Fuerunt duo tribuni plebis."
+        },
+        {
+            "en": "Therefore, the plebs did not remain on the Sacred Mountain.",
+            "la": "Ergo plebs non remansit in Monte Sacro."
+        },
+        {
+            "en": "The plebs came to the city.",
+            "la": "Plebs venit in urbem."
+        },
+        {
+            "en": "The plebs came with the tribunes.",
+            "la": "Plebs venit cum tribunis."
+        },
+        {
+            "en": "The tribunes had great power.",
+            "la": "Tribuni magnam potestatem habuerunt."
+        },
+        {
+            "en": "The consuls had great power.",
+            "la": "Consules habuerunt magnam potestatem."
+        },
+        {
+            "en": "But the tribunes also had great power.",
+            "la": "Sed tribuni etiam habuerunt magnam potestatem."
+        }
+    ],
 
-    "exercise5": [],
+    "exercise5": [
+        {
+            "en": "Where are the Romans?",
+            "la": "Ubi sunt Romani?"
+        },
+        {
+            "en": "The Romans are in the Roman city.",
+            "la": "Romani sunt in urbe Romana."
+        },
+        {
+            "en": "Are the plebs in the Roman city?",
+            "la": "Suntne plebs in urbe Romana?"
+        },
+        {
+            "en": "No. The plebs are not in the Roman city.",
+            "la": "Non. Plebs non est in urbe Romana."
+        },
+        {
+            "en": "The plebs are on the Sacred Mountain.",
+            "la": "Plebs est in Monte Sacro."
+        },
+        {
+            "en": "The plebs came out of the city.",
+            "la": "Plebs venerunt ex urbe."
+        },
+        {
+            "en": "They came to the Sacred Mountain.",
+            "la": "Venerunt in Montem Sacrum."
+        },
+        {
+            "en": "They did not remain in the city.",
+            "la": "Non remanserunt in urbe."
+        },
+        {
+            "en": "Is Columbus on the Sacred Mountain?",
+            "la": "Estne Columbus in Monte Sacro?"
+        },
+        {
+            "en": "No. Columbus is not on the Sacred Mountain.",
+            "la": "Non. Columbus non est in Monte Sacro."
+        },
+        {
+            "en": "Columbus is not in the city.",
+            "la": "Columbus non est in urbe."
+        },
+        {
+            "en": "Columbus is on the ship.",
+            "la": "Columbus est in navi."
+        },
+        {
+            "en": "The ship is in the water.",
+            "la": "Navis est in aqua."
+        },
+        {
+            "en": "Where is the lamb?",
+            "la": "Ubi est agnus?"
+        },
+        {
+            "en": "The lamb is not on the Sacred Mountain.",
+            "la": "Agnus non est in Monte Sacro."
+        },
+        {
+            "en": "The lamb is in school.",
+            "la": "Agnus est in schola."
+        },
+        {
+            "en": "Marcus did not want the lamb in school.",
+            "la": "Marcus non voluit agnum in schola."
+        },
+        {
+            "en": "But Marcus wanted Maria.",
+            "la": "Sed Marcus voluit Mariam."
+        },
+        {
+            "en": "Marcus said: Oh! Maria is a little lamb!",
+            "la": "Marcus dixit: O! Maria est agna parva!"
+        },
+        {
+            "en": "Marcus loved Maria.",
+            "la": "Marcus amavit Mariam."
+        },
+        {
+            "en": "Maria loved Marcus.",
+            "la": "Maria amavit Marcum."
+        },
+        {
+            "en": "Maria also said: Oh! Marcus is a little lamb.",
+            "la": "Maria etiam dixit: O! Marcus est agnus parvus."
+        },
+        {
+            "en": "Is Columbus a little lamb?",
+            "la": "Estne Columbus agnus parvus?"
+        },
+        {
+            "en": "No. Columbus had a wife.",
+            "la": "Non. Columbus habuit uxorem."
+        },
+        {
+            "en": "The wife did not say: Columbus is a little lamb.",
+            "la": "Uxor non dixit: Columbus est agnus parvus."
+        },
+        {
+            "en": "The wife said that Columbus was a big pig.",
+            "la": "Uxor dixit quod Columbus fuit porcus magnus."
+        },
+        {
+            "en": "But the wife loved Columbus.",
+            "la": "Sed uxor amavit Columbum."
+        },
+        {
+            "en": "And Columbus loved his wife.",
+            "la": "Et Columbus amavit uxorem."
+        },
+        {
+            "en": "Columbus was not a big pig.",
+            "la": "Columbus non fuit porcus magnus."
+        },
+        {
+            "en": "Columbus was not a little pig.",
+            "la": "Columbus non fuit porcus parvus."
+        },
+        {
+            "en": "Columbus was not a pig.",
+            "la": "Columbus non fuit porcus."
+        },
+        {
+            "en": "But Columbus was round.",
+            "la": "Sed Columbus fuit rotundus."
+        },
+        {
+            "en": "The world is also round.",
+            "la": "Mundus etiam est rotundus."
+        },
+        {
+            "en": "The lamb is also round.",
+            "la": "Agnus etiam est rotundus."
+        },
+        {
+            "en": "The world is not flat.",
+            "la": "Mundus non est planus."
+        },
+        {
+            "en": "Money is round.",
+            "la": "Pecunia est rotunda."
+        },
+        {
+            "en": "Therefore: the world is round — and money is round: is the world money?",
+            "la": "Ergo: mundus est rotundus — et pecunia est rotunda: estne mundus pecunia?"
+        },
+        {
+            "en": "No. The world is not money.",
+            "la": "Non. Mundus non est pecunia."
+        },
+        {
+            "en": "But evil men said that money is king in the world.",
+            "la": "Sed viri mali dixerunt quod pecunia est rex in mundo."
+        },
+        {
+            "en": "Horatius had money.",
+            "la": "Horatius habuit pecuniam."
+        },
+        {
+            "en": "Horatius also stood on the bridge.",
+            "la": "Horatius etiam stetit in ponte."
+        },
+        {
+            "en": "But the bridge fell into the water.",
+            "la": "Sed pons cecidit in aquam."
+        },
+        {
+            "en": "Fire fell onto the bridge.",
+            "la": "Ignis cecidit in pontem."
+        },
+        {
+            "en": "The Romans fought with the Etruscans.",
+            "la": "Romani pugnaverunt cum Etruscis."
+        },
+        {
+            "en": "But the patricians also fought with the plebs.",
+            "la": "Sed patricii etiam pugnaverunt cum plebe."
+        },
+        {
+            "en": "The citizens fought with the Etruscans.",
+            "la": "Cives pugnaverunt cum Etruscis."
+        },
+        {
+            "en": "But the patricians also fought with the plebs.",
+            "la": "Sed patricii etiam pugnaverunt cum plebe."
+        },
+        {
+            "en": "The citizens fought with the citizens.",
+            "la": "Cives pugnaverunt cum civibus."
+        }
+    ],
 
-    "story6": [],
+    "story6": [
+        {
+            "en": "The Romans had a war with the Aequi.",
+            "la": "Romani habuerunt bellum cum Aequis."
+        },
+        {
+            "en": "The Roman consul came with the Roman army to the battle.",
+            "la": "Consul Romanus venit cum exercitu Romano ad pugnam."
+        },
+        {
+            "en": "The Roman army fought with the Aequi.",
+            "la": "Exercitus Romanus pugnavit cum Aequis."
+        },
+        {
+            "en": "The Aequi fought with the Romans.",
+            "la": "Aequi pugnaverunt cum Romanis."
+        },
+        {
+            "en": "The Aequi were strong men.",
+            "la": "Aequi viri fortes fuerunt."
+        },
+        {
+            "en": "But the Romans were also strong men.",
+            "la": "Sed Romani etiam viri fortes fuerunt."
+        },
+        {
+            "en": "Therefore, strong men fought with strong men.",
+            "la": "Ergo viri fortes pugnaverunt cum viris fortibus."
+        },
+        {
+            "en": "But the Roman army came into great danger.",
+            "la": "Sed exercitus Romanus venit in magnum periculum."
+        },
+        {
+            "en": "The Roman men shouted: We are in great danger!",
+            "la": "Viri Romani exclamaverunt: in magno periculo sumus!"
+        },
+        {
+            "en": "But the Roman men were strong.",
+            "la": "Sed viri Romani fortes fuerunt."
+        },
+        {
+            "en": "And in the Roman city, there was the Roman senate.",
+            "la": "Et in urbe Romana fuit senatus Romanus."
+        },
+        {
+            "en": "Good men were in the Roman senate.",
+            "la": "Viri boni fuerunt in senatu Romano."
+        },
+        {
+            "en": "Therefore, the Roman senate made a plan: They created a dictator.",
+            "la": "Ergo senatus Romanus fecit consilium: Dictatorem creaverunt."
+        },
+        {
+            "en": "Cincinnatus was a good man, a strong man.",
+            "la": "Cincinnatus fuit vir bonus, vir fortis."
+        },
+        {
+            "en": "In truth, Cincinnatus was a good Roman.",
+            "la": "In veritate, Cincinnatus fuit Romanus bonus."
+        },
+        {
+            "en": "The envoys from the senate came to Cincinnatus.",
+            "la": "Legati ex senatu venerunt ad Cincinnatum."
+        },
+        {
+            "en": "Cincinnatus was in the fields.",
+            "la": "Cincinnatus fuit in agris."
+        },
+        {
+            "en": "The envoys from the senate said that the Roman army was in great danger.",
+            "la": "Legati ex senatu dixerunt quod exercitus Romanus in periculo magno fuit."
+        },
+        {
+            "en": "They said that the senate had made Cincinnatus dictator.",
+            "la": "Dixerunt quod senatus creavit Cincinnatum dictatorem."
+        },
+        {
+            "en": "Therefore, Cincinnatus did not remain in the fields.",
+            "la": "Ergo Cincinnatus non remansit in agris."
+        },
+        {
+            "en": "Cincinnatus was the dictator.",
+            "la": "Cincinnatus fuit dictator."
+        },
+        {
+            "en": "Cincinnatus came with strong men.",
+            "la": "Cincinnatus venit cum viris fortibus."
+        },
+        {
+            "en": "Cincinnatus fought with the Aequi.",
+            "la": "Cincinnatus pugnavit cum Aequis."
+        },
+        {
+            "en": "Cincinnatus defeated the Aequi.",
+            "la": "Cincinnatus vicit Aequos."
+        },
+        {
+            "en": "But Cincinnatus did not remain dictator.",
+            "la": "Sed Cincinnatus non remansit Dictator."
+        },
+        {
+            "en": "Cincinnatus did not want great power.",
+            "la": "Cincinnatus non voluit magnam protestatem."
+        },
+        {
+            "en": "Cincinnatus wanted good fields.",
+            "la": "Cincinnatus voluit agros bonos."
+        },
+        {
+            "en": "Therefore, Cincinnatus came to the senate.",
+            "la": "Ergo Cincinnatus venit in senatum."
+        },
+        {
+            "en": "Cincinnatus said in the senate that he did not want great power.",
+            "la": "Cincinnatus dixit in senatu quod non voluit magnam potestatem."
+        },
+        {
+            "en": "Cincinnatus returned again to the fields.",
+            "la": "Cincinnatus venit rursus in agros."
+        },
+        {
+            "en": "Now Cincinnatus is not the dictator.",
+            "la": "Nunc Cincinnatus non est Dictator."
+        }
+    ],
 
-    "exercise6": [],
+    "exercise6": [
+        {
+            "en": "For the Romans were strong men.",
+            "la": "Romani enim fortes viri fuerunt."
+        },
+        {
+            "en": "When they fought with the Aequi, the Romans defeated the Aequi.",
+            "la": "Quando pugnaverunt cum Aequis, Romani vicerunt Aequos."
+        },
+        {
+            "en": "The Romans came from the city to the battle.",
+            "la": "Romani venerunt ex urbe ad pugnam."
+        },
+        {
+            "en": "The Aequi came from the city to the battle.",
+            "la": "Aequi venerunt ex urbe ad pugnam."
+        },
+        {
+            "en": "Horatius fought with the Etruscans.",
+            "la": "Horatius pugnavit cum Etruscis."
+        },
+        {
+            "en": "The Etruscans were also strong men.",
+            "la": "Etrusci etiam fuerunt viri fortes."
+        },
+        {
+            "en": "The Romans were in great danger after they expelled King Tarquinius.",
+            "la": "Romani fuerunt in magno periculo postquam regem Tarquinium expulerunt."
+        },
+        {
+            "en": "The Romans were in great danger when they fought with the Aequi.",
+            "la": "Romani fuerunt in magno periculo quando pugnaverunt cum Aequis."
+        },
+        {
+            "en": "But the Romans defeated the Etruscans and the Aequi.",
+            "la": "Sed Romani vicerunt Etruscos et Aequos."
+        },
+        {
+            "en": "Cincinnatus was the Roman Dictator.",
+            "la": "Cincinnatus fuit Dictator Romanus."
+        },
+        {
+            "en": "But Cincinnatus did not want great power.",
+            "la": "Sed Cincinnatus non voluit potestatem magnam."
+        },
+        {
+            "en": "Cincinnatus loved Rome.",
+            "la": "Cincinnatus amavit Romam."
+        },
+        {
+            "en": "Cincinnatus made a good plan.",
+            "la": "Cincinnatus fecit consilium bonum."
+        },
+        {
+            "en": "Cincinnatus did not remain Dictator.",
+            "la": "Cincinnatus non remansit Dictator."
+        },
+        {
+            "en": "The plebs did not remain in the city.",
+            "la": "Plebs non remansit in urbe."
+        },
+        {
+            "en": "The plebs did not come to school.",
+            "la": "Plebs non venit in scholam."
+        },
+        {
+            "en": "Marcus came to school with Maria.",
+            "la": "Marcus venit in scholam cum Maria."
+        },
+        {
+            "en": "The lamb came to school with Maria.",
+            "la": "Agnus venit in scholam cum Maria."
+        },
+        {
+            "en": "Was Marcus a lamb?",
+            "la": "Fuitne Marcus agnus?"
+        },
+        {
+            "en": "Maria said that Marcus was a lamb.",
+            "la": "Maria dixit quod Marcus fuit agnus."
+        },
+        {
+            "en": "Was Marcus round?",
+            "la": "Fuitne Marcus rotundus?"
+        },
+        {
+            "en": "The tribunes of the plebs had great power.",
+            "la": "Tribuni plebis habuerunt magnam potestatem."
+        },
+        {
+            "en": "The consuls also had great power.",
+            "la": "Consules etiam habuerunt magnam potestatem."
+        },
+        {
+            "en": "But the consuls and tribunes of the plebs were not evil men.",
+            "la": "Sed consules et tribuni plebis non fuerunt viri mali."
+        },
+        {
+            "en": "They were good men.",
+            "la": "Fuerunt viri boni."
+        },
+        {
+            "en": "In truth, they were strong Romans.",
+            "la": "In veritate fuerunt Romani fortes."
+        },
+        {
+            "en": "The Roman army was also strong.",
+            "la": "Exercitus Romanus etiam fuit fortis."
+        },
+        {
+            "en": "Strong men were in the army.",
+            "la": "Viri fortes fuerunt in exercitu."
+        },
+        {
+            "en": "Horatius stood on the bridge.",
+            "la": "Horatius stetit in ponte."
+        },
+        {
+            "en": "The bridge fell into the water.",
+            "la": "Pons cecidit in aquam."
+        },
+        {
+            "en": "Horatius also fell into the water.",
+            "la": "Horatius etiam cecidit in aquam."
+        },
+        {
+            "en": "The pigs did not fall into the water.",
+            "la": "Porci non ceciderunt in aquam."
+        },
+        {
+            "en": "The pigs did not love the water.",
+            "la": "Porci non amaverunt aquam."
+        },
+        {
+            "en": "The lamb did not fall into the water either.",
+            "la": "Etiam agnus non cecidit in aquam."
+        },
+        {
+            "en": "But the lamb was white.",
+            "la": "Sed agnus albus fuit."
+        },
+        {
+            "en": "The pigs were not white.",
+            "la": "Porci non albi fuerunt."
+        }
+    ],
 
     "story7": [],
 

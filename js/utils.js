@@ -29,7 +29,7 @@ function toRoman(num) {
 function normalize(text) {
     return text
         .normalize("NFD").replace(/\p{Diacritic}/gu, "") // Drop macrons.
-        .replace(/[.,:\-!?]/g, "") // Drop punctuation.
+        .replace(/[.,:\-—!?]/g, "") // Drop punctuation.
         .replace(/\s{2,}/g, " ") // Drop double spaces.
         .trim()
         .toLowerCase();
