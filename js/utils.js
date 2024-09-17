@@ -35,6 +35,27 @@ function normalize(text) {
         .toLowerCase();
 }
 
+function haveSameWords(phrase1, phrase2) {
+    function toSortedWords(text) {
+        return text.split(/\s+/).sort();
+    }
+
+    const words1 = toSortedWords(normalize(phrase1));
+    const words2 = toSortedWords(normalize(phrase2));
+
+    if (words1.length !== words2.length) {
+        return false;
+    }
+
+    for (let i = 0; i < words1.length; i++) {
+        if (words1[i] !== words2[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 function shuffle(array) {
     for (let i = array.length - 1; i >= 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));

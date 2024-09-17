@@ -71,7 +71,7 @@ function checkTranslation() {
     const userTranslation = translationInputElement.value;
     const correctTranslation = loadedPhrases[currentPhraseIndex].la;
 
-    if (normalize(userTranslation) === normalize(correctTranslation)) {
+    if (haveSameWords(userTranslation, correctTranslation)) {
         feedbackElement.style.color = "green";
         feedbackElement.textContent = "Recte!";
         correctAnswers++;
