@@ -1248,7 +1248,7 @@ phrases = {
         },
         {
             "en": "Cincinnatus did not want great power.",
-            "la": "Cincinnatus non voluit magnam protestatem."
+            "la": "Cincinnatus non voluit magnam potestatem."
         },
         {
             "en": "Cincinnatus wanted good fields.",
