@@ -1419,17 +1419,935 @@ phrases = {
         }
     ],
 
-    "story7": [],
+    "story7": [
+        {
+            "en": "In human affairs, danger is not rare.",
+            "la": "In rebus humanis, periculum non est rarum."
+        },
+        {
+            "en": "The Romans had war in many days and in many years.",
+            "la": "Romani bellum habuerunt in multis diebus et in multis annis."
+        },
+        {
+            "en": "The Romans had war with the Etruscans.",
+            "la": "Romani bellum habuerunt cum Etruscis."
+        },
+        {
+            "en": "They also had war with the Aequi.",
+            "la": "Etiam bellum habuerunt cum Aequis."
+        },
+        {
+            "en": "They had war with many.",
+            "la": "Habuerunt bellum cum multis."
+        },
+        {
+            "en": "But the Romans were brave.",
+            "la": "Sed Romani fortes fuerunt."
+        },
+        {
+            "en": "Great men were in the Roman armies.",
+            "la": "Viri magni in exercitibus Romanis fuerunt."
+        },
+        {
+            "en": "Therefore the Romans conquered the Etruscans.",
+            "la": "Ergo Romani vicerunt Etruscos."
+        },
+        {
+            "en": "They also conquered the Aequi.",
+            "la": "Etiam vicerunt Aequos."
+        },
+        {
+            "en": "But the Romans did not always conquer.",
+            "la": "Sed Romani non semper vicerunt."
+        },
+        {
+            "en": "In the three hundred and ninetieth year before Christ, barbarians came from Gaul into Italy.",
+            "la": "In anno trecentesimo nonagesimo ante Christum, barbari venerunt ex Gallia in Italiam."
+        },
+        {
+            "en": "The Gauls were barbarians.",
+            "la": "Galli fuerunt barbari."
+        },
+        {
+            "en": "The Gauls fought with many in Italy.",
+            "la": "Galli pugnaverunt cum multis in Italia."
+        },
+        {
+            "en": "The Gauls conquered many.",
+            "la": "Galli vicerunt multos."
+        },
+        {
+            "en": "The Gauls also fought with the Etruscans.",
+            "la": "Galli etiam pugnaverunt cum Etruscis."
+        },
+        {
+            "en": "The Gauls conquered the Etruscans in battle.",
+            "la": "Galli vicerunt Etruscos in pugna."
+        },
+        {
+            "en": "The Gauls also came into Roman territory.",
+            "la": "Galli etiam venerunt in terram Romanam."
+        },
+        {
+            "en": "The Gauls fought with the Roman army.",
+            "la": "Galli pugnaverunt cum exercitu Romano."
+        },
+        {
+            "en": "The Gauls defeated the Roman army.",
+            "la": "Galli vicerunt exercitum Romanum."
+        },
+        {
+            "en": "In the Roman army were many great and brave men.",
+            "la": "In exercitu Romano fuerunt multi viri magni et fortes."
+        },
+        {
+            "en": "But the Gauls were also great and brave.",
+            "la": "Sed Galli etiam fuerunt magni et fortes."
+        },
+        {
+            "en": "The Gauls conquered the Romans.",
+            "la": "Galli vicerunt Romanos."
+        },
+        {
+            "en": "The Gauls also came into the city of Rome.",
+            "la": "Galli venerunt etiam in urbem Romanam."
+        },
+        {
+            "en": "The Gauls captured almost the whole city.",
+            "la": "Galli ceperunt fere totam urbem."
+        },
+        {
+            "en": "But the Gauls did not capture the whole city.",
+            "la": "Sed Galli non ceperunt totam urbem."
+        },
+        {
+            "en": "The Gauls did not capture the Capitol.",
+            "la": "Galli non ceperunt Capitolium."
+        },
+        {
+            "en": "On the Capitol were brave men.",
+            "la": "In Capitolio viri fortes fuerunt."
+        },
+        {
+            "en": "But the brave men were sleeping on the Capitol.",
+            "la": "Sed viri fortes dormiebant in Capitolio."
+        },
+        {
+            "en": "The men did not hear the Gauls on the Capitol.",
+            "la": "Viri non audiverunt Gallos in Capitolio."
+        },
+        {
+            "en": "But the geese were also on the Capitol.",
+            "la": "Sed anseres fuerunt etiam in Capitolio."
+        },
+        {
+            "en": "The geese were not sleeping.",
+            "la": "Anseres non dormiebant."
+        },
+        {
+            "en": "The geese heard the Gauls.",
+            "la": "Anseres audiverunt Gallos."
+        },
+        {
+            "en": "The geese cried out.",
+            "la": "Anseres exclamaverunt."
+        },
+        {
+            "en": "The Romans heard the geese.",
+            "la": "Romani audiverunt anseres."
+        },
+        {
+            "en": "The Romans fought with the Gauls.",
+            "la": "Romani pugnaverunt cum Gallis."
+        }
+    ],
 
-    "exercise7": [],
+    "exercise7": [
+        {
+            "en": "The Gauls defeated the Roman army.",
+            "la": "Galli exercitum Romanum vicerunt."
+        },
+        {
+            "en": "The Gauls also defeated the Etruscans.",
+            "la": "Galli etiam Etruscos vicerunt."
+        },
+        {
+            "en": "The Gauls did not come into Italy with large ships.",
+            "la": "Galli non venerunt in Italiam magnis navibus."
+        },
+        {
+            "en": "The Gauls did not come with many ships.",
+            "la": "Galli non venerunt multis navibus."
+        },
+        {
+            "en": "The Gauls did not come by ships.",
+            "la": "Galli navibus non venerunt."
+        },
+        {
+            "en": "The Gauls came with many armies.",
+            "la": "Galli venerunt multis exercitibus."
+        },
+        {
+            "en": "The Romans were great in courage.",
+            "la": "Romani fuerunt magni fortitudine."
+        },
+        {
+            "en": "The Gauls were also great in courage.",
+            "la": "Galli etiam magni fortitudine fuerunt."
+        },
+        {
+            "en": "The Gauls did not win by money.",
+            "la": "Galli non vicerunt pecunia."
+        },
+        {
+            "en": "When the Gauls came to the Capitol, the geese cried out with a loud voice.",
+            "la": "Quando Galli venerunt in Capitolium, anseres exclamaverunt voce magna."
+        },
+        {
+            "en": "The Romans also cried out with a loud voice.",
+            "la": "Romani etiam exclamaverunt voce magna."
+        },
+        {
+            "en": "The Romans were also good in strategy.",
+            "la": "Romani etiam boni fuerunt consiliis."
+        },
+        {
+            "en": "The Gauls were not good in strategy.",
+            "la": "Galli non fuerunt boni consiliis."
+        },
+        {
+            "en": "The Gauls were bad in strategy.",
+            "la": "Galli mali consiliis fuerunt."
+        },
+        {
+            "en": "The Roman Senate was good in strategy.",
+            "la": "Senatus Romanus fuit bonus consiliis."
+        },
+        {
+            "en": "The Senate appointed a Dictator.",
+            "la": "Senatus creavit Dictatorem."
+        },
+        {
+            "en": "The Senate said that Cincinnatus was a brave man.",
+            "la": "Senatus dixit quod Cincinnatus fuit vir fortis."
+        },
+        {
+            "en": "Cincinnatus defeated the Aequi.",
+            "la": "Cincinnatus Aequos vicit."
+        },
+        {
+            "en": "Cincinnatus did not defeat the Aequi with money.",
+            "la": "Cincinnatus Aequos non vicit pecunia."
+        },
+        {
+            "en": "Cincinnatus did not defeat the Aequi with fire.",
+            "la": "Cincinnatus Aequos non vicit igni."
+        },
+        {
+            "en": "Cincinnatus defeated the Aequi with courage.",
+            "la": "Cincinnatus Aequos vicit fortitudine."
+        },
+        {
+            "en": "But Columbus was also great in courage.",
+            "la": "Sed Columbus etiam fuit magnus fortitudine."
+        },
+        {
+            "en": "For Columbus came to America.",
+            "la": "Columbus enim in Americam venit."
+        },
+        {
+            "en": "Columbus came to America by ships.",
+            "la": "Columbus venit ad Americam navibus."
+        },
+        {
+            "en": "The lamb did not come to America by ships.",
+            "la": "Agnus non venit ad Americam navibus."
+        },
+        {
+            "en": "The lamb did not come to America.",
+            "la": "Agnus ad Americam non venit."
+        },
+        {
+            "en": "In the early days, the Romans had war.",
+            "la": "Primis diebus Romani bellum habuerunt."
+        },
+        {
+            "en": "The Romans had war for many years.",
+            "la": "Romani multis annis bellum habuerunt."
+        },
+        {
+            "en": "The Romans almost always had war.",
+            "la": "Romani fere semper bellum habuerunt."
+        },
+        {
+            "en": "The Romans did not fight with water.",
+            "la": "Romani non pugnaverunt aqua."
+        },
+        {
+            "en": "The Romans did not fight with fire.",
+            "la": "Romani non pugnaverunt igni."
+        },
+        {
+            "en": "The Romans fought with large armies.",
+            "la": "Romani pugnaverunt magnis exercitibus."
+        },
+        {
+            "en": "Rome was strong with brave citizens.",
+            "la": "Roma fuit fortis civibus fortibus."
+        },
+        {
+            "en": "Rome was great in power.",
+            "la": "Roma fuit magna potestate."
+        },
+        {
+            "en": "Now Rome is great in Christian truth.",
+            "la": "Nunc Roma est magna veritate Christiana."
+        }
+    ],
 
-    "story8": [],
+    "story8": [
+        {
+            "en": "The Romans told the story about the Roman laws.",
+            "la": "Romani narraverunt fabulam de legibus Romanis."
+        },
+        {
+            "en": "In the early days, the Romans had laws.",
+            "la": "In primis diebus Romani habuerunt leges."
+        },
+        {
+            "en": "But only the patricians knew the Roman laws.",
+            "la": "Sed soli patricii sciverunt leges Romanas."
+        },
+        {
+            "en": "The plebs did not know the laws.",
+            "la": "Plebs non scivit leges."
+        },
+        {
+            "en": "Therefore, the plebs were in danger.",
+            "la": "Ergo plebs in periculo fuit."
+        },
+        {
+            "en": "The plebs did not love danger.",
+            "la": "Plebs non amavit periculum."
+        },
+        {
+            "en": "And the plebs did not love the patricians.",
+            "la": "Et plebs non amavit patricios."
+        },
+        {
+            "en": "The plebs said that the patricians did not love the plebs — the patricians did not write down the laws.",
+            "la": "Plebs dixerunt quod patricii non amaverunt plebem — patricii non scripserunt leges."
+        },
+        {
+            "en": "The plebs were in danger because the patricians did not write down the laws.",
+            "la": "Plebs in periculo est quia patricii non scripserunt leges."
+        },
+        {
+            "en": "The patricians were bad.",
+            "la": "Patricii mali sunt."
+        },
+        {
+            "en": "They were not good.",
+            "la": "Non sunt boni."
+        },
+        {
+            "en": "Therefore, there was again a fight in the city.",
+            "la": "Ergo rursus pugna fuit in urbe."
+        },
+        {
+            "en": "Citizens fought with citizens.",
+            "la": "Cives pugnaverunt cum civibus."
+        },
+        {
+            "en": "The patricians fought with the plebs.",
+            "la": "Patricii pugnaverunt cum plebe."
+        },
+        {
+            "en": "The plebs fought with the patricians.",
+            "la": "Plebs pugnavit cum patriciis."
+        },
+        {
+            "en": "In the early days, when the plebs fought with the patricians, the plebs did not remain in the city.",
+            "la": "In primis diebus, quando plebs pugnavit cum patriciis, plebs non remansit in urbe."
+        },
+        {
+            "en": "The plebs went to the Sacred Mountain.",
+            "la": "Plebs venit in Montem Sacrum."
+        },
+        {
+            "en": "But the plebs did not always remain on the Sacred Mountain.",
+            "la": "Sed plebs non remansit semper in Monte Sacro."
+        },
+        {
+            "en": "The plebs returned to the city when the patricians gave them tribunes of the plebs.",
+            "la": "Plebs rursus venit in urbem quando patricii dederunt tribunos plebis."
+        },
+        {
+            "en": "But now the plebs remained in the city.",
+            "la": "Sed nunc plebs remansit in urbe."
+        },
+        {
+            "en": "The plebs did not go to the Sacred Mountain.",
+            "la": "Plebs non venit in Montem Sacrum."
+        },
+        {
+            "en": "The plebs did not remain in the city because they loved the patricians.",
+            "la": "Plebs non remansit in urbe quia amaverunt patricios."
+        },
+        {
+            "en": "The plebs remained in the city because they loved Rome.",
+            "la": "Plebs remansit in urbe quia amaverunt Romam."
+        },
+        {
+            "en": "Therefore, the Roman Senate sent men to Greece.",
+            "la": "Ergo senatus Romanus misit viros in Graeciam."
+        },
+        {
+            "en": "The Roman men saw the laws of Solon.",
+            "la": "Viri Romani viderunt leges Solonis."
+        },
+        {
+            "en": "The laws of Solon were good.",
+            "la": "Leges Solonis bonae fuerunt."
+        },
+        {
+            "en": "After the Roman men saw the laws of Solon in Greece, they returned to Roman land.",
+            "la": "Postquam viri Romini viderunt leges Solonis in Graecia, rursus venerunt in terram Romanam."
+        },
+        {
+            "en": "They returned to the city again.",
+            "la": "Rursus venerunt in urbem."
+        },
+        {
+            "en": "The Senate wrote down the laws.",
+            "la": "Senatus scripsit leges."
+        },
+        {
+            "en": "The plebs once again defeated the patricians.",
+            "la": "Plebs rursus vicit patricios."
+        },
+        {
+            "en": "For the patricians wrote down the laws.",
+            "la": "Patricii enim scripserunt leges."
+        },
+        {
+            "en": "After the patricians wrote down the laws, the plebs no longer fought with the patricians.",
+            "la": "Postquam patricii scripserunt leges, plebs non habuit pugnam cum patriciis."
+        },
+        {
+            "en": "The plebs were not in great danger.",
+            "la": "Plebs non fuit in periculo magno."
+        },
+        {
+            "en": "The plebs knew the laws.",
+            "la": "Plebs sciverunt leges."
+        },
+        {
+            "en": "The laws were good.",
+            "la": "Leges bonae fuerunt."
+        }
+    ],
 
-    "exercise8": [],
+    "exercise8": [
+        {
+            "en": "The Romans had many laws.",
+            "la": "Romani habuerunt leges multas."
+        },
+        {
+            "en": "The Romans were great in war.",
+            "la": "Romani fuerunt magni bello."
+        },
+        {
+            "en": "The Romans were good in strategy.",
+            "la": "Romani boni fuerunt consiliis."
+        },
+        {
+            "en": "The Romans were good with good laws.",
+            "la": "Romani fuerunt boni legibus bonis."
+        },
+        {
+            "en": "But in the early days, the plebs did not know the laws.",
+            "la": "Sed primis diebus plebs non scivit leges."
+        },
+        {
+            "en": "The plebs wanted good laws.",
+            "la": "Plebs leges bonas voluerunt."
+        },
+        {
+            "en": "Columbus knew the law.",
+            "la": "Columbus scivit legem."
+        },
+        {
+            "en": "But the white lamb did not know the law: therefore, the white lamb came to school.",
+            "la": "Sed agnus albus non scivit legem: ergo agnus albus venit in scholam."
+        },
+        {
+            "en": "The Gauls did not know the Roman law, because the Gauls were not Romans.",
+            "la": "Galli non sciverunt legem Romanam, quia Galli non fuerunt Romani."
+        },
+        {
+            "en": "The Gauls captured almost the entire city of Rome.",
+            "la": "Galli ceperunt fere totam urbem Romanam."
+        },
+        {
+            "en": "The Gauls shouted with a loud voice.",
+            "la": "Galli exclamaverunt voce magna."
+        },
+        {
+            "en": "The Gauls defeated the Romans with great power.",
+            "la": "Galli Romanos vicerunt magna potestate."
+        },
+        {
+            "en": "But the Gauls did not capture the Capitol.",
+            "la": "Sed Galli non ceperunt Capitolium."
+        },
+        {
+            "en": "Brave men were sleeping on the Capitol.",
+            "la": "Viri fortes dormiebant in Capitolio."
+        },
+        {
+            "en": "But the geese were not sleeping.",
+            "la": "Sed anseres non dormiebant."
+        },
+        {
+            "en": "The geese heard the Gauls.",
+            "la": "Anseres audiverunt Gallos."
+        },
+        {
+            "en": "The geese cried out with a loud voice.",
+            "la": "Anseres voce magna exclamaverunt."
+        },
+        {
+            "en": "The Romans fought with great courage.",
+            "la": "Romani pugnaverunt magna fortitudine."
+        },
+        {
+            "en": "When the Gauls were in the city, the plebs did not fight with the patricians.",
+            "la": "Quando Galli fuerunt in urbe, plebs non pugnavit cum patriciis."
+        },
+        {
+            "en": "And the patricians did not fight with the plebs.",
+            "la": "Et patricii non pugnaverunt cum plebe."
+        },
+        {
+            "en": "For the plebs fought with the Gauls.",
+            "la": "Plebs enim pugnavit cum Gallis."
+        },
+        {
+            "en": "But the Gauls defeated the Roman army.",
+            "la": "Sed Galli exercitum Romanum vicerunt."
+        },
+        {
+            "en": "The Gauls did not remain in the city.",
+            "la": "Galli non remanserunt in urbe."
+        },
+        {
+            "en": "For the Romans defeated the Gauls with money.",
+            "la": "Romani enim Gallos vicerunt pecunia."
+        },
+        {
+            "en": "Cincinnatus was not in the city when the Gauls came.",
+            "la": "Cincinnatus non fuit in urbe quando Galli venerunt."
+        },
+        {
+            "en": "The Senate did not make Cincinnatus Dictator when the Gauls came.",
+            "la": "Senatus non fecit Cincinnatum Dictatorem quando Galli venerunt."
+        },
+        {
+            "en": "The Senate did not send Cincinnatus to Greece.",
+            "la": "Senatus non misit Cincinnatum in Graeciam."
+        },
+        {
+            "en": "Isabella sent Columbus to America.",
+            "la": "Isabella misit Columbum in Americam."
+        },
+        {
+            "en": "Columbus came to America with many ships.",
+            "la": "Columbus in Americam venit multis navibus."
+        },
+        {
+            "en": "But Columbus did not find India.",
+            "la": "Sed Columbus non invenit Indiam."
+        },
+        {
+            "en": "White lambs were not on the ships.",
+            "la": "Agni albi non fuerunt in navibus."
+        },
+        {
+            "en": "Cincinnatus was not in school.",
+            "la": "Cincinnatus non fuit in schola."
+        },
+        {
+            "en": "But Cincinnatus was good in strategy.",
+            "la": "Sed Cincinnatus bonus consiliis fuit."
+        },
+        {
+            "en": "In the early days, the Romans did not have schools.",
+            "la": "Primis diebus Romani non habuerunt scholas."
+        },
+        {
+            "en": "But the Romans had white lambs.",
+            "la": "Sed Romani habuerunt agnos albos."
+        },
+        {
+            "en": "In the early days, white lambs were not in school, because the Romans did not have schools.",
+            "la": "Primis diebus agni albi non fuerunt in schola, quia Romani non habuerunt scholas."
+        },
+        {
+            "en": "The white lambs were in the fields.",
+            "la": "Agni albi in agris fuerunt."
+        },
+        {
+            "en": "Marcus did not see Maria in Greece, because Maria was not in Greece.",
+            "la": "Marcus non vidit Mariam in Graecia, quia Maria non fuit in Graecia."
+        },
+        {
+            "en": "The Greeks were in Greece.",
+            "la": "Graeci fuerunt in Graecia."
+        },
+        {
+            "en": "But the Romans were also in Greece when they saw the laws of Solon.",
+            "la": "Sed Romani etiam fuerunt in Graecia quando viderunt leges Solonis."
+        },
+        {
+            "en": "The Romans said that the Greeks were good with good laws.",
+            "la": "Romani dixerunt quod Graeci fuerunt boni legibus bonis."
+        },
+        {
+            "en": "Solon was a man good in strategy.",
+            "la": "Solon fuit vir bonus consiliis."
+        },
+        {
+            "en": "Was Columbus a Greek?",
+            "la": "Fuitne Columbus Graecus?"
+        },
+        {
+            "en": "No. Columbus came from Italy.",
+            "la": "Non. Columbus venit ex Italia."
+        },
+        {
+            "en": "The Greeks were in Greece.",
+            "la": "Graeci fuerunt in Graecia."
+        }
+    ],
 
-    "story9": [],
+    "story9": [
+        {
+            "en": "The Romans almost always had war.",
+            "la": "Romani fere semper bellum habuerunt."
+        },
+        {
+            "en": "When they did not have war with other nations, the patricians fought with the plebs.",
+            "la": "Quando bellum cum aliis nationibus non habuerunt, patricii pugnaverunt cum plebe."
+        },
+        {
+            "en": "When the patricians did not fight with the plebs, they had war with others.",
+            "la": "Quando patricii non pugnaverunt cum plebe, bellum habuerunt cum aliis."
+        },
+        {
+            "en": "Therefore, Rome was almost always in wars.",
+            "la": "Ergo fere semper Roma in bellis fuit."
+        },
+        {
+            "en": "Rome was great in wars.",
+            "la": "Roma fuit magna bellis."
+        },
+        {
+            "en": "The Greeks were not only in Greece: the Greeks were also in southern Italy.",
+            "la": "Graeci non solum in Graecia fuerunt: Graeci etiam fuerunt in Italia meridionali."
+        },
+        {
+            "en": "They said that southern Italy was 'Magna Graecia.'",
+            "la": "Dixerunt quod Italia meridionalis fuit 'Magna Graecia.'"
+        },
+        {
+            "en": "The Greeks feared Roman power.",
+            "la": "Graeci timuerunt potestatem Romanam."
+        },
+        {
+            "en": "The Greeks wanted to protect the Greek cities from the Romans.",
+            "la": "Graeci voluerunt servare urbes Graecas a Romanis."
+        },
+        {
+            "en": "They wanted to defend Greek land from the Romans.",
+            "la": "Voluerunt defendere terram Graecam a Romanis."
+        },
+        {
+            "en": "They wanted to protect Greek land from the Romans.",
+            "la": "Voluerunt servare terram Graecam a Romanis."
+        },
+        {
+            "en": "Therefore, the Greeks sent envoys to Epirus.",
+            "la": "Ergo Graeci miserunt legatos in Epirum."
+        },
+        {
+            "en": "In Epirus, the king was Pyrrhus.",
+            "la": "In Epiro rex fuit Pyrrhus."
+        },
+        {
+            "en": "The Greeks asked Pyrrhus to come.",
+            "la": "Graeci rogaverunt Pyrrhum venire."
+        },
+        {
+            "en": "Pyrrhus came to Italy.",
+            "la": "Pyrrhus venit in Italiam."
+        },
+        {
+            "en": "He came with an army.",
+            "la": "Venit cum exercitu."
+        },
+        {
+            "en": "He also came with elephants.",
+            "la": "Venit etiam cum elephantis."
+        },
+        {
+            "en": "The Romans feared the elephants.",
+            "la": "Romani timuerunt elephantos."
+        },
+        {
+            "en": "The Romans had not seen elephants before this war.",
+            "la": "Romani non viderunt elephantos ante hoc bellum."
+        },
+        {
+            "en": "Many Romans did not stay in the fight when they saw the elephants.",
+            "la": "Multi Romani non remanserunt in pugna quando viderunt elephantos."
+        },
+        {
+            "en": "The Romans wanted to protect Rome.",
+            "la": "Romani voluerunt servare Romam."
+        },
+        {
+            "en": "The Romans wanted to defend Roman land.",
+            "la": "Romani voluerunt defendere terram Romanam."
+        },
+        {
+            "en": "But the Romans said they were in danger from the elephants.",
+            "la": "Sed Romani dixerunt quod in periculo fuerunt ab elephantis."
+        },
+        {
+            "en": "The Romans could fight with great and strong men.",
+            "la": "Romani potuerunt pugnare cum viris magnis et fortibus."
+        },
+        {
+            "en": "But the Romans feared to fight with elephants.",
+            "la": "Sed Romani timuerunt pugnare cum elephantis."
+        },
+        {
+            "en": "The elephants were large — the men were small.",
+            "la": "Elephanti magni fuerunt — viri parvi fuerunt."
+        },
+        {
+            "en": "The Romans could not stand before the elephants.",
+            "la": "Romani non potuerunt stare ante elephantos."
+        },
+        {
+            "en": "Therefore, Pyrrhus defeated the Romans.",
+            "la": "Ergo Pyrrhus vicit Romanos."
+        },
+        {
+            "en": "But Pyrrhus could not capture the city of Rome.",
+            "la": "Sed Pyrrhus non potuit capere urbem Romanam."
+        },
+        {
+            "en": "Pyrrhus wanted to capture the city of Rome.",
+            "la": "Pyrrhus voluit capere urbem Romanam."
+        },
+        {
+            "en": "The Greeks asked Pyrrhus to capture the city of Rome.",
+            "la": "Graeci rogaverunt Pyrrhum capere urbem Romanam."
+        },
+        {
+            "en": "But he could not.",
+            "la": "Sed non potuit."
+        },
+        {
+            "en": "The Romans defeated Pyrrhus in other battles.",
+            "la": "Romani vicerunt Pyrrhum aliis pugnis."
+        },
+        {
+            "en": "The Romans also fought with the elephants.",
+            "la": "Romani pugnaverunt etiam cum elephantis."
+        },
+        {
+            "en": "They wanted to protect Rome.",
+            "la": "Voluerunt servare Romam."
+        },
+        {
+            "en": "Therefore, Pyrrhus did not remain in Italy.",
+            "la": "Ergo Pyrrhus non remansit in Italia."
+        },
+        {
+            "en": "Pyrrhus returned to Epirus.",
+            "la": "Pyrrhus venit rursus in Epirum."
+        }
+    ],
 
-    "exercise9": [],
+    "exercise9": [
+        {
+            "en": "Maria wanted to see the lamb.",
+            "la": "Maria voluit videre agnum."
+        },
+        {
+            "en": "The lamb wanted to see the school.",
+            "la": "Agnus voluit videre scholam."
+        },
+        {
+            "en": "The lamb heard many things in school.",
+            "la": "Agnus audivit multas res in schola."
+        },
+        {
+            "en": "But the lamb did not hear pigs in school.",
+            "la": "Sed agnus non audivit porcos in schola."
+        },
+        {
+            "en": "The pigs were not in school.",
+            "la": "Porci non fuerunt in schola."
+        },
+        {
+            "en": "Marcus wanted to love Maria.",
+            "la": "Marcus voluit amare Mariam."
+        },
+        {
+            "en": "Maria wanted to capture Marcus.",
+            "la": "Maria voluit capere Marcum."
+        },
+        {
+            "en": "Isabella was able to give money.",
+            "la": "Isabella potuit dare pecuniam."
+        },
+        {
+            "en": "The Romans were able to expel the Gauls from the city.",
+            "la": "Romani potuerunt expellere Gallos ex urbe."
+        },
+        {
+            "en": "The Romans expelled the Gauls with money.",
+            "la": "Romani Gallos expulerunt pecunia."
+        },
+        {
+            "en": "Cincinnatus wanted to be good.",
+            "la": "Cincinnatus voluit esse bonus."
+        },
+        {
+            "en": "Tarquinius wanted to be king.",
+            "la": "Tarquinius voluit esse rex."
+        },
+        {
+            "en": "The Roman army was able to protect the city from the Gallic army.",
+            "la": "Exercitus Romanus potuit servare urbem ab exercitu Gallico."
+        },
+        {
+            "en": "Horatius could not fear — Horatius was a brave Roman.",
+            "la": "Horatius non potuit timere — Horatius fortis Romanus fuit."
+        },
+        {
+            "en": "The geese wanted to protect Rome.",
+            "la": "Anseres voluerunt servare Romam."
+        },
+        {
+            "en": "Columbus wanted to have good ships.",
+            "la": "Columbus voluit habere naves bonas."
+        },
+        {
+            "en": "Columbus came to America with good ships.",
+            "la": "Columbus venit in Americam navibus bonis."
+        },
+        {
+            "en": "Pyrrhus had many elephants.",
+            "la": "Pyrrhus habuit multos elephantos."
+        },
+        {
+            "en": "Pyrrhus was also good in strategy.",
+            "la": "Pyrrhus etiam fuit bonus consiliis."
+        },
+        {
+            "en": "Magna Graecia was in southern Italy.",
+            "la": "Magna Graecia fuit in Italia meridionali."
+        },
+        {
+            "en": "Was Magna Graecia great?",
+            "la": "Fuitne Magna Graecia magna?"
+        },
+        {
+            "en": "Was there another Greece?",
+            "la": "Fuitne alia Graecia?"
+        },
+        {
+            "en": "Where was the other Greece?",
+            "la": "Ubi fuit alia Graecia?"
+        },
+        {
+            "en": "Was the other Greece small?",
+            "la": "Fuitne alia Graecia parva?"
+        },
+        {
+            "en": "No. The other Greece was greater than Magna Graecia.",
+            "la": "Non. Alia Graecia fuit maior quam Graecia Magna."
+        },
+        {
+            "en": "Therefore, when the Greeks said that Magna Graecia was great, they did not speak the truth.",
+            "la": "Ergo quando Graeci dixerunt quod Magna Graecia fuit magna, non dixerunt veritatem."
+        },
+        {
+            "en": "For Magna Graecia was not greater than Greece.",
+            "la": "Magna enim Graecia non fuit maior quam Graecia."
+        },
+        {
+            "en": "Were there sailors in Magna Graecia?",
+            "la": "Fueruntne nautae in Magna Graecia?"
+        },
+        {
+            "en": "Of course, many sailors were in Magna Graecia.",
+            "la": "Utique multi nautae fuerunt in Magna Graecia."
+        },
+        {
+            "en": "Many sailors were also in Greece.",
+            "la": "Multi nautae fuerunt etiam in Graecia."
+        },
+        {
+            "en": "The Greeks were good sailors.",
+            "la": "Graeci boni nautae fuerunt."
+        },
+        {
+            "en": "The Romans were also good sailors.",
+            "la": "Romani etiam boni nautae fuerunt."
+        },
+        {
+            "en": "Did Pyrrhus come alone from Epirus?",
+            "la": "Venitne Pyrrhus solus ex Epiro?"
+        },
+        {
+            "en": "No. He did not come alone.",
+            "la": "Non. Non venit solus."
+        },
+        {
+            "en": "He came with many other men.",
+            "la": "Venit cum multis viris aliis."
+        },
+        {
+            "en": "He also came with many elephants.",
+            "la": "Venit etiam cum multis elephantis."
+        },
+        {
+            "en": "The Romans could not love the elephants.",
+            "la": "Romani non potuerunt amare elephantos."
+        },
+        {
+            "en": "The Romans feared the elephants.",
+            "la": "Romani timuerunt elephantos."
+        },
+        {
+            "en": "The Romans did not ask the elephants to come into the city.",
+            "la": "Romani non rogaverunt elephantos venire in urbem."
+        },
+        {
+            "en": "Maria did not ask the lamb to come into the school.",
+            "la": "Maria non rogavit agnum venire in scholam."
+        },
+        {
+            "en": "Columbus did not ask the pigs to come onto the ship.",
+            "la": "Columbus non rogavit porcos venire in navem."
+        }
+    ],
 
     "story10": [],
 
