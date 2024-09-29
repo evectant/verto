@@ -2887,7 +2887,7 @@ phrases = {
         {"en": "edge (nom. sg.)", "la": "aciēs"},
         {"en": "edge (gen. sg.)", "la": "aciēī"},
         {"en": "edge (dat. sg.)", "la": "aciēī"},
-        {"en": "edge (acc. sg.)", "la": "aciēī"},
+        {"en": "edge (acc. sg.)", "la": "aciem"},
         {"en": "edge (voc. sg.)", "la": "aciēs"},
         {"en": "edge (abl. sg.)", "la": "aciē"},
         {"en": "edge (nom. pl.)", "la": "aciēs"},
