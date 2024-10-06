@@ -1,4 +1,658 @@
 phrases = {
+    "declension1": [
+        {"en": "land (nom. sg.)", "la": "terra"},
+        {"en": "land (gen. sg.)", "la": "terrae"},
+        {"en": "land (dat. sg.)", "la": "terrae"},
+        {"en": "land (acc. sg.)", "la": "terram"},
+        {"en": "land (voc. sg.)", "la": "terra"},
+        {"en": "land (abl. sg.)", "la": "terrā"},
+        {"en": "land (nom. pl.)", "la": "terrae"},
+        {"en": "land (gen. pl.)", "la": "terrārum"},
+        {"en": "land (dat. pl.)", "la": "terrīs"},
+        {"en": "land (acc. pl.)", "la": "terrās"},
+        {"en": "land (voc. pl.)", "la": "terrae"},
+        {"en": "land (abl. pl.)", "la": "terrīs"},
+
+        {"en": "life (nom. sg.)", "la": "vīta"},
+        {"en": "life (gen. sg.)", "la": "vītae"},
+        {"en": "life (dat. sg.)", "la": "vītae"},
+        {"en": "life (acc. sg.)", "la": "vītam"},
+        {"en": "life (voc. sg.)", "la": "vīta"},
+        {"en": "life (abl. sg.)", "la": "vītā"},
+        {"en": "life (nom. pl.)", "la": "vītae"},
+        {"en": "life (gen. pl.)", "la": "vītārum"},
+        {"en": "life (dat. pl.)", "la": "vītīs"},
+        {"en": "life (acc. pl.)", "la": "vītās"},
+        {"en": "life (voc. pl.)", "la": "vītae"},
+        {"en": "life (abl. pl.)", "la": "vītīs"},
+
+        {"en": "cause (nom. sg.)", "la": "causa"},
+        {"en": "cause (gen. sg.)", "la": "causae"},
+        {"en": "cause (dat. sg.)", "la": "causae"},
+        {"en": "cause (acc. sg.)", "la": "causam"},
+        {"en": "cause (voc. sg.)", "la": "causa"},
+        {"en": "cause (abl. sg.)", "la": "causā"},
+        {"en": "cause (nom. pl.)", "la": "causae"},
+        {"en": "cause (gen. pl.)", "la": "causārum"},
+        {"en": "cause (dat. pl.)", "la": "causīs"},
+        {"en": "cause (acc. pl.)", "la": "causās"},
+        {"en": "cause (voc. pl.)", "la": "causae"},
+        {"en": "cause (abl. pl.)", "la": "causīs"},
+
+        {"en": "fortune (nom. sg.)", "la": "fortūna"},
+        {"en": "fortune (gen. sg.)", "la": "fortūnae"},
+        {"en": "fortune (dat. sg.)", "la": "fortūnae"},
+        {"en": "fortune (acc. sg.)", "la": "fortūnam"},
+        {"en": "fortune (voc. sg.)", "la": "fortūna"},
+        {"en": "fortune (abl. sg.)", "la": "fortūnā"},
+        {"en": "fortune (nom. pl.)", "la": "fortūnae"},
+        {"en": "fortune (gen. pl.)", "la": "fortūnārum"},
+        {"en": "fortune (dat. pl.)", "la": "fortūnīs"},
+        {"en": "fortune (acc. pl.)", "la": "fortūnās"},
+        {"en": "fortune (voc. pl.)", "la": "fortūnae"},
+        {"en": "fortune (abl. pl.)", "la": "fortūnīs"},
+
+        {"en": "nature (nom. sg.)", "la": "nātūra"},
+        {"en": "nature (gen. sg.)", "la": "nātūrae"},
+        {"en": "nature (dat. sg.)", "la": "nātūrae"},
+        {"en": "nature (acc. sg.)", "la": "nātūram"},
+        {"en": "nature (voc. sg.)", "la": "nātūra"},
+        {"en": "nature (abl. sg.)", "la": "nātūrā"},
+        {"en": "nature (nom. pl.)", "la": "nātūrae"},
+        {"en": "nature (gen. pl.)", "la": "nātūrārum"},
+        {"en": "nature (dat. pl.)", "la": "nātūrīs"},
+        {"en": "nature (acc. pl.)", "la": "nātūrās"},
+        {"en": "nature (voc. pl.)", "la": "nātūrae"},
+        {"en": "nature (abl. pl.)", "la": "nātūrīs"},
+
+        {"en": "care (nom. sg.)", "la": "cūra"},
+        {"en": "care (gen. sg.)", "la": "cūrae"},
+        {"en": "care (dat. sg.)", "la": "cūrae"},
+        {"en": "care (acc. sg.)", "la": "cūram"},
+        {"en": "care (voc. sg.)", "la": "cūra"},
+        {"en": "care (abl. sg.)", "la": "cūrā"},
+        {"en": "care (nom. pl.)", "la": "cūrae"},
+        {"en": "care (gen. pl.)", "la": "cūrārum"},
+        {"en": "care (dat. pl.)", "la": "cūrīs"},
+        {"en": "care (acc. pl.)", "la": "cūrās"},
+        {"en": "care (voc. pl.)", "la": "cūrae"},
+        {"en": "care (abl. pl.)", "la": "cūrīs"},
+
+        {"en": "anger (nom. sg.)", "la": "īra"},
+        {"en": "anger (gen. sg.)", "la": "īrae"},
+        {"en": "anger (dat. sg.)", "la": "īrae"},
+        {"en": "anger (acc. sg.)", "la": "īram"},
+        {"en": "anger (voc. sg.)", "la": "īra"},
+        {"en": "anger (abl. sg.)", "la": "īrā"},
+        {"en": "anger (nom. pl.)", "la": "īrae"},
+        {"en": "anger (gen. pl.)", "la": "īrārum"},
+        {"en": "anger (dat. pl.)", "la": "īrīs"},
+        {"en": "anger (acc. pl.)", "la": "īrās"},
+        {"en": "anger (voc. pl.)", "la": "īrae"},
+        {"en": "anger (abl. pl.)", "la": "īrīs"},
+
+        {"en": "road (nom. sg.)", "la": "via"},
+        {"en": "road (gen. sg.)", "la": "viae"},
+        {"en": "road (dat. sg.)", "la": "viae"},
+        {"en": "road (acc. sg.)", "la": "viam"},
+        {"en": "road (voc. sg.)", "la": "via"},
+        {"en": "road (abl. sg.)", "la": "viā"},
+        {"en": "road (nom. pl.)", "la": "viae"},
+        {"en": "road (gen. pl.)", "la": "viārum"},
+        {"en": "road (dat. pl.)", "la": "viīs"},
+        {"en": "road (acc. pl.)", "la": "viās"},
+        {"en": "road (voc. pl.)", "la": "viae"},
+        {"en": "road (abl. pl.)", "la": "viīs"},
+
+        {"en": "wave (nom. sg.)", "la": "unda"},
+        {"en": "wave (gen. sg.)", "la": "undae"},
+        {"en": "wave (dat. sg.)", "la": "undae"},
+        {"en": "wave (acc. sg.)", "la": "undam"},
+        {"en": "wave (voc. sg.)", "la": "unda"},
+        {"en": "wave (abl. sg.)", "la": "undā"},
+        {"en": "wave (nom. pl.)", "la": "undae"},
+        {"en": "wave (gen. pl.)", "la": "undārum"},
+        {"en": "wave (dat. pl.)", "la": "undīs"},
+        {"en": "wave (acc. pl.)", "la": "undās"},
+        {"en": "wave (voc. pl.)", "la": "undae"},
+        {"en": "wave (abl. pl.)", "la": "undīs"},
+
+        {"en": "punishment (nom. sg.)", "la": "poena"},
+        {"en": "punishment (gen. sg.)", "la": "poenae"},
+        {"en": "punishment (dat. sg.)", "la": "poenae"},
+        {"en": "punishment (acc. sg.)", "la": "poenam"},
+        {"en": "punishment (voc. sg.)", "la": "poena"},
+        {"en": "punishment (abl. sg.)", "la": "poenā"},
+        {"en": "punishment (nom. pl.)", "la": "poenae"},
+        {"en": "punishment (gen. pl.)", "la": "poenārum"},
+        {"en": "punishment (dat. pl.)", "la": "poenīs"},
+        {"en": "punishment (acc. pl.)", "la": "poenās"},
+        {"en": "punishment (voc. pl.)", "la": "poenae"},
+        {"en": "punishment (abl. pl.)", "la": "poenīs"},
+    ],
+
+    "declension2": [
+        {"en": "spirit (nom. sg.)", "la": "animus"},
+        {"en": "spirit (gen. sg.)", "la": "animī"},
+        {"en": "spirit (dat. sg.)", "la": "animō"},
+        {"en": "spirit (acc. sg.)", "la": "animum"},
+        {"en": "spirit (voc. sg.)", "la": "anime"},
+        {"en": "spirit (abl. sg.)", "la": "animō"},
+        {"en": "spirit (nom. pl.)", "la": "animī"},
+        {"en": "spirit (gen. pl.)", "la": "animōrum"},
+        {"en": "spirit (dat. pl.)", "la": "animīs"},
+        {"en": "spirit (acc. pl.)", "la": "animōs"},
+        {"en": "spirit (voc. pl.)", "la": "animī"},
+        {"en": "spirit (abl. pl.)", "la": "animīs"},
+
+        {"en": "god (nom. sg.)", "la": "deus"},
+        {"en": "god (gen. sg.)", "la": "deī"},
+        {"en": "god (dat. sg.)", "la": "deō"},
+        {"en": "god (acc. sg.)", "la": "deum"},
+        {"en": "god (voc. sg.)", "la": "deus"},
+        {"en": "god (abl. sg.)", "la": "deō"},
+        {"en": "god (nom. pl.)", "la": "deī"},
+        {"en": "god (gen. pl.)", "la": "deōrum"},
+        {"en": "god (dat. pl.)", "la": "deīs"},
+        {"en": "god (acc. pl.)", "la": "deōs"},
+        {"en": "god (voc. pl.)", "la": "deī"},
+        {"en": "god (abl. pl.)", "la": "deīs"},
+
+        {"en": "place (nom. sg.)", "la": "locus"},
+        {"en": "place (gen. sg.)", "la": "locī"},
+        {"en": "place (dat. sg.)", "la": "locō"},
+        {"en": "place (acc. sg.)", "la": "locum"},
+        {"en": "place (voc. sg.)", "la": "loce"},
+        {"en": "place (abl. sg.)", "la": "locō"},
+        {"en": "place (nom. pl.)", "la": "locī"},
+        {"en": "place (gen. pl.)", "la": "locōrum"},
+        {"en": "place (dat. pl.)", "la": "locīs"},
+        {"en": "place (acc. pl.)", "la": "locōs"},
+        {"en": "place (voc. pl.)", "la": "locī"},
+        {"en": "place (abl. pl.)", "la": "locīs"},
+
+        {"en": "man (nom. sg.)", "la": "vir"},
+        {"en": "man (gen. sg.)", "la": "virī"},
+        {"en": "man (dat. sg.)", "la": "virō"},
+        {"en": "man (acc. sg.)", "la": "virum"},
+        {"en": "man (voc. sg.)", "la": "vir"},
+        {"en": "man (abl. sg.)", "la": "virō"},
+        {"en": "man (nom. pl.)", "la": "virī"},
+        {"en": "man (gen. pl.)", "la": "virōrum"},
+        {"en": "man (dat. pl.)", "la": "virīs"},
+        {"en": "man (acc. pl.)", "la": "virōs"},
+        {"en": "man (voc. pl.)", "la": "virī"},
+        {"en": "man (abl. pl.)", "la": "virīs"},
+
+        {"en": "war (nom. sg.)", "la": "bellum"},
+        {"en": "war (gen. sg.)", "la": "bellī"},
+        {"en": "war (dat. sg.)", "la": "bellō"},
+        {"en": "war (acc. sg.)", "la": "bellum"},
+        {"en": "war (voc. sg.)", "la": "bellum"},
+        {"en": "war (abl. sg.)", "la": "bellō"},
+        {"en": "war (nom. pl.)", "la": "bella"},
+        {"en": "war (gen. pl.)", "la": "bellōrum"},
+        {"en": "war (dat. pl.)", "la": "bellīs"},
+        {"en": "war (acc. pl.)", "la": "bella"},
+        {"en": "war (voc. pl.)", "la": "bella"},
+        {"en": "war (abl. pl.)", "la": "bellīs"},
+
+        {"en": "weapons (nom. pl.)", "la": "arma"},
+        {"en": "weapons (gen. pl.)", "la": "armōrum"},
+        {"en": "weapons (dat. pl.)", "la": "armīs"},
+        {"en": "weapons (acc. pl.)", "la": "arma"},
+        {"en": "weapons (voc. pl.)", "la": "arma"},
+        {"en": "weapons (abl. pl.)", "la": "armīs"},
+
+        {"en": "sky (nom. sg.)", "la": "caelum"},
+        {"en": "sky (gen. sg.)", "la": "caelī"},
+        {"en": "sky (dat. sg.)", "la": "caelō"},
+        {"en": "sky (acc. sg.)", "la": "caelum"},
+        {"en": "sky (voc. sg.)", "la": "caelum"},
+        {"en": "sky (abl. sg.)", "la": "caelō"},
+        {"en": "sky (nom. pl.)", "la": "caela"},
+        {"en": "sky (gen. pl.)", "la": "caelōrum"},
+        {"en": "sky (dat. pl.)", "la": "caelīs"},
+        {"en": "sky (acc. pl.)", "la": "caela"},
+        {"en": "sky (voc. pl.)", "la": "caela"},
+        {"en": "sky (abl. pl.)", "la": "caelīs"},
+
+        {"en": "kingdom (nom. sg.)", "la": "rēgnum"},
+        {"en": "kingdom (gen. sg.)", "la": "rēgnī"},
+        {"en": "kingdom (dat. sg.)", "la": "rēgnō"},
+        {"en": "kingdom (acc. sg.)", "la": "rēgnum"},
+        {"en": "kingdom (voc. sg.)", "la": "rēgnum"},
+        {"en": "kingdom (abl. sg.)", "la": "rēgnō"},
+        {"en": "kingdom (nom. pl.)", "la": "rēgna"},
+        {"en": "kingdom (gen. pl.)", "la": "rēgnōrum"},
+        {"en": "kingdom (dat. pl.)", "la": "rēgnīs"},
+        {"en": "kingdom (acc. pl.)", "la": "rēgna"},
+        {"en": "kingdom (voc. pl.)", "la": "rēgna"},
+        {"en": "kingdom (abl. pl.)", "la": "rēgnīs"},
+
+        {"en": "people (nom. sg.)", "la": "populus"},
+        {"en": "people (gen. sg.)", "la": "populī"},
+        {"en": "people (dat. sg.)", "la": "populō"},
+        {"en": "people (acc. sg.)", "la": "populum"},
+        {"en": "people (voc. sg.)", "la": "popule"},
+        {"en": "people (abl. sg.)", "la": "populō"},
+        {"en": "people (nom. pl.)", "la": "populī"},
+        {"en": "people (gen. pl.)", "la": "populōrum"},
+        {"en": "people (dat. pl.)", "la": "populīs"},
+        {"en": "people (acc. pl.)", "la": "populōs"},
+        {"en": "people (voc. pl.)", "la": "populī"},
+        {"en": "people (abl. pl.)", "la": "populīs"},
+
+        {"en": "fate (nom. sg.)", "la": "fātum"},
+        {"en": "fate (gen. sg.)", "la": "fātī"},
+        {"en": "fate (dat. sg.)", "la": "fātō"},
+        {"en": "fate (acc. sg.)", "la": "fātum"},
+        {"en": "fate (voc. sg.)", "la": "fātum"},
+        {"en": "fate (abl. sg.)", "la": "fātō"},
+        {"en": "fate (nom. pl.)", "la": "fāta"},
+        {"en": "fate (gen. pl.)", "la": "fātōrum"},
+        {"en": "fate (dat. pl.)", "la": "fātīs"},
+        {"en": "fate (acc. pl.)", "la": "fāta"},
+        {"en": "fate (voc. pl.)", "la": "fāta"},
+        {"en": "fate (abl. pl.)", "la": "fātīs"},
+    ],
+
+    "declension3": [
+        {"en": "king (nom. sg.)", "la": "rēx"},
+        {"en": "king (gen. sg.)", "la": "rēgis"},
+        {"en": "king (dat. sg.)", "la": "rēgī"},
+        {"en": "king (acc. sg.)", "la": "rēgem"},
+        {"en": "king (voc. sg.)", "la": "rēx"},
+        {"en": "king (abl. sg.)", "la": "rēge"},
+        {"en": "king (nom. pl.)", "la": "rēgēs"},
+        {"en": "king (gen. pl.)", "la": "rēgum"},
+        {"en": "king (dat. pl.)", "la": "rēgibus"},
+        {"en": "king (acc. pl.)", "la": "rēgēs"},
+        {"en": "king (voc. pl.)", "la": "rēgēs"},
+        {"en": "king (abl. pl.)", "la": "rēgibus"},
+
+        {"en": "part (nom. sg.)", "la": "pars"},
+        {"en": "part (gen. sg.)", "la": "partis"},
+        {"en": "part (dat. sg.)", "la": "partī"},
+        {"en": "part (acc. sg.)", "la": "partem"},
+        {"en": "part (voc. sg.)", "la": "pars"},
+        {"en": "part (abl. sg.)", "la": "parte"},
+        {"en": "part (nom. pl.)", "la": "partēs"},
+        {"en": "part (gen. pl.)", "la": "partium"},
+        {"en": "part (dat. pl.)", "la": "partibus"},
+        {"en": "part (acc. pl.)", "la": "partēs"},
+        {"en": "part (voc. pl.)", "la": "partēs"},
+        {"en": "part (abl. pl.)", "la": "partibus"},
+
+        {"en": "father (nom. sg.)", "la": "pater"},
+        {"en": "father (gen. sg.)", "la": "patris"},
+        {"en": "father (dat. sg.)", "la": "patrī"},
+        {"en": "father (acc. sg.)", "la": "patrem"},
+        {"en": "father (voc. sg.)", "la": "pater"},
+        {"en": "father (abl. sg.)", "la": "patre"},
+        {"en": "father (nom. pl.)", "la": "patrēs"},
+        {"en": "father (gen. pl.)", "la": "patrum"},
+        {"en": "father (dat. pl.)", "la": "patribus"},
+        {"en": "father (acc. pl.)", "la": "patrēs"},
+        {"en": "father (voc. pl.)", "la": "patrēs"},
+        {"en": "father (abl. pl.)", "la": "patribus"},
+
+        {"en": "body (nom. sg.)", "la": "corpus"},
+        {"en": "body (gen. sg.)", "la": "corporis"},
+        {"en": "body (dat. sg.)", "la": "corporī"},
+        {"en": "body (acc. sg.)", "la": "corpus"},
+        {"en": "body (voc. sg.)", "la": "corpus"},
+        {"en": "body (abl. sg.)", "la": "corpore"},
+        {"en": "body (nom. pl.)", "la": "corpora"},
+        {"en": "body (gen. pl.)", "la": "corporum"},
+        {"en": "body (dat. pl.)", "la": "corporibus"},
+        {"en": "body (acc. pl.)", "la": "corpora"},
+        {"en": "body (voc. pl.)", "la": "corpora"},
+        {"en": "body (abl. pl.)", "la": "corporibus"},
+
+        {"en": "city (nom. sg.)", "la": "urbs"},
+        {"en": "city (gen. sg.)", "la": "urbis"},
+        {"en": "city (dat. sg.)", "la": "urbī"},
+        {"en": "city (acc. sg.)", "la": "urbem"},
+        {"en": "city (voc. sg.)", "la": "urbs"},
+        {"en": "city (abl. sg.)", "la": "urbe"},
+        {"en": "city (nom. pl.)", "la": "urbēs"},
+        {"en": "city (gen. pl.)", "la": "urbium"},
+        {"en": "city (dat. pl.)", "la": "urbibus"},
+        {"en": "city (acc. pl.)", "la": "urbēs"},
+        {"en": "city (voc. pl.)", "la": "urbēs"},
+        {"en": "city (abl. pl.)", "la": "urbibus"},
+
+        {"en": "human (nom. sg.)", "la": "homō"},
+        {"en": "human (gen. sg.)", "la": "hominis"},
+        {"en": "human (dat. sg.)", "la": "hominī"},
+        {"en": "human (acc. sg.)", "la": "hominem"},
+        {"en": "human (voc. sg.)", "la": "homō"},
+        {"en": "human (abl. sg.)", "la": "homine"},
+        {"en": "human (nom. pl.)", "la": "hominēs"},
+        {"en": "human (gen. pl.)", "la": "hominum"},
+        {"en": "human (dat. pl.)", "la": "hominibus"},
+        {"en": "human (acc. pl.)", "la": "hominēs"},
+        {"en": "human (voc. pl.)", "la": "hominēs"},
+        {"en": "human (abl. pl.)", "la": "hominibus"},
+
+        {"en": "time (nom. sg.)", "la": "tempus"},
+        {"en": "time (gen. sg.)", "la": "temporis"},
+        {"en": "time (dat. sg.)", "la": "temporī"},
+        {"en": "time (acc. sg.)", "la": "tempus"},
+        {"en": "time (voc. sg.)", "la": "tempus"},
+        {"en": "time (abl. sg.)", "la": "tempore"},
+        {"en": "time (nom. pl.)", "la": "tempora"},
+        {"en": "time (gen. pl.)", "la": "temporum"},
+        {"en": "time (dat. pl.)", "la": "temporibus"},
+        {"en": "time (acc. pl.)", "la": "tempora"},
+        {"en": "time (voc. pl.)", "la": "tempora"},
+        {"en": "time (abl. pl.)", "la": "temporibus"},
+
+        {"en": "valor (nom. sg.)", "la": "virtūs"},
+        {"en": "valor (gen. sg.)", "la": "virtūtis"},
+        {"en": "valor (dat. sg.)", "la": "virtūtī"},
+        {"en": "valor (acc. sg.)", "la": "virtūtem"},
+        {"en": "valor (voc. sg.)", "la": "virtūs"},
+        {"en": "valor (abl. sg.)", "la": "virtūte"},
+        {"en": "valor (nom. pl.)", "la": "virtūtēs"},
+        {"en": "valor (gen. pl.)", "la": "virtūtum"},
+        {"en": "valor (dat. pl.)", "la": "virtūtibus"},
+        {"en": "valor (acc. pl.)", "la": "virtūtēs"},
+        {"en": "valor (voc. pl.)", "la": "virtūtēs"},
+        {"en": "valor (abl. pl.)", "la": "virtūtibus"},
+
+        {"en": "citizen (nom. sg.)", "la": "cīvis"},
+        {"en": "citizen (gen. sg.)", "la": "cīvis"},
+        {"en": "citizen (dat. sg.)", "la": "cīvī"},
+        {"en": "citizen (acc. sg.)", "la": "cīvem"},
+        {"en": "citizen (voc. sg.)", "la": "cīvis"},
+        {"en": "citizen (abl. sg.)", "la": "cīve"},
+        {"en": "citizen (nom. pl.)", "la": "cīvēs"},
+        {"en": "citizen (gen. pl.)", "la": "cīvium"},
+        {"en": "citizen (dat. pl.)", "la": "cīvibus"},
+        {"en": "citizen (acc. pl.)", "la": "cīvēs"},
+        {"en": "citizen (voc. pl.)", "la": "cīvēs"},
+        {"en": "citizen (abl. pl.)", "la": "cīvibus"},
+
+        {"en": "sea (nom. sg.)", "la": "mare"},
+        {"en": "sea (gen. sg.)", "la": "maris"},
+        {"en": "sea (dat. sg.)", "la": "marī"},
+        {"en": "sea (acc. sg.)", "la": "mare"},
+        {"en": "sea (voc. sg.)", "la": "mare"},
+        {"en": "sea (abl. sg.)", "la": "marī"},
+        {"en": "sea (nom. pl.)", "la": "maria"},
+        {"en": "sea (gen. pl.)", "la": "marium"},
+        {"en": "sea (dat. pl.)", "la": "maribus"},
+        {"en": "sea (acc. pl.)", "la": "maria"},
+        {"en": "sea (voc. pl.)", "la": "maria"},
+        {"en": "sea (abl. pl.)", "la": "maribus"},
+    ],
+
+    "declension4": [
+        {"en": "hand (nom. sg.)", "la": "manus"},
+        {"en": "hand (gen. sg.)", "la": "manūs"},
+        {"en": "hand (dat. sg.)", "la": "manuī"},
+        {"en": "hand (acc. sg.)", "la": "manum"},
+        {"en": "hand (voc. sg.)", "la": "manus"},
+        {"en": "hand (abl. sg.)", "la": "manū"},
+        {"en": "hand (nom. pl.)", "la": "manūs"},
+        {"en": "hand (gen. pl.)", "la": "manuum"},
+        {"en": "hand (dat. pl.)", "la": "manibus"},
+        {"en": "hand (acc. pl.)", "la": "manūs"},
+        {"en": "hand (voc. pl.)", "la": "manūs"},
+        {"en": "hand (abl. pl.)", "la": "manibus"},
+
+        {"en": "house (nom. sg.)", "la": "domus"},
+        {"en": "house (gen. sg.)", "la": "domūs"},
+        {"en": "house (dat. sg.)", "la": "domuī"},
+        {"en": "house (acc. sg.)", "la": "domum"},
+        {"en": "house (voc. sg.)", "la": "domus"},
+        {"en": "house (abl. sg.)", "la": "domō"},
+        {"en": "house (nom. pl.)", "la": "domūs"},
+        {"en": "house (gen. pl.)", "la": "domōrum"},
+        {"en": "house (dat. pl.)", "la": "domibus"},
+        {"en": "house (acc. pl.)", "la": "domōs"},
+        {"en": "house (voc. pl.)", "la": "domūs"},
+        {"en": "house (abl. pl.)", "la": "domibus"},
+
+        {"en": "countenance (nom. sg.)", "la": "vultus"},
+        {"en": "countenance (gen. sg.)", "la": "vultūs"},
+        {"en": "countenance (dat. sg.)", "la": "vultuī"},
+        {"en": "countenance (acc. sg.)", "la": "vultum"},
+        {"en": "countenance (voc. sg.)", "la": "vultus"},
+        {"en": "countenance (abl. sg.)", "la": "vultū"},
+        {"en": "countenance (nom. pl.)", "la": "vultūs"},
+        {"en": "countenance (gen. pl.)", "la": "vultuum"},
+        {"en": "countenance (dat. pl.)", "la": "vultibus"},
+        {"en": "countenance (acc. pl.)", "la": "vultūs"},
+        {"en": "countenance (voc. pl.)", "la": "vultūs"},
+        {"en": "countenance (abl. pl.)", "la": "vultibus"},
+
+        {"en": "fear (nom. sg.)", "la": "metus"},
+        {"en": "fear (gen. sg.)", "la": "metūs"},
+        {"en": "fear (dat. sg.)", "la": "metuī"},
+        {"en": "fear (acc. sg.)", "la": "metum"},
+        {"en": "fear (voc. sg.)", "la": "metus"},
+        {"en": "fear (abl. sg.)", "la": "metū"},
+        {"en": "fear (nom. pl.)", "la": "metūs"},
+        {"en": "fear (gen. pl.)", "la": "metuum"},
+        {"en": "fear (dat. pl.)", "la": "metibus"},
+        {"en": "fear (acc. pl.)", "la": "metūs"},
+        {"en": "fear (voc. pl.)", "la": "metūs"},
+        {"en": "fear (abl. pl.)", "la": "metibus"},
+
+        {"en": "army (nom. sg.)", "la": "exercitus"},
+        {"en": "army (gen. sg.)", "la": "exercitūs"},
+        {"en": "army (dat. sg.)", "la": "exercituī"},
+        {"en": "army (acc. sg.)", "la": "exercitum"},
+        {"en": "army (voc. sg.)", "la": "exercitus"},
+        {"en": "army (abl. sg.)", "la": "exercitū"},
+        {"en": "army (nom. pl.)", "la": "exercitūs"},
+        {"en": "army (gen. pl.)", "la": "exercituum"},
+        {"en": "army (dat. pl.)", "la": "exercitibus"},
+        {"en": "army (acc. pl.)", "la": "exercitūs"},
+        {"en": "army (voc. pl.)", "la": "exercitūs"},
+        {"en": "army (abl. pl.)", "la": "exercitibus"},
+
+        {"en": "senate (nom. sg.)", "la": "senātus"},
+        {"en": "senate (gen. sg.)", "la": "senātūs"},
+        {"en": "senate (dat. sg.)", "la": "senātuī"},
+        {"en": "senate (acc. sg.)", "la": "senātum"},
+        {"en": "senate (voc. sg.)", "la": "senātus"},
+        {"en": "senate (abl. sg.)", "la": "senātū"},
+        {"en": "senate (nom. pl.)", "la": "senātūs"},
+        {"en": "senate (gen. pl.)", "la": "senātuum"},
+        {"en": "senate (dat. pl.)", "la": "senātibus"},
+        {"en": "senate (acc. pl.)", "la": "senātūs"},
+        {"en": "senate (voc. pl.)", "la": "senātūs"},
+        {"en": "senate (abl. pl.)", "la": "senātibus"},
+
+        {"en": "fall, occasion (nom. sg.)", "la": "cāsus"},
+        {"en": "fall, occasion (gen. sg.)", "la": "cāsūs"},
+        {"en": "fall, occasion (dat. sg.)", "la": "cāsuī"},
+        {"en": "fall, occasion (acc. sg.)", "la": "cāsum"},
+        {"en": "fall, occasion (voc. sg.)", "la": "cāsus"},
+        {"en": "fall, occasion (abl. sg.)", "la": "cāsū"},
+        {"en": "fall, occasion (nom. pl.)", "la": "cāsūs"},
+        {"en": "fall, occasion (gen. pl.)", "la": "cāsuum"},
+        {"en": "fall, occasion (dat. pl.)", "la": "cāsibus"},
+        {"en": "fall, occasion (acc. pl.)", "la": "cāsūs"},
+        {"en": "fall, occasion (voc. pl.)", "la": "cāsūs"},
+        {"en": "fall, occasion (abl. pl.)", "la": "cāsibus"},
+
+        {"en": "course (nom. sg.)", "la": "cursus"},
+        {"en": "course (gen. sg.)", "la": "cursūs"},
+        {"en": "course (dat. sg.)", "la": "cursuī"},
+        {"en": "course (acc. sg.)", "la": "cursum"},
+        {"en": "course (voc. sg.)", "la": "cursus"},
+        {"en": "course (abl. sg.)", "la": "cursū"},
+        {"en": "course (nom. pl.)", "la": "cursūs"},
+        {"en": "course (gen. pl.)", "la": "cursuum"},
+        {"en": "course (dat. pl.)", "la": "cursibus"},
+        {"en": "course (acc. pl.)", "la": "cursūs"},
+        {"en": "course (voc. pl.)", "la": "cursūs"},
+        {"en": "course (abl. pl.)", "la": "cursibus"},
+
+        {"en": "horn (nom. sg.)", "la": "cornū"},
+        {"en": "horn (gen. sg.)", "la": "cornūs"},
+        {"en": "horn (dat. sg.)", "la": "cornū"},
+        {"en": "horn (acc. sg.)", "la": "cornū"},
+        {"en": "horn (voc. sg.)", "la": "cornū"},
+        {"en": "horn (abl. sg.)", "la": "cornū"},
+        {"en": "horn (nom. pl.)", "la": "cornua"},
+        {"en": "horn (gen. pl.)", "la": "cornuum"},
+        {"en": "horn (dat. pl.)", "la": "cornibus"},
+        {"en": "horn (acc. pl.)", "la": "cornua"},
+        {"en": "horn (voc. pl.)", "la": "cornua"},
+        {"en": "horn (abl. pl.)", "la": "cornibus"},
+
+        {"en": "knee (nom. sg.)", "la": "genū"},
+        {"en": "knee (gen. sg.)", "la": "genūs"},
+        {"en": "knee (dat. sg.)", "la": "genū"},
+        {"en": "knee (acc. sg.)", "la": "genū"},
+        {"en": "knee (voc. sg.)", "la": "genū"},
+        {"en": "knee (abl. sg.)", "la": "genū"},
+        {"en": "knee (nom. pl.)", "la": "genua"},
+        {"en": "knee (gen. pl.)", "la": "genuum"},
+        {"en": "knee (dat. pl.)", "la": "genibus"},
+        {"en": "knee (acc. pl.)", "la": "genua"},
+        {"en": "knee (voc. pl.)", "la": "genua"},
+        {"en": "knee (abl. pl.)", "la": "genibus"},
+    ],
+
+    "declension5": [
+        {"en": "edge (nom. sg.)", "la": "aciēs"},
+        {"en": "edge (gen. sg.)", "la": "aciēī"},
+        {"en": "edge (dat. sg.)", "la": "aciēī"},
+        {"en": "edge (acc. sg.)", "la": "aciem"},
+        {"en": "edge (voc. sg.)", "la": "aciēs"},
+        {"en": "edge (abl. sg.)", "la": "aciē"},
+        {"en": "edge (nom. pl.)", "la": "aciēs"},
+        {"en": "edge (gen. pl.)", "la": "aciērum"},
+        {"en": "edge (dat. pl.)", "la": "aciēbus"},
+        {"en": "edge (acc. pl.)", "la": "aciēs"},
+        {"en": "edge (voc. pl.)", "la": "aciēs"},
+        {"en": "edge (abl. pl.)", "la": "aciēbus"},
+
+        {"en": "day (nom. sg.)", "la": "diēs"},
+        {"en": "day (gen. sg.)", "la": "diēī"},
+        {"en": "day (dat. sg.)", "la": "diēī"},
+        {"en": "day (acc. sg.)", "la": "diem"},
+        {"en": "day (voc. sg.)", "la": "diēs"},
+        {"en": "day (abl. sg.)", "la": "diē"},
+        {"en": "day (nom. pl.)", "la": "diēs"},
+        {"en": "day (gen. pl.)", "la": "diērum"},
+        {"en": "day (dat. pl.)", "la": "diēbus"},
+        {"en": "day (acc. pl.)", "la": "diēs"},
+        {"en": "day (voc. pl.)", "la": "diēs"},
+        {"en": "day (abl. pl.)", "la": "diēbus"},
+
+        {"en": "shape (nom. sg.)", "la": "faciēs"},
+        {"en": "shape (gen. sg.)", "la": "faciēī"},
+        {"en": "shape (dat. sg.)", "la": "faciēī"},
+        {"en": "shape (acc. sg.)", "la": "faciem"},
+        {"en": "shape (voc. sg.)", "la": "faciēs"},
+        {"en": "shape (abl. sg.)", "la": "faciē"},
+        {"en": "shape (nom. pl.)", "la": "faciēs"},
+        {"en": "shape (gen. pl.)", "la": "faciērum"},
+        {"en": "shape (dat. pl.)", "la": "faciēbus"},
+        {"en": "shape (acc. pl.)", "la": "faciēs"},
+        {"en": "shape (voc. pl.)", "la": "faciēs"},
+        {"en": "shape (abl. pl.)", "la": "faciēbus"},
+
+        {"en": "trust (nom. sg.)", "la": "fidēs"},
+        {"en": "trust (gen. sg.)", "la": "fideī"},
+        {"en": "trust (dat. sg.)", "la": "fideī"},
+        {"en": "trust (acc. sg.)", "la": "fidem"},
+        {"en": "trust (voc. sg.)", "la": "fidēs"},
+        {"en": "trust (abl. sg.)", "la": "fidē"},
+        {"en": "trust (nom. pl.)", "la": "fidēs"},
+        {"en": "trust (gen. pl.)", "la": "fidērum"},
+        {"en": "trust (dat. pl.)", "la": "fidēbus"},
+        {"en": "trust (acc. pl.)", "la": "fidēs"},
+        {"en": "trust (voc. pl.)", "la": "fidēs"},
+        {"en": "trust (abl. pl.)", "la": "fidēbus"},
+
+        {"en": "thing (nom. sg.)", "la": "rēs"},
+        {"en": "thing (gen. sg.)", "la": "reī"},
+        {"en": "thing (dat. sg.)", "la": "reī"},
+        {"en": "thing (acc. sg.)", "la": "rem"},
+        {"en": "thing (voc. sg.)", "la": "rēs"},
+        {"en": "thing (abl. sg.)", "la": "rē"},
+        {"en": "thing (nom. pl.)", "la": "rēs"},
+        {"en": "thing (gen. pl.)", "la": "rērum"},
+        {"en": "thing (dat. pl.)", "la": "rēbus"},
+        {"en": "thing (acc. pl.)", "la": "rēs"},
+        {"en": "thing (voc. pl.)", "la": "rēs"},
+        {"en": "thing (abl. pl.)", "la": "rēbus"},
+
+        {"en": "sight (nom. sg.)", "la": "speciēs"},
+        {"en": "sight (gen. sg.)", "la": "speciēī"},
+        {"en": "sight (dat. sg.)", "la": "speciēī"},
+        {"en": "sight (acc. sg.)", "la": "speciem"},
+        {"en": "sight (voc. sg.)", "la": "speciēs"},
+        {"en": "sight (abl. sg.)", "la": "speciē"},
+        {"en": "sight (nom. pl.)", "la": "speciēs"},
+        {"en": "sight (gen. pl.)", "la": "speciērum"},
+        {"en": "sight (dat. pl.)", "la": "speciēbus"},
+        {"en": "sight (acc. pl.)", "la": "speciēs"},
+        {"en": "sight (voc. pl.)", "la": "speciēs"},
+        {"en": "sight (abl. pl.)", "la": "speciēbus"},
+
+        {"en": "hope (nom. sg.)", "la": "spēs"},
+        {"en": "hope (gen. sg.)", "la": "speī"},
+        {"en": "hope (dat. sg.)", "la": "speī"},
+        {"en": "hope (acc. sg.)", "la": "spem"},
+        {"en": "hope (voc. sg.)", "la": "spēs"},
+        {"en": "hope (abl. sg.)", "la": "spē"},
+        {"en": "hope (nom. pl.)", "la": "spēs"},
+        {"en": "hope (gen. pl.)", "la": "spērum"},
+        {"en": "hope (dat. pl.)", "la": "spēbus"},
+        {"en": "hope (acc. pl.)", "la": "spēs"},
+        {"en": "hope (voc. pl.)", "la": "spēs"},
+        {"en": "hope (abl. pl.)", "la": "spēbus"},
+
+        {"en": "image (nom. sg.)", "la": "effigiēs"},
+        {"en": "image (gen. sg.)", "la": "effigiēī"},
+        {"en": "image (dat. sg.)", "la": "effigiēī"},
+        {"en": "image (acc. sg.)", "la": "effigiem"},
+        {"en": "image (voc. sg.)", "la": "effigiēs"},
+        {"en": "image (abl. sg.)", "la": "effigiē"},
+        {"en": "image (nom. pl.)", "la": "effigiēs"},
+        {"en": "image (gen. pl.)", "la": "effigiērum"},
+        {"en": "image (dat. pl.)", "la": "effigiēbus"},
+        {"en": "image (acc. pl.)", "la": "effigiēs"},
+        {"en": "image (voc. pl.)", "la": "effigiēs"},
+        {"en": "image (abl. pl.)", "la": "effigiēbus"},
+
+        {"en": "ice (nom. sg.)", "la": "glaciēs"},
+        {"en": "ice (gen. sg.)", "la": "glaciēī"},
+        {"en": "ice (dat. sg.)", "la": "glaciēī"},
+        {"en": "ice (acc. sg.)", "la": "glaciem"},
+        {"en": "ice (voc. sg.)", "la": "glaciēs"},
+        {"en": "ice (abl. sg.)", "la": "glaciē"},
+        {"en": "ice (nom. pl.)", "la": "glaciēs"},
+        {"en": "ice (gen. pl.)", "la": "glaciērum"},
+        {"en": "ice (dat. pl.)", "la": "glaciēbus"},
+        {"en": "ice (acc. pl.)", "la": "glaciēs"},
+        {"en": "ice (voc. pl.)", "la": "glaciēs"},
+        {"en": "ice (abl. pl.)", "la": "glaciēbus"},
+
+        {"en": "chain (nom. sg.)", "la": "seriēs"},
+        {"en": "chain (gen. sg.)", "la": "seriēī"},
+        {"en": "chain (dat. sg.)", "la": "seriēī"},
+        {"en": "chain (acc. sg.)", "la": "seriem"},
+        {"en": "chain (voc. sg.)", "la": "seriēs"},
+        {"en": "chain (abl. sg.)", "la": "seriē"},
+        {"en": "chain (nom. pl.)", "la": "seriēs"},
+        {"en": "chain (gen. pl.)", "la": "seriērum"},
+        {"en": "chain (dat. pl.)", "la": "seriēbus"},
+        {"en": "chain (acc. pl.)", "la": "seriēs"},
+        {"en": "chain (voc. pl.)", "la": "seriēs"},
+        {"en": "chain (abl. pl.)", "la": "seriēbus"},
+    ],
+
     "story1": [
         {
             "en": "Columbus was a sailor.",
@@ -2349,669 +3003,825 @@ phrases = {
         }
     ],
 
-    "story10": [],
-
-    "exercise10": [],
-
-    "story11": [],
-
-    "exercise11": [],
-
-    "story12": [],
-
-    "exercise12": [],
-
-    "declension1": [
-        {"en": "land (nom. sg.)", "la": "terra"},
-        {"en": "land (gen. sg.)", "la": "terrae"},
-        {"en": "land (dat. sg.)", "la": "terrae"},
-        {"en": "land (acc. sg.)", "la": "terram"},
-        {"en": "land (voc. sg.)", "la": "terra"},
-        {"en": "land (abl. sg.)", "la": "terrā"},
-        {"en": "land (nom. pl.)", "la": "terrae"},
-        {"en": "land (gen. pl.)", "la": "terrārum"},
-        {"en": "land (dat. pl.)", "la": "terrīs"},
-        {"en": "land (acc. pl.)", "la": "terrās"},
-        {"en": "land (voc. pl.)", "la": "terrae"},
-        {"en": "land (abl. pl.)", "la": "terrīs"},
-
-        {"en": "life (nom. sg.)", "la": "vīta"},
-        {"en": "life (gen. sg.)", "la": "vītae"},
-        {"en": "life (dat. sg.)", "la": "vītae"},
-        {"en": "life (acc. sg.)", "la": "vītam"},
-        {"en": "life (voc. sg.)", "la": "vīta"},
-        {"en": "life (abl. sg.)", "la": "vītā"},
-        {"en": "life (nom. pl.)", "la": "vītae"},
-        {"en": "life (gen. pl.)", "la": "vītārum"},
-        {"en": "life (dat. pl.)", "la": "vītīs"},
-        {"en": "life (acc. pl.)", "la": "vītās"},
-        {"en": "life (voc. pl.)", "la": "vītae"},
-        {"en": "life (abl. pl.)", "la": "vītīs"},
-
-        {"en": "cause (nom. sg.)", "la": "causa"},
-        {"en": "cause (gen. sg.)", "la": "causae"},
-        {"en": "cause (dat. sg.)", "la": "causae"},
-        {"en": "cause (acc. sg.)", "la": "causam"},
-        {"en": "cause (voc. sg.)", "la": "causa"},
-        {"en": "cause (abl. sg.)", "la": "causā"},
-        {"en": "cause (nom. pl.)", "la": "causae"},
-        {"en": "cause (gen. pl.)", "la": "causārum"},
-        {"en": "cause (dat. pl.)", "la": "causīs"},
-        {"en": "cause (acc. pl.)", "la": "causās"},
-        {"en": "cause (voc. pl.)", "la": "causae"},
-        {"en": "cause (abl. pl.)", "la": "causīs"},
-
-        {"en": "fortune (nom. sg.)", "la": "fortūna"},
-        {"en": "fortune (gen. sg.)", "la": "fortūnae"},
-        {"en": "fortune (dat. sg.)", "la": "fortūnae"},
-        {"en": "fortune (acc. sg.)", "la": "fortūnam"},
-        {"en": "fortune (voc. sg.)", "la": "fortūna"},
-        {"en": "fortune (abl. sg.)", "la": "fortūnā"},
-        {"en": "fortune (nom. pl.)", "la": "fortūnae"},
-        {"en": "fortune (gen. pl.)", "la": "fortūnārum"},
-        {"en": "fortune (dat. pl.)", "la": "fortūnīs"},
-        {"en": "fortune (acc. pl.)", "la": "fortūnās"},
-        {"en": "fortune (voc. pl.)", "la": "fortūnae"},
-        {"en": "fortune (abl. pl.)", "la": "fortūnīs"},
-
-        {"en": "nature (nom. sg.)", "la": "nātūra"},
-        {"en": "nature (gen. sg.)", "la": "nātūrae"},
-        {"en": "nature (dat. sg.)", "la": "nātūrae"},
-        {"en": "nature (acc. sg.)", "la": "nātūram"},
-        {"en": "nature (voc. sg.)", "la": "nātūra"},
-        {"en": "nature (abl. sg.)", "la": "nātūrā"},
-        {"en": "nature (nom. pl.)", "la": "nātūrae"},
-        {"en": "nature (gen. pl.)", "la": "nātūrārum"},
-        {"en": "nature (dat. pl.)", "la": "nātūrīs"},
-        {"en": "nature (acc. pl.)", "la": "nātūrās"},
-        {"en": "nature (voc. pl.)", "la": "nātūrae"},
-        {"en": "nature (abl. pl.)", "la": "nātūrīs"},
-
-        {"en": "care (nom. sg.)", "la": "cūra"},
-        {"en": "care (gen. sg.)", "la": "cūrae"},
-        {"en": "care (dat. sg.)", "la": "cūrae"},
-        {"en": "care (acc. sg.)", "la": "cūram"},
-        {"en": "care (voc. sg.)", "la": "cūra"},
-        {"en": "care (abl. sg.)", "la": "cūrā"},
-        {"en": "care (nom. pl.)", "la": "cūrae"},
-        {"en": "care (gen. pl.)", "la": "cūrārum"},
-        {"en": "care (dat. pl.)", "la": "cūrīs"},
-        {"en": "care (acc. pl.)", "la": "cūrās"},
-        {"en": "care (voc. pl.)", "la": "cūrae"},
-        {"en": "care (abl. pl.)", "la": "cūrīs"},
-
-        {"en": "anger (nom. sg.)", "la": "īra"},
-        {"en": "anger (gen. sg.)", "la": "īrae"},
-        {"en": "anger (dat. sg.)", "la": "īrae"},
-        {"en": "anger (acc. sg.)", "la": "īram"},
-        {"en": "anger (voc. sg.)", "la": "īra"},
-        {"en": "anger (abl. sg.)", "la": "īrā"},
-        {"en": "anger (nom. pl.)", "la": "īrae"},
-        {"en": "anger (gen. pl.)", "la": "īrārum"},
-        {"en": "anger (dat. pl.)", "la": "īrīs"},
-        {"en": "anger (acc. pl.)", "la": "īrās"},
-        {"en": "anger (voc. pl.)", "la": "īrae"},
-        {"en": "anger (abl. pl.)", "la": "īrīs"},
-
-        {"en": "road (nom. sg.)", "la": "via"},
-        {"en": "road (gen. sg.)", "la": "viae"},
-        {"en": "road (dat. sg.)", "la": "viae"},
-        {"en": "road (acc. sg.)", "la": "viam"},
-        {"en": "road (voc. sg.)", "la": "via"},
-        {"en": "road (abl. sg.)", "la": "viā"},
-        {"en": "road (nom. pl.)", "la": "viae"},
-        {"en": "road (gen. pl.)", "la": "viārum"},
-        {"en": "road (dat. pl.)", "la": "viīs"},
-        {"en": "road (acc. pl.)", "la": "viās"},
-        {"en": "road (voc. pl.)", "la": "viae"},
-        {"en": "road (abl. pl.)", "la": "viīs"},
-
-        {"en": "wave (nom. sg.)", "la": "unda"},
-        {"en": "wave (gen. sg.)", "la": "undae"},
-        {"en": "wave (dat. sg.)", "la": "undae"},
-        {"en": "wave (acc. sg.)", "la": "undam"},
-        {"en": "wave (voc. sg.)", "la": "unda"},
-        {"en": "wave (abl. sg.)", "la": "undā"},
-        {"en": "wave (nom. pl.)", "la": "undae"},
-        {"en": "wave (gen. pl.)", "la": "undārum"},
-        {"en": "wave (dat. pl.)", "la": "undīs"},
-        {"en": "wave (acc. pl.)", "la": "undās"},
-        {"en": "wave (voc. pl.)", "la": "undae"},
-        {"en": "wave (abl. pl.)", "la": "undīs"},
-
-        {"en": "punishment (nom. sg.)", "la": "poena"},
-        {"en": "punishment (gen. sg.)", "la": "poenae"},
-        {"en": "punishment (dat. sg.)", "la": "poenae"},
-        {"en": "punishment (acc. sg.)", "la": "poenam"},
-        {"en": "punishment (voc. sg.)", "la": "poena"},
-        {"en": "punishment (abl. sg.)", "la": "poenā"},
-        {"en": "punishment (nom. pl.)", "la": "poenae"},
-        {"en": "punishment (gen. pl.)", "la": "poenārum"},
-        {"en": "punishment (dat. pl.)", "la": "poenīs"},
-        {"en": "punishment (acc. pl.)", "la": "poenās"},
-        {"en": "punishment (voc. pl.)", "la": "poenae"},
-        {"en": "punishment (abl. pl.)", "la": "poenīs"},
+    "story10": [
+        {
+            "en": "In North Africa, there was a great city — Carthage.",
+            "la": "In Africa septentrionali fuit urbs magna — Carthago."
+        },
+        {
+            "en": "The Carthaginians were merchants.",
+            "la": "Carthaginienses fuerunt mercatores."
+        },
+        {
+            "en": "They had many ships.",
+            "la": "Multas naves habuerunt."
+        },
+        {
+            "en": "They traded with many nations.",
+            "la": "Mercaturam fecerunt cum multis nationibus."
+        },
+        {
+            "en": "The Carthaginians were good at trade.",
+            "la": "Carthaginienses boni fuerunt mercatura."
+        },
+        {
+            "en": "They had a lot of money.",
+            "la": "Multam pecuniam habuerunt."
+        },
+        {
+            "en": "The Roman poet, Vergil, said that Dido founded Carthage.",
+            "la": "Poeta Romanus, Vergilius, dixit quod Dido fundavit Carthaginem."
+        },
+        {
+            "en": "But he did not speak the truth.",
+            "la": "Sed veritatem non dixit."
+        },
+        {
+            "en": "Colonists from Phoenicia founded Carthage.",
+            "la": "Coloni ex Phoenicia fundaverunt Carthaginem."
+        },
+        {
+            "en": "Phoenicia is a land in Asia.",
+            "la": "Phoenicia est terra in Asia."
+        },
+        {
+            "en": "Vergil thought that Dido founded Carthage in the twelfth century.",
+            "la": "Vergilius putavit quod Dido fundavit Carthaginem in saeculo duodecimo."
+        },
+        {
+            "en": "But Vergil did not speak the truth.",
+            "la": "Sed Vergilius non dixit veritatem."
+        },
+        {
+            "en": "Colonists from Phoenicia founded Carthage (probably in the ninth century before Christ).",
+            "la": "Coloni ex Phoenicia fundaverunt Carthaginem (probabiliter saeculo nono ante Christum)."
+        },
+        {
+            "en": "Therefore, Vergil did not tell the truth — he told a story.",
+            "la": "Ergo Vergilius non narravit veritatem — narravit fabulam."
+        },
+        {
+            "en": "Because the Carthaginians came from Phoenicia, the Romans gave them another name: Punics.",
+            "la": "Quia Carthaginienses venerunt ex Phoenicia, Romani dederunt aliud nomen: Punici."
+        },
+        {
+            "en": "The Carthaginians were the Punics.",
+            "la": "Carthaginienses fuerunt Punici."
+        },
+        {
+            "en": "The Punics sent ships to many seas, to many lands.",
+            "la": "Punici miserunt naves in multa maria, in multas terras."
+        },
+        {
+            "en": "The Carthaginians also had an army.",
+            "la": "Carthaginienses etiam habuerunt exercitum."
+        },
+        {
+            "en": "But the Carthaginian men did not want to fight — the Carthaginians wanted to trade — they wanted to have a lot of money.",
+            "la": "Sed viri Carthaginienses non voluerunt pugnare — Carthaginienses voluerunt mercaturam facere — voluerunt habere multam pecuniam."
+        },
+        {
+            "en": "The Punic merchants also came to Sicily.",
+            "la": "Mercatores Punici venerunt etiam in Siciliam."
+        },
+        {
+            "en": "Many ships came on the sea to Sicily.",
+            "la": "Multae naves venerunt in mari ad Siciliam."
+        },
+        {
+            "en": "The Romans were not great at trade.",
+            "la": "Romani non fuerunt magni mercatura."
+        },
+        {
+            "en": "The Romans loved the fields.",
+            "la": "Romani amaverunt agros."
+        },
+        {
+            "en": "The Romans loved to fight and to be strong.",
+            "la": "Romani amaverunt pugnare et fortes esse."
+        },
+        {
+            "en": "The Romans were good in courage.",
+            "la": "Romani fuerunt boni fortitudine."
+        }
     ],
 
-    "declension2": [
-        {"en": "spirit (nom. sg.)", "la": "animus"},
-        {"en": "spirit (gen. sg.)", "la": "animī"},
-        {"en": "spirit (dat. sg.)", "la": "animō"},
-        {"en": "spirit (acc. sg.)", "la": "animum"},
-        {"en": "spirit (voc. sg.)", "la": "anime"},
-        {"en": "spirit (abl. sg.)", "la": "animō"},
-        {"en": "spirit (nom. pl.)", "la": "animī"},
-        {"en": "spirit (gen. pl.)", "la": "animōrum"},
-        {"en": "spirit (dat. pl.)", "la": "animīs"},
-        {"en": "spirit (acc. pl.)", "la": "animōs"},
-        {"en": "spirit (voc. pl.)", "la": "animī"},
-        {"en": "spirit (abl. pl.)", "la": "animīs"},
-
-        {"en": "god (nom. sg.)", "la": "deus"},
-        {"en": "god (gen. sg.)", "la": "deī"},
-        {"en": "god (dat. sg.)", "la": "deō"},
-        {"en": "god (acc. sg.)", "la": "deum"},
-        {"en": "god (voc. sg.)", "la": "deus"},
-        {"en": "god (abl. sg.)", "la": "deō"},
-        {"en": "god (nom. pl.)", "la": "deī"},
-        {"en": "god (gen. pl.)", "la": "deōrum"},
-        {"en": "god (dat. pl.)", "la": "deīs"},
-        {"en": "god (acc. pl.)", "la": "deōs"},
-        {"en": "god (voc. pl.)", "la": "deī"},
-        {"en": "god (abl. pl.)", "la": "deīs"},
-
-        {"en": "place (nom. sg.)", "la": "locus"},
-        {"en": "place (gen. sg.)", "la": "locī"},
-        {"en": "place (dat. sg.)", "la": "locō"},
-        {"en": "place (acc. sg.)", "la": "locum"},
-        {"en": "place (voc. sg.)", "la": "loce"},
-        {"en": "place (abl. sg.)", "la": "locō"},
-        {"en": "place (nom. pl.)", "la": "locī"},
-        {"en": "place (gen. pl.)", "la": "locōrum"},
-        {"en": "place (dat. pl.)", "la": "locīs"},
-        {"en": "place (acc. pl.)", "la": "locōs"},
-        {"en": "place (voc. pl.)", "la": "locī"},
-        {"en": "place (abl. pl.)", "la": "locīs"},
-
-        {"en": "man (nom. sg.)", "la": "vir"},
-        {"en": "man (gen. sg.)", "la": "virī"},
-        {"en": "man (dat. sg.)", "la": "virō"},
-        {"en": "man (acc. sg.)", "la": "virum"},
-        {"en": "man (voc. sg.)", "la": "vir"},
-        {"en": "man (abl. sg.)", "la": "virō"},
-        {"en": "man (nom. pl.)", "la": "virī"},
-        {"en": "man (gen. pl.)", "la": "virōrum"},
-        {"en": "man (dat. pl.)", "la": "virīs"},
-        {"en": "man (acc. pl.)", "la": "virōs"},
-        {"en": "man (voc. pl.)", "la": "virī"},
-        {"en": "man (abl. pl.)", "la": "virīs"},
-
-        {"en": "war (nom. sg.)", "la": "bellum"},
-        {"en": "war (gen. sg.)", "la": "bellī"},
-        {"en": "war (dat. sg.)", "la": "bellō"},
-        {"en": "war (acc. sg.)", "la": "bellum"},
-        {"en": "war (voc. sg.)", "la": "bellum"},
-        {"en": "war (abl. sg.)", "la": "bellō"},
-        {"en": "war (nom. pl.)", "la": "bella"},
-        {"en": "war (gen. pl.)", "la": "bellōrum"},
-        {"en": "war (dat. pl.)", "la": "bellīs"},
-        {"en": "war (acc. pl.)", "la": "bella"},
-        {"en": "war (voc. pl.)", "la": "bella"},
-        {"en": "war (abl. pl.)", "la": "bellīs"},
-
-        {"en": "weapons (nom. pl.)", "la": "arma"},
-        {"en": "weapons (gen. pl.)", "la": "armōrum"},
-        {"en": "weapons (dat. pl.)", "la": "armīs"},
-        {"en": "weapons (acc. pl.)", "la": "arma"},
-        {"en": "weapons (voc. pl.)", "la": "arma"},
-        {"en": "weapons (abl. pl.)", "la": "armīs"},
-
-        {"en": "sky (nom. sg.)", "la": "caelum"},
-        {"en": "sky (gen. sg.)", "la": "caelī"},
-        {"en": "sky (dat. sg.)", "la": "caelō"},
-        {"en": "sky (acc. sg.)", "la": "caelum"},
-        {"en": "sky (voc. sg.)", "la": "caelum"},
-        {"en": "sky (abl. sg.)", "la": "caelō"},
-        {"en": "sky (nom. pl.)", "la": "caela"},
-        {"en": "sky (gen. pl.)", "la": "caelōrum"},
-        {"en": "sky (dat. pl.)", "la": "caelīs"},
-        {"en": "sky (acc. pl.)", "la": "caela"},
-        {"en": "sky (voc. pl.)", "la": "caela"},
-        {"en": "sky (abl. pl.)", "la": "caelīs"},
-
-        {"en": "kingdom (nom. sg.)", "la": "rēgnum"},
-        {"en": "kingdom (gen. sg.)", "la": "rēgnī"},
-        {"en": "kingdom (dat. sg.)", "la": "rēgnō"},
-        {"en": "kingdom (acc. sg.)", "la": "rēgnum"},
-        {"en": "kingdom (voc. sg.)", "la": "rēgnum"},
-        {"en": "kingdom (abl. sg.)", "la": "rēgnō"},
-        {"en": "kingdom (nom. pl.)", "la": "rēgna"},
-        {"en": "kingdom (gen. pl.)", "la": "rēgnōrum"},
-        {"en": "kingdom (dat. pl.)", "la": "rēgnīs"},
-        {"en": "kingdom (acc. pl.)", "la": "rēgna"},
-        {"en": "kingdom (voc. pl.)", "la": "rēgna"},
-        {"en": "kingdom (abl. pl.)", "la": "rēgnīs"},
-
-        {"en": "people (nom. sg.)", "la": "populus"},
-        {"en": "people (gen. sg.)", "la": "populī"},
-        {"en": "people (dat. sg.)", "la": "populō"},
-        {"en": "people (acc. sg.)", "la": "populum"},
-        {"en": "people (voc. sg.)", "la": "popule"},
-        {"en": "people (abl. sg.)", "la": "populō"},
-        {"en": "people (nom. pl.)", "la": "populī"},
-        {"en": "people (gen. pl.)", "la": "populōrum"},
-        {"en": "people (dat. pl.)", "la": "populīs"},
-        {"en": "people (acc. pl.)", "la": "populōs"},
-        {"en": "people (voc. pl.)", "la": "populī"},
-        {"en": "people (abl. pl.)", "la": "populīs"},
-
-        {"en": "fate (nom. sg.)", "la": "fātum"},
-        {"en": "fate (gen. sg.)", "la": "fātī"},
-        {"en": "fate (dat. sg.)", "la": "fātō"},
-        {"en": "fate (acc. sg.)", "la": "fātum"},
-        {"en": "fate (voc. sg.)", "la": "fātum"},
-        {"en": "fate (abl. sg.)", "la": "fātō"},
-        {"en": "fate (nom. pl.)", "la": "fāta"},
-        {"en": "fate (gen. pl.)", "la": "fātōrum"},
-        {"en": "fate (dat. pl.)", "la": "fātīs"},
-        {"en": "fate (acc. pl.)", "la": "fāta"},
-        {"en": "fate (voc. pl.)", "la": "fāta"},
-        {"en": "fate (abl. pl.)", "la": "fātīs"},
+    "exercise10": [
+        {
+            "en": "The Romans had many wars in the early centuries.",
+            "la": "Romani multa bella habuerunt primis saeculis."
+        },
+        {
+            "en": "The Roman Senate had many good strategies.",
+            "la": "Senatus Romanus habuit multa consilia bona."
+        },
+        {
+            "en": "And Rome also had many forums.",
+            "la": "Et Roma etiam habuit fora multa."
+        },
+        {
+            "en": "Because Rome had many wars, it also had many dangers.",
+            "la": "Quia Roma multa bella habuit, etiam habuit multa pericula."
+        },
+        {
+            "en": "The Romans faced dangers in battles.",
+            "la": "Romani habuerunt pericula in pugnis."
+        },
+        {
+            "en": "They also faced dangers at sea.",
+            "la": "Etiam habuerunt pericula in mari."
+        },
+        {
+            "en": "Because the Romans sent ships into many seas.",
+            "la": "Quia Romani miserunt naves in multa maria."
+        },
+        {
+            "en": "The Carthaginians also sent ships into many seas.",
+            "la": "Carthaginienses etiam miserunt naves in multa maria."
+        },
+        {
+            "en": "The Carthaginians were good at trade.",
+            "la": "Carthaginienses boni mercatura fuerunt."
+        },
+        {
+            "en": "But the Romans were brave men.",
+            "la": "Sed Romani viri fortes fuerunt."
+        },
+        {
+            "en": "The Roman name was great.",
+            "la": "Nomen Romanum magnum fuit."
+        },
+        {
+            "en": "Columbus also had a great name.",
+            "la": "Columbus etiam habuit nomen magnum."
+        },
+        {
+            "en": "And the white lamb had a great name.",
+            "la": "Et agnus albus habuit nomen magnum."
+        },
+        {
+            "en": "The white lamb came to school; many lambs could not come to school.",
+            "la": "Agnus albus venit in scholam; multi agni non potuerunt venire in scholam."
+        },
+        {
+            "en": "Tarquinius wanted to rule in the Roman land.",
+            "la": "Tarquinius voluit regnare in terra Romana."
+        },
+        {
+            "en": "But he could not remain in the Roman land.",
+            "la": "Sed non potuit remanere in terra Romana."
+        },
+        {
+            "en": "The Romans were able to expel Tarquinius.",
+            "la": "Romani potuerunt expellere Tarquinium."
+        },
+        {
+            "en": "The Etruscan army came to the city.",
+            "la": "Exercitus Etruscus venit ad urbem."
+        },
+        {
+            "en": "But they could not defeat the Roman army.",
+            "la": "Sed non potuerunt vincere exercitum Romanum."
+        },
+        {
+            "en": "Columbus was able to find America.",
+            "la": "Columbus potuit invenire Americam."
+        },
+        {
+            "en": "Isabella asked him to find India.",
+            "la": "Isabella rogavit eum invenire Indiam."
+        },
+        {
+            "en": "Columbus could not know India.",
+            "la": "Columbus non potuit scire Indiam."
+        },
+        {
+            "en": "He could not stay in India.",
+            "la": "Non potuit stare in India."
+        },
+        {
+            "en": "He stayed in America.",
+            "la": "Stetit in America."
+        },
+        {
+            "en": "But he could not see the United States of America.",
+            "la": "Sed non potuit videre Status Foederatos Americae."
+        },
+        {
+            "en": "The United States did not exist in America when Columbus came.",
+            "la": "Status Foederati non fuerunt in America quando Columbus venit."
+        },
+        {
+            "en": "Columbus could not throw money into the sea — Columbus did not have money.",
+            "la": "Columbus non potuit iacere pecuniam in mare — Columbus non habuit pecuniam."
+        },
+        {
+            "en": "The Senate wanted to send Roman men to Greece.",
+            "la": "Senatus voluit mittere Romanos viros in Graeciam."
+        },
+        {
+            "en": "The men wanted to see the Greek laws.",
+            "la": "Viri voluerunt videre leges Graecas."
+        },
+        {
+            "en": "The Greek laws were good.",
+            "la": "Leges Graecae fuerunt bonae."
+        },
+        {
+            "en": "Elephants are in Africa.",
+            "la": "Elephanti sunt in Africa."
+        },
+        {
+            "en": "Are there elephants in America?",
+            "la": "Suntne elephanti in America?"
+        },
+        {
+            "en": "Of course, elephants are in the Circus.",
+            "la": "Utique, elephanti sunt in Circo."
+        },
+        {
+            "en": "Elephants are large animals.",
+            "la": "Elephanti sunt animalia magna."
+        },
+        {
+            "en": "A large animal is good.",
+            "la": "Animal magnum est bonum."
+        },
+        {
+            "en": "Marcus is a brave man.",
+            "la": "Marcus est vir fortis."
+        },
+        {
+            "en": "But he could not throw an elephant.",
+            "la": "Sed non potuit iacere elephantum."
+        },
+        {
+            "en": "But Marcus could stand on a ship.",
+            "la": "Sed Marcus potuit stare in navi."
+        },
+        {
+            "en": "Marcus was a good sailor.",
+            "la": "Marcus bonus nauta fuit."
+        },
+        {
+            "en": "Bad sailors could not stand on ships.",
+            "la": "Mali nautae non potuerunt stare in navibus."
+        }
     ],
 
-    "declension3": [
-        {"en": "king (nom. sg.)", "la": "rēx"},
-        {"en": "king (gen. sg.)", "la": "rēgis"},
-        {"en": "king (dat. sg.)", "la": "rēgī"},
-        {"en": "king (acc. sg.)", "la": "rēgem"},
-        {"en": "king (voc. sg.)", "la": "rēx"},
-        {"en": "king (abl. sg.)", "la": "rēge"},
-        {"en": "king (nom. pl.)", "la": "rēgēs"},
-        {"en": "king (gen. pl.)", "la": "rēgum"},
-        {"en": "king (dat. pl.)", "la": "rēgibus"},
-        {"en": "king (acc. pl.)", "la": "rēgēs"},
-        {"en": "king (voc. pl.)", "la": "rēgēs"},
-        {"en": "king (abl. pl.)", "la": "rēgibus"},
-
-        {"en": "part (nom. sg.)", "la": "pars"},
-        {"en": "part (gen. sg.)", "la": "partis"},
-        {"en": "part (dat. sg.)", "la": "partī"},
-        {"en": "part (acc. sg.)", "la": "partem"},
-        {"en": "part (voc. sg.)", "la": "pars"},
-        {"en": "part (abl. sg.)", "la": "parte"},
-        {"en": "part (nom. pl.)", "la": "partēs"},
-        {"en": "part (gen. pl.)", "la": "partium"},
-        {"en": "part (dat. pl.)", "la": "partibus"},
-        {"en": "part (acc. pl.)", "la": "partēs"},
-        {"en": "part (voc. pl.)", "la": "partēs"},
-        {"en": "part (abl. pl.)", "la": "partibus"},
-
-        {"en": "father (nom. sg.)", "la": "pater"},
-        {"en": "father (gen. sg.)", "la": "patris"},
-        {"en": "father (dat. sg.)", "la": "patrī"},
-        {"en": "father (acc. sg.)", "la": "patrem"},
-        {"en": "father (voc. sg.)", "la": "pater"},
-        {"en": "father (abl. sg.)", "la": "patre"},
-        {"en": "father (nom. pl.)", "la": "patrēs"},
-        {"en": "father (gen. pl.)", "la": "patrum"},
-        {"en": "father (dat. pl.)", "la": "patribus"},
-        {"en": "father (acc. pl.)", "la": "patrēs"},
-        {"en": "father (voc. pl.)", "la": "patrēs"},
-        {"en": "father (abl. pl.)", "la": "patribus"},
-
-        {"en": "body (nom. sg.)", "la": "corpus"},
-        {"en": "body (gen. sg.)", "la": "corporis"},
-        {"en": "body (dat. sg.)", "la": "corporī"},
-        {"en": "body (acc. sg.)", "la": "corpus"},
-        {"en": "body (voc. sg.)", "la": "corpus"},
-        {"en": "body (abl. sg.)", "la": "corpore"},
-        {"en": "body (nom. pl.)", "la": "corpora"},
-        {"en": "body (gen. pl.)", "la": "corporum"},
-        {"en": "body (dat. pl.)", "la": "corporibus"},
-        {"en": "body (acc. pl.)", "la": "corpora"},
-        {"en": "body (voc. pl.)", "la": "corpora"},
-        {"en": "body (abl. pl.)", "la": "corporibus"},
-
-        {"en": "city (nom. sg.)", "la": "urbs"},
-        {"en": "city (gen. sg.)", "la": "urbis"},
-        {"en": "city (dat. sg.)", "la": "urbī"},
-        {"en": "city (acc. sg.)", "la": "urbem"},
-        {"en": "city (voc. sg.)", "la": "urbs"},
-        {"en": "city (abl. sg.)", "la": "urbe"},
-        {"en": "city (nom. pl.)", "la": "urbēs"},
-        {"en": "city (gen. pl.)", "la": "urbium"},
-        {"en": "city (dat. pl.)", "la": "urbibus"},
-        {"en": "city (acc. pl.)", "la": "urbēs"},
-        {"en": "city (voc. pl.)", "la": "urbēs"},
-        {"en": "city (abl. pl.)", "la": "urbibus"},
-
-        {"en": "human (nom. sg.)", "la": "homō"},
-        {"en": "human (gen. sg.)", "la": "hominis"},
-        {"en": "human (dat. sg.)", "la": "hominī"},
-        {"en": "human (acc. sg.)", "la": "hominem"},
-        {"en": "human (voc. sg.)", "la": "homō"},
-        {"en": "human (abl. sg.)", "la": "homine"},
-        {"en": "human (nom. pl.)", "la": "hominēs"},
-        {"en": "human (gen. pl.)", "la": "hominum"},
-        {"en": "human (dat. pl.)", "la": "hominibus"},
-        {"en": "human (acc. pl.)", "la": "hominēs"},
-        {"en": "human (voc. pl.)", "la": "hominēs"},
-        {"en": "human (abl. pl.)", "la": "hominibus"},
-
-        {"en": "time (nom. sg.)", "la": "tempus"},
-        {"en": "time (gen. sg.)", "la": "temporis"},
-        {"en": "time (dat. sg.)", "la": "temporī"},
-        {"en": "time (acc. sg.)", "la": "tempus"},
-        {"en": "time (voc. sg.)", "la": "tempus"},
-        {"en": "time (abl. sg.)", "la": "tempore"},
-        {"en": "time (nom. pl.)", "la": "tempora"},
-        {"en": "time (gen. pl.)", "la": "temporum"},
-        {"en": "time (dat. pl.)", "la": "temporibus"},
-        {"en": "time (acc. pl.)", "la": "tempora"},
-        {"en": "time (voc. pl.)", "la": "tempora"},
-        {"en": "time (abl. pl.)", "la": "temporibus"},
-
-        {"en": "valor (nom. sg.)", "la": "virtūs"},
-        {"en": "valor (gen. sg.)", "la": "virtūtis"},
-        {"en": "valor (dat. sg.)", "la": "virtūtī"},
-        {"en": "valor (acc. sg.)", "la": "virtūtem"},
-        {"en": "valor (voc. sg.)", "la": "virtūs"},
-        {"en": "valor (abl. sg.)", "la": "virtūte"},
-        {"en": "valor (nom. pl.)", "la": "virtūtēs"},
-        {"en": "valor (gen. pl.)", "la": "virtūtum"},
-        {"en": "valor (dat. pl.)", "la": "virtūtibus"},
-        {"en": "valor (acc. pl.)", "la": "virtūtēs"},
-        {"en": "valor (voc. pl.)", "la": "virtūtēs"},
-        {"en": "valor (abl. pl.)", "la": "virtūtibus"},
-
-        {"en": "citizen (nom. sg.)", "la": "cīvis"},
-        {"en": "citizen (gen. sg.)", "la": "cīvis"},
-        {"en": "citizen (dat. sg.)", "la": "cīvī"},
-        {"en": "citizen (acc. sg.)", "la": "cīvem"},
-        {"en": "citizen (voc. sg.)", "la": "cīvis"},
-        {"en": "citizen (abl. sg.)", "la": "cīve"},
-        {"en": "citizen (nom. pl.)", "la": "cīvēs"},
-        {"en": "citizen (gen. pl.)", "la": "cīvium"},
-        {"en": "citizen (dat. pl.)", "la": "cīvibus"},
-        {"en": "citizen (acc. pl.)", "la": "cīvēs"},
-        {"en": "citizen (voc. pl.)", "la": "cīvēs"},
-        {"en": "citizen (abl. pl.)", "la": "cīvibus"},
-
-        {"en": "sea (nom. sg.)", "la": "mare"},
-        {"en": "sea (gen. sg.)", "la": "maris"},
-        {"en": "sea (dat. sg.)", "la": "marī"},
-        {"en": "sea (acc. sg.)", "la": "mare"},
-        {"en": "sea (voc. sg.)", "la": "mare"},
-        {"en": "sea (abl. sg.)", "la": "marī"},
-        {"en": "sea (nom. pl.)", "la": "maria"},
-        {"en": "sea (gen. pl.)", "la": "marium"},
-        {"en": "sea (dat. pl.)", "la": "maribus"},
-        {"en": "sea (acc. pl.)", "la": "maria"},
-        {"en": "sea (voc. pl.)", "la": "maria"},
-        {"en": "sea (abl. pl.)", "la": "maribus"},
+    "story11": [
+        {
+            "en": "Rome fought three wars with Carthage.",
+            "la": "Roma gessit tria bella cum Carthagine."
+        },
+        {
+            "en": "Therefore, there were three Punic Wars.",
+            "la": "Fuerunt ergo tria bella Punica."
+        },
+        {
+            "en": "The Punic War is the Carthaginian War.",
+            "la": "Bellum Punicum est bellum Carthaginiense."
+        },
+        {
+            "en": "The First Punic War came in the middle of the third century before Christ.",
+            "la": "Primum bellum Punicum venit in medio saeculo tertio ante Christum."
+        },
+        {
+            "en": "Messana was a city in Sicily.",
+            "la": "Messana fuit urbs in Sicilia."
+        },
+        {
+            "en": "Bad men ruled in Messana.",
+            "la": "Viri mali regnaverunt in Messana."
+        },
+        {
+            "en": "Their name was the Mamertini.",
+            "la": "Nomen eorum fuit Mamertini."
+        },
+        {
+            "en": "The Mamertini fought with Hiero.",
+            "la": "Mamertini pugnaverunt cum Hierone."
+        },
+        {
+            "en": "Hiero was a king in another city in Sicily.",
+            "la": "Hiero fuit rex in alia urbe in Sicilia."
+        },
+        {
+            "en": "Hiero was the king of Syracuse.",
+            "la": "Hiero fuit rex Syracusarum."
+        },
+        {
+            "en": "Therefore, the Mamertini, bad men, fought with the king of Syracuse.",
+            "la": "Ergo Mamertini, viri mali, pugnaverunt cum rege Syracusarum."
+        },
+        {
+            "en": "The Mamertini were in danger.",
+            "la": "Mamertini in periculo fuerunt."
+        },
+        {
+            "en": "The Mamertini sent envoys to the Roman Senate.",
+            "la": "Mamertini miserunt legatos ad senatum Romanum."
+        },
+        {
+            "en": "The envoys asked the Senate to send help.",
+            "la": "Legati rogaverunt senatum mittere auxilium."
+        },
+        {
+            "en": "The Romans sent an army to the Mamertini.",
+            "la": "Romani miserunt exercitum ad Mamertinos."
+        },
+        {
+            "en": "But the Carthaginians did not want the Romans to be in Sicily.",
+            "la": "Sed Carthaginienses non voluerunt Romanos esse in Sicilia."
+        },
+        {
+            "en": "The Carthaginians wanted to trade in Sicily.",
+            "la": "Carthaginienses voluerunt mercaturam facere in Sicilia."
+        },
+        {
+            "en": "Therefore, they wanted to expel the Romans.",
+            "la": "Ergo voluerunt expellere Romanos."
+        },
+        {
+            "en": "And so the Romans waged war with the Carthaginians.",
+            "la": "Itaque Romani bellum gesserunt cum Carthaginiensibus."
+        },
+        {
+            "en": "The First Punic War began.",
+            "la": "Primum bellum Punicum fuit."
+        },
+        {
+            "en": "The Punics had many and good ships.",
+            "la": "Punici habuerunt multas et bonas naves."
+        },
+        {
+            "en": "The Romans did not have good ships.",
+            "la": "Romani non habuerunt bonas naves."
+        },
+        {
+            "en": "But the Romans built many ships.",
+            "la": "Sed Romani fecerunt naves multas."
+        },
+        {
+            "en": "They sent many brave men onto the ships.",
+            "la": "Miserunt viros fortes multos in naves."
+        },
+        {
+            "en": "The Carthaginians did not have many brave men on the ships.",
+            "la": "Carthaginienses non habuerunt multos fortes viros in navibus."
+        },
+        {
+            "en": "Therefore, the Romans were able to defeat the Carthaginians.",
+            "la": "Ergo Romani potuerunt vincere Carthaginienses."
+        },
+        {
+            "en": "The Punics did not remain in Sicily.",
+            "la": "Punici non remanserunt in Sicilia."
+        },
+        {
+            "en": "The Punics gave a lot of money.",
+            "la": "Punici dederunt pecuniam multam."
+        },
+        {
+            "en": "And so the Romans defeated Carthage in the First Punic War.",
+            "la": "Itaque Romani vicerunt Carthaginem in primo bello Punico."
+        },
+        {
+            "en": "They won in the year two hundred forty one before Christ.",
+            "la": "Vicerunt anno ducentesimo quadragesimo primo ante Christum."
+        },
+        {
+            "en": "The Carthaginians did not love the Romans.",
+            "la": "Carthaginienses non amaverunt Romanos."
+        },
+        {
+            "en": "They hated the Romans.",
+            "la": "Oderunt Romanos."
+        },
+        {
+            "en": "But the Romans were happy.",
+            "la": "Sed Romani laeti fuerunt."
+        },
+        {
+            "en": "They had a remarkable victory.",
+            "la": "Habuerunt victoriam egregiam."
+        }
     ],
 
-    "declension4": [
-        {"en": "hand (nom. sg.)", "la": "manus"},
-        {"en": "hand (gen. sg.)", "la": "manūs"},
-        {"en": "hand (dat. sg.)", "la": "manuī"},
-        {"en": "hand (acc. sg.)", "la": "manum"},
-        {"en": "hand (voc. sg.)", "la": "manus"},
-        {"en": "hand (abl. sg.)", "la": "manū"},
-        {"en": "hand (nom. pl.)", "la": "manūs"},
-        {"en": "hand (gen. pl.)", "la": "manuum"},
-        {"en": "hand (dat. pl.)", "la": "manibus"},
-        {"en": "hand (acc. pl.)", "la": "manūs"},
-        {"en": "hand (voc. pl.)", "la": "manūs"},
-        {"en": "hand (abl. pl.)", "la": "manibus"},
-
-        {"en": "house (nom. sg.)", "la": "domus"},
-        {"en": "house (gen. sg.)", "la": "domūs"},
-        {"en": "house (dat. sg.)", "la": "domuī"},
-        {"en": "house (acc. sg.)", "la": "domum"},
-        {"en": "house (voc. sg.)", "la": "domus"},
-        {"en": "house (abl. sg.)", "la": "domō"},
-        {"en": "house (nom. pl.)", "la": "domūs"},
-        {"en": "house (gen. pl.)", "la": "domōrum"},
-        {"en": "house (dat. pl.)", "la": "domibus"},
-        {"en": "house (acc. pl.)", "la": "domōs"},
-        {"en": "house (voc. pl.)", "la": "domūs"},
-        {"en": "house (abl. pl.)", "la": "domibus"},
-
-        {"en": "countenance (nom. sg.)", "la": "vultus"},
-        {"en": "countenance (gen. sg.)", "la": "vultūs"},
-        {"en": "countenance (dat. sg.)", "la": "vultuī"},
-        {"en": "countenance (acc. sg.)", "la": "vultum"},
-        {"en": "countenance (voc. sg.)", "la": "vultus"},
-        {"en": "countenance (abl. sg.)", "la": "vultū"},
-        {"en": "countenance (nom. pl.)", "la": "vultūs"},
-        {"en": "countenance (gen. pl.)", "la": "vultuum"},
-        {"en": "countenance (dat. pl.)", "la": "vultibus"},
-        {"en": "countenance (acc. pl.)", "la": "vultūs"},
-        {"en": "countenance (voc. pl.)", "la": "vultūs"},
-        {"en": "countenance (abl. pl.)", "la": "vultibus"},
-
-        {"en": "fear (nom. sg.)", "la": "metus"},
-        {"en": "fear (gen. sg.)", "la": "metūs"},
-        {"en": "fear (dat. sg.)", "la": "metuī"},
-        {"en": "fear (acc. sg.)", "la": "metum"},
-        {"en": "fear (voc. sg.)", "la": "metus"},
-        {"en": "fear (abl. sg.)", "la": "metū"},
-        {"en": "fear (nom. pl.)", "la": "metūs"},
-        {"en": "fear (gen. pl.)", "la": "metuum"},
-        {"en": "fear (dat. pl.)", "la": "metibus"},
-        {"en": "fear (acc. pl.)", "la": "metūs"},
-        {"en": "fear (voc. pl.)", "la": "metūs"},
-        {"en": "fear (abl. pl.)", "la": "metibus"},
-
-        {"en": "army (nom. sg.)", "la": "exercitus"},
-        {"en": "army (gen. sg.)", "la": "exercitūs"},
-        {"en": "army (dat. sg.)", "la": "exercituī"},
-        {"en": "army (acc. sg.)", "la": "exercitum"},
-        {"en": "army (voc. sg.)", "la": "exercitus"},
-        {"en": "army (abl. sg.)", "la": "exercitū"},
-        {"en": "army (nom. pl.)", "la": "exercitūs"},
-        {"en": "army (gen. pl.)", "la": "exercituum"},
-        {"en": "army (dat. pl.)", "la": "exercitibus"},
-        {"en": "army (acc. pl.)", "la": "exercitūs"},
-        {"en": "army (voc. pl.)", "la": "exercitūs"},
-        {"en": "army (abl. pl.)", "la": "exercitibus"},
-
-        {"en": "senate (nom. sg.)", "la": "senātus"},
-        {"en": "senate (gen. sg.)", "la": "senātūs"},
-        {"en": "senate (dat. sg.)", "la": "senātuī"},
-        {"en": "senate (acc. sg.)", "la": "senātum"},
-        {"en": "senate (voc. sg.)", "la": "senātus"},
-        {"en": "senate (abl. sg.)", "la": "senātū"},
-        {"en": "senate (nom. pl.)", "la": "senātūs"},
-        {"en": "senate (gen. pl.)", "la": "senātuum"},
-        {"en": "senate (dat. pl.)", "la": "senātibus"},
-        {"en": "senate (acc. pl.)", "la": "senātūs"},
-        {"en": "senate (voc. pl.)", "la": "senātūs"},
-        {"en": "senate (abl. pl.)", "la": "senātibus"},
-
-        {"en": "fall, occasion (nom. sg.)", "la": "cāsus"},
-        {"en": "fall, occasion (gen. sg.)", "la": "cāsūs"},
-        {"en": "fall, occasion (dat. sg.)", "la": "cāsuī"},
-        {"en": "fall, occasion (acc. sg.)", "la": "cāsum"},
-        {"en": "fall, occasion (voc. sg.)", "la": "cāsus"},
-        {"en": "fall, occasion (abl. sg.)", "la": "cāsū"},
-        {"en": "fall, occasion (nom. pl.)", "la": "cāsūs"},
-        {"en": "fall, occasion (gen. pl.)", "la": "cāsuum"},
-        {"en": "fall, occasion (dat. pl.)", "la": "cāsibus"},
-        {"en": "fall, occasion (acc. pl.)", "la": "cāsūs"},
-        {"en": "fall, occasion (voc. pl.)", "la": "cāsūs"},
-        {"en": "fall, occasion (abl. pl.)", "la": "cāsibus"},
-
-        {"en": "course (nom. sg.)", "la": "cursus"},
-        {"en": "course (gen. sg.)", "la": "cursūs"},
-        {"en": "course (dat. sg.)", "la": "cursuī"},
-        {"en": "course (acc. sg.)", "la": "cursum"},
-        {"en": "course (voc. sg.)", "la": "cursus"},
-        {"en": "course (abl. sg.)", "la": "cursū"},
-        {"en": "course (nom. pl.)", "la": "cursūs"},
-        {"en": "course (gen. pl.)", "la": "cursuum"},
-        {"en": "course (dat. pl.)", "la": "cursibus"},
-        {"en": "course (acc. pl.)", "la": "cursūs"},
-        {"en": "course (voc. pl.)", "la": "cursūs"},
-        {"en": "course (abl. pl.)", "la": "cursibus"},
-
-        {"en": "horn (nom. sg.)", "la": "cornū"},
-        {"en": "horn (gen. sg.)", "la": "cornūs"},
-        {"en": "horn (dat. sg.)", "la": "cornū"},
-        {"en": "horn (acc. sg.)", "la": "cornū"},
-        {"en": "horn (voc. sg.)", "la": "cornū"},
-        {"en": "horn (abl. sg.)", "la": "cornū"},
-        {"en": "horn (nom. pl.)", "la": "cornua"},
-        {"en": "horn (gen. pl.)", "la": "cornuum"},
-        {"en": "horn (dat. pl.)", "la": "cornibus"},
-        {"en": "horn (acc. pl.)", "la": "cornua"},
-        {"en": "horn (voc. pl.)", "la": "cornua"},
-        {"en": "horn (abl. pl.)", "la": "cornibus"},
-
-        {"en": "knee (nom. sg.)", "la": "genū"},
-        {"en": "knee (gen. sg.)", "la": "genūs"},
-        {"en": "knee (dat. sg.)", "la": "genū"},
-        {"en": "knee (acc. sg.)", "la": "genū"},
-        {"en": "knee (voc. sg.)", "la": "genū"},
-        {"en": "knee (abl. sg.)", "la": "genū"},
-        {"en": "knee (nom. pl.)", "la": "genua"},
-        {"en": "knee (gen. pl.)", "la": "genuum"},
-        {"en": "knee (dat. pl.)", "la": "genibus"},
-        {"en": "knee (acc. pl.)", "la": "genua"},
-        {"en": "knee (voc. pl.)", "la": "genua"},
-        {"en": "knee (abl. pl.)", "la": "genibus"},
+    "exercise11": [
+        {
+            "en": "Rome had good citizens.",
+            "la": "Roma habuit cives bonos."
+        },
+        {
+            "en": "Rome defeated Carthage with great ships.",
+            "la": "Roma vicit Carthaginem magnis navibus."
+        },
+        {
+            "en": "Columbus spoke a great truth.",
+            "la": "Columbus dixit veritatem magnam."
+        },
+        {
+            "en": "The Roman Senate wrote good laws.",
+            "la": "Senatus Romanus scripsit leges bonas."
+        },
+        {
+            "en": "Many ships were on the great sea.",
+            "la": "Naves multae fuerunt in mari magno."
+        },
+        {
+            "en": "Carthage was great with much trade.",
+            "la": "Carthago magna fuit mercatura multa."
+        },
+        {
+            "en": "The Romans expelled the bad king.",
+            "la": "Romani expulerunt regem malum."
+        },
+        {
+            "en": "The white lamb came to a good school.",
+            "la": "Agnus albus venit in bonam scholam."
+        },
+        {
+            "en": "The world is great.",
+            "la": "Mundus est magnus."
+        },
+        {
+            "en": "The Romans waged many wars.",
+            "la": "Romani gesserunt bella multa."
+        },
+        {
+            "en": "The Romans hated bad citizens.",
+            "la": "Romani oderunt malos cives."
+        },
+        {
+            "en": "The Romans wanted to be great.",
+            "la": "Romani voluerunt esse magni."
+        },
+        {
+            "en": "The Romans had a good name.",
+            "la": "Romani habuerunt nomen bonum."
+        },
+        {
+            "en": "Hiero was not a bad king.",
+            "la": "Hiero non fuit rex malus."
+        },
+        {
+            "en": "But Tarquinius is not a good king.",
+            "la": "Sed Tarquinius non est rex bonus."
+        },
+        {
+            "en": "The Romans threw fire on the great bridge.",
+            "la": "Romani iecerunt ignem in magnum pontem."
+        },
+        {
+            "en": "The Romans won with great power.",
+            "la": "Romani vicerunt potestate magna."
+        },
+        {
+            "en": "The girl is not small.",
+            "la": "Puella non est parva."
+        },
+        {
+            "en": "But the lamb is small.",
+            "la": "Sed agnus parvus est."
+        },
+        {
+            "en": "The Carthaginians wanted to have much money.",
+            "la": "Carthaginienses voluerunt habere pecuniam multam."
+        },
+        {
+            "en": "They wanted to have great trade.",
+            "la": "Voluerunt habere mercaturam magnam."
+        },
+        {
+            "en": "They were good at trade.",
+            "la": "Boni mercatura fuerunt."
+        },
+        {
+            "en": "In the First Punic War, the Romans made many good ships.",
+            "la": "Bello Punico primo, Romani fecerunt multas naves bonas."
+        },
+        {
+            "en": "The good ships were in many seas.",
+            "la": "Bonae naves fuerunt in maribus multis."
+        },
+        {
+            "en": "The Roman Senate gave many excellent strategies.",
+            "la": "Senatus Romanus dedit multa egregia consilia."
+        },
+        {
+            "en": "The Romans came into the great city.",
+            "la": "Romani venerunt in urbem magnam."
+        },
+        {
+            "en": "The Roman city was good.",
+            "la": "Urbs Romana bona fuit."
+        },
+        {
+            "en": "Carthage was also a good city.",
+            "la": "Carthago etiam fuit bona urbs."
+        }
     ],
 
-    "declension5": [
-        {"en": "edge (nom. sg.)", "la": "aciēs"},
-        {"en": "edge (gen. sg.)", "la": "aciēī"},
-        {"en": "edge (dat. sg.)", "la": "aciēī"},
-        {"en": "edge (acc. sg.)", "la": "aciem"},
-        {"en": "edge (voc. sg.)", "la": "aciēs"},
-        {"en": "edge (abl. sg.)", "la": "aciē"},
-        {"en": "edge (nom. pl.)", "la": "aciēs"},
-        {"en": "edge (gen. pl.)", "la": "aciērum"},
-        {"en": "edge (dat. pl.)", "la": "aciēbus"},
-        {"en": "edge (acc. pl.)", "la": "aciēs"},
-        {"en": "edge (voc. pl.)", "la": "aciēs"},
-        {"en": "edge (abl. pl.)", "la": "aciēbus"},
+    "story12": [
+        {
+            "en": "After the First Punic War, there was peace.",
+            "la": "Post bellum Punicum primum pax fuit."
+        },
+        {
+            "en": "But the Carthaginians did not have much money.",
+            "la": "Sed Carthaginienses non habuerunt pecuniam multam."
+        },
+        {
+            "en": "For Rome took a lot of gold from the Carthaginians after the First War.",
+            "la": "Roma enim accepit aurum multum a Carthaginiensibus post bellum primum."
+        },
+        {
+            "en": "Therefore, Carthage did not have much gold.",
+            "la": "Carthago ergo non habuit multum aurum."
+        },
+        {
+            "en": "It was necessary to find new lands.",
+            "la": "Necesse fuit invenire terras novas."
+        },
+        {
+            "en": "It was necessary to go to Spain.",
+            "la": "Necesse fuit venire in Hispaniam."
+        },
+        {
+            "en": "Because in Spain there was much gold.",
+            "la": "Quia in Hispania fuit aurum multum."
+        },
+        {
+            "en": "And the Carthaginian merchants could do much trade in Spain.",
+            "la": "Et mercatores Carthaginienses potuerunt facere mercaturam multam in Hispania."
+        },
+        {
+            "en": "Hannibal was a Carthaginian boy.",
+            "la": "Hannibal fuit puer Carthaginiensis."
+        },
+        {
+            "en": "Hannibal's father was a great Carthaginian general.",
+            "la": "Pater Hannibalis fuit imperator Carthaginiensis magnus."
+        },
+        {
+            "en": "His father was Hamilcar.",
+            "la": "Pater Hamilcar fuit."
+        },
+        {
+            "en": "Hamilcar was a brave man and a good general.",
+            "la": "Hamilcar fuit vir fortis, et imperator bonus."
+        },
+        {
+            "en": "Hamilcar was good in strategy.",
+            "la": "Hamilcar fuit bonus consiliis."
+        },
+        {
+            "en": "The Romans told a story about Hannibal.",
+            "la": "Romani narraverunt fabulam de Hannibale."
+        },
+        {
+            "en": "They said that Hannibal, when he was in Spain with his father Hamilcar, placed his hand on the altar and promised eternal hatred against the Romans.",
+            "la": "Dixerunt quod Hannibal, quando in Hispania fuit cum patre, Hamilcare, posuit manum in altare et promisit odium aeternum contra Romanos."
+        },
+        {
+            "en": "Was there truth in the story?",
+            "la": "Fuitne veritas in fabula?"
+        },
+        {
+            "en": "We do not know.",
+            "la": "Nescimus."
+        },
+        {
+            "en": "But Hannibal, when he became a man, waged a great war with the Romans.",
+            "la": "Sed Hannibal, quando vir fuit, gessit bellum magnum cum Romanis."
+        },
+        {
+            "en": "There was a great city in Spain — the name of the city was Saguntum.",
+            "la": "Urbs magna fuit in Hispania — nomen urbis fuit Saguntum."
+        },
+        {
+            "en": "Hannibal wanted to capture Saguntum.",
+            "la": "Hannibal voluit capere Saguntum."
+        },
+        {
+            "en": "But the Saguntines loved the Romans.",
+            "la": "Sed Saguntini amaverunt Romanos."
+        },
+        {
+            "en": "And the Romans loved the Saguntines.",
+            "la": "Et Romani amaverunt Saguntinos."
+        },
+        {
+            "en": "Therefore, the Saguntines sent envoys to the Romans.",
+            "la": "Ergo Saguntini miserunt legatos ad Romanos."
+        },
+        {
+            "en": "The envoys came to the Roman Senate.",
+            "la": "Legati venerunt in senatum Romanum."
+        },
+        {
+            "en": "The Saguntine envoys asked for help.",
+            "la": "Legati Saguntini rogaverunt auxilium."
+        },
+        {
+            "en": "They asked the Romans to come with a great army.",
+            "la": "Rogaverunt Romanos venire exercitu magno."
+        },
+        {
+            "en": "Therefore, the Romans sent envoys to the Carthaginian Senate.",
+            "la": "Ergo Romani miserunt legatos in senatum Carthaginiensem."
+        },
+        {
+            "en": "The Roman envoys said that it was necessary to recall Hannibal.",
+            "la": "Legati Romani dixerunt quod necesse fuit revocare Hannibalem."
+        },
+        {
+            "en": "But the Carthaginians did not recall Hannibal.",
+            "la": "Sed Carthaginienses non revocaverunt Hannibalem."
+        },
+        {
+            "en": "Carthage hated Rome.",
+            "la": "Carthago odit Romam."
+        },
+        {
+            "en": "Therefore, the Romans sent a great army against Hannibal.",
+            "la": "Ergo Romani miserunt exercitum magnum contra Hannibalem."
+        },
+        {
+            "en": "And so they waged the Second Punic War.",
+            "la": "Itaque gesserunt bellum Punicum secundum."
+        }
+    ],
 
-        {"en": "day (nom. sg.)", "la": "diēs"},
-        {"en": "day (gen. sg.)", "la": "diēī"},
-        {"en": "day (dat. sg.)", "la": "diēī"},
-        {"en": "day (acc. sg.)", "la": "diem"},
-        {"en": "day (voc. sg.)", "la": "diēs"},
-        {"en": "day (abl. sg.)", "la": "diē"},
-        {"en": "day (nom. pl.)", "la": "diēs"},
-        {"en": "day (gen. pl.)", "la": "diērum"},
-        {"en": "day (dat. pl.)", "la": "diēbus"},
-        {"en": "day (acc. pl.)", "la": "diēs"},
-        {"en": "day (voc. pl.)", "la": "diēs"},
-        {"en": "day (abl. pl.)", "la": "diēbus"},
-
-        {"en": "shape (nom. sg.)", "la": "faciēs"},
-        {"en": "shape (gen. sg.)", "la": "faciēī"},
-        {"en": "shape (dat. sg.)", "la": "faciēī"},
-        {"en": "shape (acc. sg.)", "la": "faciem"},
-        {"en": "shape (voc. sg.)", "la": "faciēs"},
-        {"en": "shape (abl. sg.)", "la": "faciē"},
-        {"en": "shape (nom. pl.)", "la": "faciēs"},
-        {"en": "shape (gen. pl.)", "la": "faciērum"},
-        {"en": "shape (dat. pl.)", "la": "faciēbus"},
-        {"en": "shape (acc. pl.)", "la": "faciēs"},
-        {"en": "shape (voc. pl.)", "la": "faciēs"},
-        {"en": "shape (abl. pl.)", "la": "faciēbus"},
-
-        {"en": "trust (nom. sg.)", "la": "fidēs"},
-        {"en": "trust (gen. sg.)", "la": "fideī"},
-        {"en": "trust (dat. sg.)", "la": "fideī"},
-        {"en": "trust (acc. sg.)", "la": "fidem"},
-        {"en": "trust (voc. sg.)", "la": "fidēs"},
-        {"en": "trust (abl. sg.)", "la": "fidē"},
-        {"en": "trust (nom. pl.)", "la": "fidēs"},
-        {"en": "trust (gen. pl.)", "la": "fidērum"},
-        {"en": "trust (dat. pl.)", "la": "fidēbus"},
-        {"en": "trust (acc. pl.)", "la": "fidēs"},
-        {"en": "trust (voc. pl.)", "la": "fidēs"},
-        {"en": "trust (abl. pl.)", "la": "fidēbus"},
-
-        {"en": "thing (nom. sg.)", "la": "rēs"},
-        {"en": "thing (gen. sg.)", "la": "reī"},
-        {"en": "thing (dat. sg.)", "la": "reī"},
-        {"en": "thing (acc. sg.)", "la": "rem"},
-        {"en": "thing (voc. sg.)", "la": "rēs"},
-        {"en": "thing (abl. sg.)", "la": "rē"},
-        {"en": "thing (nom. pl.)", "la": "rēs"},
-        {"en": "thing (gen. pl.)", "la": "rērum"},
-        {"en": "thing (dat. pl.)", "la": "rēbus"},
-        {"en": "thing (acc. pl.)", "la": "rēs"},
-        {"en": "thing (voc. pl.)", "la": "rēs"},
-        {"en": "thing (abl. pl.)", "la": "rēbus"},
-
-        {"en": "sight (nom. sg.)", "la": "speciēs"},
-        {"en": "sight (gen. sg.)", "la": "speciēī"},
-        {"en": "sight (dat. sg.)", "la": "speciēī"},
-        {"en": "sight (acc. sg.)", "la": "speciem"},
-        {"en": "sight (voc. sg.)", "la": "speciēs"},
-        {"en": "sight (abl. sg.)", "la": "speciē"},
-        {"en": "sight (nom. pl.)", "la": "speciēs"},
-        {"en": "sight (gen. pl.)", "la": "speciērum"},
-        {"en": "sight (dat. pl.)", "la": "speciēbus"},
-        {"en": "sight (acc. pl.)", "la": "speciēs"},
-        {"en": "sight (voc. pl.)", "la": "speciēs"},
-        {"en": "sight (abl. pl.)", "la": "speciēbus"},
-
-        {"en": "hope (nom. sg.)", "la": "spēs"},
-        {"en": "hope (gen. sg.)", "la": "speī"},
-        {"en": "hope (dat. sg.)", "la": "speī"},
-        {"en": "hope (acc. sg.)", "la": "spem"},
-        {"en": "hope (voc. sg.)", "la": "spēs"},
-        {"en": "hope (abl. sg.)", "la": "spē"},
-        {"en": "hope (nom. pl.)", "la": "spēs"},
-        {"en": "hope (gen. pl.)", "la": "spērum"},
-        {"en": "hope (dat. pl.)", "la": "spēbus"},
-        {"en": "hope (acc. pl.)", "la": "spēs"},
-        {"en": "hope (voc. pl.)", "la": "spēs"},
-        {"en": "hope (abl. pl.)", "la": "spēbus"},
-
-        {"en": "image (nom. sg.)", "la": "effigiēs"},
-        {"en": "image (gen. sg.)", "la": "effigiēī"},
-        {"en": "image (dat. sg.)", "la": "effigiēī"},
-        {"en": "image (acc. sg.)", "la": "effigiem"},
-        {"en": "image (voc. sg.)", "la": "effigiēs"},
-        {"en": "image (abl. sg.)", "la": "effigiē"},
-        {"en": "image (nom. pl.)", "la": "effigiēs"},
-        {"en": "image (gen. pl.)", "la": "effigiērum"},
-        {"en": "image (dat. pl.)", "la": "effigiēbus"},
-        {"en": "image (acc. pl.)", "la": "effigiēs"},
-        {"en": "image (voc. pl.)", "la": "effigiēs"},
-        {"en": "image (abl. pl.)", "la": "effigiēbus"},
-
-        {"en": "ice (nom. sg.)", "la": "glaciēs"},
-        {"en": "ice (gen. sg.)", "la": "glaciēī"},
-        {"en": "ice (dat. sg.)", "la": "glaciēī"},
-        {"en": "ice (acc. sg.)", "la": "glaciem"},
-        {"en": "ice (voc. sg.)", "la": "glaciēs"},
-        {"en": "ice (abl. sg.)", "la": "glaciē"},
-        {"en": "ice (nom. pl.)", "la": "glaciēs"},
-        {"en": "ice (gen. pl.)", "la": "glaciērum"},
-        {"en": "ice (dat. pl.)", "la": "glaciēbus"},
-        {"en": "ice (acc. pl.)", "la": "glaciēs"},
-        {"en": "ice (voc. pl.)", "la": "glaciēs"},
-        {"en": "ice (abl. pl.)", "la": "glaciēbus"},
-
-        {"en": "chain (nom. sg.)", "la": "seriēs"},
-        {"en": "chain (gen. sg.)", "la": "seriēī"},
-        {"en": "chain (dat. sg.)", "la": "seriēī"},
-        {"en": "chain (acc. sg.)", "la": "seriem"},
-        {"en": "chain (voc. sg.)", "la": "seriēs"},
-        {"en": "chain (abl. sg.)", "la": "seriē"},
-        {"en": "chain (nom. pl.)", "la": "seriēs"},
-        {"en": "chain (gen. pl.)", "la": "seriērum"},
-        {"en": "chain (dat. pl.)", "la": "seriēbus"},
-        {"en": "chain (acc. pl.)", "la": "seriēs"},
-        {"en": "chain (voc. pl.)", "la": "seriēs"},
-        {"en": "chain (abl. pl.)", "la": "seriēbus"},
+    "exercise12": [
+        {
+            "en": "Hannibal promised eternal hatred against the Romans.",
+            "la": "Hannibal promisit odium aeternum contra Romanos."
+        },
+        {
+            "en": "The Romans achieved a remarkable victory.",
+            "la": "Romani acceperunt victoriam egregiam."
+        },
+        {
+            "en": "The Roman name was great.",
+            "la": "Nomen Romanum magnum fuit."
+        },
+        {
+            "en": "The Romans were not great in trade.",
+            "la": "Romani non magni fuerunt mercatura."
+        },
+        {
+            "en": "But the Carthaginians were great in trade.",
+            "la": "Sed Carthaginienses magni fuerunt mercatura."
+        },
+        {
+            "en": "The Romans were great in war and victories.",
+            "la": "Romani magni fuerunt bello et victoriis."
+        },
+        {
+            "en": "Merchants loved to have much gold in their hands.",
+            "la": "Mercatores amaverunt habere multum aurum in manibus."
+        },
+        {
+            "en": "It is not necessary to have much gold.",
+            "la": "Non est necesse habere aurum multum."
+        },
+        {
+            "en": "Gold is good, but it is not necessary to have gold.",
+            "la": "Aurum est bonum, sed non est necesse habere aurum."
+        },
+        {
+            "en": "The Romans had war with Carthage in the third century before Christ.",
+            "la": "Romani habuerunt bellum cum Carthagine saeculo tertio ante Christum."
+        },
+        {
+            "en": "Hannibal's father was a good general.",
+            "la": "Pater Hannibalis fuit imperator bonus."
+        },
+        {
+            "en": "Columbus put much gold on ships.",
+            "la": "Columbus posuit aurum multum in naves."
+        },
+        {
+            "en": "But Columbus did not put many lambs on the ships.",
+            "la": "Sed Columbus non posuit agnos multos in naves."
+        },
+        {
+            "en": "For the lambs did not love the sea.",
+            "la": "Agni enim non amaverunt mare."
+        },
+        {
+            "en": "The lambs were not sailors.",
+            "la": "Agni non fuerunt nautae."
+        },
+        {
+            "en": "Was Maria a sailor?",
+            "la": "Fuitne Maria nauta?"
+        },
+        {
+            "en": "No, but Marcus was a sailor.",
+            "la": "Non, sed Marcus fuit nauta."
+        },
+        {
+            "en": "And Columbus was a sailor.",
+            "la": "Et Columbus fuit nauta."
+        },
+        {
+            "en": "Columbus was able to find America.",
+            "la": "Columbus potuit invenire Americam."
+        },
+        {
+            "en": "Columbus saw Isabella in Spain.",
+            "la": "Columbus vidit Isabellam in Hispania."
+        },
+        {
+            "en": "After the war, the Carthaginians wanted to find peace.",
+            "la": "Post bellum, Carthaginienses voluerunt invenire pacem."
+        },
+        {
+            "en": "Peace is good.",
+            "la": "Pax est bona."
+        },
+        {
+            "en": "The Romans could not have eternal peace.",
+            "la": "Romani non potuerunt habere pacem aeternam."
+        },
+        {
+            "en": "When was there peace in Roman lands?",
+            "la": "Quando fuit pax in terra Romana?"
+        },
+        {
+            "en": "Almost always there was war.",
+            "la": "Fere semper bellum fuit."
+        },
+        {
+            "en": "The Romans did not hate war.",
+            "la": "Romani non oderunt bellum."
+        },
+        {
+            "en": "But to have war was necessary.",
+            "la": "Sed bellum habere fuit necesse."
+        },
+        {
+            "en": "In human affairs, peace is not always present.",
+            "la": "In rebus humanis, pax non semper est."
+        },
+        {
+            "en": "The Carthaginians did not always tell the truth.",
+            "la": "Carthaginienses non semper dixerunt veritatem."
+        },
+        {
+            "en": "But even the Romans did not always tell the truth.",
+            "la": "Sed etiam Romani non semper dixerunt veritatem."
+        },
+        {
+            "en": "The Romans loved the truth.",
+            "la": "Romani amaverunt veritatem."
+        },
+        {
+            "en": "But the Romans could not always find the truth.",
+            "la": "Sed Romani non semper potuerunt invenire veritatem."
+        },
+        {
+            "en": "The Romans sent envoys to the Carthaginian Senate.",
+            "la": "Romani miserunt legatos in senatum Carthaginiensem."
+        },
+        {
+            "en": "But the Carthaginians also sent envoys.",
+            "la": "Sed Carthaginienses etiam miserunt legatos."
+        },
+        {
+            "en": "Did the Carthaginians want to have peace?",
+            "la": "Volueruntne Carthaginienses habere pacem?"
+        },
+        {
+            "en": "Did Hannibal have elephants?",
+            "la": "Habuitne Hannibal elephantos?"
+        },
+        {
+            "en": "Of course, Hannibal had many elephants.",
+            "la": "Utique, Hannibal habuit multos elephantos."
+        },
+        {
+            "en": "Hannibal sent many elephants against the Romans in battles.",
+            "la": "Hannibal misit multos elephantos contra Romanos in pugnis."
+        },
+        {
+            "en": "But the Romans did not fear the elephants.",
+            "la": "Sed Romani non timuerunt elephantos."
+        },
+        {
+            "en": "The Romans were brave men.",
+            "la": "Romani viri fortes fuerunt."
+        },
+        {
+            "en": "The Romans were able to defeat the elephants.",
+            "la": "Romani potuerunt vincere elephantos."
+        },
+        {
+            "en": "The Romans were happy because they had victory.",
+            "la": "Romani laeti fuerunt quia victoriam habuerunt."
+        }
     ],
 }
