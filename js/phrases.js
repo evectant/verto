@@ -1507,23 +1507,23 @@ phrases = {
             "la": "Patricii etiam magnam potestatem habuerunt."
         },
         {
-            "en": "But the Roman plebs were poor.",
+            "en": "But the Roman plebs (pl.) were poor.",
             "la": "Sed plebs Romana fuerunt pauperes."
         },
         {
-            "en": "The plebs did not have money.",
+            "en": "The plebs (pl.) did not have money.",
             "la": "Plebs non habuerunt pecuniam."
         },
         {
-            "en": "The plebs did not have power in the city.",
+            "en": "The plebs (pl.) did not have power in the city.",
             "la": "Plebs non habuerunt potestatem in urbe."
         },
         {
-            "en": "The plebs wanted power.",
+            "en": "The plebs (pl.) wanted power.",
             "la": "Plebs voluerunt potestatem."
         },
         {
-            "en": "The plebs wanted money.",
+            "en": "The plebs (pl.) wanted money.",
             "la": "Plebs voluerunt pecuniam."
         },
         {
@@ -1535,15 +1535,15 @@ phrases = {
             "la": "Patricii non dederunt potestatem in urbe."
         },
         {
-            "en": "Therefore, the plebs fought with the patricians.",
+            "en": "Therefore, the plebs (pl.) fought with the patricians.",
             "la": "Ergo plebs pugnaverunt cum patriciis."
         },
         {
-            "en": "The plebs did not remain in the city.",
+            "en": "The plebs (pl.) did not remain in the city.",
             "la": "Plebs non remanserunt in urbe."
         },
         {
-            "en": "The plebs went to the Sacred Mountain.",
+            "en": "The plebs (pl.) went to the Sacred Mountain.",
             "la": "Plebs venerunt in Sacrum Montem."
         },
         {
@@ -1551,11 +1551,11 @@ phrases = {
             "la": "Patricii exclamaverunt: Venite in urbem!"
         },
         {
-            "en": "But the plebs remained on the Sacred Mountain.",
+            "en": "But the plebs (sg.) remained on the Sacred Mountain.",
             "la": "Sed plebs remansit in Monte Sacro."
         },
         {
-            "en": "Great patricians came to the plebs.",
+            "en": "Great patricians came to the plebs (sg.).",
             "la": "Magni patricii venerunt ad plebem."
         },
         {
@@ -1563,7 +1563,7 @@ phrases = {
             "la": "Dixerunt: Venite! venite in urbem Romanam!"
         },
         {
-            "en": "But the plebs remained on the Sacred Mountain.",
+            "en": "But the plebs (sg.) remained on the Sacred Mountain.",
             "la": "Sed plebs remansit in Monte Sacro."
         },
         {
@@ -1571,23 +1571,23 @@ phrases = {
             "la": "Ergo patricii creaverunt officium novum."
         },
         {
-            "en": "They created the tribunes of the plebs.",
+            "en": "They created the tribunes of the plebs (sg.).",
             "la": "Creaverunt tribunos plebis."
         },
         {
-            "en": "There were two tribunes of the plebs.",
+            "en": "There were two tribunes of the plebs (sg.).",
             "la": "Fuerunt duo tribuni plebis."
         },
         {
-            "en": "Therefore, the plebs did not remain on the Sacred Mountain.",
+            "en": "Therefore, the plebs (sg.) did not remain on the Sacred Mountain.",
             "la": "Ergo plebs non remansit in Monte Sacro."
         },
         {
-            "en": "The plebs came to the city.",
+            "en": "The plebs (sg.) came to the city.",
             "la": "Plebs venit in urbem."
         },
         {
-            "en": "The plebs came with the tribunes.",
+            "en": "The plebs (sg.) came with the tribunes.",
             "la": "Plebs venit cum tribunis."
         },
         {
@@ -1614,19 +1614,19 @@ phrases = {
             "la": "Romani sunt in urbe Romana."
         },
         {
-            "en": "Are the plebs in the Roman city?",
+            "en": "Are the plebs (pl.) in the Roman city?",
             "la": "Suntne plebs in urbe Romana?"
         },
         {
-            "en": "No. The plebs are not in the Roman city.",
+            "en": "No. The plebs (sg.) are not in the Roman city.",
             "la": "Non. Plebs non est in urbe Romana."
         },
         {
-            "en": "The plebs are on the Sacred Mountain.",
+            "en": "The plebs (sg.) are on the Sacred Mountain.",
             "la": "Plebs est in Monte Sacro."
         },
         {
-            "en": "The plebs came out of the city.",
+            "en": "The plebs (pl.) came out of the city.",
             "la": "Plebs venerunt ex urbe."
         },
         {
@@ -1782,7 +1782,7 @@ phrases = {
             "la": "Romani pugnaverunt cum Etruscis."
         },
         {
-            "en": "But the patricians also fought with the plebs.",
+            "en": "But the patricians also fought with the plebs (sg.).",
             "la": "Sed patricii etiam pugnaverunt cum plebe."
         },
         {
@@ -1790,7 +1790,7 @@ phrases = {
             "la": "Cives pugnaverunt cum Etruscis."
         },
         {
-            "en": "But the patricians also fought with the plebs.",
+            "en": "But the patricians also fought with the plebs (sg.).",
             "la": "Sed patricii etiam pugnaverunt cum plebe."
         },
         {
@@ -1984,11 +1984,11 @@ phrases = {
             "la": "Cincinnatus non remansit Dictator."
         },
         {
-            "en": "The plebs did not remain in the city.",
+            "en": "The plebs (sg.) did not remain in the city.",
             "la": "Plebs non remansit in urbe."
         },
         {
-            "en": "The plebs did not come to school.",
+            "en": "The plebs (sg.) did not come to school.",
             "la": "Plebs non venit in scholam."
         },
         {
@@ -2012,7 +2012,7 @@ phrases = {
             "la": "Fuitne Marcus rotundus?"
         },
         {
-            "en": "The tribunes of the plebs had great power.",
+            "en": "The tribunes of the plebs (sg.) had great power.",
             "la": "Tribuni plebis habuerunt magnam potestatem."
         },
         {
@@ -2020,7 +2020,7 @@ phrases = {
             "la": "Consules etiam habuerunt magnam potestatem."
         },
         {
-            "en": "But the consuls and tribunes of the plebs were not evil men.",
+            "en": "But the consuls and tribunes of the plebs (sg.) were not evil men.",
             "la": "Sed consules et tribuni plebis non fuerunt viri mali."
         },
         {
@@ -2373,35 +2373,35 @@ phrases = {
             "la": "Sed soli patricii sciverunt leges Romanas."
         },
         {
-            "en": "The plebs did not know the laws.",
+            "en": "The plebs (sg.) did not know the laws.",
             "la": "Plebs non scivit leges."
         },
         {
-            "en": "Therefore, the plebs were in danger.",
+            "en": "Therefore, the plebs (sg.) were in danger.",
             "la": "Ergo plebs in periculo fuit."
         },
         {
-            "en": "The plebs did not love danger.",
+            "en": "The plebs (sg.) did not love danger.",
             "la": "Plebs non amavit periculum."
         },
         {
-            "en": "And the plebs did not love the patricians.",
+            "en": "And the plebs (sg.) did not love the patricians.",
             "la": "Et plebs non amavit patricios."
         },
         {
-            "en": "The plebs said that the patricians did not love the plebs — the patricians did not write down the laws.",
+            "en": "The plebs (pl.) said that the patricians did not love the plebs (sg.) — the patricians did not write down the laws.",
             "la": "Plebs dixerunt quod patricii non amaverunt plebem — patricii non scripserunt leges."
         },
         {
-            "en": "The plebs were in danger because the patricians did not write down the laws.",
+            "en": "The plebs (sg.) are in danger because the patricians did not write down the laws.",
             "la": "Plebs in periculo est quia patricii non scripserunt leges."
         },
         {
-            "en": "The patricians were bad.",
+            "en": "The patricians are bad.",
             "la": "Patricii mali sunt."
         },
         {
-            "en": "They were not good.",
+            "en": "They are not good.",
             "la": "Non sunt boni."
         },
         {
@@ -2413,43 +2413,43 @@ phrases = {
             "la": "Cives pugnaverunt cum civibus."
         },
         {
-            "en": "The patricians fought with the plebs.",
+            "en": "The patricians fought with the plebs (sg.).",
             "la": "Patricii pugnaverunt cum plebe."
         },
         {
-            "en": "The plebs fought with the patricians.",
+            "en": "The plebs (sg.) fought with the patricians.",
             "la": "Plebs pugnavit cum patriciis."
         },
         {
-            "en": "In the early days, when the plebs fought with the patricians, the plebs did not remain in the city.",
+            "en": "In the early days, when the plebs (sg.) fought with the patricians, the plebs (sg.) did not remain in the city.",
             "la": "In primis diebus, quando plebs pugnavit cum patriciis, plebs non remansit in urbe."
         },
         {
-            "en": "The plebs went to the Sacred Mountain.",
+            "en": "The plebs (sg.) went to the Sacred Mountain.",
             "la": "Plebs venit in Montem Sacrum."
         },
         {
-            "en": "But the plebs did not always remain on the Sacred Mountain.",
+            "en": "But the plebs (sg.) did not always remain on the Sacred Mountain.",
             "la": "Sed plebs non remansit semper in Monte Sacro."
         },
         {
-            "en": "The plebs returned to the city when the patricians gave them tribunes of the plebs.",
+            "en": "The plebs (sg.) returned to the city when the patricians gave them tribunes of the plebs (sg.).",
             "la": "Plebs rursus venit in urbem quando patricii dederunt tribunos plebis."
         },
         {
-            "en": "But now the plebs remained in the city.",
+            "en": "But now the plebs (sg.) remained in the city.",
             "la": "Sed nunc plebs remansit in urbe."
         },
         {
-            "en": "The plebs did not go to the Sacred Mountain.",
+            "en": "The plebs (sg.) did not go to the Sacred Mountain.",
             "la": "Plebs non venit in Montem Sacrum."
         },
         {
-            "en": "The plebs did not remain in the city because they loved the patricians.",
+            "en": "The plebs (sg.) did not remain in the city because they loved the patricians.",
             "la": "Plebs non remansit in urbe quia amaverunt patricios."
         },
         {
-            "en": "The plebs remained in the city because they loved Rome.",
+            "en": "The plebs (sg.) remained in the city because they loved Rome.",
             "la": "Plebs remansit in urbe quia amaverunt Romam."
         },
         {
@@ -2477,7 +2477,7 @@ phrases = {
             "la": "Senatus scripsit leges."
         },
         {
-            "en": "The plebs once again defeated the patricians.",
+            "en": "The plebs (sg.) once again defeated the patricians.",
             "la": "Plebs rursus vicit patricios."
         },
         {
@@ -2485,15 +2485,15 @@ phrases = {
             "la": "Patricii enim scripserunt leges."
         },
         {
-            "en": "After the patricians wrote down the laws, the plebs no longer fought with the patricians.",
+            "en": "After the patricians wrote down the laws, the plebs (sg.) no longer had a battle with the patricians.",
             "la": "Postquam patricii scripserunt leges, plebs non habuit pugnam cum patriciis."
         },
         {
-            "en": "The plebs were not in great danger.",
+            "en": "The plebs (sg.) were not in great danger.",
             "la": "Plebs non fuit in periculo magno."
         },
         {
-            "en": "The plebs knew the laws.",
+            "en": "The plebs (pl.) knew the laws.",
             "la": "Plebs sciverunt leges."
         },
         {
@@ -2520,11 +2520,11 @@ phrases = {
             "la": "Romani fuerunt boni legibus bonis."
         },
         {
-            "en": "But in the early days, the plebs did not know the laws.",
+            "en": "But in the early days, the plebs (sg.) did not know the laws.",
             "la": "Sed primis diebus plebs non scivit leges."
         },
         {
-            "en": "The plebs wanted good laws.",
+            "en": "The plebs (pl.) wanted good laws.",
             "la": "Plebs leges bonas voluerunt."
         },
         {
@@ -2576,15 +2576,15 @@ phrases = {
             "la": "Romani pugnaverunt magna fortitudine."
         },
         {
-            "en": "When the Gauls were in the city, the plebs did not fight with the patricians.",
+            "en": "When the Gauls were in the city, the plebs (sg.) did not fight with the patricians.",
             "la": "Quando Galli fuerunt in urbe, plebs non pugnavit cum patriciis."
         },
         {
-            "en": "And the patricians did not fight with the plebs.",
+            "en": "And the patricians did not fight with the plebs (sg.).",
             "la": "Et patricii non pugnaverunt cum plebe."
         },
         {
-            "en": "For the plebs fought with the Gauls.",
+            "en": "For the plebs (sg.) fought with the Gauls.",
             "la": "Plebs enim pugnavit cum Gallis."
         },
         {
@@ -2691,11 +2691,11 @@ phrases = {
             "la": "Romani fere semper bellum habuerunt."
         },
         {
-            "en": "When they did not have war with other nations, the patricians fought with the plebs.",
+            "en": "When they did not have war with other nations, the patricians fought with the plebs (sg.).",
             "la": "Quando bellum cum aliis nationibus non habuerunt, patricii pugnaverunt cum plebe."
         },
         {
-            "en": "When the patricians did not fight with the plebs, they had war with others.",
+            "en": "When the patricians did not fight with the plebs (sg.), they had war with others.",
             "la": "Quando patricii non pugnaverunt cum plebe, bellum habuerunt cum aliis."
         },
         {
