@@ -3824,4 +3824,774 @@ phrases = {
             "la": "Romani laeti fuerunt quia victoriam habuerunt."
         }
     ],
+
+    "story13": [
+        {
+            "en": "Saguntum fell.",
+            "la": "Saguntum cecidit."
+        },
+        {
+            "en": "The Punic soldiers came into the city.",
+            "la": "Milites Punici venerunt in urbem."
+        },
+        {
+            "en": "In the city, they captured much gold.",
+            "la": "In urbe ceperunt multum aurum."
+        },
+        {
+            "en": "They also captured other goods.",
+            "la": "Etiam ceperunt alia bona."
+        },
+        {
+            "en": "But Hannibal did not want to remain.",
+            "la": "Sed Hannibal non voluit remanere."
+        },
+        {
+            "en": "Hannibal wanted to go to Roman territory.",
+            "la": "Hannibal voluit venire in terram Romanam."
+        },
+        {
+            "en": "Therefore, Hannibal and the soldiers made a journey.",
+            "la": "Ergo Hannibal et milites fecerunt iter."
+        },
+        {
+            "en": "They came through Spain.",
+            "la": "Venerunt per Hispaniam."
+        },
+        {
+            "en": "They came across the Pyrenees into Gaul.",
+            "la": "Venerunt trans montes Pyrenaeos in Galliam."
+        },
+        {
+            "en": "But Hannibal did not remain in Gaul.",
+            "la": "Sed Hannibal non remansit in Gallia."
+        },
+        {
+            "en": "He wanted to see Rome.",
+            "la": "Voluit videre Romam."
+        },
+        {
+            "en": "It was necessary to fight with great courage.",
+            "la": "Necesse fuit pugnare fortitudine magna."
+        },
+        {
+            "en": "Therefore, Hannibal, with the soldiers, journeyed through Gaul.",
+            "la": "Hannibal ergo, cum militibus, iter fecit per Galliam."
+        },
+        {
+            "en": "They came to the Alps.",
+            "la": "Venerunt ad Alpes."
+        },
+        {
+            "en": "The Alps are great mountains.",
+            "la": "Alpes sunt montes magni."
+        },
+        {
+            "en": "The soldiers feared the Alps.",
+            "la": "Milites timuerunt Alpes."
+        },
+        {
+            "en": "But Hannibal was brave.",
+            "la": "Sed Hannibal fortis fuit."
+        },
+        {
+            "en": "Hannibal said that it was not necessary to fear the Alps.",
+            "la": "Hannibal dixit quod non fuit necesse timere Alpes."
+        },
+        {
+            "en": "The soldiers praised Hannibal.",
+            "la": "Milites laudaverunt Hannibalem."
+        },
+        {
+            "en": "They no longer feared the Alps.",
+            "la": "Non iam timuerunt Alpes."
+        },
+        {
+            "en": "And so they climbed the mountains.",
+            "la": "Itaque ascenderunt montes."
+        },
+        {
+            "en": "The Roman army wanted to fight with Hannibal in Gaul.",
+            "la": "Exercitus Romanus voluit pugnare cum Hannibale in Gallia."
+        },
+        {
+            "en": "But they could not, because Hannibal did not remain in Gaul.",
+            "la": "Sed non potuerunt, quia Hannibal non remansit in Gallia."
+        },
+        {
+            "en": "Hannibal and the soldiers climbed the Alps.",
+            "la": "Hannibal et milites ascenderunt Alpes."
+        },
+        {
+            "en": "Even the elephants came with Hannibal and the Punic army.",
+            "la": "Etiam elephanti venerunt cum Hannibale et exercitu Punico."
+        },
+        {
+            "en": "But in the Alps, they came to a steep cliff.",
+            "la": "Sed in Alpibus venerunt ad rupem arduam."
+        },
+        {
+            "en": "The soldiers could not descend.",
+            "la": "Milites non potuerunt descendere."
+        },
+        {
+            "en": "The elephants could not descend.",
+            "la": "Elephanti non potuerunt descendere."
+        },
+        {
+            "en": "Roman history wrote a great story about the steep cliff.",
+            "la": "Historia Romana scripsit fabulam magnam de rupe ardua."
+        },
+        {
+            "en": "The story said that the Punic soldiers made a path in the cliff: they placed fire on the cliff — the cliff was softened with vinegar — and so they made paths in the cliff.",
+            "la": "Fabula dixit quod milites Punici fecerunt viam in rupe: ignem posuerunt in rupe — rupes mollitur aceto — itaque vias fecerunt in rupe."
+        },
+        {
+            "en": "Is there truth in the story?",
+            "la": "Estne veritas in fabula?"
+        },
+        {
+            "en": "Probably there is no truth in the story.",
+            "la": "Probabiliter non est veritas in fabula."
+        },
+        {
+            "en": "But — the story said — Hannibal and the Punic army descended, with elephants, by the path in the cliff.",
+            "la": "Sed — fabula dixit — Hannibal et exercitus Punicus descenderunt, cum elephantis per viam in rupe."
+        }
+    ],
+
+    "exercise13": [
+        {
+            "en": "Hannibal had a bitter hatred against the Romans.",
+            "la": "Hannibal habuit odium acre contra Romanos."
+        },
+        {
+            "en": "The Romans had defeated Carthage in the First Punic War.",
+            "la": "Romani vicerant Carthaginem in primo bello Punico."
+        },
+        {
+            "en": "Therefore, the Carthaginians were fierce.",
+            "la": "Ergo Carthaginienses feroces fuerunt."
+        },
+        {
+            "en": "In the first war, the Punics had been good soldiers.",
+            "la": "In primo bello, Punici fuerant boni milites."
+        },
+        {
+            "en": "Hannibal came with the army across the mountains.",
+            "la": "Hannibal venit cum exercitu trans montes."
+        },
+        {
+            "en": "The soldiers wanted to receive much gold.",
+            "la": "Milites voluerunt aurum multum accipere."
+        },
+        {
+            "en": "Hannibal had promised much gold.",
+            "la": "Hannibal promiserat multum aurum."
+        },
+        {
+            "en": "Therefore, the soldiers were happy when they captured Saguntum.",
+            "la": "Ergo milites laeti fuerunt quando ceperunt Saguntum."
+        },
+        {
+            "en": "The Roman army came against Hannibal.",
+            "la": "Exercitus Romanus venit contra Hannibalem."
+        },
+        {
+            "en": "The Senate sent excellent soldiers.",
+            "la": "Senatus misit milites egregios."
+        },
+        {
+            "en": "The excellent soldiers were brave.",
+            "la": "Milites egregii fortitudine fuerunt."
+        },
+        {
+            "en": "In the First Punic War, the Roman soldiers had been on ships — now they are in Gaul.",
+            "la": "In primo bello Punico milites Romani fuerant in navibus — nunc sunt in Gallia."
+        },
+        {
+            "en": "But they could not find Hannibal in Gaul.",
+            "la": "Sed non potuerunt invenire Hannibalem in Gallia."
+        },
+        {
+            "en": "Because Hannibal had come to the Alps.",
+            "la": "Quia Hannibal venerat ad Alpes."
+        },
+        {
+            "en": "Hannibal had made many paths in the steep cliff.",
+            "la": "Hannibal fecerat vias multas in rupe ardua."
+        },
+        {
+            "en": "The soldiers had placed vinegar on the cliff.",
+            "la": "Milites posuerant acetum in rupe."
+        },
+        {
+            "en": "The elephants were happy — they did not want to remain in the Alps.",
+            "la": "Elephanti laeti fuerunt — elephanti non voluerunt remanere in Alpibus."
+        },
+        {
+            "en": "The elephants loved Africa.",
+            "la": "Elephanti amaverunt Africam."
+        },
+        {
+            "en": "The elephants feared fire.",
+            "la": "Elephanti timuerunt ignem."
+        },
+        {
+            "en": "But the soldiers had not feared the fire.",
+            "la": "Sed milites non timuerant ignem."
+        },
+        {
+            "en": "The white lamb did not love fire.",
+            "la": "Agnus albus non amavit ignem."
+        },
+        {
+            "en": "Horatius did not love fire.",
+            "la": "Horatius non amavit ignem."
+        },
+        {
+            "en": "Fire had fallen on the bridge — and Horatius fell into the water.",
+            "la": "Ignis ceciderat in pontem — et Horatius cecidit in aquam."
+        },
+        {
+            "en": "Columbus did not hate Isabella.",
+            "la": "Columbus non odit Isabellam."
+        },
+        {
+            "en": "Isabella had given money and ships.",
+            "la": "Isabella dederat pecuniam et naves."
+        },
+        {
+            "en": "Maria did not hate the white lamb: the white lamb had come to school with Maria.",
+            "la": "Maria non odit agnum album: agnus albus venerat in scholam cum Maria."
+        },
+        {
+            "en": "In school, Maria had seen Marcus.",
+            "la": "In schola Maria viderat Marcum."
+        },
+        {
+            "en": "Marcus did not hate Maria.",
+            "la": "Marcus non odit Mariam."
+        },
+        {
+            "en": "And Maria did not hate Marcus.",
+            "la": "Et Maria non odit Marcum."
+        }
+    ],
+
+    "story14": [
+        {
+            "en": "Hannibal and the Punic army had descended from the Alps.",
+            "la": "Hannibal et exercitus Punicus descenderant ex Alpibus."
+        },
+        {
+            "en": "They had come into Italy.",
+            "la": "Venerant in Italiam."
+        },
+        {
+            "en": "In Italy, they found the Roman army at the river Ticinus.",
+            "la": "In Italia invenerunt exercitum Romanum ad flumen Ticinum."
+        },
+        {
+            "en": "Scipio was the Roman general.",
+            "la": "Scipio fuit imperator Romanus."
+        },
+        {
+            "en": "Scipio was an excellent and fierce general.",
+            "la": "Scipio fuit imperator egregius et acer."
+        },
+        {
+            "en": "But Hannibal defeated Scipio and the Roman army.",
+            "la": "Sed Hannibal vicit Scipionem et exercitum Romanum."
+        },
+        {
+            "en": "Now the Roman general is Sempronius.",
+            "la": "Nunc imperator Romanus est Sempronius."
+        },
+        {
+            "en": "Hannibal knew that Sempronius was impatient.",
+            "la": "Hannibal scivit quod Sempronius fuit impatiens."
+        },
+        {
+            "en": "Therefore, Hannibal set a trap.",
+            "la": "Hannibal ergo fecit insidias."
+        },
+        {
+            "en": "Hannibal gave food (sg.) to his soldiers.",
+            "la": "Hannibal dedit cibum militibus."
+        },
+        {
+            "en": "But the Roman soldiers had not received food (pl.).",
+            "la": "Sed milites Romani non acceperant cibos."
+        },
+        {
+            "en": "Therefore, Hannibal sent cavalry (after they had received food (sg.)) across the river Trebia.",
+            "la": "Hannibal ergo misit equites (postquam cibum acceperant) trans flumen Trebiam."
+        },
+        {
+            "en": "Sempronius saw the cavalry.",
+            "la": "Sempronius vidit equites."
+        },
+        {
+            "en": "The Roman soldiers had not received food (pl.).",
+            "la": "Romani milites non acceperant cibos."
+        },
+        {
+            "en": "But Sempronius sent the Roman soldiers against the Punic cavalry.",
+            "la": "Sed Sempronius misit milites Romanos contra equites Punicos."
+        },
+        {
+            "en": "The Romans crossed the river.",
+            "la": "Romani venerunt per flumen."
+        },
+        {
+            "en": "The water was cold — and the Romans had not had food (pl.).",
+            "la": "Aqua frigida fuit — et Romani non habuerant cibos."
+        },
+        {
+            "en": "The Punic cavalry had food (pl.) before the battle.",
+            "la": "Equites Punici habuerant cibos ante pugnam."
+        },
+        {
+            "en": "After the Romans crossed the river, it was necessary to fight with the Punic soldiers.",
+            "la": "Postquam Romani venerunt trans flumen, necesse fuit pugnare cum militibus Punicis."
+        },
+        {
+            "en": "The battle was fierce.",
+            "la": "Pugna ferox fuit."
+        },
+        {
+            "en": "The Punic soldiers were fierce — but the Roman soldiers had not received food (pl.) — they came over a cold river.",
+            "la": "Milites Punici acres sunt — sed milites Romani non acceperant cibos — venerant per flumen frigidum."
+        },
+        {
+            "en": "Other Punic soldiers came behind the Romans.",
+            "la": "Alii milites Punici venerunt post Romanos."
+        },
+        {
+            "en": "Therefore, the Romans could not defeat the Punics.",
+            "la": "Ergo Romani non potuerunt vincere Punicos."
+        },
+        {
+            "en": "Hannibal had a remarkable victory.",
+            "la": "Hannibal habuit victoriam egregiam."
+        },
+        {
+            "en": "Not many Romans remained after the battle.",
+            "la": "Non multi Romani remanserunt post pugnam."
+        },
+        {
+            "en": "The Romans were not happy.",
+            "la": "Romani non fuerunt laeti."
+        },
+        {
+            "en": "But the Punic soldiers shouted because they were happy.",
+            "la": "Sed milites Punici exclamaverunt quia laeti fuerunt."
+        }
+    ],
+
+    "exercise14": [
+        {
+            "en": "The Roman army was defeated.",
+            "la": "Romanus exercitus victus est."
+        },
+        {
+            "en": "Columbus was sent to America.",
+            "la": "Columbus missus est in Americam."
+        },
+        {
+            "en": "The white lamb was not sent to school.",
+            "la": "Agnus albus non est missus in scholam."
+        },
+        {
+            "en": "But the lamb came to school.",
+            "la": "Sed agnus venit in scholam."
+        },
+        {
+            "en": "Maria was sent to school.",
+            "la": "Maria est missa in scholam."
+        },
+        {
+            "en": "The pigs were not sent to school.",
+            "la": "Porci non sunt missi in scholam."
+        },
+        {
+            "en": "Money was placed on the ships.",
+            "la": "Pecunia posita est in naves."
+        },
+        {
+            "en": "The money was received.",
+            "la": "Pecunia accepta est."
+        },
+        {
+            "en": "The Gauls were expelled from Roman territory.",
+            "la": "Galli expulsi sunt e terra Romana."
+        },
+        {
+            "en": "War was promised.",
+            "la": "Bellum est promissum."
+        },
+        {
+            "en": "Hannibal was not captured.",
+            "la": "Hannibal non est captus."
+        },
+        {
+            "en": "War was waged in Gaul.",
+            "la": "Bellum est gestum in Gallia."
+        },
+        {
+            "en": "The expelled soldiers were not happy.",
+            "la": "Milites expulsi non fuerunt laeti."
+        },
+        {
+            "en": "Maria was loved.",
+            "la": "Maria est amata."
+        },
+        {
+            "en": "Maria also loved Marcus.",
+            "la": "Maria etiam amavit Marcum."
+        },
+        {
+            "en": "Marcus was loved by Maria.",
+            "la": "Marcus amatus est a Maria."
+        },
+        {
+            "en": "Maria was loved by Marcus.",
+            "la": "Maria amata est a Marco."
+        },
+        {
+            "en": "George Washington was loved by the United States of America.",
+            "la": "Georgius Washington amatus est a Statibus Foederatis Americae."
+        },
+        {
+            "en": "Cincinnatus was loved by the Roman citizens.",
+            "la": "Cincinnatus amatus est a civibus Romanis."
+        },
+        {
+            "en": "Cincinnatus saved Rome with good strategies.",
+            "la": "Cincinnatus Romam servavit consiliis bonis."
+        },
+        {
+            "en": "Rome was saved by Cincinnatus.",
+            "la": "Roma servata est a Cincinnato."
+        },
+        {
+            "en": "Peace was not promised by Hannibal.",
+            "la": "Pax non promissa est ab Hannibale."
+        },
+        {
+            "en": "Hannibal promised eternal hatred and war.",
+            "la": "Hannibal promisit odium aeternum et bellum."
+        },
+        {
+            "en": "War was waged by Hannibal.",
+            "la": "Bellum gestum est ab Hannibale."
+        },
+        {
+            "en": "Hannibal was not captured by the Romans.",
+            "la": "Hannibal non captus est a Romanis."
+        }
+    ],
+
+    "story15": [
+        {
+            "en": "The Roman army was defeated by Hannibal at the river Trebia.",
+            "la": "Romanus exercitus victus est ab Hannibale ad flumen Trebiam."
+        },
+        {
+            "en": "In the next year, Hannibal achieved another great victory.",
+            "la": "In proximo anno, Hannibal fecit aliam magnam victoriam."
+        },
+        {
+            "en": "By then, another consul was the Roman general.",
+            "la": "Iam alius consul fuit imperator Romanus."
+        },
+        {
+            "en": "This consul was Gaius Flaminius.",
+            "la": "Hic consul fuit Gaius Flaminius."
+        },
+        {
+            "en": "Gaius Flaminius said that Hannibal could not come across the Apennine mountains, because there was snow on the mountains.",
+            "la": "Gaius Flaminius dixit quod Hannibal non potuit venire trans montes Apenninos, quia nix fuit in montibus."
+        },
+        {
+            "en": "But Hannibal did not fear the snow.",
+            "la": "Sed Hannibal non timuit nivem."
+        },
+        {
+            "en": "Hannibal came with the army across the mountains.",
+            "la": "Hannibal venit cum exercitu trans montes."
+        },
+        {
+            "en": "He came between Flaminius and Rome.",
+            "la": "Venit inter Flaminium et Romam."
+        },
+        {
+            "en": "Rome was afraid.",
+            "la": "Roma timuit."
+        },
+        {
+            "en": "Flaminius was afraid.",
+            "la": "Flaminius timuit."
+        },
+        {
+            "en": "They did not want Hannibal to capture Rome.",
+            "la": "Non voluerunt Hannibalem capere Romam."
+        },
+        {
+            "en": "Therefore, Flaminius came to fight.",
+            "la": "Flaminius ergo venit ad pugnam."
+        },
+        {
+            "en": "But Hannibal again set a trap.",
+            "la": "Sed Hannibal rursus fecit insidias."
+        },
+        {
+            "en": "Hannibal loved to fight with ambushes.",
+            "la": "Hannibal amavit pugnare insidiis."
+        },
+        {
+            "en": "Flaminius and the Roman army came through narrow passages.",
+            "la": "Flaminius et exercitus Romanus venerunt per angustias."
+        },
+        {
+            "en": "Hannibal had placed Punic soldiers behind the narrow passages in ambush.",
+            "la": "Hannibal posuerat milites Punicos post angustias in insidiis."
+        },
+        {
+            "en": "So when the Roman army came out of the narrow passages, they found the Punic soldiers in ambush.",
+            "la": "Itaque quando exercitus Romanus venit ex angustiis, invenerunt milites Punicos in insidiis."
+        },
+        {
+            "en": "The Punic soldiers were in front of and also behind the Roman army.",
+            "la": "Milites Punici fuerunt ante et etiam post exercitum Romanum."
+        },
+        {
+            "en": "The Roman soldiers fought.",
+            "la": "Romani milites pugnaverunt."
+        },
+        {
+            "en": "They were brave men.",
+            "la": "Viri fortes fuerunt."
+        },
+        {
+            "en": "But they could not defeat the Punic soldiers.",
+            "la": "Sed non potuerunt vincere milites Punicos."
+        },
+        {
+            "en": "For the Punics were in front of the Romans.",
+            "la": "Punici enim fuerunt ante Romanos."
+        },
+        {
+            "en": "And they were also behind the Romans.",
+            "la": "Et etiam fuerunt post Romanos."
+        },
+        {
+            "en": "The Roman soldiers could barely see the Punic soldiers, because there was fog at Lake Trasimene.",
+            "la": "Romani milites vix potuerunt videre milites Punicos, quia nebulae fuerunt ad Lacum Trasimenum."
+        },
+        {
+            "en": "Therefore, the brave Roman army was defeated by Hannibal.",
+            "la": "Ergo exercitus Romanus fortis victus est ab Hannibale."
+        },
+        {
+            "en": "Hannibal had again defeated the Romans.",
+            "la": "Hannibal rursus vicerat Romanos."
+        },
+        {
+            "en": "Hannibal was a good and brave general.",
+            "la": "Hannibal fuit imperator bonus et fortis."
+        }
+    ],
+
+    "exercise15": [
+        {
+            "en": "Marcus was defeated by Maria.",
+            "la": "Marcus victus est a Maria."
+        },
+        {
+            "en": "For Marcus loved Maria.",
+            "la": "Marcus enim amavit Mariam."
+        },
+        {
+            "en": "Marcus said that Maria was a little lamb.",
+            "la": "Marcus dixit quod Maria fuit agna parva."
+        },
+        {
+            "en": "Did Maria say baa?",
+            "la": "Dixitne Maria baa?"
+        },
+        {
+            "en": "And Maria also said that Marcus was a little lamb.",
+            "la": "Et Maria etiam dixit quod Marcus fuit agnus parvus."
+        },
+        {
+            "en": "Maria was loved by Marcus.",
+            "la": "Maria amata est a Marco."
+        },
+        {
+            "en": "In school, the little white lamb was heard: for it said: baa.",
+            "la": "In schola, parvus agnus albus auditus est: dixit enim: baa."
+        },
+        {
+            "en": "And in the forum, this little pig was heard: for it said: oink!",
+            "la": "Et in foro, hie parvus porcus auditus est: dixit enim: oui!"
+        },
+        {
+            "en": "Cincinnatus was made Dictator.",
+            "la": "Cincinnatus est creatus Dictator."
+        },
+        {
+            "en": "But Cincinnatus did not want to be Dictator.",
+            "la": "Sed Cincinnatus non voluit esse Dictator."
+        },
+        {
+            "en": "Many things were said by Cincinnatus.",
+            "la": "Multa dicta sunt a Cincinnato."
+        },
+        {
+            "en": "Many things were said by the Roman Senate.",
+            "la": "Multa dicta sunt a senatu Romano."
+        },
+        {
+            "en": "But Cincinnatus also did many great things.",
+            "la": "Sed Cincinnatus etiam fecit multa et magna."
+        },
+        {
+            "en": "Many great deeds were done by Cincinnatus.",
+            "la": "Multa et magna facta sunt a Cincinnato."
+        },
+        {
+            "en": "Cincinnatus was great in courage and strategy.",
+            "la": "Cincinnatus fuit magnus fortitudine et consiliis."
+        },
+        {
+            "en": "Tarquinius was expelled by the Romans.",
+            "la": "Tarquinius expulsus est a Romanis."
+        },
+        {
+            "en": "Tarquinius wanted to remain in the city — but he was not accepted.",
+            "la": "Tarquinius voluit remanere in urbe — sed non acceptus est."
+        },
+        {
+            "en": "Money was not held by Columbus.",
+            "la": "Pecunia non est habita a Columbo."
+        },
+        {
+            "en": "But money was held by Isabella.",
+            "la": "Sed pecunia est habita ab Isabella."
+        },
+        {
+            "en": "Isabella gave many good ships.",
+            "la": "Isabella dedit multas naves bonas."
+        },
+        {
+            "en": "Horatius stood on the Roman bridge.",
+            "la": "Horatius stetit in ponte Romano."
+        },
+        {
+            "en": "The bridge was built by the Romans.",
+            "la": "Pons factus est a Romanis."
+        },
+        {
+            "en": "But fire was thrown on the bridge.",
+            "la": "Sed ignis est iactus in pontem."
+        },
+        {
+            "en": "And the bridge fell into the river.",
+            "la": "Et pons cecidit in flumen."
+        },
+        {
+            "en": "The Roman army fell into an ambush at Lake Trasimene.",
+            "la": "Romanos exercitus venit in insidias ad Lacum Trasimenum."
+        },
+        {
+            "en": "Hannibal defeated the Romans with an ambush.",
+            "la": "Hannibal vicit Romanos insidiis."
+        },
+        {
+            "en": "Many Romans were thrown into the lake.",
+            "la": "Multi Romani iacti sunt in lacum."
+        },
+        {
+            "en": "The Roman army was heard by Hannibal.",
+            "la": "Exercitus Romanus auditus est ab Hannibale."
+        },
+        {
+            "en": "But the Punic army was not heard by the Romans: for the Punics were in an ambush.",
+            "la": "Sed exercitus Punicus non est auditus a Romanis: Punici enim fuerunt in insidiis."
+        },
+        {
+            "en": "Many good strategies were made by the Roman Senate.",
+            "la": "Multa bona consilia facta sunt a senatu Romano."
+        },
+        {
+            "en": "Many fierce soldiers were in the Punic army.",
+            "la": "Multi milites feroces fuerunt in exercitu Punico."
+        },
+        {
+            "en": "Hannibal and the elephants descended the steps.",
+            "la": "Hannibal et elephanti descenderunt gradibus."
+        },
+        {
+            "en": "The elephants were not small animals.",
+            "la": "Elephanti non fuerunt animalia parva."
+        },
+        {
+            "en": "The elephants made great journeys — for they came across the Alps with Hannibal.",
+            "la": "Elephanti fecerunt itinera magna — venerunt enim trans Alpes cum Hannibale."
+        },
+        {
+            "en": "Could Hannibal throw an elephant across the Alps?",
+            "la": "Potuitne Hannibal iacere elephantum trans Alpes?"
+        },
+        {
+            "en": "Hannibal was a brave man.",
+            "la": "Hannibal fuit vir fortis."
+        },
+        {
+            "en": "He was also a brave general.",
+            "la": "Fuit etiam imperator fortis."
+        },
+        {
+            "en": "But even a brave general could not throw elephants.",
+            "la": "Sed etiam imperator fortis non potuit iacere elephantos."
+        },
+        {
+            "en": "But Hannibal could throw a lamb into the river.",
+            "la": "Sed Hannibal potuit iacere agnum in flumen."
+        },
+        {
+            "en": "And he could also throw other animals.",
+            "la": "Et etiam potuit iacere alia animalia."
+        },
+        {
+            "en": "Mohammed wanted the mountain to come — but the mountain did not come.",
+            "la": "Mohammed voluit montem venire — sed mons non venit."
+        },
+        {
+            "en": "Therefore, Mohammed came to the mountain.",
+            "la": "Ergo Mohammed venit ad montem."
+        },
+        {
+            "en": "Could George Washington throw money across the Potomac River?",
+            "la": "Potuitne Georgius Washington iacere pecuniam trans flumen Potomac?"
+        },
+        {
+            "en": "Of course — for the American Senate could also throw money across the Atlantic Ocean.",
+            "la": "Utique — senatus enim Americanus potuit etiam iacere pecuniam trans Oceanum Atlanticum."
+        }
+    ],
+
+    "story16": [],
+
+    "exercise16": [],
+
+    "story17": [],
+
+    "exercise17": [],
+
+    "story18": [],
+
+    "exercise18": [],
 }
