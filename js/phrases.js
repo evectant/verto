@@ -2445,11 +2445,11 @@ phrases = {
             "la": "Plebs non venit in Montem Sacrum."
         },
         {
-            "en": "The plebs (sg.) did not remain in the city because they loved the patricians.",
+            "en": "The plebs did not remain (sg.) in the city because they loved (pl.) the patricians.",
             "la": "Plebs non remansit in urbe quia amaverunt patricios."
         },
         {
-            "en": "The plebs (sg.) remained in the city because they loved Rome.",
+            "en": "The plebs remained (sg.) in the city because they loved (pl.) Rome.",
             "la": "Plebs remansit in urbe quia amaverunt Romam."
         },
         {
@@ -2466,7 +2466,7 @@ phrases = {
         },
         {
             "en": "After the Roman men saw the laws of Solon in Greece, they returned to Roman land.",
-            "la": "Postquam viri Romini viderunt leges Solonis in Graecia, rursus venerunt in terram Romanam."
+            "la": "Postquam viri Romani viderunt leges Solonis in Graecia, rursus venerunt in terram Romanam."
         },
         {
             "en": "They returned to the city again.",
@@ -3017,7 +3017,7 @@ phrases = {
             "la": "Multas naves habuerunt."
         },
         {
-            "en": "They traded with many nations.",
+            "en": "They made trade with many nations.",
             "la": "Mercaturam fecerunt cum multis nationibus."
         },
         {
@@ -3077,7 +3077,7 @@ phrases = {
             "la": "Carthaginienses etiam habuerunt exercitum."
         },
         {
-            "en": "But the Carthaginian men did not want to fight — the Carthaginians wanted to trade — they wanted to have a lot of money.",
+            "en": "But the Carthaginian men did not want to fight — the Carthaginians wanted to make trade — they wanted to have a lot of money.",
             "la": "Sed viri Carthaginienses non voluerunt pugnare — Carthaginienses voluerunt mercaturam facere — voluerunt habere multam pecuniam."
         },
         {
@@ -3271,7 +3271,7 @@ phrases = {
 
     "story11": [
         {
-            "en": "Rome fought three wars with Carthage.",
+            "en": "Rome waged three wars with Carthage.",
             "la": "Roma gessit tria bella cum Carthagine."
         },
         {
@@ -3335,7 +3335,7 @@ phrases = {
             "la": "Sed Carthaginienses non voluerunt Romanos esse in Sicilia."
         },
         {
-            "en": "The Carthaginians wanted to trade in Sicily.",
+            "en": "The Carthaginians wanted to make trade in Sicily.",
             "la": "Carthaginienses voluerunt mercaturam facere in Sicilia."
         },
         {
@@ -3347,7 +3347,7 @@ phrases = {
             "la": "Itaque Romani bellum gesserunt cum Carthaginiensibus."
         },
         {
-            "en": "The First Punic War began.",
+            "en": "It was the First Punic War.",
             "la": "Primum bellum Punicum fuit."
         },
         {
