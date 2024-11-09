@@ -4583,15 +4583,669 @@ phrases = {
         }
     ],
 
-    "story16": [],
+    "story16": [
+        {
+            "en": "After the Roman army was defeated at Lake Trasimene, a great man was made Roman Dictator: Quintus Fabius Maximus.",
+            "la": "Postquam exercitus Romanus victus est ad Lacum Trasimenum, vir magnus creatus est Dictator Romanus: Quintus Fabius Maximus."
+        },
+        {
+            "en": "Fabius saw that he could not defeat Hannibal immediately.",
+            "la": "Fabius vidit quod non potuit vincere Hannibalem statim."
+        },
+        {
+            "en": "Therefore, Fabius wanted to wait.",
+            "la": "Ergo Fabius voluit expectare."
+        },
+        {
+            "en": "Because Fabius always wanted to wait, the Romans gave him a new name: they called Fabius 'Cunctator.'",
+            "la": "Quia Fabius semper voluit expectare, Romani dederunt novum nomen: vocaverunt Fabium 'Cunctatorem.'"
+        },
+        {
+            "en": "The Romans did not see that Fabius was doing good.",
+            "la": "Romani non viderunt quod Fabius bonum faciebat."
+        },
+        {
+            "en": "But it was necessary to wait.",
+            "la": "Sed necesse fuit expectare."
+        },
+        {
+            "en": "Hannibal wanted to fight a great battle with the Roman army.",
+            "la": "Hannibal voluit pugnare magnam pugnam cum exercitu Romano."
+        },
+        {
+            "en": "The Roman citizens wanted a great battle with Hannibal.",
+            "la": "Cives Romani voluerunt magnam pugnam cum Hannibale."
+        },
+        {
+            "en": "But it was good to wait.",
+            "la": "Sed bonum fuit expectare."
+        },
+        {
+            "en": "Fabius wanted to win with a good plan.",
+            "la": "Fabius voluit vincere consilio bono."
+        },
+        {
+            "en": "Therefore, Fabius waited.",
+            "la": "Fabius ergo expectavit."
+        },
+        {
+            "en": "Fabius did not fight.",
+            "la": "Fabius non pugnavit."
+        },
+        {
+            "en": "But the Roman citizens did not love waiting.",
+            "la": "Sed cives Romani non amaverunt expectare."
+        },
+        {
+            "en": "They said: Fabius is not a good commander.",
+            "la": "Dixerunt: Fabius non est bonus imperator."
+        },
+        {
+            "en": "Therefore, the next year (217 BC) they elected two consuls: Lucius Aemilius Paulus and Gaius Terentius Varro.",
+            "la": "Ergo proximo anno (217 BC) elegerunt duos consules: Lucium Aemilium Paulum, et Gaium Terentium Varronem."
+        },
+        {
+            "en": "They no longer had Fabius as Dictator.",
+            "la": "Non iam habuerunt Fabium Dictatorem."
+        },
+        {
+            "en": "The Roman writer, Livy, said that Aemilius Paulus did not want to fight with Hannibal, but Varro wanted to fight.",
+            "la": "Scriptor Romanus, Livius, dixit quod Aemilius Paulus non voluit pugnare cum Hannibale, sed Varro voluit pugnare."
+        },
+        {
+            "en": "Did Livy tell the truth? It is not clear.",
+            "la": "Dixitne Livius veritatem? Non est clarum."
+        },
+        {
+            "en": "But, according to Livy, Hannibal wanted to fight - and Hannibal knew that Paulus did not want to fight, but Varro wanted to.",
+            "la": "Sed, secundum Livium, Hannibal voluit pugnare - et Hannibal scivit quod Paulus non voluit pugnare, sed Varro voluit."
+        },
+        {
+            "en": "Paulus and Varro were commanders on alternate days.",
+            "la": "Paulus et Varro fuerunt imperatores in alternis diebus."
+        },
+        {
+            "en": "Thus, when Varro was commander, Hannibal prepared for battle.",
+            "la": "Itaque, quando Varro fuit imperator, Hannibal paravit ad pugnam."
+        },
+        {
+            "en": "And Varro fought with Hannibal.",
+            "la": "Et Varro fecit pugnam cum Hannibale."
+        },
+        {
+            "en": "But Hannibal was a good commander.",
+            "la": "Sed Hannibal fuit imperator bonus."
+        },
+        {
+            "en": "And Varro was not a good commander.",
+            "la": "Et Varro non fuit imperator bonus."
+        },
+        {
+            "en": "Therefore, Hannibal again defeated the Romans.",
+            "la": "Ergo Hannibal iterum vicit Romanos."
+        },
+        {
+            "en": "The battle took place at Cannae.",
+            "la": "Pugna facta est ad Cannas."
+        }
+    ],
 
-    "exercise16": [],
+    "exercise16": [
+        {
+            "en": "Peace is not promised. But peace is good.",
+            "la": "Pax non promissa est. Sed pax est bona."
+        },
+        {
+            "en": "The Roman soldiers are ready for battle.",
+            "la": "Milites Romani parati sunt ad pugnam."
+        },
+        {
+            "en": "For the commander promised a fierce battle.",
+            "la": "Imperator enim promisit pugnam acrem."
+        },
+        {
+            "en": "The soldiers are also fierce and brave.",
+            "la": "Milites etiam acres sunt et fortes."
+        },
+        {
+            "en": "They did not want to remain in the city, they wanted to fight with Hannibal.",
+            "la": "Non voluerunt remanere in urbe, voluerunt pugnare cum Hannibale."
+        },
+        {
+            "en": "Fabius was asked to fight.",
+            "la": "Fabius rogatus est pugnare."
+        },
+        {
+            "en": "Rome was saved by Fabius.",
+            "la": "Roma servata est a Fabio."
+        },
+        {
+            "en": "In the first days, Rome was saved by Horatius.",
+            "la": "Primis diebus, Roma servata est ab Horatio."
+        },
+        {
+            "en": "For Horatius fought on the bridge.",
+            "la": "Horatius enim pugnavit in ponte."
+        },
+        {
+            "en": "Horatius fell into the river because fire fell on the bridge.",
+            "la": "Horatius cecidit in flumen, quia ignis cecidit in pontem."
+        },
+        {
+            "en": "Hannibal defeated the Romans because the Romans had not received food.",
+            "la": "Hannibal vicit Romanos quia Romani non acceperant cibum."
+        },
+        {
+            "en": "Columbus wanted to find India, but he found America.",
+            "la": "Columbus voluit invenire Indiam, sed invenit Americam."
+        },
+        {
+            "en": "And so India was not found by Columbus.",
+            "la": "Itaque India non est inventa a Columbo."
+        },
+        {
+            "en": "A white lamb was found in the school.",
+            "la": "Agnus albus inventus est in schola."
+        },
+        {
+            "en": "Was it necessary to have a lamb in the school? No.",
+            "la": "Fuitne necesse habere agnum in schola? Non."
+        },
+        {
+            "en": "It is not necessary to have lambs in school.",
+            "la": "Non est necesse habere agnos in schola."
+        },
+        {
+            "en": "But it is necessary to have boys and girls in schools.",
+            "la": "Sed necesse est habere pueros et puellas in scholis."
+        },
+        {
+            "en": "Is it necessary to have pigs in the market? It is not necessary.",
+            "la": "Estne necesse habere porcos in foro? Non est necesse."
+        },
+        {
+            "en": "Romans are in the market.",
+            "la": "Romani sunt in foro."
+        },
+        {
+            "en": "And Marcus Porcius Cato is in the market.",
+            "la": "Et Marcus Porcius Cato est in foro."
+        },
+        {
+            "en": "Cato was a strong and great Roman.",
+            "la": "Cato fuit Romanus fortis et magnus."
+        },
+        {
+            "en": "Cato had great power in the city.",
+            "la": "Cato habuerat magnam potestatem in urbe."
+        },
+        {
+            "en": "Cato fought in many wars.",
+            "la": "Cato pugnavit in multis bellis."
+        },
+        {
+            "en": "Cato was fierce against Carthage.",
+            "la": "Cato fuit ferox contra Carthaginem."
+        },
+        {
+            "en": "Cato said that it was necessary to defeat Carthage.",
+            "la": "Cato dixit quod necesse fuit vincere Carthaginem."
+        },
+        {
+            "en": "Carthage had great power at sea.",
+            "la": "Carthago habuit magnam potestatem in mari."
+        },
+        {
+            "en": "Carthage was strong with ships.",
+            "la": "Carthago fuit fortis navibus."
+        },
+        {
+            "en": "But Rome was strong with a great army.",
+            "la": "Sed Roma fuit fortis exercitu magno."
+        },
+        {
+            "en": "In the First Punic War, Rome had defeated Carthage.",
+            "la": "In primo bello Punico Roma vicerat Carthaginem."
+        },
+        {
+            "en": "But in the Second Punic War, Carthage almost defeated Rome.",
+            "la": "Sed in bello Punico secundo Carthago fere vicit Romam."
+        },
+        {
+            "en": "Rome was almost defeated by Hannibal.",
+            "la": "Roma fere victa est ab Hannibale."
+        },
+        {
+            "en": "The Punic soldiers were in ambush.",
+            "la": "Milites Punici fuerunt in insidiis."
+        },
+        {
+            "en": "The Romans came into an ambush.",
+            "la": "Romani venerunt in insidias."
+        },
+        {
+            "en": "The Romans were thrown into the lake - the lake was cold.",
+            "la": "Romani iacti sunt in lacum - lacus frigidus fuit."
+        },
+        {
+            "en": "The water was rigid.",
+            "la": "Aqua rigida fuit."
+        },
+        {
+            "en": "It is bad to be in cold water.",
+            "la": "Malum est esse in aqua frigida."
+        },
+        {
+            "en": "But it is also bad to be in hot water.",
+            "la": "Sed etiam malum est esse in aqua calida."
+        }
+    ],
 
-    "story17": [],
+    "story17": [
+        {
+            "en": "After they were defeated by Hannibal at Cannae, the Romans did not have great victories for three years.",
+            "la": "Postquam victi sunt ab Hannibale ad Cannas, Romani non habuerunt victorias magnas per tres annos."
+        },
+        {
+            "en": "But after three years, Marcellus became a Roman consul.",
+            "la": "Sed post tres annos Marcellus factus est consul Romanus."
+        },
+        {
+            "en": "Marcellus captured some cities.",
+            "la": "Marcellus cepit aliquas urbes."
+        },
+        {
+            "en": "But Scipio Africanus was the greatest Roman general in the later years.",
+            "la": "Sed Scipio Africanus fuit maximus imperator Romanus in ultimis annis."
+        },
+        {
+            "en": "For Scipio defeated the Punic army in Spain.",
+            "la": "Scipio enim vicit exercitum Punicum in Hispania."
+        },
+        {
+            "en": "After victories in Spain, Scipio nevertheless wished to send the army to Africa.",
+            "la": "Post victorias in Hispania, Scipio nihilominus voluit mittere exercitum in Africam."
+        },
+        {
+            "en": "Therefore the Roman senate did not want to send the Roman army into Africa.",
+            "la": "Ergo senatus Romanus non voluit mittere exercitum Romanum in Africam."
+        },
+        {
+            "en": "Certain senators said: 'It is not necessary to send the army into Africa, for Hannibal, the greatest Carthaginian general, is in Italy.'",
+            "la": "Quidam senatores dixerunt: 'Non est necesse mittere exercitum in Africam: Hannibal enim, maximus imperator Punicus, est in Italia.'"
+        },
+        {
+            "en": "But Scipio nevertheless wished to send the army into Africa.",
+            "la": "Sed Scipio nihilominus voluit mittere exercitum in Africam."
+        },
+        {
+            "en": "Therefore, the senate gave the authority to send the army into Africa.",
+            "la": "Ergo senatus dedit potestatem mittere exercitum in Africam."
+        },
+        {
+            "en": "But they did not give money for the army.",
+            "la": "Sed non dederunt pecuniam pro exercitu."
+        },
+        {
+            "en": "Therefore, other Romans gave money for the expedition.",
+            "la": "Ergo alii Romani pecuniam dederunt pro expeditione."
+        },
+        {
+            "en": "Scipio placed soldiers on ships, and they sailed to Africa with many ships.",
+            "la": "Scipio posuit milites in naves, et navigaverunt in Africam multis navibus."
+        },
+        {
+            "en": "In Africa, there was King Masinissa.",
+            "la": "In Africa fuit rex Masinissa."
+        },
+        {
+            "en": "Masinissa was the king of Numidia.",
+            "la": "Masinissa fuit rex Numidiae."
+        },
+        {
+            "en": "Masinissa gave assistance.",
+            "la": "Masinissa dedit auxilia."
+        },
+        {
+            "en": "Scipio and Masinissa cut off Carthage from grain.",
+            "la": "Scipio et Masinissa intercluserunt Carthaginem a frumento."
+        },
+        {
+            "en": "Therefore, Carthage asked for peace.",
+            "la": "Ergo Carthago pacem rogavit."
+        },
+        {
+            "en": "They also recalled Hannibal to Africa.",
+            "la": "Etiam Hannibalem in Africam revocaverunt."
+        },
+        {
+            "en": "Thus Hannibal and the Punic army came back to Africa.",
+            "la": "Itaque Hannibal et exercitus Punicus venerunt rursus in Africam."
+        },
+        {
+            "en": "This having been done, the Carthaginians did not keep the peace.",
+            "la": "Hoc facto Carthaginienses pacem non servaverunt."
+        },
+        {
+            "en": "But Scipio was a great general.",
+            "la": "Sed Scipio fuit imperator magnus."
+        },
+        {
+            "en": "Scipio defeated Hannibal in the battle at Zama.",
+            "la": "Scipio vicit Hannibalem in pugna ad Zamam."
+        },
+        {
+            "en": "Therefore, peace was made.",
+            "la": "Ergo pax facta est."
+        },
+        {
+            "en": "Rome had conquered Carthage in the Second Punic War.",
+            "la": "Roma vicerat Carthaginem in bello Punico secundo."
+        },
+        {
+            "en": "Carthage gave much money and many ships.",
+            "la": "Carthago dedit multam pecuniam et multas naves."
+        }
+    ],
 
-    "exercise17": [],
+    "exercise17": [
+        {
+            "en": "With peace made, the soldiers came into the city.",
+            "la": "Pace facta, milites venerunt in urbem."
+        },
+        {
+            "en": "With the Romans conquered, the Carthaginians were happy.",
+            "la": "Romanis victis, Carthaginienses laeti fuerunt."
+        },
+        {
+            "en": "With Hannibal having been seen, Fabius did not want to fight.",
+            "la": "Hannibale viso, Fabius non voluit pugnare."
+        },
+        {
+            "en": "With the lamb having been seen, the pigs said: oink.",
+            "la": "Agno viso, porci dixerunt: oink."
+        },
+        {
+            "en": "With the city captured, Marcellus sent ambassadors to Fabius.",
+            "la": "Urbe capta, Marcellus misit legatos ad Fabium."
+        },
+        {
+            "en": "With the war waged, peace again came.",
+            "la": "Bello gesto, pax rursus venit."
+        },
+        {
+            "en": "With money thrown across the Potomac River, George Washington was happy.",
+            "la": "Pecunia iacta trans flumen Potomac, Georgius Washington laetus fuit."
+        },
+        {
+            "en": "With America discovered, Columbus received much gold.",
+            "la": "America inventa, Columbus accepit aurum multum."
+        },
+        {
+            "en": "With Fabius having been asked, the ambassadors came again into the senate.",
+            "la": "Fabio rogato, legati venerunt rursus in senatum."
+        },
+        {
+            "en": "With Rome saved, Cincinnatus wanted to return to the fields.",
+            "la": "Roma servata, Cincinnatus voluit venire in agros."
+        },
+        {
+            "en": "With the grain placed on ships, Columbus sailed to America.",
+            "la": "Frumento in naves posito, Columbus navigavit in Americam."
+        },
+        {
+            "en": "With the pigs captured, the soldiers had food.",
+            "la": "Porcis captis, milites cibos habuerunt."
+        },
+        {
+            "en": "With the lamb expelled from school, Marcus was happy: for he did not love to hear: baa.",
+            "la": "Agno ex schola expulso, Marcus laetus fuit: non enim amavit audire: baa."
+        },
+        {
+            "en": "He loved to see Maria.",
+            "la": "Amavit videre Mariam."
+        },
+        {
+            "en": "With the soldiers prepared, Fabius made a journey.",
+            "la": "Militibus paratis, Fabius iter fecit."
+        },
+        {
+            "en": "With baa baa having been said, the lamb was happy.",
+            "la": "Baa Baa dicta, agnus laetus fuit."
+        },
+        {
+            "en": "With Scipio having been sent into Africa, the senate received peace.",
+            "la": "Scipione misso in Africam, senatus accepit pacem."
+        },
+        {
+            "en": "With Saguntum captured, the Punic soldiers received much gold.",
+            "la": "Sagunto capto, milites Punici acceperunt aurum multum."
+        }
+    ],
 
-    "story18": [],
+    "story18": [
+        {
+            "en": "After the second Punic war, with Carthage defeated, Rome held the greatest power in the whole world.",
+            "la": "Post bellum Punicum secundum, Carthagine victa, Roma potestatem maximam habuit in toto mundo."
+        },
+        {
+            "en": "But it was necessary to wage many other wars.",
+            "la": "Sed necesse fuit gerere multa alia bella."
+        },
+        {
+            "en": "The Romans waged wars with Macedonia, with King Antiochus (Antiochus was a king in Seleucia) and with Greece.",
+            "la": "Romani bella gesserunt cum Macedonia, cum Rege Antiocho et cum Graecia."
+        },
+        {
+            "en": "But even kings knew that they were in danger when they waged war with Rome.",
+            "la": "Sed etiam reges sciverunt quod in periculo fuerunt quando bellum cum Roma gesserunt."
+        },
+        {
+            "en": "For example, King Antiochus, in the second century before Christ, wished to seize Egypt.",
+            "la": "Exempli gratia Antiochus rex, in saeculo secundo ante Christum voluit capere Aegyptum."
+        },
+        {
+            "en": "But one of the Roman senators, named Popilius, came to King Antiochus in Egypt.",
+            "la": "Sed unus ex senatoribus Romanis, Popilius nomine, venit ad regem Antiochum in Aegyptum."
+        },
+        {
+            "en": "Popilius, in the name of Rome, ordered King Antiochus to depart from Egypt.",
+            "la": "Popilius, in nomine Romano, iussit regem Antiochum discedere ex Aegypto."
+        },
+        {
+            "en": "Having done this, Antiochus said that he wished to deliberate.",
+            "la": "Hoc facto, Antiochus dixit quod deliberare voluit."
+        },
+        {
+            "en": "Popilius then drew a circle in the sand around Antiochus.",
+            "la": "Popilius itaque scripsit circulum in arena circum Antiochum."
+        },
+        {
+            "en": "Popilius said that it was necessary not to leave the circle before giving a response.",
+            "la": "Popilius dixit quod necesse fuit non discedere ex circulo antequam daret responsum."
+        },
+        {
+            "en": "Hearing this, King Antiochus immediately left Egypt.",
+            "la": "Hoc audito, Antiochus rex statim discessit ex Aegypto."
+        },
+        {
+            "en": "But great power was also seen when King Prusias of Bithynia wished to seize Pergamum.",
+            "la": "Sed potestas magna est visa etiam quando rex Prusias Bithyniae voluit Pergamum capere."
+        },
+        {
+            "en": "Rome ordered - and it was done.",
+            "la": "Roma iussit - et factum est."
+        },
+        {
+            "en": "Prusias did not seize Pergamum.",
+            "la": "Prusias Pergamum non cepit."
+        },
+        {
+            "en": "Prusias remained in the land of Bithynia.",
+            "la": "Prusias remansit in terra Bithyniae."
+        },
+        {
+            "en": "Prusias knew that it was necessary to fear Roman power.",
+            "la": "Prusias scivit quod necesse fuit timere potestatem Romanam."
+        },
+        {
+            "en": "And Prusias knew the truth: The Romans were the greatest in power in the whole world.",
+            "la": "Et Prusias veritatem scivit: Romani fuerunt maximi potestate in toto mundo."
+        },
+        {
+            "en": "When Rome ordered, it was necessary to obey the orders.",
+            "la": "Quando Roma iusserat - necesse fuit facere iussa."
+        }
+    ],
 
-    "exercise18": [],
+    "exercise18": [
+        {
+            "en": "Great was the power of Rome.",
+            "la": "Magna fuit potestas Romae."
+        },
+        {
+            "en": "The soldiers of Carthage were brave.",
+            "la": "Milites Carthaginis fortes fuerunt."
+        },
+        {
+            "en": "Having received the money, Columbus sailed on Isabella's ships.",
+            "la": "Pecunia accepta, Columbus navigavit in navibus Isabellae."
+        },
+        {
+            "en": "Cincinnatus held the power of a Dictator.",
+            "la": "Cincinnatus habuit potestatem Dictatoris."
+        },
+        {
+            "en": "But even the fields of Cincinnatus were good.",
+            "la": "Sed etiam agri Cincinnati fuerunt boni."
+        },
+        {
+            "en": "Mary's lamb came to school.",
+            "la": "Mariae agnus venit in scholam."
+        },
+        {
+            "en": "This lamb said baa.",
+            "la": "Hic agnus dixit baa."
+        },
+        {
+            "en": "But in the school there was also another lamb of Mary - this lamb did not say baa.",
+            "la": "Sed in schola fuit etiam alius agnus Mariae - hic agnus non dixit baa."
+        },
+        {
+            "en": "For Marcus was also Mary's lamb.",
+            "la": "Marcus enim fuit etiam agnus Mariae."
+        },
+        {
+            "en": "Mary indeed called Marcus a little lamb.",
+            "la": "Maria enim vocavit Marcum agnum parvum."
+        },
+        {
+            "en": "Seeing Mary, Marcus was happy.",
+            "la": "Maria visa, Marcus laetus fuit."
+        },
+        {
+            "en": "Marcus loved Mary.",
+            "la": "Marcus amavit Mariam."
+        },
+        {
+            "en": "Marcus was a lover of Mary.",
+            "la": "Marcus fuit amator Mariae."
+        },
+        {
+            "en": "In the days of Horatius, the Romans were brave.",
+            "la": "In diebus Horatii, Romani fuerunt fortes."
+        },
+        {
+            "en": "But they were also brave in the days of Popilius.",
+            "la": "Sed etiam fuerunt fortes in diebus Popilii."
+        },
+        {
+            "en": "With Popilius having been heard, Antiochus departed from Egypt.",
+            "la": "Popilio audito, Antiochus discessit ex Aegypto."
+        },
+        {
+            "en": "King Antiochus carried out the orders.",
+            "la": "Rex Antiochus fecit iussa."
+        },
+        {
+            "en": "For Popilius held the power of the Roman senate.",
+            "la": "Popilius enim habuit potestatem senatus Romani."
+        },
+        {
+            "en": "The Roman senate had great power.",
+            "la": "Senatus Romanos magnam potestatem habuit."
+        },
+        {
+            "en": "Likewise, the power of the Roman army was great.",
+            "la": "Etiam potestas exercitus Romani fuit magna."
+        },
+        {
+            "en": "And the power of the tribunes of the plebs was great.",
+            "la": "Et potestas tribunorum plebis fuit magna."
+        },
+        {
+            "en": "The tribunes of the plebs were strong men.",
+            "la": "Tribuni plebis fuerunt viri fortes."
+        },
+        {
+            "en": "The power of the patricians was great.",
+            "la": "Potestas patriciorum fuit magna."
+        },
+        {
+            "en": "But the patricians did not always do good things.",
+            "la": "Sed patricii non semper fecerunt bona."
+        },
+        {
+            "en": "Therefore, the plebs wanted to depart from the city.",
+            "la": "Ergo plebs voluit discedere ab urbe."
+        },
+        {
+            "en": "The envoys of the patricians came to the plebs.",
+            "la": "Legati patriciorum venerunt ad plebem."
+        },
+        {
+            "en": "They asked the plebs to return to the city.",
+            "la": "Rogaverunt plebem venire rursus in urbem."
+        },
+        {
+            "en": "But the plebs did not want to return before they received power.",
+            "la": "Sed plebs non voluit venire antequam potestatem acceperunt."
+        },
+        {
+            "en": "Therefore, the patricians gave the tribunes of the plebs.",
+            "la": "Ergo patricii dederunt tribunos plebis."
+        },
+        {
+            "en": "Having received the tribunes, the plebs came into the city.",
+            "la": "Tribunis acceptis, plebs venit in urbem."
+        },
+        {
+            "en": "Popilius said that it was necessary to hear Antiochus' response immediately.",
+            "la": "Popilius dixit quod necesse fuit audire responsum Antiochi statim."
+        },
+        {
+            "en": "He wanted to hear Antiochus' response before Antiochus would come out of the circle in the arena.",
+            "la": "Voluit audire responsum Antiochi antequam Antiochus veniret ex circulo in arena."
+        },
+        {
+            "en": "Popilius received Antiochus' response immediately.",
+            "la": "Popilius accepit responsum Antiochi statim."
+        },
+        {
+            "en": "Antiochus immediately departed from Egypt.",
+            "la": "Antiochus statim discessit ex Aegypto."
+        },
+        {
+            "en": "Was not the power of the Romans great?",
+            "la": "Nonne potestas Romanorum fuit magna?"
+        },
+        {
+            "en": "In Egypt there was much grain.",
+            "la": "In Aegypto fuit frumentum multum."
+        },
+        {
+            "en": "Antiochus wanted to have the grain of Egypt - but the Romans also wanted to have the grain of Egypt.",
+            "la": "Antiochus voluit habere frumentum Aegypti - sed Romani etiam voluerunt habere frumentum Aegypti."
+        }
+    ],
 }
