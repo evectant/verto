@@ -54,6 +54,12 @@ function updateLoadedPhrases() {
     }
 
     currentPhraseIndex = 0;
+
+    // Reset to submit mode in case we were in next phrase mode.
+    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
+    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
+    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
     displayPhrase();
 }
 
@@ -117,12 +123,26 @@ function handleKeyDownNext(event) {
     }
 }
 
+function updateGroupCheckbox(sectionCheckbox) {
+    const group = sectionCheckbox.closest(".section-group");
+    const groupCheckbox = group.querySelector(".group-checkbox");
+    const checkboxes = group.querySelectorAll(".section-checkbox");
+
+    const checkedCount = Array.from(checkboxes).filter(cb => cb.checked).length;
+
+    groupCheckbox.checked = checkedCount === checkboxes.length;
+    groupCheckbox.indeterminate = checkedCount > 0 && checkedCount < checkboxes.length;
+}
+
 //
 // Event listeners.
 //
 
 sectionCheckboxes.forEach(sectionCheckbox => {
-    sectionCheckbox.addEventListener("change", updateLoadedPhrases);
+    sectionCheckbox.addEventListener("change", function () {
+        updateGroupCheckbox(this);
+        updateLoadedPhrases();
+    });
 });
 
 groupCheckboxes.forEach(groupCheckbox => {
@@ -146,5 +166,6 @@ translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
 // Initialization.
 //
 
+sectionCheckboxes.forEach(updateGroupCheckbox);
 updateLoadedPhrases();
 updateScore();
