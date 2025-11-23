@@ -76,8 +76,8 @@ function checkTranslation() {
         feedbackElement.textContent = "Recte!";
         correctAnswers++;
     } else {
-        feedbackElement.style.color = "red";
-        feedbackElement.textContent = correctTranslation;
+        feedbackElement.style.color = "";
+        feedbackElement.innerHTML = getColoredFeedback(userTranslation, correctTranslation);
     }
 
     totalAnswers++;

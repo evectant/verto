@@ -62,3 +62,25 @@ function shuffle(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+
+function getColoredFeedback(userInput, correctPhrase) {
+    const userWords = normalize(userInput).split(/\s+/).filter(w => w);
+    const correctWords = correctPhrase.split(/\s+/);
+
+    // Count occurrences of each normalized user word.
+    const userWordCounts = {};
+    for (const word of userWords) {
+        userWordCounts[word] = (userWordCounts[word] || 0) + 1;
+    }
+
+    // Build colored output.
+    return correctWords.map(word => {
+        const normalizedWord = normalize(word);
+        if (userWordCounts[normalizedWord] > 0) {
+            userWordCounts[normalizedWord]--;
+            return `<span style="color: green">${word}</span>`;
+        } else {
+            return `<span style="color: red">${word}</span>`;
+        }
+    }).join(" ");
+}
