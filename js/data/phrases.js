@@ -36,29 +36,29 @@ Object.assign(phrases, {
         {"en": "I praise the farmers' lands", "la": "terrās agricolārum laudō"},
         {"en": "you praise the girls' lives", "la": "vītās puellārum laudās"},
         {"en": "we praise the women's fortune", "la": "fortūnam fēminārum laudāmus"},
-        {"en": "they praise the poets' roads", "la": "viās poētārum laudant"},
+        {"en": "they praise the poets' stories", "la": "fābulās poētārum laudant"},
 
         // laudō - Ablative (cum, in)
         {"en": "I praise the land with the farmer", "la": "terram cum agricolā laudō"},
         {"en": "the girl praises nature with the women", "la": "puella nātūram cum fēminīs laudat"},
         {"en": "the poets praise fortune with the sailors", "la": "poētae fortūnam cum nautīs laudant"},
-        {"en": "I praise the farmer in the land", "la": "agricolam in terrā laudō"},
+        {"en": "I praise the farmer in the tavern", "la": "agricolam in tabernā laudō"},
         {"en": "the girls praise the poets on the roads", "la": "puellae poētās in viīs laudant"},
         {"en": "we praise life in the lands", "la": "vītam in terrīs laudāmus"},
 
         // dō - Dative
-        {"en": "I give the land to the farmer", "la": "agricolae terram dō"},
-        {"en": "you give the road to the girl", "la": "puellae viam dās"},
-        {"en": "he gives fortune to the woman", "la": "fēminae fortūnam dat"},
+        {"en": "I give the letter to the farmer", "la": "agricolae epistulam dō"},
+        {"en": "you give the letter to the girl", "la": "puellae epistulam dās"},
+        {"en": "he gives the letter to the woman", "la": "fēminae epistulam dat"},
         {"en": "we give care to the poets", "la": "poētīs cūram damus"},
-        {"en": "you (pl.) give life to the sailors", "la": "nautīs vītam datis"},
+        {"en": "you (pl.) give care to the sailors", "la": "nautīs cūram datis"},
         {"en": "they give the land to the inhabitants", "la": "incolīs terram dant"},
         {"en": "the farmer gives the land to the girl", "la": "agricola puellae terram dat"},
         {"en": "the farmers give the lands to the girls", "la": "agricolae puellīs terrās dant"},
-        {"en": "the girl gives care to the woman", "la": "puella fēminae cūram dat"},
-        {"en": "the girls give fortune to the poets", "la": "puellae poētīs fortūnam dant"},
-        {"en": "the woman gives the road to the farmer", "la": "fēmina agricolae viam dat"},
-        {"en": "the women give life to the sailors", "la": "fēminae nautīs vītam dant"},
+        {"en": "the girl gives anger to the woman", "la": "puella fēminae īram dat"},
+        {"en": "the girls give care to the poets", "la": "puellae poētīs cūram dant"},
+        {"en": "the woman gives the letter to the farmer", "la": "fēmina agricolae epistulam dat"},
+        {"en": "the women give care to the sailors", "la": "fēminae nautīs cūram dant"},
         {"en": "the poet gives care to the girl", "la": "poēta puellae cūram dat"},
         {"en": "the poets give the land to the inhabitants", "la": "poētae incolīs terram dant"},
         {"en": "the sailor gives fortune to the woman", "la": "nauta fēminae fortūnam dat"},
@@ -74,7 +74,7 @@ Object.assign(phrases, {
 
     // ============================================
     // Dc I + Cj II: First declension nouns + Second conjugation verbs
-    // moneō, monēre (warn, advise) + pāreō, pārēre (obey)
+    // moneō, monēre (warn) + pāreō, pārēre (obey)
     // ============================================
     "declension1conj2": [
         // moneō - Nominative & Accusative
@@ -96,23 +96,20 @@ Object.assign(phrases, {
         {"en": "the sailors warn the women", "la": "nautae fēminās monent"},
         {"en": "the inhabitant warns the farmer", "la": "incola agricolam monet"},
         {"en": "the inhabitants warn the poets", "la": "incolae poētās monent"},
-        {"en": "I advise the poet", "la": "poētam moneō"},
-        {"en": "you advise the woman", "la": "fēminam monēs"},
-        {"en": "we advise the farmers", "la": "agricolās monēmus"},
 
         // moneō - Genitive
-        {"en": "the poet warns the farmer's sailor", "la": "poēta nautam agricolae monet"},
-        {"en": "we warn the farmer's poets", "la": "poētās agricolae monēmus"},
-        {"en": "the girls warn the woman's inhabitants", "la": "puellae incolās fēminae monent"},
+        {"en": "the poet warns the farmer's girl", "la": "poēta puellam agricolae monet"},
+        {"en": "we warn the farmer's girls", "la": "puellās agricolae monēmus"},
+        {"en": "the girls warn the island's inhabitants", "la": "puellae incolās īnsulae monent"},
         {"en": "I warn the sailors' girls", "la": "puellās nautārum moneō"},
-        {"en": "you warn the poets' farmers", "la": "agricolās poētārum monēs"},
+        {"en": "you warn the land's farmers", "la": "agricolās terrae monēs"},
 
         // moneō - Ablative (cum, in)
-        {"en": "he warns the sailor with care", "la": "nautam cum cūrā monet"},
+        {"en": "he warns the sailor with anger", "la": "nautam cum īrā monet"},
         {"en": "the farmers warn the sailors with the poets", "la": "agricolae nautās cum poētīs monent"},
         {"en": "I warn the girl with the woman", "la": "puellam cum fēminā moneō"},
         {"en": "you warn the girl on the road", "la": "puellam in viā monēs"},
-        {"en": "the farmer warns the girl in the land", "la": "agricola puellam in terrā monet"},
+        {"en": "the farmer warns the girl in the forest", "la": "agricola puellam in silvā monet"},
         {"en": "we warn the poets in the lands", "la": "poētās in terrīs monēmus"},
 
         // pāreō - Dative (obey + dative)
@@ -165,8 +162,8 @@ Object.assign(phrases, {
         {"en": "the woman leads the farmer's girl", "la": "fēmina puellam agricolae dūcit"},
         {"en": "you lead the farmer's women", "la": "fēminās agricolae dūcis"},
         {"en": "the poets lead the sailor's girls", "la": "poētae puellās nautae dūcunt"},
-        {"en": "I lead the women's farmers", "la": "agricolās fēminārum dūcō"},
-        {"en": "we lead the poets' inhabitants", "la": "incolās poētārum dūcimus"},
+        {"en": "I lead the land's farmers", "la": "agricolās terrae dūcō"},
+        {"en": "we lead the homeland's inhabitants", "la": "incolās patriae dūcimus"},
 
         // dūcō - Ablative (cum, in)
         {"en": "you lead the girl with the woman", "la": "puellam cum fēminā dūcis"},
@@ -177,21 +174,21 @@ Object.assign(phrases, {
         {"en": "we lead the poets in the lands", "la": "poētās in terrīs dūcimus"},
 
         // dūcō - Ablative ā/ab (lead away from)
-        {"en": "I lead the girl from the land", "la": "puellam ā terrā dūcō"},
+        {"en": "I lead the girl from the forest", "la": "puellam ā silvā dūcō"},
         {"en": "the farmer leads the sailors from the road", "la": "agricola nautās ā viā dūcit"},
         {"en": "we lead the poets from the lands", "la": "poētās ā terrīs dūcimus"},
         {"en": "the women lead the farmers from the waves", "la": "fēminae agricolās ab undīs dūcunt"},
 
         // dīcō - Dative (tell to)
         {"en": "I tell the story to the farmer", "la": "agricolae fābulam dīcō"},
-        {"en": "you tell the story to the girl", "la": "puellae fābulam dīcis"},
+        {"en": "you tell the way to the girl", "la": "puellae viam dīcis"},
         {"en": "he tells the story to the woman", "la": "fēminae fābulam dīcit"},
-        {"en": "we tell the story to the poets", "la": "poētīs fābulam dīcimus"},
+        {"en": "we tell the way to the poets", "la": "poētīs viam dīcimus"},
         {"en": "you (pl.) tell the story to the sailors", "la": "nautīs fābulam dīcitis"},
-        {"en": "they tell the story to the inhabitants", "la": "incolīs fābulam dīcunt"},
-        {"en": "the farmer tells the story to the girl", "la": "agricola puellae fābulam dīcit"},
+        {"en": "they tell the way to the inhabitants", "la": "incolīs viam dīcunt"},
+        {"en": "the farmer tells the way to the girl", "la": "agricola puellae viam dīcit"},
         {"en": "the girls tell the story to the woman", "la": "puellae fēminae fābulam dīcunt"},
-        {"en": "the poets tell the story to the sailors", "la": "poētae nautīs fābulam dīcunt"},
+        {"en": "the poets tell the way to the sailors", "la": "poētae nautīs viam dīcunt"},
         {"en": "the inhabitants tell the story to the farmers", "la": "incolae agricolīs fābulam dīcunt"},
     ],
 
@@ -215,20 +212,20 @@ Object.assign(phrases, {
         {"en": "the women take life", "la": "fēminae vītam capiunt"},
         {"en": "the poet takes care", "la": "poēta cūram capit"},
         {"en": "the poets take the lands", "la": "poētae terrās capiunt"},
-        {"en": "the sailor takes the wave", "la": "nauta undam capit"},
-        {"en": "the sailors take the waves", "la": "nautae undās capiunt"},
+        {"en": "the sailor takes the road", "la": "nauta viam capit"},
+        {"en": "the sailors take the roads", "la": "nautae viās capiunt"},
         {"en": "the inhabitant takes the road", "la": "incola viam capit"},
         {"en": "the inhabitants take the lands", "la": "incolae terrās capiunt"},
         {"en": "I receive care", "la": "cūram capiō"},
         {"en": "you receive punishment", "la": "poenam capis"},
         {"en": "we receive fortune", "la": "fortūnam capimus"},
-        {"en": "I take the wave", "la": "undam capiō"},
-        {"en": "you (pl.) take the waves", "la": "undās capitis"},
+        {"en": "I take the road", "la": "viam capiō"},
+        {"en": "you (pl.) take the roads", "la": "viās capitis"},
 
         // capiō - Genitive
         {"en": "the farmer takes the girl's land", "la": "agricola terram puellae capit"},
         {"en": "the farmers take the girls' lands", "la": "agricolae terrās puellārum capiunt"},
-        {"en": "the poet takes the sailor's wave", "la": "poēta undam nautae capit"},
+        {"en": "the poet takes the sailor's story", "la": "poēta fābulam nautae capit"},
         {"en": "I take the women's fortune", "la": "fortūnam fēminārum capiō"},
         {"en": "we take the farmers' roads", "la": "viās agricolārum capimus"},
 
@@ -237,22 +234,22 @@ Object.assign(phrases, {
         {"en": "the poet takes the road with the inhabitant", "la": "poēta viam cum incolā capit"},
         {"en": "they take fortune on the roads", "la": "fortūnam in viīs capiunt"},
         {"en": "we take life in the lands", "la": "vītam in terrīs capimus"},
-        {"en": "I take the land from the farmer", "la": "terram ab agricolā capiō"},
+        {"en": "I take the table from the farmer", "la": "mensam ab agricolā capiō"},
         {"en": "you take the road from the girl", "la": "viam ā puellā capis"},
         {"en": "he takes fortune from the woman", "la": "fortūnam ā fēminā capit"},
         {"en": "we take the lands from the poets", "la": "terrās ā poētīs capimus"},
         {"en": "they take the roads from the sailors", "la": "viās ā nautīs capiunt"},
         {"en": "the farmer takes the land from the girl", "la": "agricola terram ā puellā capit"},
         {"en": "the farmers take the lands from the women", "la": "agricolae terrās ā fēminīs capiunt"},
-        {"en": "the girl takes care from the poet", "la": "puella cūram ā poētā capit"},
+        {"en": "the girl takes the story from the poet", "la": "puella fābulam ā poētā capit"},
         {"en": "the woman takes fortune from the sailor", "la": "fēmina fortūnam ā nautā capit"},
         {"en": "the poets take the roads from the inhabitants", "la": "poētae viās ab incolīs capiunt"},
-        {"en": "I take life from the farmers", "la": "vītam ab agricolīs capiō"},
-        {"en": "you take care from the girls", "la": "cūram ā puellīs capis"},
-        {"en": "we take the waves from the sailors", "la": "undās ā nautīs capimus"},
+        {"en": "I take money from the farmers", "la": "pecūniam ab agricolīs capiō"},
+        {"en": "you take money from the girls", "la": "pecūniam ā puellīs capis"},
+        {"en": "we take the stories from the sailors", "la": "fābulās ā nautīs capimus"},
 
         // faciō - Dative (make for)
-        {"en": "I make a road for the farmer", "la": "agricolae viam faciō"},
+        {"en": "I make a table for the farmer", "la": "agricolae mensam faciō"},
         {"en": "you make a road for the girl", "la": "puellae viam facis"},
         {"en": "he makes a road for the woman", "la": "fēminae viam facit"},
         {"en": "we make roads for the poets", "la": "poētīs viās facimus"},
@@ -293,15 +290,15 @@ Object.assign(phrases, {
         {"en": "we hear the inhabitants", "la": "incolās audīmus"},
 
         // audiō - Genitive
-        {"en": "the girl hears the sailor's wave", "la": "puella undam nautae audit"},
-        {"en": "I hear the sailors' waves", "la": "undās nautārum audiō"},
-        {"en": "the farmers hear the poet's girls", "la": "agricolae puellās poētae audiunt"},
-        {"en": "we hear the women's sailors", "la": "nautās fēminārum audīmus"},
-        {"en": "you hear the farmer's poet", "la": "poētam agricolae audīs"},
+        {"en": "the girl hears the sailor's story", "la": "puella fābulam nautae audit"},
+        {"en": "I hear the sailors' stories", "la": "fābulās nautārum audiō"},
+        {"en": "the farmers hear the poet's story", "la": "agricolae fābulam poētae audiunt"},
+        {"en": "we hear the island's sailors", "la": "nautās īnsulae audīmus"},
+        {"en": "you hear the girl's poet", "la": "poētam puellae audīs"},
 
         // audiō - Ablative (cum, in)
         {"en": "we hear the poet with the girls", "la": "poētam cum puellīs audīmus"},
-        {"en": "the woman hears the wave with the sailor", "la": "fēmina undam cum nautā audit"},
+        {"en": "the woman hears the story with the sailor", "la": "fēmina fābulam cum nautā audit"},
         {"en": "I hear the farmers with the women", "la": "agricolās cum fēminīs audiō"},
         {"en": "we hear the poets in the lands", "la": "poētās in terrīs audīmus"},
         {"en": "the inhabitants hear the farmers in the lands", "la": "incolae agricolās in terrīs audiunt"},
@@ -320,12 +317,12 @@ Object.assign(phrases, {
         {"en": "the inhabitants serve the farmers", "la": "incolae agricolīs serviunt"},
 
         // veniō - Ablative ā/ab (come from)
-        {"en": "I come from the land", "la": "ā terrā veniō"},
-        {"en": "you come from the road", "la": "ā viā venīs"},
-        {"en": "he comes from the wave", "la": "ab undā venit"},
+        {"en": "I come from the forest", "la": "ā silvā veniō"},
+        {"en": "you come from the tavern", "la": "ā tabernā venīs"},
+        {"en": "he comes from the island", "la": "ab īnsulā venit"},
         {"en": "we come from the lands", "la": "ā terrīs venīmus"},
         {"en": "the farmer comes from the land", "la": "agricola ā terrā venit"},
         {"en": "the girls come from the road", "la": "puellae ā viā veniunt"},
-        {"en": "the sailors come from the waves", "la": "nautae ab undīs veniunt"},
+        {"en": "the sailors come from the island", "la": "nautae ab īnsulā veniunt"},
     ],
 });
