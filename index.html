@@ -1,82 +1,289 @@
 <!DOCTYPE html>
 <html lang="la">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Verto</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
 
-<body>
-
-<div class="translation-container">
-    <p id="currentPhrase"></p>
-    <input type="text" id="translationInput" placeholder="Hic verte" autofocus>
-    <p id="feedback"></p>
-    <p id="correctCounter"></p>
-</div>
-
-<div class="settings-container">
-    <label><input type="checkbox" id="randomizeCheckbox">Ordo fortuitus</label>
-
-    <div class="section-group" id="groupGrammatica">
-        <label><input type="checkbox" class="group-checkbox" data-group="groupGrammatica">Grammatica</label>
-
-        <div class="section-checkboxes">
-            <label><input type="checkbox" class="section-checkbox" value="declension1conj1" checked>Dc I + Cj I</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension1conj2">Dc I + Cj II</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension1conj3">Dc I + Cj III</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension1conj3io">Dc I + Cj III-io</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension1conj4">Dc I + Cj IV</label>
-        </div>
+  <body>
+    <div class="translation-container">
+      <p id="currentPhrase"></p>
+      <input
+        type="text"
+        id="translationInput"
+        placeholder="Hic verte"
+        autofocus
+      />
+      <p id="feedback"></p>
+      <p id="correctCounter"></p>
     </div>
 
-    <div class="section-group" id="groupVerba">
-        <label><input type="checkbox" class="group-checkbox" data-group="groupVerba">Verba</label>
+    <div class="settings-container">
+      <label
+        ><input type="checkbox" id="randomizeCheckbox" checked />Ordo
+        fortuitus</label
+      >
+
+      <div class="section-group" id="groupConiugationes">
+        <label
+          ><input
+            type="checkbox"
+            class="group-checkbox"
+            data-group="groupConiugationes"
+          />Coniugationes</label
+        >
 
         <div class="section-checkboxes">
-            <label><input type="checkbox" class="section-checkbox" value="declension1">Dc I</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension2">Dc II</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension3">Dc III</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension4">Dc IV</label>
-            <label><input type="checkbox" class="section-checkbox" value="declension5">Dc V</label>
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj1"
+              checked
+            />Cj I</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj2"
+            />Cj II</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj3"
+            />Cj III</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj3io"
+            />Cj III-io</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj4"
+            />Cj IV</label
+          >
         </div>
-    </div>
+      </div>
 
-    <div class="section-group" id="groupFabulae">
-        <label><input type="checkbox" class="group-checkbox" data-group="groupFabulae">Fabulae</label>
+      <div class="section-group" id="groupTempora">
+        <label
+          ><input
+            type="checkbox"
+            class="group-checkbox"
+            data-group="groupTempora"
+          />Tempora</label
+        >
 
         <div class="section-checkboxes">
-            <label><input type="checkbox" class="section-checkbox" value="story1">Fb I</label>
-            <label><input type="checkbox" class="section-checkbox" value="story2">Fb II</label>
-            <label><input type="checkbox" class="section-checkbox" value="story3">Fb III</label>
-            <label><input type="checkbox" class="section-checkbox" value="story4">Fb IV</label>
-            <label><input type="checkbox" class="section-checkbox" value="story5">Fb V</label>
-            <label><input type="checkbox" class="section-checkbox" value="story6">Fb VI</label>
-            <label><input type="checkbox" class="section-checkbox" value="story7">Fb VII</label>
-            <label><input type="checkbox" class="section-checkbox" value="story8">Fb VIII</label>
-            <label><input type="checkbox" class="section-checkbox" value="story9">Fb IX</label>
-            <label><input type="checkbox" class="section-checkbox" value="story10">Fb X</label>
-            <label><input type="checkbox" class="section-checkbox" value="story11">Fb XI</label>
-            <label><input type="checkbox" class="section-checkbox" value="story12">Fb XII</label>
-            <label><input type="checkbox" class="section-checkbox" value="story13">Fb XIII</label>
-            <label><input type="checkbox" class="section-checkbox" value="story14">Fb XIV</label>
-            <label><input type="checkbox" class="section-checkbox" value="story15">Fb XV</label>
-            <label><input type="checkbox" class="section-checkbox" value="story16">Fb XVI</label>
-            <label><input type="checkbox" class="section-checkbox" value="story17">Fb XVII</label>
-            <label><input type="checkbox" class="section-checkbox" value="story18">Fb XVIII</label>
+          <label
+            ><input
+              type="checkbox"
+              class="tense-checkbox"
+              value="present"
+              checked
+            />Praesens</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="tense-checkbox"
+              value="perfect"
+            />Perfectum</label
+          >
         </div>
+      </div>
+
+      <div class="section-group" id="groupDeclinationes">
+        <label
+          ><input
+            type="checkbox"
+            class="group-checkbox"
+            data-group="groupDeclinationes"
+          />Nomina</label
+        >
+
+        <div class="section-checkboxes">
+          <label
+            ><input
+              type="checkbox"
+              class="declension-checkbox"
+              value="declension1"
+              checked
+            />Dc I</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="declension-checkbox"
+              value="declension2"
+            />Dc II</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="declension-checkbox"
+              value="declension3"
+            />Dc III</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="declension-checkbox"
+              value="declension4"
+            />Dc IV</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="declension-checkbox"
+              value="declension5"
+            />Dc V</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="declension-checkbox"
+              id="pronounCheckbox"
+              value="pronouns"
+              checked
+            />Pronom</label
+          >
+        </div>
+      </div>
+
+      <div class="section-group collapsed" id="groupFabulae">
+        <label
+          ><input
+            type="checkbox"
+            class="group-checkbox"
+            data-group="groupFabulae"
+          />Fabulae</label
+        >
+
+        <div class="section-checkboxes">
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story1" />Fb
+            I</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story2" />Fb
+            II</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story3" />Fb
+            III</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story4" />Fb
+            IV</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story5" />Fb
+            V</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story6" />Fb
+            VI</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story7" />Fb
+            VII</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story8" />Fb
+            VIII</label
+          >
+          <label
+            ><input type="checkbox" class="section-checkbox" value="story9" />Fb
+            IX</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story10"
+            />Fb X</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story11"
+            />Fb XI</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story12"
+            />Fb XII</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story13"
+            />Fb XIII</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story14"
+            />Fb XIV</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story15"
+            />Fb XV</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story16"
+            />Fb XVI</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story17"
+            />Fb XVII</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="section-checkbox"
+              value="story18"
+            />Fb XVIII</label
+          >
+        </div>
+      </div>
     </div>
-</div>
 
-<script>phrases = {};</script>
-<script src="js/data/nouns.js"></script>
-<script src="js/data/phrases.js"></script>
-<script src="js/data/stories.js"></script>
-<script src="js/utils.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-
+    <script>
+      phrases = [];
+    </script>
+    <script src="js/data/nouns.js"></script>
+    <script src="js/data/verbs.js"></script>
+    <script src="js/data/pronouns.js"></script>
+    <script src="js/data/phrases.js"></script>
+    <script src="js/data/stories.js"></script>
+    <script src="js/generator.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/main.js"></script>
+  </body>
 </html>

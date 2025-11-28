@@ -1,0 +1,184 @@
+// Pronoun database with 1st, 2nd, and 3rd person forms
+// Structure: person -> number -> language -> form/case
+
+const pronounDatabase = {
+  1: {
+    // 1st person
+    sg: {
+      en: "I", // Subject form
+      en_obj: "me", // Object form
+      en_poss: "my", // Possessive form
+      la: {
+        nom: "ego",
+        gen: "meī",
+        dat: "mihi",
+        acc: "mē",
+        abl: "mē",
+      },
+      la_poss: {
+        // Possessive adjective: meus, mea, meum
+        m: {
+          nom: { sg: "meus", pl: "meī" },
+          gen: { sg: "meī", pl: "meōrum" },
+          dat: { sg: "meō", pl: "meīs" },
+          acc: { sg: "meum", pl: "meōs" },
+          abl: { sg: "meō", pl: "meīs" },
+        },
+        f: {
+          nom: { sg: "mea", pl: "meae" },
+          gen: { sg: "meae", pl: "meārum" },
+          dat: { sg: "meae", pl: "meīs" },
+          acc: { sg: "meam", pl: "meās" },
+          abl: { sg: "meā", pl: "meīs" },
+        },
+        n: {
+          nom: { sg: "meum", pl: "mea" },
+          gen: { sg: "meī", pl: "meōrum" },
+          dat: { sg: "meō", pl: "meīs" },
+          acc: { sg: "meum", pl: "mea" },
+          abl: { sg: "meō", pl: "meīs" },
+        },
+      },
+    },
+    pl: {
+      en: "we",
+      en_obj: "us",
+      en_poss: "our",
+      la: {
+        nom: "nōs",
+        gen: "nostrum",
+        dat: "nōbīs",
+        acc: "nōs",
+        abl: "nōbīs",
+      },
+      la_poss: {
+        // Possessive adjective: noster, nostra, nostrum
+        m: {
+          nom: { sg: "noster", pl: "nostrī" },
+          gen: { sg: "nostrī", pl: "nostrōrum" },
+          dat: { sg: "nostrō", pl: "nostrīs" },
+          acc: { sg: "nostrum", pl: "nostrōs" },
+          abl: { sg: "nostrō", pl: "nostrīs" },
+        },
+        f: {
+          nom: { sg: "nostra", pl: "nostrae" },
+          gen: { sg: "nostrae", pl: "nostrārum" },
+          dat: { sg: "nostrae", pl: "nostrīs" },
+          acc: { sg: "nostram", pl: "nostrās" },
+          abl: { sg: "nostrā", pl: "nostrīs" },
+        },
+        n: {
+          nom: { sg: "nostrum", pl: "nostra" },
+          gen: { sg: "nostrī", pl: "nostrōrum" },
+          dat: { sg: "nostrō", pl: "nostrīs" },
+          acc: { sg: "nostrum", pl: "nostra" },
+          abl: { sg: "nostrō", pl: "nostrīs" },
+        },
+      },
+    },
+  },
+  2: {
+    // 2nd person
+    sg: {
+      en: "you (sg.)",
+      en_obj: "you (sg.)",
+      en_poss: "your (sg.)",
+      la: {
+        nom: "tū",
+        gen: "tuī",
+        dat: "tibi",
+        acc: "tē",
+        abl: "tē",
+      },
+      la_poss: {
+        // Possessive adjective: tuus, tua, tuum
+        m: {
+          nom: { sg: "tuus", pl: "tuī" },
+          gen: { sg: "tuī", pl: "tuōrum" },
+          dat: { sg: "tuō", pl: "tuīs" },
+          acc: { sg: "tuum", pl: "tuōs" },
+          abl: { sg: "tuō", pl: "tuīs" },
+        },
+        f: {
+          nom: { sg: "tua", pl: "tuae" },
+          gen: { sg: "tuae", pl: "tuārum" },
+          dat: { sg: "tuae", pl: "tuīs" },
+          acc: { sg: "tuam", pl: "tuās" },
+          abl: { sg: "tuā", pl: "tuīs" },
+        },
+        n: {
+          nom: { sg: "tuum", pl: "tua" },
+          gen: { sg: "tuī", pl: "tuōrum" },
+          dat: { sg: "tuō", pl: "tuīs" },
+          acc: { sg: "tuum", pl: "tua" },
+          abl: { sg: "tuō", pl: "tuīs" },
+        },
+      },
+    },
+    pl: {
+      en: "you (pl.)",
+      en_obj: "you (pl.)",
+      en_poss: "your (pl.)",
+      la: {
+        nom: "vōs",
+        gen: "vestrum",
+        dat: "vōbīs",
+        acc: "vōs",
+        abl: "vōbīs",
+      },
+      la_poss: {
+        // Possessive adjective: vester, vestra, vestrum
+        m: {
+          nom: { sg: "vester", pl: "vestrī" },
+          gen: { sg: "vestrī", pl: "vestrōrum" },
+          dat: { sg: "vestrō", pl: "vestrīs" },
+          acc: { sg: "vestrum", pl: "vestrōs" },
+          abl: { sg: "vestrō", pl: "vestrīs" },
+        },
+        f: {
+          nom: { sg: "vestra", pl: "vestrae" },
+          gen: { sg: "vestrae", pl: "vestrārum" },
+          dat: { sg: "vestrae", pl: "vestrīs" },
+          acc: { sg: "vestram", pl: "vestrās" },
+          abl: { sg: "vestrā", pl: "vestrīs" },
+        },
+        n: {
+          nom: { sg: "vestrum", pl: "vestra" },
+          gen: { sg: "vestrī", pl: "vestrōrum" },
+          dat: { sg: "vestrō", pl: "vestrīs" },
+          acc: { sg: "vestrum", pl: "vestra" },
+          abl: { sg: "vestrō", pl: "vestrīs" },
+        },
+      },
+    },
+  },
+  3: {
+    // 3rd person (using is/ea/id - masculine forms)
+    sg: {
+      en: "he",
+      en_obj: "him",
+      en_poss: "his",
+      la: {
+        nom: "is",
+        gen: "eius",
+        dat: "eī",
+        acc: "eum",
+        abl: "eō",
+      },
+      // For 3rd person, use genitive of is/ea/id (eius) instead of possessive adjective
+    },
+    pl: {
+      en: "they",
+      en_obj: "them",
+      en_poss: "their",
+      la: {
+        nom: "eī",
+        gen: "eōrum",
+        dat: "eīs",
+        acc: "eōs",
+        abl: "eīs",
+      },
+      // For 3rd person plural, use genitive of is/ea/id (eōrum) instead of possessive adjective
+    },
+  },
+};
