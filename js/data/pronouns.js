@@ -181,6 +181,19 @@ const pronounDatabase = {
           abl: "eā",
         },
       },
+      n: {
+        // Neuter
+        en: "it",
+        en_obj: "it",
+        en_poss: "its",
+        la: {
+          nom: "id",
+          gen: "eius",
+          dat: "eī",
+          acc: "id",
+          abl: "eō",
+        },
+      },
       // For 3rd person, use genitive of is/ea/id (eius) instead of possessive adjective
     },
     pl: {
@@ -207,6 +220,19 @@ const pronounDatabase = {
           gen: "eārum",
           dat: "eīs",
           acc: "eās",
+          abl: "eīs",
+        },
+      },
+      n: {
+        // Neuter
+        en: "they (n.)",
+        en_obj: "them (n.)",
+        en_poss: "their (n.)",
+        la: {
+          nom: "ea",
+          gen: "eōrum",
+          dat: "eīs",
+          acc: "ea",
           abl: "eīs",
         },
       },

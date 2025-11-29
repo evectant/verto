@@ -568,7 +568,8 @@ function generatePhrase(
   const fromVariant = Math.random() < 0.5 ? "ex" : "a";
 
   // Randomly choose gender for 3rd person pronouns (consistent across the entire phrase)
-  const thirdPersonGender = Math.random() < 0.5 ? "m" : "f";
+  const rand = Math.random();
+  const thirdPersonGender = rand < 0.33 ? "m" : rand < 0.67 ? "f" : "n";
 
   // Track selected verbs for infinitives in this phrase (array maintains order)
   // Each infinitive placeholder (1st, 2nd, etc.) will use the same verb across languages

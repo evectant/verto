@@ -33,7 +33,8 @@ function normalize(text) {
     .replace(/[.,:\-—!?'()]/g, "") // Drop punctuation.
     .replace(/\s{2,}/g, " ") // Drop double spaces.
     .trim()
-    .toLowerCase();
+    .toLowerCase()
+    .replace(/\bab\b/g, "a"); // Treat "ab" and "a" as equivalent.
 }
 
 function haveSameWords(phrase1, phrase2) {

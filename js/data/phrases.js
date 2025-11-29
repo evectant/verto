@@ -28,8 +28,8 @@ phrases.push(
   // moveo, movere, movi, motus (II) - move
   // pareo, parere, parui, n/a (II) - obey (intr., takes dative)
   {
-    en: "{noun.person.en} {verb.warn.en} {noun.person.en.acc} in {noun.location.en}",
-    la: "{noun.person.la.nom} {noun.person.la.acc} in {noun.location.la.abl} {verb.warn.la}",
+    en: "{noun.person.en} {verb.warn.en} {noun.person.en.acc} about {noun.person.en.acc}",
+    la: "{noun.person.la.nom} {noun.person.la.acc} de {noun.person.la.abl} {verb.warn.la}",
   },
   {
     en: "{noun.person.en} {verb.move.en} {noun.thing.en.acc} into {noun.location.en}",
@@ -72,6 +72,10 @@ phrases.push(
     la: "{noun.person.la.nom} in {noun.location.la.acc} {noun.person.la.gen} {verb.flee.la}",
   },
   {
+    en: "{noun.person.en} {verb.flee.en} with {noun.person.en.acc} {from.en} {noun.location.en}",
+    la: "{noun.person.la.nom} cum {noun.person.la.abl} {from.la} {noun.location.la.abl} {verb.flee.la}",
+  },
+  {
     en: "{noun.person.en} {verb.take.en} {noun.thing.en} from {noun.person.en.acc}",
     la: "{noun.person.la.nom} {noun.thing.la.acc} {a.la} {noun.person.la.abl} {verb.take.la}",
   },
@@ -92,6 +96,10 @@ phrases.push(
   {
     en: "{noun.person.en} {verb.come.en} {from.en} {noun.person.en.gen} {noun.location.en}",
     la: "{noun.person.la.nom} {from.la} {noun.location.la.abl} {noun.person.la.gen} {verb.come.la}",
+  },
+  {
+    en: "{noun.person.en} {verb.come.en} with {noun.person.en.acc} to {noun.location.en}",
+    la: "{noun.person.la.nom} cum {noun.person.la.abl} ad {noun.location.la.acc} {verb.come.la}",
   },
 
   // Irregular.
