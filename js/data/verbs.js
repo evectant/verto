@@ -8,12 +8,14 @@ const verbsByConjugation = {
   conj3: ["lead", "tell", "show"],
   conj3io: ["make", "flee", "take"],
   conj4: ["hear", "serve", "come"],
+  irregular: ["want", "be"],
 };
 
 const verbDatabase = {
   // 1st Conjugation: dō, dare (give)
   give: {
     en: {
+      infinitive: "to give",
       present: {
         1: { sg: "give", pl: "give" },
         2: { sg: "give", pl: "give" },
@@ -26,6 +28,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "dare",
       present: {
         1: { sg: "dō", pl: "damus" },
         2: { sg: "dās", pl: "datis" },
@@ -42,6 +45,7 @@ const verbDatabase = {
   // 1st Conjugation: laudō, laudāre (praise)
   praise: {
     en: {
+      infinitive: "to praise",
       present: {
         1: { sg: "praise", pl: "praise" },
         2: { sg: "praise", pl: "praise" },
@@ -54,6 +58,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "laudāre",
       present: {
         1: { sg: "laudō", pl: "laudāmus" },
         2: { sg: "laudās", pl: "laudātis" },
@@ -70,6 +75,7 @@ const verbDatabase = {
   // 1st Conjugation: vocō, vocāre (call)
   call: {
     en: {
+      infinitive: "to call",
       present: {
         1: { sg: "call", pl: "call" },
         2: { sg: "call", pl: "call" },
@@ -82,6 +88,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "vocāre",
       present: {
         1: { sg: "vocō", pl: "vocāmus" },
         2: { sg: "vocās", pl: "vocātis" },
@@ -98,6 +105,7 @@ const verbDatabase = {
   // 2nd Conjugation: moneō, monēre (warn)
   warn: {
     en: {
+      infinitive: "to warn",
       present: {
         1: { sg: "warn", pl: "warn" },
         2: { sg: "warn", pl: "warn" },
@@ -110,6 +118,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "monēre",
       present: {
         1: { sg: "moneō", pl: "monēmus" },
         2: { sg: "monēs", pl: "monētis" },
@@ -126,6 +135,7 @@ const verbDatabase = {
   // 2nd Conjugation: moveō, movēre (move)
   move: {
     en: {
+      infinitive: "to move",
       present: {
         1: { sg: "move", pl: "move" },
         2: { sg: "move", pl: "move" },
@@ -138,6 +148,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "movēre",
       present: {
         1: { sg: "moveō", pl: "movēmus" },
         2: { sg: "movēs", pl: "movētis" },
@@ -154,6 +165,7 @@ const verbDatabase = {
   // 2nd Conjugation: pāreō, pārēre (obey)
   obey: {
     en: {
+      infinitive: "to obey",
       present: {
         1: { sg: "obey", pl: "obey" },
         2: { sg: "obey", pl: "obey" },
@@ -166,6 +178,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "pārēre",
       present: {
         1: { sg: "pāreō", pl: "pārēmus" },
         2: { sg: "pārēs", pl: "pārētis" },
@@ -182,6 +195,7 @@ const verbDatabase = {
   // 3rd Conjugation: dūcō, dūcere (lead)
   lead: {
     en: {
+      infinitive: "to lead",
       present: {
         1: { sg: "lead", pl: "lead" },
         2: { sg: "lead", pl: "lead" },
@@ -194,6 +208,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "dūcere",
       present: {
         1: { sg: "dūcō", pl: "dūcimus" },
         2: { sg: "dūcis", pl: "dūcitis" },
@@ -210,6 +225,7 @@ const verbDatabase = {
   // 3rd Conjugation: dīcō, dīcere (tell)
   tell: {
     en: {
+      infinitive: "to tell",
       present: {
         1: { sg: "tell", pl: "tell" },
         2: { sg: "tell", pl: "tell" },
@@ -222,6 +238,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "dīcere",
       present: {
         1: { sg: "dīcō", pl: "dīcimus" },
         2: { sg: "dīcis", pl: "dīcitis" },
@@ -238,6 +255,7 @@ const verbDatabase = {
   // 3rd Conjugation: ostendō, ostendere (show)
   show: {
     en: {
+      infinitive: "to show",
       present: {
         1: { sg: "show", pl: "show" },
         2: { sg: "show", pl: "show" },
@@ -250,6 +268,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "ostendere",
       present: {
         1: { sg: "ostendō", pl: "ostendimus" },
         2: { sg: "ostendis", pl: "ostenditis" },
@@ -266,6 +285,7 @@ const verbDatabase = {
   // 3rd -io Conjugation: faciō, facere (make)
   make: {
     en: {
+      infinitive: "to make",
       present: {
         1: { sg: "make", pl: "make" },
         2: { sg: "make", pl: "make" },
@@ -278,6 +298,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "facere",
       present: {
         1: { sg: "faciō", pl: "facimus" },
         2: { sg: "facis", pl: "facitis" },
@@ -294,6 +315,7 @@ const verbDatabase = {
   // 3rd -io Conjugation: fugiō, fugere (flee)
   flee: {
     en: {
+      infinitive: "to flee",
       present: {
         1: { sg: "flee", pl: "flee" },
         2: { sg: "flee", pl: "flee" },
@@ -306,6 +328,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "fugere",
       present: {
         1: { sg: "fugiō", pl: "fugimus" },
         2: { sg: "fugis", pl: "fugitis" },
@@ -322,6 +345,7 @@ const verbDatabase = {
   // 3rd -io Conjugation: capiō, capere (take)
   take: {
     en: {
+      infinitive: "to take",
       present: {
         1: { sg: "take", pl: "take" },
         2: { sg: "take", pl: "take" },
@@ -334,6 +358,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "capere",
       present: {
         1: { sg: "capiō", pl: "capimus" },
         2: { sg: "capis", pl: "capitis" },
@@ -350,6 +375,7 @@ const verbDatabase = {
   // 4th Conjugation: audiō, audīre (hear)
   hear: {
     en: {
+      infinitive: "to hear",
       present: {
         1: { sg: "hear", pl: "hear" },
         2: { sg: "hear", pl: "hear" },
@@ -362,6 +388,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "audīre",
       present: {
         1: { sg: "audiō", pl: "audīmus" },
         2: { sg: "audīs", pl: "audītis" },
@@ -378,6 +405,7 @@ const verbDatabase = {
   // 4th Conjugation: serviō, servīre (serve)
   serve: {
     en: {
+      infinitive: "to serve",
       present: {
         1: { sg: "serve", pl: "serve" },
         2: { sg: "serve", pl: "serve" },
@@ -390,6 +418,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "servīre",
       present: {
         1: { sg: "serviō", pl: "servīmus" },
         2: { sg: "servīs", pl: "servītis" },
@@ -406,6 +435,7 @@ const verbDatabase = {
   // 4th Conjugation: veniō, venīre (come)
   come: {
     en: {
+      infinitive: "to come",
       present: {
         1: { sg: "come", pl: "come" },
         2: { sg: "come", pl: "come" },
@@ -418,6 +448,7 @@ const verbDatabase = {
       },
     },
     la: {
+      infinitive: "venīre",
       present: {
         1: { sg: "veniō", pl: "venīmus" },
         2: { sg: "venīs", pl: "venītis" },
@@ -427,6 +458,66 @@ const verbDatabase = {
         1: { sg: "vēnī", pl: "vēnimus" },
         2: { sg: "vēnistī", pl: "vēnistis" },
         3: { sg: "vēnit", pl: "vēnērunt" },
+      },
+    },
+  },
+
+  // Irregular: volō, velle (want)
+  want: {
+    en: {
+      infinitive: "to want",
+      present: {
+        1: { sg: "want", pl: "want" },
+        2: { sg: "want", pl: "want" },
+        3: { sg: "wants", pl: "want" },
+      },
+      perfect: {
+        1: { sg: "wanted", pl: "wanted" },
+        2: { sg: "wanted", pl: "wanted" },
+        3: { sg: "wanted", pl: "wanted" },
+      },
+    },
+    la: {
+      infinitive: "velle",
+      present: {
+        1: { sg: "volō", pl: "volumus" },
+        2: { sg: "vīs", pl: "vultis" },
+        3: { sg: "vult", pl: "volunt" },
+      },
+      perfect: {
+        1: { sg: "voluī", pl: "voluimus" },
+        2: { sg: "voluistī", pl: "voluistis" },
+        3: { sg: "voluit", pl: "voluērunt" },
+      },
+    },
+  },
+
+  // Irregular: sum, esse (be)
+  be: {
+    en: {
+      infinitive: "to be",
+      present: {
+        1: { sg: "am", pl: "are" },
+        2: { sg: "are", pl: "are" },
+        3: { sg: "is", pl: "are" },
+      },
+      perfect: {
+        1: { sg: "was", pl: "were" },
+        2: { sg: "were", pl: "were" },
+        3: { sg: "was", pl: "were" },
+      },
+    },
+    la: {
+      infinitive: "esse",
+      present: {
+        1: { sg: "sum", pl: "sumus" },
+        2: { sg: "es", pl: "estis" },
+        3: { sg: "est", pl: "sunt" },
+      },
+      perfect: {
+        1: { sg: "fuī", pl: "fuimus" },
+        2: { sg: "fuistī", pl: "fuistis" },
+        3: { sg: "fuit", pl: "fuērunt" },
       },
     },
   },

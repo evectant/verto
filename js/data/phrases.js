@@ -24,7 +24,7 @@ phrases.push(
 
   // 2nd conjugation.
   //
-  // moneo, monere, monui, monitus (II) - warn, advise
+  // moneo, monere, monui, monitus (II) - warn
   // moveo, movere, movi, motus (II) - move
   // pareo, parere, parui, n/a (II) - obey (intr., takes dative)
   {
@@ -42,8 +42,8 @@ phrases.push(
 
   // 3rd conjugation.
   //
-  // dūcō, dūcere, dūxī, ductus (III) - lead
   // dīcō, dīcere, dīxī, dictus (III) - tell
+  // dūcō, dūcere, dūxī, ductus (III) - lead
   // ostendō, ostendere, ostendī, ostensus (III) - show
   {
     en: "{noun.person.en} {verb.lead.en} {noun.person.en.acc} without {noun.emotion.en.sg}",
@@ -60,16 +60,16 @@ phrases.push(
 
   // 3rd-io conjugation.
   //
+  // capiō, capere, cēpī, captus (III-io) - take
   // faciō, facere, fēcī, factus (III-io) - make
   // fugiō, fugere, fūgī, fugitus (III-io) - flee
-  // capiō, capere, cēpī, captus (III-io) - take
   {
     en: "{noun.person.en} {verb.make.en} {noun.thing.en} for {noun.person.en.acc}",
     la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.dat} {verb.make.la}",
   },
   {
-    en: "{noun.person.en} {verb.flee.en} into {noun.location.en.acc} out of {noun.emotion.en.sg}",
-    la: "{noun.person.la.nom} in {noun.location.la.acc} {noun.emotion.la.abl.sg} {verb.flee.la}",
+    en: "{noun.person.en} {verb.flee.en} into {noun.person.en.gen} {noun.location.en.acc}",
+    la: "{noun.person.la.nom} in {noun.location.la.acc} {noun.person.la.gen} {verb.flee.la}",
   },
   {
     en: "{noun.person.en} {verb.take.en} {noun.thing.en} from {noun.person.en.acc}",
@@ -86,11 +86,36 @@ phrases.push(
     la: "{noun.person.la.nom} de {noun.thing.la.abl} in {noun.location.la.abl} {verb.hear.la}",
   },
   {
-    en: "{noun.person.en} {verb.serve.en} {noun.person.en.acc}",
-    la: "{noun.person.la.nom} {noun.person.la.dat} {verb.serve.la}",
+    en: "{noun.person.en} {verb.serve.en} {noun.person.en.acc} out of {noun.emotion.en.sg}",
+    la: "{noun.person.la.nom} {noun.person.la.dat} {noun.emotion.la.abl.sg} {verb.serve.la}",
   },
   {
-    en: "{noun.person.en} {verb.come.en} {from.en} {noun.location.en}",
-    la: "{noun.person.la.nom} {from.la} {noun.location.la.abl} {verb.come.la}",
+    en: "{noun.person.en} {verb.come.en} {from.en} {noun.person.en.gen} {noun.location.en}",
+    la: "{noun.person.la.nom} {from.la} {noun.location.la.abl} {noun.person.la.gen} {verb.come.la}",
+  },
+
+  // Irregular.
+  //
+  // sum, esse, fuī, futūrus (irr.) - be
+  // volō, velle, voluī, n/a (irr.) - want
+  {
+    en: "{noun.person.en.sg} {verb.be.en} also {noun.person.en.sg}",
+    la: "{noun.person.la.nom.sg} {noun.person.la.nom.sg} quoque {verb.be.la}",
+  },
+  {
+    en: "{noun.person.en.pl} {verb.be.en} also {noun.person.en.pl}",
+    la: "{noun.person.la.nom.pl} {noun.person.la.nom.pl} quoque {verb.be.la}",
+  },
+  {
+    en: "{noun.thing.en} {verb.be.en} {noun.person.en.gen}",
+    la: "{noun.thing.la.nom} {verb.be.la} {noun.person.la.gen}",
+  },
+  {
+    en: "{noun.person.en} {verb.want.en} {verb.inf.en} and {verb.inf.en}",
+    la: "{noun.person.la.nom} {verb.want.la} {verb.inf.la} et {verb.inf.la}",
+  },
+  {
+    en: "{noun.person.en} {verb.want.en} {noun.person.en.gen} {noun.thing.en}",
+    la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.gen} {verb.want.la}",
   }
 );

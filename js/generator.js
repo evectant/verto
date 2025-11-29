@@ -15,8 +15,8 @@ function parseTemplate(template) {
     const startIndex = match.index;
     const endIndex = match.index + match[0].length;
 
-    // Check for verb placeholder: {verb.verbName.lang} or {verb.verbName.lang.number}
-    // Format: {verb.take.en} or {verb.take.la.sg}
+    // Check for verb placeholder: {verb.verbName.lang}, {verb.verbName.lang.number}, or {verb.inf.lang}
+    // Format: {verb.take.en}, {verb.take.la.sg}, or {verb.inf.en}, {verb.inf.la}
     if (content.startsWith("verb.")) {
       const parts = content.split(".");
       if (parts.length < 3) {
@@ -29,6 +29,18 @@ function parseTemplate(template) {
       const verbName = parts[1];
       const lang = parts[2];
       const number = parts.length === 4 ? parts[3] : null; // Optional number (sg/pl)
+
+      // Check if this is an infinitive placeholder
+      if (verbName === "inf") {
+        placeholders.push({
+          fullMatch: match[0],
+          startIndex: startIndex,
+          endIndex: endIndex,
+          type: "verb_infinitive",
+          lang: lang,
+        });
+        continue;
+      }
 
       // Check if it's a valid verb
       const isValidVerb = verbDatabase && verbDatabase[verbName];
@@ -224,6 +236,9 @@ function getFilteredNouns(category, selectedDeclensions, enablePronouns) {
  * @param {object} possessiveContext - For Latin genitives, context about the possessed noun {noun, case, number}
  * @param {string} followingWord - The word that follows this placeholder (used for {from.la})
  * @param {string} fromVariant - The "from" variant to use: 'ex' for "out of"/"ex", 'a' for "from"/"a/ab"
+ * @param {Array} selectedInfinitives - Array of selected verb names for infinitives (shared across languages)
+ * @param {object} infinitiveCounters - Counter for current infinitive position per language {en: number, la: number}
+ * @param {boolean} isSubjectNominative - Whether this is the subject nominative (only omit this one in Latin)
  * @returns {string} The substituted text
  */
 function substitutePlaceholder(
@@ -237,7 +252,10 @@ function substitutePlaceholder(
   selectedConjugations,
   possessiveContext,
   followingWord,
-  fromVariant
+  fromVariant,
+  selectedInfinitives,
+  infinitiveCounters,
+  isSubjectNominative = false
 ) {
   // Helper function to check if a character is a vowel (including macrons)
   function isVowel(char) {
@@ -293,6 +311,65 @@ function substitutePlaceholder(
       return "a";
     }
   }
+  // Handle verb infinitive placeholders
+  if (placeholder.type === "verb_infinitive") {
+    const currentLang = placeholder.lang;
+    const currentIndex = infinitiveCounters ? infinitiveCounters[currentLang] : 0;
+
+    let verbName;
+
+    // Check if this infinitive position already has a selected verb
+    if (selectedInfinitives && selectedInfinitives[currentIndex]) {
+      // Use the already-selected verb to ensure English and Latin match
+      verbName = selectedInfinitives[currentIndex];
+    } else {
+      // This is the first language to process this infinitive position, select a new verb
+      const availableVerbs = [];
+      if (selectedConjugations && selectedConjugations.length > 0) {
+        selectedConjugations.forEach((conj) => {
+          if (verbsByConjugation[conj]) {
+            availableVerbs.push(...verbsByConjugation[conj]);
+          }
+        });
+      }
+
+      if (availableVerbs.length === 0) {
+        console.error("No verbs available for infinitive placeholder");
+        return "[ERROR:no-verbs]";
+      }
+
+      // Filter out verbs already used for previous infinitives
+      const unusedVerbs = availableVerbs.filter(
+        (v) => !selectedInfinitives.includes(v)
+      );
+
+      // If all verbs have been used, allow reuse
+      const verbPool = unusedVerbs.length > 0 ? unusedVerbs : availableVerbs;
+
+      // Pick a random verb
+      verbName = verbPool[Math.floor(Math.random() * verbPool.length)];
+
+      // Store it for use by the other language
+      if (selectedInfinitives) {
+        selectedInfinitives[currentIndex] = verbName;
+      }
+    }
+
+    // Increment the counter for this language
+    if (infinitiveCounters) {
+      infinitiveCounters[currentLang]++;
+    }
+
+    const verb = verbDatabase[verbName];
+    if (!verb) {
+      console.error(`Unknown verb: ${verbName}`);
+      return `[ERROR:${verbName}]`;
+    }
+
+    // Return the infinitive form
+    return verb[currentLang].infinitive;
+  }
+
   // Handle verb placeholders
   if (placeholder.type === "verb") {
     // Use the specific verb name from the placeholder
@@ -363,8 +440,9 @@ function substitutePlaceholder(
         placeholder.number !== null ? placeholder.number : number;
       return effectiveNumber === "sg" ? pronounData.en : pronounData.en;
     } else if (placeholder.lang === "la") {
-      // Omit nominative pronouns in Latin (verb endings indicate the subject)
-      if (placeholder.case === "nom") {
+      // Omit subject nominative pronouns in Latin (verb endings indicate the subject)
+      // But keep predicate nominatives (e.g., "ego tu sum" = "I am you")
+      if (placeholder.case === "nom" && isSubjectNominative) {
         return "";
       }
 
@@ -473,13 +551,18 @@ function generatePhrase(
   // Randomly choose "from" variant for this phrase: 'ex' = "out of"/"ex", 'a' = "from"/"a/ab"
   const fromVariant = Math.random() < 0.5 ? "ex" : "a";
 
+  // Track selected verbs for infinitives in this phrase (array maintains order)
+  // Each infinitive placeholder (1st, 2nd, etc.) will use the same verb across languages
+  const selectedInfinitives = [];
+  const infinitiveCounters = { en: 0, la: 0 };
+
   // Determine subject person for verb agreement
-  // English: first noun placeholder (typically the subject)
+  // English: first nominative person noun placeholder (typically the subject)
   // Default to third person (for nouns), override if we find a pronoun
   let enSubjectPerson = "3";
   for (let i = 0; i < placeholders.en.length; i++) {
     const ph = placeholders.en[i];
-    if (ph.type === "noun" && ph.isPerson) {
+    if (ph.type === "noun" && ph.isPerson && (ph.case === null || ph.case === "nom")) {
       if (enPersonModeMap[i] === "pronoun") {
         const subjectNoun = enNounChoices[i];
         if (
@@ -489,7 +572,7 @@ function generatePhrase(
           enSubjectPerson = subjectNoun.split(":")[1];
         }
       }
-      // Always break on first person placeholder (subject)
+      // Always break on first nominative person placeholder (subject)
       break;
     }
   }
@@ -597,7 +680,7 @@ function generatePhrase(
     if (ph.type === "from" || ph.type === "a") {
       // Skip from and a for now, we'll handle them in second pass
       return;
-    } else if (ph.type === "verb" || ph.type === "pronoun") {
+    } else if (ph.type === "verb" || ph.type === "pronoun" || ph.type === "verb_infinitive") {
       substitution = substitutePlaceholder(
         ph,
         null,
@@ -609,7 +692,10 @@ function generatePhrase(
         selectedConjugations,
         null,
         null,
-        fromVariant
+        fromVariant,
+        selectedInfinitives,
+        infinitiveCounters,
+        false // Not relevant for English
       );
     } else {
       const noun = enNounChoices[index];
@@ -628,7 +714,10 @@ function generatePhrase(
           selectedConjugations,
           null,
           null,
-          fromVariant
+          fromVariant,
+          selectedInfinitives,
+          infinitiveCounters,
+          false // Not relevant for English
         );
       }
     }
@@ -641,6 +730,16 @@ function generatePhrase(
     }
   });
 
+  // Find the index of the subject nominative for Latin (to know which pronoun to omit)
+  let laSubjectNominativeIndex = -1;
+  for (let i = 0; i < placeholders.la.length; i++) {
+    const ph = placeholders.la[i];
+    if (ph.type === "noun" && ph.isPerson && ph.case === "nom") {
+      laSubjectNominativeIndex = i;
+      break;
+    }
+  }
+
   // Build replacement list for Latin
   const laReplacements = [];
   placeholders.la.forEach((ph, index) => {
@@ -648,7 +747,7 @@ function generatePhrase(
     if (ph.type === "from" || ph.type === "a") {
       // Skip from and a for now, we'll handle them in second pass
       return;
-    } else if (ph.type === "verb" || ph.type === "pronoun") {
+    } else if (ph.type === "verb" || ph.type === "pronoun" || ph.type === "verb_infinitive") {
       substitution = substitutePlaceholder(
         ph,
         null,
@@ -660,7 +759,10 @@ function generatePhrase(
         selectedConjugations,
         null,
         null,
-        fromVariant
+        fromVariant,
+        selectedInfinitives,
+        infinitiveCounters,
+        false // Not a subject nominative
       );
     } else {
       const noun = laNounChoices[index];
@@ -668,6 +770,7 @@ function generatePhrase(
         laNumberMap[index] !== undefined ? laNumberMap[index] : number;
       const personMode = laPersonModeMap[index];
       const possCtx = laPossessiveContext.get(index);
+      const isSubjectNominative = index === laSubjectNominativeIndex;
       if (noun || (ph.isPerson && personMode === "pronoun")) {
         substitution = substitutePlaceholder(
           ph,
@@ -680,7 +783,10 @@ function generatePhrase(
           selectedConjugations,
           possCtx,
           null,
-          fromVariant
+          fromVariant,
+          selectedInfinitives,
+          infinitiveCounters,
+          isSubjectNominative
         );
       }
     }
@@ -713,7 +819,10 @@ function generatePhrase(
         selectedConjugations,
         null,
         followingWord,
-        fromVariant
+        fromVariant,
+        selectedInfinitives,
+        infinitiveCounters,
+        false // Not relevant for from/a placeholders
       );
       if (substitution !== undefined && substitution !== null) {
         enReplacements.push({
@@ -745,7 +854,10 @@ function generatePhrase(
         selectedConjugations,
         null,
         followingWord,
-        fromVariant
+        fromVariant,
+        selectedInfinitives,
+        infinitiveCounters,
+        false // Not relevant for from/a placeholders
       );
       if (substitution !== undefined && substitution !== null) {
         laReplacements.push({
@@ -902,6 +1014,38 @@ function generatePhrasesFromTemplate(
     ph.slot = slotAssignment[slotKey];
   });
 
+  // Determine fixed number requirements for each slot
+  // If all placeholders using a slot have the same fixed number, that slot must use that number
+  const slotFixedNumber = []; // Maps slot index to required number ('sg', 'pl', or null)
+  for (let slotIndex = 0; slotIndex < slotCounter; slotIndex++) {
+    const placeholdersInSlot = [
+      ...enNounPlaceholders.filter((ph) => ph.slot === slotIndex),
+      ...laNounPlaceholders.filter((ph) => ph.slot === slotIndex),
+    ];
+
+    // Check if all have the same fixed number
+    const fixedNumbers = placeholdersInSlot
+      .map((ph) => ph.number)
+      .filter((n) => n !== null);
+
+    if (fixedNumbers.length > 0) {
+      // Check if all are the same
+      const allSame = fixedNumbers.every((n) => n === fixedNumbers[0]);
+      if (allSame) {
+        slotFixedNumber[slotIndex] = fixedNumbers[0];
+      } else {
+        // Conflict: different placeholders in same slot require different numbers
+        console.error(
+          `Slot ${slotIndex} has conflicting number requirements:`,
+          fixedNumbers
+        );
+        slotFixedNumber[slotIndex] = null;
+      }
+    } else {
+      slotFixedNumber[slotIndex] = null;
+    }
+  }
+
   // Get filtered nouns for each category
   const nounsByCategory = {};
   const categories = new Set(slotCategories);
@@ -959,6 +1103,15 @@ function generatePhrasesFromTemplate(
   function sampleSlot(slotIndex, previousChoices) {
     const category = slotCategories[slotIndex];
     const availableNouns = nounsByCategory[category];
+    const fixedNumber = slotFixedNumber[slotIndex];
+
+    // Determine the number to use: fixed if specified, otherwise random
+    function chooseNumber() {
+      if (fixedNumber !== null) {
+        return fixedNumber;
+      }
+      return hasDynamicNumber && Math.random() < 0.5 ? "pl" : "sg";
+    }
 
     // For person category, randomly choose between noun and pronoun modes when both are available
     if (category === "person" && availablePersonModes.includes("pronoun")) {
@@ -986,8 +1139,7 @@ function generatePhrasesFromTemplate(
           if (availableNouns.length > 0) {
             const noun =
               availableNouns[Math.floor(Math.random() * availableNouns.length)];
-            const number =
-              hasDynamicNumber && Math.random() < 0.5 ? "pl" : "sg";
+            const number = chooseNumber();
 
             return {
               noun: noun,
@@ -1001,7 +1153,7 @@ function generatePhrasesFromTemplate(
 
         const person =
           availablePersons[Math.floor(Math.random() * availablePersons.length)];
-        const number = Math.random() < 0.5 ? "sg" : "pl";
+        const number = chooseNumber();
 
         return {
           noun: `PERSON:${person}`,
@@ -1016,7 +1168,7 @@ function generatePhrasesFromTemplate(
       // For other categories, or person category in noun mode, choose a random noun
       const noun =
         availableNouns[Math.floor(Math.random() * availableNouns.length)];
-      const number = hasDynamicNumber && Math.random() < 0.5 ? "pl" : "sg";
+      const number = chooseNumber();
 
       return {
         noun: noun,
@@ -1081,7 +1233,8 @@ function generatePhrasesFromTemplate(
       for (let i = 0; i < laPlaceholders.length; i++) {
         const ph = laPlaceholders[i];
         if (ph.type === "noun" && ph.case === "nom") {
-          subjectNumber = laNumberMap[i] || "sg";
+          // Use placeholder's fixed number if specified, otherwise use slot's number
+          subjectNumber = ph.number !== null ? ph.number : (laNumberMap[i] || "sg");
           break;
         }
       }

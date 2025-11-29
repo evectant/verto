@@ -103,16 +103,6 @@ const nounDatabase = {
         acc: { sg: "aviam", pl: "aviās" },
         abl: { sg: "aviā", pl: "aviīs" },
       },
-      {
-        en: "crowd",
-        en_pl: "crowds",
-        gender: "f",
-        nom: { sg: "turba", pl: "turbae" },
-        gen: { sg: "turbae", pl: "turbārum" },
-        dat: { sg: "turbae", pl: "turbīs" },
-        acc: { sg: "turbam", pl: "turbās" },
-        abl: { sg: "turbā", pl: "turbīs" },
-      },
     ],
     declension2: [
       {
@@ -620,6 +610,20 @@ const nounDatabase = {
         dat: { sg: "misericordiae", pl: "misericordiīs" },
         acc: { sg: "misericordiam", pl: "misericordiās" },
         abl: { sg: "misericordiā", pl: "misericordiīs" },
+      },
+    ],
+  },
+  collective: {
+    declension1: [
+      {
+        en: "crowd",
+        en_pl: "crowds",
+        gender: "f",
+        nom: { sg: "turba", pl: "turbae" },
+        gen: { sg: "turbae", pl: "turbārum" },
+        dat: { sg: "turbae", pl: "turbīs" },
+        acc: { sg: "turbam", pl: "turbās" },
+        abl: { sg: "turbā", pl: "turbīs" },
       },
     ],
   },
