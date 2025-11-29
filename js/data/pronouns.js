@@ -153,32 +153,64 @@ const pronounDatabase = {
     },
   },
   3: {
-    // 3rd person (using is/ea/id - masculine forms)
+    // 3rd person (using is/ea/id)
     sg: {
-      en: "he",
-      en_obj: "him",
-      en_poss: "his",
-      la: {
-        nom: "is",
-        gen: "eius",
-        dat: "eī",
-        acc: "eum",
-        abl: "eō",
+      m: {
+        // Masculine
+        en: "he",
+        en_obj: "him",
+        en_poss: "his",
+        la: {
+          nom: "is",
+          gen: "eius",
+          dat: "eī",
+          acc: "eum",
+          abl: "eō",
+        },
+      },
+      f: {
+        // Feminine
+        en: "she",
+        en_obj: "her",
+        en_poss: "her",
+        la: {
+          nom: "ea",
+          gen: "eius",
+          dat: "eī",
+          acc: "eam",
+          abl: "eā",
+        },
       },
       // For 3rd person, use genitive of is/ea/id (eius) instead of possessive adjective
     },
     pl: {
-      en: "they",
-      en_obj: "them",
-      en_poss: "their",
-      la: {
-        nom: "eī",
-        gen: "eōrum",
-        dat: "eīs",
-        acc: "eōs",
-        abl: "eīs",
+      m: {
+        // Masculine
+        en: "they (m.)",
+        en_obj: "them (m.)",
+        en_poss: "their (m.)",
+        la: {
+          nom: "eī",
+          gen: "eōrum",
+          dat: "eīs",
+          acc: "eōs",
+          abl: "eīs",
+        },
       },
-      // For 3rd person plural, use genitive of is/ea/id (eōrum) instead of possessive adjective
+      f: {
+        // Feminine
+        en: "they (f.)",
+        en_obj: "them (f.)",
+        en_poss: "their (f.)",
+        la: {
+          nom: "eae",
+          gen: "eārum",
+          dat: "eīs",
+          acc: "eās",
+          abl: "eīs",
+        },
+      },
+      // For 3rd person plural, use genitive of is/ea/id (eōrum/eārum) instead of possessive adjective
     },
   },
 };

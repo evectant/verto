@@ -239,6 +239,7 @@ function getFilteredNouns(category, selectedDeclensions, enablePronouns) {
  * @param {Array} selectedInfinitives - Array of selected verb names for infinitives (shared across languages)
  * @param {object} infinitiveCounters - Counter for current infinitive position per language {en: number, la: number}
  * @param {boolean} isSubjectNominative - Whether this is the subject nominative (only omit this one in Latin)
+ * @param {string} thirdPersonGender - The gender to use for 3rd person pronouns ('m' or 'f')
  * @returns {string} The substituted text
  */
 function substitutePlaceholder(
@@ -255,7 +256,8 @@ function substitutePlaceholder(
   fromVariant,
   selectedInfinitives,
   infinitiveCounters,
-  isSubjectNominative = false
+  isSubjectNominative = false,
+  thirdPersonGender = "m"
 ) {
   // Helper function to check if a character is a vowel (including macrons)
   function isVowel(char) {
@@ -395,7 +397,14 @@ function substitutePlaceholder(
       return `[ERROR:person${person}]`;
     }
 
-    const pronounData = pronoun[number];
+    // For 3rd person, use the consistent gender for this phrase
+    let pronounData;
+    if (person === "3") {
+      pronounData = pronoun[number][thirdPersonGender];
+    } else {
+      pronounData = pronoun[number];
+    }
+
     if (placeholder.lang === "en") {
       return pronounData.en;
     } else if (placeholder.lang === "la") {
@@ -426,7 +435,14 @@ function substitutePlaceholder(
       return `[ERROR:person${effectivePerson}]`;
     }
 
-    const pronounData = pronoun[number];
+    // For 3rd person, use the consistent gender for this phrase
+    let pronounData;
+    if (effectivePerson === "3") {
+      pronounData = pronoun[number][thirdPersonGender];
+    } else {
+      pronounData = pronoun[number];
+    }
+
     if (placeholder.lang === "en") {
       // Handle genitive/possessive case
       if (placeholder.case === "gen") {
@@ -550,6 +566,9 @@ function generatePhrase(
 ) {
   // Randomly choose "from" variant for this phrase: 'ex' = "out of"/"ex", 'a' = "from"/"a/ab"
   const fromVariant = Math.random() < 0.5 ? "ex" : "a";
+
+  // Randomly choose gender for 3rd person pronouns (consistent across the entire phrase)
+  const thirdPersonGender = Math.random() < 0.5 ? "m" : "f";
 
   // Track selected verbs for infinitives in this phrase (array maintains order)
   // Each infinitive placeholder (1st, 2nd, etc.) will use the same verb across languages
@@ -695,7 +714,8 @@ function generatePhrase(
         fromVariant,
         selectedInfinitives,
         infinitiveCounters,
-        false // Not relevant for English
+        false, // Not relevant for English
+        thirdPersonGender
       );
     } else {
       const noun = enNounChoices[index];
@@ -717,7 +737,8 @@ function generatePhrase(
           fromVariant,
           selectedInfinitives,
           infinitiveCounters,
-          false // Not relevant for English
+          false, // Not relevant for English
+          thirdPersonGender
         );
       }
     }
@@ -762,7 +783,8 @@ function generatePhrase(
         fromVariant,
         selectedInfinitives,
         infinitiveCounters,
-        false // Not a subject nominative
+        false, // Not a subject nominative
+        thirdPersonGender
       );
     } else {
       const noun = laNounChoices[index];
@@ -786,7 +808,8 @@ function generatePhrase(
           fromVariant,
           selectedInfinitives,
           infinitiveCounters,
-          isSubjectNominative
+          isSubjectNominative,
+          thirdPersonGender
         );
       }
     }
@@ -822,7 +845,8 @@ function generatePhrase(
         fromVariant,
         selectedInfinitives,
         infinitiveCounters,
-        false // Not relevant for from/a placeholders
+        false, // Not relevant for from/a placeholders
+        thirdPersonGender
       );
       if (substitution !== undefined && substitution !== null) {
         enReplacements.push({
@@ -857,7 +881,8 @@ function generatePhrase(
         fromVariant,
         selectedInfinitives,
         infinitiveCounters,
-        false // Not relevant for from/a placeholders
+        false, // Not relevant for from/a placeholders
+        thirdPersonGender
       );
       if (substitution !== undefined && substitution !== null) {
         laReplacements.push({
