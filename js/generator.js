@@ -597,11 +597,11 @@ function generatePhrase(
       ph.case === "gen" &&
       laPersonModeMap[i] === "pronoun"
     ) {
-      // First try looking forward for the next non-animate/non-person noun
+      // First try looking forward for the next non-animate noun (or person noun in noun mode)
       let foundNoun = false;
       for (let j = i + 1; j < placeholders.la.length; j++) {
         const nextPh = placeholders.la[j];
-        if (nextPh.type === "noun" && !nextPh.canBePronoun && !nextPh.isPerson) {
+        if (nextPh.type === "noun" && !nextPh.canBePronoun) {
           laPossessiveContext.set(i, {
             noun: laNounChoices[j],
             case: nextPh.case,
@@ -611,11 +611,11 @@ function generatePhrase(
           break;
         }
       }
-      // If not found forward, look backward for the previous non-animate/non-person noun
+      // If not found forward, look backward for the previous non-animate noun (or person noun in noun mode)
       if (!foundNoun) {
         for (let j = i - 1; j >= 0; j--) {
           const prevPh = placeholders.la[j];
-          if (prevPh.type === "noun" && !prevPh.canBePronoun && !prevPh.isPerson) {
+          if (prevPh.type === "noun" && !prevPh.canBePronoun) {
             laPossessiveContext.set(i, {
               noun: laNounChoices[j],
               case: prevPh.case,
@@ -1345,7 +1345,7 @@ function expandTemplates(
     if (item.combinations !== undefined || (item.en && item.en.includes("{"))) {
       // This is a template - generate ALL possible instantiations (up to a reasonable limit)
       const combinations =
-        item.combinations !== undefined ? item.combinations : 2;
+        item.combinations !== undefined ? item.combinations : 10;
       totalCombinationsRequested += combinations;
 
       // Generate all instantiations from this template (use a high limit to get all)
