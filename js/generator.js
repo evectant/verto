@@ -62,39 +62,6 @@ function parseTemplate(template) {
       continue;
     }
 
-    // Check for pronoun placeholder: {pronoun.en}, {pronoun.nom.la}, etc.
-    if (content.startsWith("pronoun.") || content === "pronoun") {
-      const parts = content.split(".");
-      const placeholder = {
-        fullMatch: match[0],
-        startIndex: startIndex,
-        endIndex: endIndex,
-        type: "pronoun",
-        lang: null,
-        case: null,
-        person: null, // Will be set during generation
-        number: null, // Will be set during generation
-      };
-
-      if (parts.length === 1) {
-        // {pronoun} - defaults to English nominative
-        placeholder.lang = "en";
-      } else if (parts.length === 2) {
-        // {pronoun.en} or {pronoun.la}
-        placeholder.lang = parts[1];
-        if (parts[1] === "la") {
-          placeholder.case = "nom"; // Default to nominative
-        }
-      } else if (parts.length === 3) {
-        // {pronoun.nom.la} or {pronoun.acc.la}
-        placeholder.case = parts[1];
-        placeholder.lang = parts[2];
-      }
-
-      placeholders.push(placeholder);
-      continue;
-    }
-
     // Check for "from" placeholders: {from.en} or {from.la}
     if (content === "from.en" || content === "from.la") {
       placeholders.push({
@@ -119,55 +86,53 @@ function parseTemplate(template) {
       continue;
     }
 
-    // Check for noun placeholder: {noun.category.lang.case} or {noun.category.lang.case.number}
-    // Format: {noun.person.en}, {noun.person.la.nom}, {noun.location.la.abl.sg}
+    // Check for noun placeholder: {noun.category.lang.case.number}
+    // All parts are now mandatory!
+    // Format: {noun.person.en.nom.sg}, {noun.animate.la.acc.both}, {noun.pronoun.en.nom.pl}
     if (content.startsWith("noun.")) {
       const parts = content.split(".");
-      if (parts.length < 3) {
+
+      // Validate format: noun.category.lang.case.number (5 parts total)
+      if (parts.length !== 5) {
         console.error(
-          `Invalid noun format (expected {noun.category.lang} or {noun.category.lang.case}): ${match[0]}`
+          `Invalid noun format (expected {noun.category.lang.case.number}): ${match[0]}`
+        );
+        console.error(
+          `  Example: {noun.person.en.nom.sg} or {noun.animate.la.acc.both}`
         );
         continue;
       }
 
       const category = parts[1];
       const lang = parts[2];
-      let caseValue = null;
-      let number = null;
+      const caseValue = parts[3];
+      const number = parts[4]; // 'sg', 'pl', or 'both'
 
-      if (lang === "en") {
-        // {noun.person.en}, {noun.person.en.sg}, {noun.person.en.gen}, {noun.person.en.dat}, {noun.person.en.acc}, or {noun.person.en.gen.sg}
-        if (parts.length === 4) {
-          // Could be a number (sg/pl) or a case (nom/acc/gen/dat/abl)
-          if (
-            parts[3] === "nom" ||
-            parts[3] === "acc" ||
-            parts[3] === "gen" ||
-            parts[3] === "dat" ||
-            parts[3] === "abl"
-          ) {
-            caseValue = parts[3];
-          } else {
-            number = parts[3]; // 'sg' or 'pl'
-          }
-        } else if (parts.length === 5) {
-          // {noun.person.en.gen.sg} or {noun.person.en.dat.sg} or {noun.person.en.acc.sg}
-          caseValue = parts[3]; // nom, acc, gen, dat, abl
-          number = parts[4]; // 'sg' or 'pl'
-        }
-      } else if (lang === "la") {
-        // {noun.person.la.nom} or {noun.person.la.nom.sg}
-        if (parts.length < 4) {
-          console.error(
-            `Invalid Latin noun format (expected {noun.category.la.case}): ${match[0]}`
-          );
-          continue;
-        }
-        caseValue = parts[3]; // nom, acc, gen, dat, abl
-        if (parts.length === 5) {
-          number = parts[4]; // 'sg' or 'pl'
-        }
+      // Validate language
+      if (lang !== "en" && lang !== "la") {
+        console.error(`Invalid language in ${match[0]}: ${lang} (must be 'en' or 'la')`);
+        continue;
       }
+
+      // Validate case
+      const validCases = ["nom", "gen", "dat", "acc", "abl"];
+      if (!validCases.includes(caseValue)) {
+        console.error(`Invalid case in ${match[0]}: ${caseValue} (must be one of: ${validCases.join(", ")})`);
+        continue;
+      }
+
+      // Validate number
+      const validNumbers = ["sg", "pl", "both"];
+      if (!validNumbers.includes(number)) {
+        console.error(`Invalid number in ${match[0]}: ${number} (must be 'sg', 'pl', or 'both')`);
+        continue;
+      }
+
+      // Determine placeholder type based on category
+      const isPerson = category === "person";
+      const isPronoun = category === "pronoun";
+      const isAnimate = category === "animate";
+      const canBePronoun = isAnimate || isPronoun; // "animate" and "pronoun" can use pronouns
 
       placeholders.push({
         fullMatch: match[0],
@@ -177,8 +142,11 @@ function parseTemplate(template) {
         category: category,
         lang: lang,
         case: caseValue,
-        number: number,
-        isPerson: category === "person",
+        number: number === "both" ? null : number, // null means dynamic (both)
+        isPerson: isPerson,
+        isPronoun: isPronoun,
+        isAnimate: isAnimate,
+        canBePronoun: canBePronoun,
       });
       continue;
     }
@@ -420,8 +388,9 @@ function substitutePlaceholder(
   }
 
   // Handle noun placeholders
-  // Special handling for person category: can be either noun or pronoun
-  if (placeholder.isPerson && personMode === "pronoun") {
+  // Special handling for "animate" category: can be either noun or pronoun
+  // "person" category can only be nouns, "pronoun" type is only pronouns
+  if (placeholder.canBePronoun && personMode === "pronoun") {
     // Treat as pronoun
     // Check if noun is a person marker (e.g., "PERSON:1", "PERSON:2", "PERSON:3")
     let effectivePerson = person;
@@ -577,12 +546,12 @@ function generatePhrase(
   const infinitiveCounters = { en: 0, la: 0 };
 
   // Determine subject person for verb agreement
-  // English: first nominative person noun placeholder (typically the subject)
+  // English: first nominative animate/person noun placeholder (typically the subject)
   // Default to third person (for nouns), override if we find a pronoun
   let enSubjectPerson = "3";
   for (let i = 0; i < placeholders.en.length; i++) {
     const ph = placeholders.en[i];
-    if (ph.type === "noun" && ph.isPerson && (ph.case === null || ph.case === "nom")) {
+    if (ph.type === "noun" && (ph.isPerson || ph.canBePronoun) && (ph.case === null || ph.case === "nom")) {
       if (enPersonModeMap[i] === "pronoun") {
         const subjectNoun = enNounChoices[i];
         if (
@@ -592,7 +561,7 @@ function generatePhrase(
           enSubjectPerson = subjectNoun.split(":")[1];
         }
       }
-      // Always break on first nominative person placeholder (subject)
+      // Always break on first nominative person/animate placeholder (subject)
       break;
     }
   }
@@ -602,7 +571,7 @@ function generatePhrase(
   let laSubjectPerson = "3";
   for (let i = 0; i < placeholders.la.length; i++) {
     const ph = placeholders.la[i];
-    if (ph.type === "noun" && ph.isPerson && ph.case === "nom") {
+    if (ph.type === "noun" && (ph.isPerson || ph.canBePronoun) && ph.case === "nom") {
       if (laPersonModeMap[i] === "pronoun") {
         const subjectNoun = laNounChoices[i];
         if (
@@ -612,7 +581,7 @@ function generatePhrase(
           laSubjectPerson = subjectNoun.split(":")[1];
         }
       }
-      // Always break on first nominative person placeholder (subject)
+      // Always break on first nominative person/animate placeholder (subject)
       break;
     }
   }
@@ -621,18 +590,18 @@ function generatePhrase(
   const laPossessiveContext = new Map();
   for (let i = 0; i < placeholders.la.length; i++) {
     const ph = placeholders.la[i];
-    // If this is a genitive person placeholder in pronoun mode, find the nearest non-person noun
+    // If this is a genitive animate placeholder in pronoun mode, find the nearest non-animate/non-person noun
     if (
       ph.type === "noun" &&
-      ph.isPerson &&
+      ph.canBePronoun &&
       ph.case === "gen" &&
       laPersonModeMap[i] === "pronoun"
     ) {
-      // First try looking forward for the next non-person noun
+      // First try looking forward for the next non-animate/non-person noun
       let foundNoun = false;
       for (let j = i + 1; j < placeholders.la.length; j++) {
         const nextPh = placeholders.la[j];
-        if (nextPh.type === "noun" && !nextPh.isPerson) {
+        if (nextPh.type === "noun" && !nextPh.canBePronoun && !nextPh.isPerson) {
           laPossessiveContext.set(i, {
             noun: laNounChoices[j],
             case: nextPh.case,
@@ -642,11 +611,11 @@ function generatePhrase(
           break;
         }
       }
-      // If not found forward, look backward for the previous non-person noun
+      // If not found forward, look backward for the previous non-animate/non-person noun
       if (!foundNoun) {
         for (let j = i - 1; j >= 0; j--) {
           const prevPh = placeholders.la[j];
-          if (prevPh.type === "noun" && !prevPh.isPerson) {
+          if (prevPh.type === "noun" && !prevPh.canBePronoun && !prevPh.isPerson) {
             laPossessiveContext.set(i, {
               noun: laNounChoices[j],
               case: prevPh.case,
@@ -723,7 +692,7 @@ function generatePhrase(
       const nounNumber =
         enNumberMap[index] !== undefined ? enNumberMap[index] : number;
       const personMode = enPersonModeMap[index];
-      if (noun || (ph.isPerson && personMode === "pronoun")) {
+      if (noun || (ph.canBePronoun && personMode === "pronoun")) {
         substitution = substitutePlaceholder(
           ph,
           noun,
@@ -756,7 +725,7 @@ function generatePhrase(
   let laSubjectNominativeIndex = -1;
   for (let i = 0; i < placeholders.la.length; i++) {
     const ph = placeholders.la[i];
-    if (ph.type === "noun" && ph.isPerson && ph.case === "nom") {
+    if (ph.type === "noun" && (ph.isPerson || ph.canBePronoun) && ph.case === "nom") {
       laSubjectNominativeIndex = i;
       break;
     }
@@ -794,7 +763,7 @@ function generatePhrase(
       const personMode = laPersonModeMap[index];
       const possCtx = laPossessiveContext.get(index);
       const isSubjectNominative = index === laSubjectNominativeIndex;
-      if (noun || (ph.isPerson && personMode === "pronoun")) {
+      if (noun || (ph.canBePronoun && personMode === "pronoun")) {
         substitution = substitutePlaceholder(
           ph,
           noun,
@@ -824,7 +793,7 @@ function generatePhrase(
   });
 
   // Second pass: Handle {from.en} and {a.en} placeholders for English
-  placeholders.en.forEach((ph, index) => {
+  placeholders.en.forEach((ph) => {
     if (ph.type === "from" || ph.type === "a") {
       const followingWord = getFollowingWord(
         enTemplate,
@@ -860,7 +829,7 @@ function generatePhrase(
   });
 
   // Second pass: Handle {from.la} and {a.la} placeholders for Latin now that we know other substitutions
-  placeholders.la.forEach((ph, index) => {
+  placeholders.la.forEach((ph) => {
     if (ph.type === "from" || ph.type === "a") {
       const followingWord = getFollowingWord(
         laTemplate,
@@ -990,9 +959,9 @@ function generatePhrasesFromTemplate(
   // Check if there are any pronoun placeholders (need person generation)
   const hasPronouns = allPlaceholders.some((ph) => ph.type === "pronoun");
 
-  // Check if there are any person category placeholders (need personMode generation)
-  const hasPersonCategory = allPlaceholders.some(
-    (ph) => ph.type === "noun" && ph.isPerson
+  // Check if there are any "animate" or "pronoun" category placeholders
+  const hasAnimateCategory = allPlaceholders.some(
+    (ph) => ph.type === "noun" && ph.canBePronoun
   );
 
   // Build list of noun placeholders that need choices (with their indices and categories)
@@ -1097,16 +1066,17 @@ function generatePhrasesFromTemplate(
       ? selectedTenses
       : ["present"];
 
-  // Determine which persons to generate (if there are pronoun placeholders OR person category)
+  // Determine which persons to generate (if there are pronoun placeholders OR animate category)
   const personsToGenerate =
-    hasPronouns || hasPersonCategory ? ["1", "2", "3"] : ["3"];
+    hasPronouns || hasAnimateCategory ? ["1", "2", "3"] : ["3"];
 
-  // Determine which personModes are available for person category slots
-  // If person category exists:
+  // Determine which personModes are available for "animate" category slots
+  // If "animate" category exists:
   //   - If only pronouns enabled (no declensions): only 'pronoun' mode available
   //   - If only declensions enabled (no pronouns): only 'noun' mode available
   //   - If both enabled: both modes available (will be mixed per-slot)
-  const availablePersonModes = hasPersonCategory
+  // Note: "person" category slots always use "noun" mode only
+  const availablePersonModes = hasAnimateCategory
     ? selectedDeclensions.length > 0 && enablePronouns
       ? ["noun", "pronoun"]
       : selectedDeclensions.length > 0
@@ -1116,9 +1086,9 @@ function generatePhrasesFromTemplate(
       : ["noun"]
     : ["noun"];
 
-  // When pronouns/person category are used, verb person is determined from the pronoun choice,
+  // When pronouns/animate category are used, verb person is determined from the pronoun choice,
   // so we don't need to iterate through persons in the outer loop (avoids duplicate generation)
-  const usesDynamicPerson = hasPronouns || hasPersonCategory;
+  const usesDynamicPerson = hasPronouns || hasAnimateCategory;
   const personsForLoop = usesDynamicPerson ? ["3"] : personsToGenerate;
 
   // Calculate combinations per variant
@@ -1139,18 +1109,51 @@ function generatePhrasesFromTemplate(
       return hasDynamicNumber && Math.random() < 0.5 ? "pl" : "sg";
     }
 
-    // For person category, randomly choose between noun and pronoun modes when both are available
-    if (category === "person" && availablePersonModes.includes("pronoun")) {
+    // For "pronoun" category, always use pronoun mode
+    if (category === "pronoun") {
+      const usedPersons = new Set();
+      for (let i = 0; i < slotIndex; i++) {
+        if (
+          slotCategories[i] === "pronoun" &&
+          previousChoices[i].personMode === "pronoun"
+        ) {
+          usedPersons.add(previousChoices[i].person);
+        }
+      }
+
+      const availablePersons = personsToGenerate.filter(
+        (p) => !usedPersons.has(p)
+      );
+      if (availablePersons.length === 0) {
+        // No available persons
+        return null;
+      }
+
+      const person =
+        availablePersons[Math.floor(Math.random() * availablePersons.length)];
+      const number = chooseNumber();
+
+      return {
+        noun: `PERSON:${person}`,
+        number: number,
+        personMode: "pronoun",
+        person: person,
+      };
+    }
+
+    // For "animate" category, randomly choose between noun and pronoun modes when both are available
+    // Note: "person" category can only be nouns, so it won't enter this branch
+    if (category === "animate" && availablePersonModes.includes("pronoun")) {
       // Randomly decide whether to use pronoun or noun mode
       const usePronouns =
         availablePersonModes.length === 1 || Math.random() < 0.5;
 
       if (usePronouns) {
-        // For person slots with pronouns, choose a random person that hasn't been used
+        // For animate slots with pronouns, choose a random person that hasn't been used
         const usedPersons = new Set();
         for (let i = 0; i < slotIndex; i++) {
           if (
-            slotCategories[i] === "person" &&
+            slotCategories[i] === "animate" &&
             previousChoices[i].personMode === "pronoun"
           ) {
             usedPersons.add(previousChoices[i].person);
@@ -1269,7 +1272,7 @@ function generatePhrasesFromTemplate(
       let verbPerson = person;
       for (let i = 0; i < enPlaceholders.length; i++) {
         const ph = enPlaceholders[i];
-        if (ph.type === "noun" && ph.category === "person") {
+        if (ph.type === "noun" && (ph.category === "person" || ph.category === "animate")) {
           if (enPersonModeMap[i] === "pronoun") {
             const choice =
               slotChoices[enNounPlaceholders.find((p) => p.index === i).slot];

@@ -10,16 +10,16 @@ phrases.push(
   // laudo, laudare, laudavi, laudatus (I) - praise
   // voco, vocare, vocavi, vocatus (I) - call
   {
-    en: "{noun.person.en} {verb.give.en} {noun.thing.en} to {noun.person.en.dat}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.dat} {verb.give.la}",
+    en: "{noun.animate.en.nom.both} {verb.give.en} {noun.thing.en.nom.both} to {noun.animate.en.dat.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} {noun.animate.la.dat.both} {verb.give.la}",
   },
   {
-    en: "{noun.person.en} {verb.praise.en} {noun.person.en.gen} {noun.thing.en}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.gen} {verb.praise.la}",
+    en: "{noun.animate.en.nom.both} {verb.praise.en} {noun.animate.en.gen.both} {noun.thing.en.nom.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} {noun.animate.la.gen.both} {verb.praise.la}",
   },
   {
-    en: "{noun.person.en} {verb.call.en} {noun.person.en.acc} {from.en} {noun.location.en} to {noun.location.en}",
-    la: "{noun.person.la.nom} {noun.person.la.acc} {from.la} {noun.location.la.abl} ad {noun.location.la.acc} {verb.call.la}",
+    en: "{noun.animate.en.nom.both} {verb.call.en} {noun.animate.en.acc.both} {from.en} {noun.location.en.nom.both} to {noun.location.en.nom.both}",
+    la: "{noun.animate.la.nom.both} {noun.animate.la.acc.both} {from.la} {noun.location.la.abl.both} ad {noun.location.la.acc.both} {verb.call.la}",
   },
 
   // 2nd conjugation.
@@ -28,16 +28,16 @@ phrases.push(
   // moveo, movere, movi, motus (II) - move
   // pareo, parere, parui, n/a (II) - obey (intr., takes dative)
   {
-    en: "{noun.person.en} {verb.warn.en} {noun.person.en.acc} about {noun.person.en.acc}",
-    la: "{noun.person.la.nom} {noun.person.la.acc} de {noun.person.la.abl} {verb.warn.la}",
+    en: "{noun.animate.en.nom.both} {verb.warn.en} {noun.animate.en.acc.both} about {noun.animate.en.acc.both}",
+    la: "{noun.animate.la.nom.both} {noun.animate.la.acc.both} de {noun.animate.la.abl.both} {verb.warn.la}",
   },
   {
-    en: "{noun.person.en} {verb.move.en} {noun.thing.en.acc} into {noun.location.en}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} in {noun.location.la.acc} {verb.move.la}",
+    en: "{noun.animate.en.nom.both} {verb.move.en} {noun.thing.en.acc.both} into {noun.location.en.nom.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} in {noun.location.la.acc.both} {verb.move.la}",
   },
   {
-    en: "{noun.person.en} {verb.obey.en} {noun.person.en.dat} with {noun.emotion.en.sg}",
-    la: "{noun.person.la.nom} {noun.person.la.dat} {verb.obey.la} cum {noun.emotion.la.abl.sg}",
+    en: "{noun.animate.en.nom.both} {verb.obey.en} {noun.animate.en.dat.both} with {noun.emotion.en.nom.sg}",
+    la: "{noun.animate.la.nom.both} {noun.animate.la.dat.both} {verb.obey.la} cum {noun.emotion.la.abl.sg}",
   },
 
   // 3rd conjugation.
@@ -46,16 +46,16 @@ phrases.push(
   // dūcō, dūcere, dūxī, ductus (III) - lead
   // ostendō, ostendere, ostendī, ostensus (III) - show
   {
-    en: "{noun.person.en} {verb.lead.en} {noun.person.en.acc} without {noun.emotion.en.sg}",
-    la: "{noun.person.la.nom} {noun.person.la.acc} sine {noun.emotion.la.abl.sg} {verb.lead.la}",
+    en: "{noun.animate.en.nom.both} {verb.lead.en} {noun.animate.en.acc.both} without {noun.emotion.en.nom.sg}",
+    la: "{noun.animate.la.nom.both} {noun.animate.la.acc.both} sine {noun.emotion.la.abl.sg} {verb.lead.la}",
   },
   {
-    en: "{noun.person.en} {verb.tell.en} {noun.person.en.acc} about {noun.thing.en}",
-    la: "{noun.person.la.nom} {noun.person.la.dat} de {noun.thing.la.abl} {verb.tell.la}",
+    en: "{noun.animate.en.nom.both} {verb.tell.en} {noun.animate.en.acc.both} about {noun.thing.en.nom.both}",
+    la: "{noun.animate.la.nom.both} {noun.animate.la.dat.both} de {noun.thing.la.abl.both} {verb.tell.la}",
   },
   {
-    en: "{noun.person.en} {verb.show.en} {noun.thing.en} to {noun.person.en.acc}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.dat} {verb.show.la}",
+    en: "{noun.animate.en.nom.both} {verb.show.en} {noun.thing.en.nom.both} to {noun.animate.en.acc.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} {noun.animate.la.dat.both} {verb.show.la}",
   },
 
   // 3rd-io conjugation.
@@ -64,20 +64,20 @@ phrases.push(
   // faciō, facere, fēcī, factus (III-io) - make
   // fugiō, fugere, fūgī, fugitus (III-io) - flee
   {
-    en: "{noun.person.en} {verb.make.en} {noun.thing.en} for {noun.person.en.acc}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.dat} {verb.make.la}",
+    en: "{noun.animate.en.nom.both} {verb.make.en} {noun.thing.en.nom.both} for {noun.animate.en.acc.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} {noun.animate.la.dat.both} {verb.make.la}",
   },
   {
-    en: "{noun.person.en} {verb.flee.en} into {noun.person.en.gen} {noun.location.en.acc}",
-    la: "{noun.person.la.nom} in {noun.location.la.acc} {noun.person.la.gen} {verb.flee.la}",
+    en: "{noun.animate.en.nom.both} {verb.flee.en} into {noun.animate.en.gen.both} {noun.location.en.acc.both}",
+    la: "{noun.animate.la.nom.both} in {noun.location.la.acc.both} {noun.animate.la.gen.both} {verb.flee.la}",
   },
   {
-    en: "{noun.person.en} {verb.flee.en} with {noun.person.en.acc} {from.en} {noun.location.en}",
-    la: "{noun.person.la.nom} cum {noun.person.la.abl} {from.la} {noun.location.la.abl} {verb.flee.la}",
+    en: "{noun.animate.en.nom.both} {verb.flee.en} with {noun.animate.en.acc.both} {from.en} {noun.location.en.nom.both}",
+    la: "{noun.animate.la.nom.both} cum {noun.animate.la.abl.both} {from.la} {noun.location.la.abl.both} {verb.flee.la}",
   },
   {
-    en: "{noun.person.en} {verb.take.en} {noun.thing.en} from {noun.person.en.acc}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} {a.la} {noun.person.la.abl} {verb.take.la}",
+    en: "{noun.animate.en.nom.both} {verb.take.en} {noun.thing.en.nom.both} from {noun.animate.en.acc.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} {a.la} {noun.animate.la.abl.both} {verb.take.la}",
   },
 
   // 4th conjugation.
@@ -86,20 +86,20 @@ phrases.push(
   // serviō, servīre, servīvī, n/a (IV) - serve (intr., takes dative)
   // veniō, venīre, vēnī, n/a (IV) - come (intr.)
   {
-    en: "{noun.person.en} {verb.hear.en} about {noun.thing.en} in {noun.location.en}",
-    la: "{noun.person.la.nom} de {noun.thing.la.abl} in {noun.location.la.abl} {verb.hear.la}",
+    en: "{noun.animate.en.nom.both} {verb.hear.en} about {noun.thing.en.nom.both} in {noun.location.en.nom.both}",
+    la: "{noun.animate.la.nom.both} de {noun.thing.la.abl.both} in {noun.location.la.abl.both} {verb.hear.la}",
   },
   {
-    en: "{noun.person.en} {verb.serve.en} {noun.person.en.acc} out of {noun.emotion.en.sg}",
-    la: "{noun.person.la.nom} {noun.person.la.dat} {noun.emotion.la.abl.sg} {verb.serve.la}",
+    en: "{noun.animate.en.nom.both} {verb.serve.en} {noun.animate.en.acc.both} out of {noun.emotion.en.nom.sg}",
+    la: "{noun.animate.la.nom.both} {noun.animate.la.dat.both} {noun.emotion.la.abl.sg} {verb.serve.la}",
   },
   {
-    en: "{noun.person.en} {verb.come.en} {from.en} {noun.person.en.gen} {noun.location.en}",
-    la: "{noun.person.la.nom} {from.la} {noun.location.la.abl} {noun.person.la.gen} {verb.come.la}",
+    en: "{noun.animate.en.nom.both} {verb.come.en} {from.en} {noun.animate.en.gen.both} {noun.location.en.nom.both}",
+    la: "{noun.animate.la.nom.both} {from.la} {noun.location.la.abl.both} {noun.animate.la.gen.both} {verb.come.la}",
   },
   {
-    en: "{noun.person.en} {verb.come.en} with {noun.person.en.acc} to {noun.location.en}",
-    la: "{noun.person.la.nom} cum {noun.person.la.abl} ad {noun.location.la.acc} {verb.come.la}",
+    en: "{noun.animate.en.nom.both} {verb.come.en} with {noun.animate.en.acc.both} to {noun.location.en.nom.both}",
+    la: "{noun.animate.la.nom.both} cum {noun.animate.la.abl.both} ad {noun.location.la.acc.both} {verb.come.la}",
   },
 
   // Irregular.
@@ -107,23 +107,23 @@ phrases.push(
   // sum, esse, fuī, futūrus (irr.) - be
   // volō, velle, voluī, n/a (irr.) - want
   {
-    en: "{noun.person.en.sg} {verb.be.en} also {noun.person.en.sg}",
-    la: "{noun.person.la.nom.sg} {noun.person.la.nom.sg} quoque {verb.be.la}",
+    en: "{noun.animate.en.nom.sg} {verb.be.en} also {noun.animate.en.nom.sg}",
+    la: "{noun.animate.la.nom.sg} {noun.animate.la.nom.sg} quoque {verb.be.la}",
   },
   {
-    en: "{noun.person.en.pl} {verb.be.en} also {noun.person.en.pl}",
-    la: "{noun.person.la.nom.pl} {noun.person.la.nom.pl} quoque {verb.be.la}",
+    en: "{noun.animate.en.nom.pl} {verb.be.en} also {noun.animate.en.nom.pl}",
+    la: "{noun.animate.la.nom.pl} {noun.animate.la.nom.pl} quoque {verb.be.la}",
   },
   {
-    en: "{noun.thing.en} {verb.be.en} {noun.person.en.gen}",
-    la: "{noun.thing.la.nom} {verb.be.la} {noun.person.la.gen}",
+    en: "{noun.thing.en.nom.both} {verb.be.en} {noun.animate.en.gen.both}",
+    la: "{noun.thing.la.nom.both} {verb.be.la} {noun.animate.la.gen.both}",
   },
   {
-    en: "{noun.person.en} {verb.want.en} {verb.inf.en} and {verb.inf.en}",
-    la: "{noun.person.la.nom} {verb.want.la} {verb.inf.la} et {verb.inf.la}",
+    en: "{noun.animate.en.nom.both} {verb.want.en} {verb.inf.en} and {verb.inf.en}",
+    la: "{noun.animate.la.nom.both} {verb.want.la} {verb.inf.la} et {verb.inf.la}",
   },
   {
-    en: "{noun.person.en} {verb.want.en} {noun.person.en.gen} {noun.thing.en}",
-    la: "{noun.person.la.nom} {noun.thing.la.acc} {noun.person.la.gen} {verb.want.la}",
+    en: "{noun.animate.en.nom.both} {verb.want.en} {noun.animate.en.gen.both} {noun.thing.en.nom.both}",
+    la: "{noun.animate.la.nom.both} {noun.thing.la.acc.both} {noun.animate.la.gen.both} {verb.want.la}",
   }
 );

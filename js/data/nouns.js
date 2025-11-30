@@ -628,3 +628,15 @@ const nounDatabase = {
     ],
   },
 };
+
+// "animate" category uses the same nouns as "person", but can also resolve to pronouns
+nounDatabase.animate = nounDatabase.person;
+
+// "pronoun" category is a pseudo-category that only resolves to pronouns (no noun data)
+nounDatabase.pronoun = {
+  declension1: [],
+  declension2: [],
+  declension3: [],
+  declension4: [],
+  declension5: [],
+};
