@@ -597,28 +597,28 @@ function generatePhrase(
       ph.case === "gen" &&
       laPersonModeMap[i] === "pronoun"
     ) {
-      // First try looking forward for the next non-animate noun (or person noun in noun mode)
+      // First try looking backward for the previous non-animate noun (or person noun in noun mode)
       let foundNoun = false;
-      for (let j = i + 1; j < placeholders.la.length; j++) {
-        const nextPh = placeholders.la[j];
-        if (nextPh.type === "noun" && !nextPh.canBePronoun) {
+      for (let j = i - 1; j >= 0; j--) {
+        const prevPh = placeholders.la[j];
+        if (prevPh.type === "noun" && !prevPh.canBePronoun) {
           laPossessiveContext.set(i, {
             noun: laNounChoices[j],
-            case: nextPh.case,
+            case: prevPh.case,
             number: laNumberMap[j],
           });
           foundNoun = true;
           break;
         }
       }
-      // If not found forward, look backward for the previous non-animate noun (or person noun in noun mode)
+      // If not found backward, look forward for the next non-animate noun (or person noun in noun mode)
       if (!foundNoun) {
-        for (let j = i - 1; j >= 0; j--) {
-          const prevPh = placeholders.la[j];
-          if (prevPh.type === "noun" && !prevPh.canBePronoun) {
+        for (let j = i + 1; j < placeholders.la.length; j++) {
+          const nextPh = placeholders.la[j];
+          if (nextPh.type === "noun" && !nextPh.canBePronoun) {
             laPossessiveContext.set(i, {
               noun: laNounChoices[j],
-              case: prevPh.case,
+              case: nextPh.case,
               number: laNumberMap[j],
             });
             break;
