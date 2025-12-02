@@ -115,7 +115,7 @@ function parseTemplate(template) {
       }
 
       // Validate case
-      const validCases = ["nom", "gen", "dat", "acc", "abl"];
+      const validCases = ["nom", "gen", "gen_indep", "dat", "acc", "abl"];
       if (!validCases.includes(caseValue)) {
         console.error(`Invalid case in ${match[0]}: ${caseValue} (must be one of: ${validCases.join(", ")})`);
         continue;
@@ -417,8 +417,12 @@ function substitutePlaceholder(
       if (placeholder.case === "gen") {
         return pronounData.en_poss;
       }
-      // Handle dative/objective case (both dat and acc use objective form in English)
-      if (placeholder.case === "dat" || placeholder.case === "acc") {
+      // Handle independent genitive/possessive (predicative: "the book is mine")
+      if (placeholder.case === "gen_indep") {
+        return pronounData.en_poss_indep;
+      }
+      // Handle dative/objective case (dat, acc, and abl use objective form in English)
+      if (placeholder.case === "dat" || placeholder.case === "acc" || placeholder.case === "abl") {
         return pronounData.en_obj;
       }
       const effectiveNumber =
@@ -432,8 +436,9 @@ function substitutePlaceholder(
       }
 
       // Handle genitive case with possessive adjectives (1st and 2nd person only)
+      // gen_indep is treated the same as gen in Latin
       if (
-        placeholder.case === "gen" &&
+        (placeholder.case === "gen" || placeholder.case === "gen_indep") &&
         possessiveContext &&
         pronounData.la_poss
       ) {
@@ -448,7 +453,9 @@ function substitutePlaceholder(
       }
 
       // Regular pronoun case (including 3rd person genitive which uses genitive pronoun, not possessive adjective)
-      const caseForm = pronounData.la[placeholder.case];
+      // Normalize gen_indep to gen for Latin lookup
+      const effectiveCase = placeholder.case === "gen_indep" ? "gen" : placeholder.case;
+      const caseForm = pronounData.la[effectiveCase];
       if (!caseForm) {
         console.error(
           `Pronoun person ${effectivePerson} missing case: ${placeholder.case}`
@@ -471,8 +478,8 @@ function substitutePlaceholder(
       baseForm = noun.en;
     }
 
-    // Handle genitive/possessive case
-    if (placeholder.case === "gen") {
+    // Handle genitive/possessive case (gen_indep works the same for nouns)
+    if (placeholder.case === "gen" || placeholder.case === "gen_indep") {
       // Add 's or ' for possessive
       if (baseForm.endsWith("s")) {
         return baseForm + "'";
@@ -483,7 +490,9 @@ function substitutePlaceholder(
 
     return baseForm;
   } else if (placeholder.lang === "la") {
-    const caseForm = noun[placeholder.case];
+    // Normalize gen_indep to gen for Latin lookup
+    const effectiveCase = placeholder.case === "gen_indep" ? "gen" : placeholder.case;
+    const caseForm = noun[effectiveCase];
     if (!caseForm) {
       console.error(`Noun ${noun.en} missing case: ${placeholder.case}`);
       return `[ERROR:${noun.en}]`;
@@ -594,7 +603,7 @@ function generatePhrase(
     if (
       ph.type === "noun" &&
       ph.canBePronoun &&
-      ph.case === "gen" &&
+      (ph.case === "gen" || ph.case === "gen_indep") &&
       laPersonModeMap[i] === "pronoun"
     ) {
       // First try looking backward for the previous non-animate noun (or person noun in noun mode)

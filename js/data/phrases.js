@@ -173,7 +173,7 @@ phrases.push(
 
   // Ex: sword is not warrior's but farmer's / gladius non est militis sed agricolae
   {
-    en: "{noun.thing.en.nom.both} {verb.be.en} not {noun.animate.en.gen.both} but {noun.animate.en.gen.both}",
+    en: "{noun.thing.en.nom.both} {verb.be.en} not {noun.animate.en.gen_indep.both} but {noun.animate.en.gen_indep.both}",
     la: "{noun.thing.la.nom.both} non {verb.be.la} {noun.animate.la.gen.both} sed {noun.animate.la.gen.both}",
   },
 

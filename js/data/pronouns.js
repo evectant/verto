@@ -7,7 +7,8 @@ const pronounDatabase = {
     sg: {
       en: "I", // Subject form
       en_obj: "me", // Object form
-      en_poss: "my", // Possessive form
+      en_poss: "my", // Possessive form (dependent: "my book")
+      en_poss_indep: "mine", // Independent possessive ("the book is mine")
       la: {
         nom: "ego",
         gen: "meī",
@@ -44,6 +45,7 @@ const pronounDatabase = {
       en: "we",
       en_obj: "us",
       en_poss: "our",
+      en_poss_indep: "ours",
       la: {
         nom: "nōs",
         gen: "nostrum",
@@ -83,6 +85,7 @@ const pronounDatabase = {
       en: "you (sg.)",
       en_obj: "you (sg.)",
       en_poss: "your (sg.)",
+      en_poss_indep: "yours (sg.)",
       la: {
         nom: "tū",
         gen: "tuī",
@@ -119,6 +122,7 @@ const pronounDatabase = {
       en: "you (pl.)",
       en_obj: "you (pl.)",
       en_poss: "your (pl.)",
+      en_poss_indep: "yours (pl.)",
       la: {
         nom: "vōs",
         gen: "vestrum",
@@ -160,6 +164,7 @@ const pronounDatabase = {
         en: "he",
         en_obj: "him",
         en_poss: "his",
+        en_poss_indep: "his",
         la: {
           nom: "is",
           gen: "eius",
@@ -173,6 +178,7 @@ const pronounDatabase = {
         en: "she",
         en_obj: "her",
         en_poss: "her",
+        en_poss_indep: "hers",
         la: {
           nom: "ea",
           gen: "eius",
@@ -186,6 +192,7 @@ const pronounDatabase = {
         en: "it",
         en_obj: "it",
         en_poss: "its",
+        en_poss_indep: "its",
         la: {
           nom: "id",
           gen: "eius",
@@ -202,6 +209,7 @@ const pronounDatabase = {
         en: "they (m.)",
         en_obj: "them (m.)",
         en_poss: "their (m.)",
+        en_poss_indep: "theirs (m.)",
         la: {
           nom: "eī",
           gen: "eōrum",
@@ -215,6 +223,7 @@ const pronounDatabase = {
         en: "they (f.)",
         en_obj: "them (f.)",
         en_poss: "their (f.)",
+        en_poss_indep: "theirs (f.)",
         la: {
           nom: "eae",
           gen: "eārum",
@@ -228,6 +237,7 @@ const pronounDatabase = {
         en: "they (n.)",
         en_obj: "them (n.)",
         en_poss: "their (n.)",
+        en_poss_indep: "theirs (n.)",
         la: {
           nom: "ea",
           gen: "eōrum",
