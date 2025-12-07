@@ -16,6 +16,7 @@ const pronounDatabase = {
         acc: "mē",
         abl: "mē",
       },
+      la_cum: "mēcum", // Postpositive cum: "with me"
       la_poss: {
         // Possessive adjective: meus, mea, meum
         m: {
@@ -53,6 +54,7 @@ const pronounDatabase = {
         acc: "nōs",
         abl: "nōbīs",
       },
+      la_cum: "nōbīscum", // Postpositive cum: "with us"
       la_poss: {
         // Possessive adjective: noster, nostra, nostrum
         m: {
@@ -93,6 +95,7 @@ const pronounDatabase = {
         acc: "tē",
         abl: "tē",
       },
+      la_cum: "tēcum", // Postpositive cum: "with you (sg.)"
       la_poss: {
         // Possessive adjective: tuus, tua, tuum
         m: {
@@ -130,6 +133,7 @@ const pronounDatabase = {
         acc: "vōs",
         abl: "vōbīs",
       },
+      la_cum: "vōbīscum", // Postpositive cum: "with you (pl.)"
       la_poss: {
         // Possessive adjective: vester, vestra, vestrum
         m: {

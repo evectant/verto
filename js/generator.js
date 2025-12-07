@@ -793,10 +793,48 @@ function generatePhrase(
       }
     }
     if (substitution !== undefined && substitution !== null) {
+      let adjustedStartIndex = ph.startIndex;
+      let finalSubstitution = substitution;
+
+      // Check for postpositive cum with ablative pronouns (1st/2nd person only)
+      // "cum mē" → "mēcum", "cum tē" → "tēcum", etc.
+      if (
+        ph.type === "noun" &&
+        ph.case === "abl" &&
+        laPersonModeMap[index] === "pronoun" &&
+        substitution !== "" // Not an omitted pronoun
+      ) {
+        // Check if "cum " precedes this placeholder in the template
+        const precedingText = laTemplate.substring(
+          Math.max(0, ph.startIndex - 4),
+          ph.startIndex
+        );
+        if (precedingText === "cum ") {
+          // Get the person from the noun choice
+          const nounChoice = laNounChoices[index];
+          if (typeof nounChoice === "string" && nounChoice.startsWith("PERSON:")) {
+            const effectivePerson = nounChoice.split(":")[1];
+            const pronoun = pronounDatabase[effectivePerson];
+            if (pronoun) {
+              const nounNumber =
+                laNumberMap[index] !== undefined ? laNumberMap[index] : number;
+              const pronounData =
+                effectivePerson === "3"
+                  ? pronoun[nounNumber][thirdPersonGender]
+                  : pronoun[nounNumber];
+              if (pronounData && pronounData.la_cum) {
+                finalSubstitution = pronounData.la_cum;
+                adjustedStartIndex = ph.startIndex - 4; // Include "cum " in replacement
+              }
+            }
+          }
+        }
+      }
+
       laReplacements.push({
-        startIndex: ph.startIndex,
+        startIndex: adjustedStartIndex,
         endIndex: ph.endIndex,
-        text: substitution,
+        text: finalSubstitution,
       });
     }
   });
