@@ -8,6 +8,13 @@ const feedbackElement = document.getElementById("feedback");
 const correctCounterElement = document.getElementById("correctCounter");
 const randomizeCheckboxElement = document.getElementById("randomizeCheckbox");
 
+// AI Mode elements
+const aiModeCheckboxElement = document.getElementById("aiModeCheckbox");
+const aiModeSettingsElement = document.getElementById("aiModeSettings");
+const apiKeyInputElement = document.getElementById("apiKeyInput");
+const generateAiButtonElement = document.getElementById("generateAiButton");
+const aiStatusElement = document.getElementById("aiStatus");
+
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
 const conjugationCheckboxes = document.querySelectorAll(
   ".conjugation-checkbox"
@@ -21,6 +28,8 @@ let currentPhraseIndex = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
 let isGroupUpdate = false;
+let aiModeEnabled = false;
+let aiGeneratedPhrases = [];
 
 //
 // Functions
@@ -35,6 +44,11 @@ function displayPhrase() {
 
 // Makes the loaded phrases match the checkboxes.
 function updateLoadedPhrases() {
+  // Skip if AI mode is enabled - AI phrases are managed separately
+  if (aiModeEnabled) {
+    return;
+  }
+
   loadedPhrases = [];
   const selectedDeclensions = [];
   const selectedTenses = [];
@@ -300,6 +314,141 @@ fabulaeLabel.addEventListener("click", function (event) {
 
 // Enter starts in submit mode.
 translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
+// AI Mode event handlers
+aiModeCheckboxElement.addEventListener("change", function () {
+  aiModeEnabled = this.checked;
+
+  if (aiModeEnabled) {
+    // Show AI settings
+    aiModeSettingsElement.classList.remove("hidden");
+
+    // Load saved API key if available
+    const savedKey = getApiKey();
+    if (savedKey) {
+      apiKeyInputElement.value = savedKey;
+    }
+
+    // If we have AI phrases, use them
+    if (aiGeneratedPhrases.length > 0) {
+      loadedPhrases = [...aiGeneratedPhrases];
+      if (randomizeCheckboxElement.checked) {
+        shuffle(loadedPhrases);
+      }
+      currentPhraseIndex = 0;
+      displayPhrase();
+    } else {
+      currentPhraseElement.textContent = "⚠️ Preme 'Generare'";
+    }
+  } else {
+    // Hide AI settings and switch back to template phrases
+    aiModeSettingsElement.classList.add("hidden");
+    aiStatusElement.textContent = "";
+    updateLoadedPhrases();
+  }
+});
+
+// Save API key when changed
+apiKeyInputElement.addEventListener("change", function () {
+  setApiKey(this.value);
+});
+
+// Generate AI phrases button
+generateAiButtonElement.addEventListener("click", async function () {
+  const apiKey = apiKeyInputElement.value.trim();
+  if (!apiKey) {
+    aiStatusElement.textContent = "⚠️ Insere clavem API";
+    aiStatusElement.className = "ai-error";
+    return;
+  }
+
+  // Save the API key
+  setApiKey(apiKey);
+
+  // Get current settings
+  const selectedDeclensions = [];
+  const selectedConjugations = [];
+  const selectedTenses = [];
+  let pronounsEnabled = false;
+
+  conjugationCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      selectedConjugations.push(checkbox.value);
+    }
+  });
+
+  declensionCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      if (checkbox.value === "pronouns") {
+        pronounsEnabled = true;
+      } else {
+        selectedDeclensions.push(checkbox.value);
+      }
+    }
+  });
+
+  tenseCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      selectedTenses.push(checkbox.value);
+    }
+  });
+
+  // Validate settings
+  if (selectedConjugations.length === 0) {
+    aiStatusElement.textContent = "⚠️ Selige coniugationes";
+    aiStatusElement.className = "ai-error";
+    return;
+  }
+
+  if (selectedDeclensions.length === 0 && !pronounsEnabled) {
+    aiStatusElement.textContent = "⚠️ Selige declinationes";
+    aiStatusElement.className = "ai-error";
+    return;
+  }
+
+  if (selectedTenses.length === 0) {
+    aiStatusElement.textContent = "⚠️ Selige tempora";
+    aiStatusElement.className = "ai-error";
+    return;
+  }
+
+  // Show loading state
+  aiStatusElement.textContent = "Generans...";
+  aiStatusElement.className = "ai-loading";
+  generateAiButtonElement.disabled = true;
+
+  try {
+    aiGeneratedPhrases = await generateAIPhrases(
+      selectedDeclensions,
+      selectedConjugations,
+      selectedTenses,
+      pronounsEnabled
+    );
+
+    aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae`;
+    aiStatusElement.className = "ai-success";
+
+    // Load the AI phrases
+    loadedPhrases = [...aiGeneratedPhrases];
+    if (randomizeCheckboxElement.checked) {
+      shuffle(loadedPhrases);
+    }
+    currentPhraseIndex = 0;
+
+    // Reset to submit mode
+    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
+    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
+    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
+    displayPhrase();
+  } catch (error) {
+    console.error("AI generation error:", error);
+    aiStatusElement.textContent = `⚠️ ${error.message}`;
+    aiStatusElement.className = "ai-error";
+  } finally {
+    generateAiButtonElement.disabled = false;
+  }
+});
 
 //
 // Initialization.

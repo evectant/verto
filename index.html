@@ -21,6 +21,21 @@
     </div>
 
     <div class="settings-container">
+      <div class="ai-mode-section">
+        <label
+          ><input type="checkbox" id="aiModeCheckbox" />Modus IA</label
+        >
+        <div id="aiModeSettings" class="hidden">
+          <input
+            type="password"
+            id="apiKeyInput"
+            placeholder="Clavis API Anthropic"
+          />
+          <button id="generateAiButton">Generare</button>
+          <span id="aiStatus"></span>
+        </div>
+      </div>
+
       <label
         ><input type="checkbox" id="randomizeCheckbox" checked />Ordo
         fortuitus</label
@@ -49,6 +64,7 @@
               type="checkbox"
               class="conjugation-checkbox"
               value="conj2"
+              checked
             />Cj II</label
           >
           <label
@@ -56,6 +72,7 @@
               type="checkbox"
               class="conjugation-checkbox"
               value="conj3"
+              checked
             />Cj III</label
           >
           <label
@@ -63,6 +80,7 @@
               type="checkbox"
               class="conjugation-checkbox"
               value="conj3io"
+              checked
             />Cj III-io</label
           >
           <label
@@ -70,6 +88,7 @@
               type="checkbox"
               class="conjugation-checkbox"
               value="conj4"
+              checked
             />Cj IV</label
           >
           <label
@@ -77,6 +96,7 @@
               type="checkbox"
               class="conjugation-checkbox"
               value="irregular"
+              checked
             />Irreg</label
           >
         </div>
@@ -98,14 +118,15 @@
               class="tense-checkbox"
               value="present"
               checked
-            />Praesens</label
+            />Ind. Praes. Act.</label
           >
           <label
             ><input
               type="checkbox"
               class="tense-checkbox"
               value="perfect"
-            />Perfectum</label
+              checked
+            />Ind. Perf. Act.</label
           >
         </div>
       </div>
@@ -291,6 +312,7 @@
     <script src="js/data/stories.js"></script>
     <script src="js/generator.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/ai.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
