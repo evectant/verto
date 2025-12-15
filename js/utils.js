@@ -26,6 +26,10 @@ function toRoman(num) {
   }
 }
 
+// Prepositions: used for grading (all treated as equivalent) and in AI prompt
+const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "ex", "in", "sine"];
+const PREPOSITION_REGEX = new RegExp(`\\b(${PREPOSITIONS.join("|")})\\b`, "g");
+
 function normalize(text) {
   return text
     .normalize("NFD")
@@ -34,7 +38,7 @@ function normalize(text) {
     .replace(/\s{2,}/g, " ") // Drop double spaces.
     .trim()
     .toLowerCase()
-    .replace(/\bab\b/g, "a"); // Treat "ab" and "a" as equivalent.
+    .replace(PREPOSITION_REGEX, "PREP"); // Treat all prepositions as equivalent.
 }
 
 function haveSameWords(phrase1, phrase2) {

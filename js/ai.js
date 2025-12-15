@@ -4,6 +4,10 @@
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
+const AI_USE_THINKING = true;
+const AI_THINKING_BUDGET = 1024;
+
+// PREPOSITIONS is defined in utils.js (loaded first)
 
 // LocalStorage key for API key
 const API_KEY_STORAGE_KEY = "verto_anthropic_api_key";
@@ -71,27 +75,25 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, count) {
 
   let pronounRules = "";
   if (pronounsEnabled) {
-    pronounRules = `Subjects may be 1st person (I/we), 2nd person (you), or 3rd person (nouns or he/she/it/they)
-- Use reflexive pronouns often (se, sibi, secum)
-- Use possessives often (meus, tuus, suus, noster, vester)`;
+    pronounRules = `Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.
+- When using "you", "your", "yours", "yourself", always indicate number in parentheses: "you (sg.)" or "you (pl.)".`;
   }
 
   return `Generate ${count} Latin sentences with English translations for language learning.
 
 Grammar rules:
-- Use ONLY these nouns: ${vocabulary.nouns.join(", ")}
-- Use ONLY these verbs: ${vocabulary.verbs.join(", ")}
-- Use ONLY these tenses: ${tenseList}
-- Use ONLY these prepositions: a, ab, ad, cum, de, ex, in, sine
+- Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
+- Use ONLY these verbs: ${vocabulary.verbs.join(", ")}.
+- Use ONLY these tenses: ${tenseList}.
+- Use ONLY these prepositions: ${PREPOSITIONS.join(", ")}.
 - ${pronounRules}
-- Do NOT use adjectives (except possessives) or adverbs
-- Exercise as much vocabulary and grammar listed above as possible
+- Do NOT use adjectives (except possessives) or adverbs.
+- Exercise as much vocabulary and grammar listed above as possible.
+- Exercise as many noun cases as possible.
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "..."}].
-- No macrons in Latin.
-- No period at the end.
-- Lowercase except proper nouns.`;
+- Use macrons and proper punctuation.`;
 }
 
 // Call the Anthropic API to generate phrases
@@ -123,7 +125,13 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     },
     body: JSON.stringify({
       model: AI_MODEL,
-      max_tokens: 4096,
+      max_tokens: 16000,
+      ...(AI_USE_THINKING && {
+        thinking: {
+          type: "enabled",
+          budget_tokens: AI_THINKING_BUDGET,
+        },
+      }),
       messages: [
         {
           role: "user",
@@ -139,7 +147,8 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
   }
 
   const data = await response.json();
-  const content = data.content[0]?.text;
+  const textBlock = data.content.find((block) => block.type === "text");
+  const content = textBlock?.text;
 
   if (!content) {
     throw new Error("No content in API response");
