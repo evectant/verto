@@ -38,6 +38,8 @@ function normalize(text) {
     .replace(/\s{2,}/g, " ") // Drop double spaces.
     .trim()
     .toLowerCase()
+    .replace(/(\w)que\b/g, "$1 CONJ") // Convert -que suffix to word + CONJ.
+    .replace(/\bet\b/g, "CONJ") // Convert et to CONJ.
     .replace(PREPOSITION_REGEX, "PREP"); // Treat all prepositions as equivalent.
 }
 
@@ -70,27 +72,43 @@ function shuffle(array) {
 }
 
 function getColoredFeedback(userInput, correctPhrase) {
-  const userWords = normalize(userInput)
-    .split(/\s+/)
-    .filter((w) => w);
+  const originalUserWords = userInput.split(/\s+/).filter((w) => w);
+  const userWordsUsed = originalUserWords.map(() => false);
   const correctWords = correctPhrase.split(/\s+/);
 
-  // Count occurrences of each normalized user word.
+  // Count occurrences of each normalized user word (with indices for tracking).
   const userWordCounts = {};
-  for (const word of userWords) {
-    userWordCounts[word] = (userWordCounts[word] || 0) + 1;
+  for (let i = 0; i < originalUserWords.length; i++) {
+    const normalized = normalize(originalUserWords[i]);
+    if (!userWordCounts[normalized]) {
+      userWordCounts[normalized] = [];
+    }
+    userWordCounts[normalized].push(i);
   }
 
-  // Build colored output.
-  return correctWords
+  // Build colored output for correct phrase.
+  const coloredCorrect = correctWords
     .map((word) => {
       const normalizedWord = normalize(word);
-      if (userWordCounts[normalizedWord] > 0) {
-        userWordCounts[normalizedWord]--;
+      if (userWordCounts[normalizedWord]?.length > 0) {
+        const idx = userWordCounts[normalizedWord].shift();
+        userWordsUsed[idx] = true;
         return `<span style="color: #66BB6A">${word}</span>`;
       } else {
         return `<span style="color: #EF5350">${word}</span>`;
       }
     })
     .join(" ");
+
+  // Collect extra words the user typed that weren't in the correct answer.
+  const extraWords = originalUserWords.filter((_, i) => !userWordsUsed[i]);
+
+  if (extraWords.length > 0) {
+    const coloredExtra = extraWords
+      .map((word) => `<span style="color: #FFA726">${word}</span>`)
+      .join(" ");
+    return coloredCorrect + " (" + coloredExtra + ")";
+  }
+
+  return coloredCorrect;
 }
