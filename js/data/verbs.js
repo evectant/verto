@@ -3,12 +3,12 @@
 
 // Verb classification by conjugation
 const verbsByConjugation = {
-  conj1: ["give", "praise", "call"],
-  conj2: ["warn", "move", "obey"],
-  conj3: ["lead", "tell", "show"],
+  conj1: ["give", "praise", "call", "forbid"],
+  conj2: ["warn", "move", "obey", "see", "have"],
+  conj3: ["lead", "tell", "show", "do"],
   conj3io: ["make", "flee", "take"],
-  conj4: ["hear", "serve", "come"],
-  irregular: ["want", "be"],
+  conj4: ["hear", "serve", "come", "know"],
+  irregular: ["want", "be", "be_able", "carry", "go"],
 };
 
 const verbDatabase = {
@@ -518,6 +518,246 @@ const verbDatabase = {
         1: { sg: "fuī", pl: "fuimus" },
         2: { sg: "fuistī", pl: "fuistis" },
         3: { sg: "fuit", pl: "fuērunt" },
+      },
+    },
+  },
+
+  // Irregular: possum, posse (be able)
+  be_able: {
+    en: {
+      infinitive: "to be able",
+      present: {
+        1: { sg: "can", pl: "can" },
+        2: { sg: "can", pl: "can" },
+        3: { sg: "can", pl: "can" },
+      },
+      perfect: {
+        1: { sg: "could", pl: "could" },
+        2: { sg: "could", pl: "could" },
+        3: { sg: "could", pl: "could" },
+      },
+    },
+    la: {
+      infinitive: "posse",
+      present: {
+        1: { sg: "possum", pl: "possumus" },
+        2: { sg: "potes", pl: "potestis" },
+        3: { sg: "potest", pl: "possunt" },
+      },
+      perfect: {
+        1: { sg: "potuī", pl: "potuimus" },
+        2: { sg: "potuistī", pl: "potuistis" },
+        3: { sg: "potuit", pl: "potuērunt" },
+      },
+    },
+  },
+
+  // Irregular: ferō, ferre (carry)
+  carry: {
+    en: {
+      infinitive: "to carry",
+      present: {
+        1: { sg: "carry", pl: "carry" },
+        2: { sg: "carry", pl: "carry" },
+        3: { sg: "carries", pl: "carry" },
+      },
+      perfect: {
+        1: { sg: "carried", pl: "carried" },
+        2: { sg: "carried", pl: "carried" },
+        3: { sg: "carried", pl: "carried" },
+      },
+    },
+    la: {
+      infinitive: "ferre",
+      present: {
+        1: { sg: "ferō", pl: "ferimus" },
+        2: { sg: "fers", pl: "fertis" },
+        3: { sg: "fert", pl: "ferunt" },
+      },
+      perfect: {
+        1: { sg: "tulī", pl: "tulimus" },
+        2: { sg: "tulistī", pl: "tulistis" },
+        3: { sg: "tulit", pl: "tulērunt" },
+      },
+    },
+  },
+
+  // Irregular: eō, īre (go)
+  go: {
+    en: {
+      infinitive: "to go",
+      present: {
+        1: { sg: "go", pl: "go" },
+        2: { sg: "go", pl: "go" },
+        3: { sg: "goes", pl: "go" },
+      },
+      perfect: {
+        1: { sg: "went", pl: "went" },
+        2: { sg: "went", pl: "went" },
+        3: { sg: "went", pl: "went" },
+      },
+    },
+    la: {
+      infinitive: "īre",
+      present: {
+        1: { sg: "eō", pl: "īmus" },
+        2: { sg: "īs", pl: "ītis" },
+        3: { sg: "it", pl: "eunt" },
+      },
+      perfect: {
+        1: { sg: "iī", pl: "iimus" },
+        2: { sg: "iistī", pl: "iistis" },
+        3: { sg: "iit", pl: "iērunt" },
+      },
+    },
+  },
+
+  // 1st Conjugation: vetō, vetāre (forbid)
+  forbid: {
+    en: {
+      infinitive: "to forbid",
+      present: {
+        1: { sg: "forbid", pl: "forbid" },
+        2: { sg: "forbid", pl: "forbid" },
+        3: { sg: "forbids", pl: "forbid" },
+      },
+      perfect: {
+        1: { sg: "forbade", pl: "forbade" },
+        2: { sg: "forbade", pl: "forbade" },
+        3: { sg: "forbade", pl: "forbade" },
+      },
+    },
+    la: {
+      infinitive: "vetāre",
+      present: {
+        1: { sg: "vetō", pl: "vetāmus" },
+        2: { sg: "vetās", pl: "vetātis" },
+        3: { sg: "vetat", pl: "vetant" },
+      },
+      perfect: {
+        1: { sg: "vetuī", pl: "vetuimus" },
+        2: { sg: "vetuistī", pl: "vetuistis" },
+        3: { sg: "vetuit", pl: "vetuērunt" },
+      },
+    },
+  },
+
+  // 2nd Conjugation: videō, vidēre (see)
+  see: {
+    en: {
+      infinitive: "to see",
+      present: {
+        1: { sg: "see", pl: "see" },
+        2: { sg: "see", pl: "see" },
+        3: { sg: "sees", pl: "see" },
+      },
+      perfect: {
+        1: { sg: "saw", pl: "saw" },
+        2: { sg: "saw", pl: "saw" },
+        3: { sg: "saw", pl: "saw" },
+      },
+    },
+    la: {
+      infinitive: "vidēre",
+      present: {
+        1: { sg: "videō", pl: "vidēmus" },
+        2: { sg: "vidēs", pl: "vidētis" },
+        3: { sg: "videt", pl: "vident" },
+      },
+      perfect: {
+        1: { sg: "vīdī", pl: "vīdimus" },
+        2: { sg: "vīdistī", pl: "vīdistis" },
+        3: { sg: "vīdit", pl: "vīdērunt" },
+      },
+    },
+  },
+
+  // 2nd Conjugation: habeō, habēre (have)
+  have: {
+    en: {
+      infinitive: "to have",
+      present: {
+        1: { sg: "have", pl: "have" },
+        2: { sg: "have", pl: "have" },
+        3: { sg: "has", pl: "have" },
+      },
+      perfect: {
+        1: { sg: "had", pl: "had" },
+        2: { sg: "had", pl: "had" },
+        3: { sg: "had", pl: "had" },
+      },
+    },
+    la: {
+      infinitive: "habēre",
+      present: {
+        1: { sg: "habeō", pl: "habēmus" },
+        2: { sg: "habēs", pl: "habētis" },
+        3: { sg: "habet", pl: "habent" },
+      },
+      perfect: {
+        1: { sg: "habuī", pl: "habuimus" },
+        2: { sg: "habuistī", pl: "habuistis" },
+        3: { sg: "habuit", pl: "habuērunt" },
+      },
+    },
+  },
+
+  // 3rd Conjugation: agō, agere (do, act)
+  do: {
+    en: {
+      infinitive: "to do",
+      present: {
+        1: { sg: "do", pl: "do" },
+        2: { sg: "do", pl: "do" },
+        3: { sg: "does", pl: "do" },
+      },
+      perfect: {
+        1: { sg: "did", pl: "did" },
+        2: { sg: "did", pl: "did" },
+        3: { sg: "did", pl: "did" },
+      },
+    },
+    la: {
+      infinitive: "agere",
+      present: {
+        1: { sg: "agō", pl: "agimus" },
+        2: { sg: "agis", pl: "agitis" },
+        3: { sg: "agit", pl: "agunt" },
+      },
+      perfect: {
+        1: { sg: "ēgī", pl: "ēgimus" },
+        2: { sg: "ēgistī", pl: "ēgistis" },
+        3: { sg: "ēgit", pl: "ēgērunt" },
+      },
+    },
+  },
+
+  // 4th Conjugation: sciō, scīre (know)
+  know: {
+    en: {
+      infinitive: "to know",
+      present: {
+        1: { sg: "know", pl: "know" },
+        2: { sg: "know", pl: "know" },
+        3: { sg: "knows", pl: "know" },
+      },
+      perfect: {
+        1: { sg: "knew", pl: "knew" },
+        2: { sg: "knew", pl: "knew" },
+        3: { sg: "knew", pl: "knew" },
+      },
+    },
+    la: {
+      infinitive: "scīre",
+      present: {
+        1: { sg: "sciō", pl: "scīmus" },
+        2: { sg: "scīs", pl: "scītis" },
+        3: { sg: "scit", pl: "sciunt" },
+      },
+      perfect: {
+        1: { sg: "scīvī", pl: "scīvimus" },
+        2: { sg: "scīvistī", pl: "scīvistis" },
+        3: { sg: "scīvit", pl: "scīvērunt" },
       },
     },
   },
