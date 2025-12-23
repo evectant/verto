@@ -497,7 +497,11 @@ function substitutePlaceholder(
       console.error(`Noun ${noun.en} missing case: ${placeholder.case}`);
       return `[ERROR:${noun.en}]`;
     }
-    const form = caseForm[effectiveNumber];
+    // Handle plurale tantum (plural-only nouns like "arma") by falling back to plural
+    let form = caseForm[effectiveNumber];
+    if (!form && effectiveNumber === "sg") {
+      form = caseForm["pl"];
+    }
     if (!form) {
       console.error(
         `Noun ${noun.en} missing number: ${effectiveNumber} for case: ${placeholder.case}`
