@@ -45,23 +45,56 @@ function normalize(text) {
 
 function haveSameWords(phrase1, phrase2) {
   function toSortedWords(text) {
-    return text.split(/\s+/).sort();
+    return text.split(/\s+/).filter((w) => w).sort();
   }
 
   const words1 = toSortedWords(normalize(phrase1));
   const words2 = toSortedWords(normalize(phrase2));
 
-  if (words1.length !== words2.length) {
-    return false;
-  }
+  // Latin subject pronouns that can be omitted (nominative case)
+  // ego (I), tu (you sg.), nos (we), vos (you pl.),
+  // is/ea/id (he/she/it), ei/eae/ea (they)
+  const OPTIONAL_SUBJECT_PRONOUNS = ["ego", "tu", "nos", "vos", "is", "ea", "id", "ei", "eae"];
 
-  for (let i = 0; i < words1.length; i++) {
-    if (words1[i] !== words2[i]) {
-      return false;
+  // Try exact match first
+  if (words1.length === words2.length) {
+    let allMatch = true;
+    for (let i = 0; i < words1.length; i++) {
+      if (words1[i] !== words2[i]) {
+        allMatch = false;
+        break;
+      }
+    }
+    if (allMatch) {
+      return true;
     }
   }
 
-  return true;
+  // If lengths differ, check if the difference is only optional subject pronouns
+  // This allows either the user or the correct answer to omit subject pronouns
+  const longer = words1.length > words2.length ? words1 : words2;
+  const shorter = words1.length > words2.length ? words2 : words1;
+
+  // Find words that are in the longer phrase but not in the shorter
+  const longerCopy = [...longer];
+  const shorterCopy = [...shorter];
+
+  // Remove all matching words
+  for (let i = longerCopy.length - 1; i >= 0; i--) {
+    const matchIndex = shorterCopy.indexOf(longerCopy[i]);
+    if (matchIndex !== -1) {
+      longerCopy.splice(i, 1);
+      shorterCopy.splice(matchIndex, 1);
+    }
+  }
+
+  // Check if all remaining words in the longer phrase are optional pronouns
+  // and there are no remaining words in the shorter phrase
+  if (shorterCopy.length === 0 && longerCopy.every((w) => OPTIONAL_SUBJECT_PRONOUNS.includes(w))) {
+    return true;
+  }
+
+  return false;
 }
 
 function shuffle(array) {
