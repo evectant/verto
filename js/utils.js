@@ -56,6 +56,22 @@ function haveSameWords(phrase1, phrase2) {
   // is/ea/id (he/she/it), ei/eae/ea (they)
   const OPTIONAL_SUBJECT_PRONOUNS = ["ego", "tu", "nos", "vos", "is", "ea", "id", "ei", "eae"];
 
+  // Reflexive possessive adjective "suus, sua, suum" - all forms
+  // Often omitted in Latin when context makes possession clear
+  const OPTIONAL_REFLEXIVE_POSSESSIVES = [
+    "suus", "sua", "suum",           // nom sg
+    "sui", "suae",                   // gen sg (m/n, f)
+    "suo", "suae",                   // dat sg (m/n, f)
+    "suum", "suam",                  // acc sg (m, f)
+    "suo", "sua",                    // abl sg (m/n, f)
+    "sui", "suae", "sua",            // nom pl
+    "suorum", "suarum",              // gen pl
+    "suis",                          // dat/abl pl
+    "suos", "suas",                  // acc pl
+  ];
+
+  const OPTIONAL_WORDS = [...OPTIONAL_SUBJECT_PRONOUNS, ...OPTIONAL_REFLEXIVE_POSSESSIVES];
+
   // Try exact match first
   if (words1.length === words2.length) {
     let allMatch = true;
@@ -88,9 +104,9 @@ function haveSameWords(phrase1, phrase2) {
     }
   }
 
-  // Check if all remaining words in the longer phrase are optional pronouns
-  // and there are no remaining words in the shorter phrase
-  if (shorterCopy.length === 0 && longerCopy.every((w) => OPTIONAL_SUBJECT_PRONOUNS.includes(w))) {
+  // Check if all remaining words in the longer phrase are optional words
+  // (subject pronouns or reflexive possessives) and there are no remaining words in the shorter phrase
+  if (shorterCopy.length === 0 && longerCopy.every((w) => OPTIONAL_WORDS.includes(w))) {
     return true;
   }
 

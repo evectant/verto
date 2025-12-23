@@ -75,22 +75,25 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, count) {
 
   let pronounRules = "";
   if (pronounsEnabled) {
-    pronounRules = `Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.
-- When using "you", "your", "yours", "yourself", always indicate number in parentheses: "you (sg.)" or "you (pl.)".`;
+    pronounRules = `Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.`;
   }
 
   return `Generate ${count} Latin sentences with English translations for language learning.
 
-Grammar rules:
+Vocabulary rules:
 - Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
 - Use ONLY these verbs: ${vocabulary.verbs.join(", ")}.
 - Use ONLY these tenses: ${tenseList}.
 - Use ONLY these prepositions: ${PREPOSITIONS.join(", ")}.
 - ${pronounRules}
 - Do NOT use adjectives (except possessives) or adverbs.
-- Exercise as much vocabulary and grammar listed above as possible.
+- Exercise as much vocabulary listed above as possible.
+
+Grammar rules:
 - Exercise as many noun cases as possible.
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
+- When using "you", "your", "yours", "yourself", always indicate number in parentheses: "you (sg.)" or "you (pl.)".
+- When English uses "his", "her", "its", or "their" referring back to the subject (reflexive possession), the Latin MUST include the appropriate form of "suus, sua, suum" agreeing with the possessed noun in gender, case, and number. Example: "The boy loves his son" → "Puer fīlium suum amat" (not just "fīlium").
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "..."}].
