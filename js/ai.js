@@ -90,6 +90,7 @@ Grammar rules:
 - Do NOT use adjectives (except possessives) or adverbs.
 - Exercise as much vocabulary and grammar listed above as possible.
 - Exercise as many noun cases as possible.
+- When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "..."}].
