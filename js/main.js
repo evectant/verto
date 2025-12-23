@@ -28,7 +28,7 @@ let currentPhraseIndex = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
 let isGroupUpdate = false;
-let aiModeEnabled = false;
+let aiModeEnabled = true;
 let aiGeneratedPhrases = [];
 
 //
@@ -425,6 +425,9 @@ generateAiButtonElement.addEventListener("click", async function () {
       pronounsEnabled
     );
 
+    // Persist phrases to localStorage
+    saveAIPhrases(aiGeneratedPhrases);
+
     aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae`;
     aiStatusElement.className = "ai-success";
 
@@ -458,5 +461,28 @@ conjugationCheckboxes.forEach(updateGroupCheckbox);
 declensionCheckboxes.forEach(updateGroupCheckbox);
 tenseCheckboxes.forEach(updateGroupCheckbox);
 sectionCheckboxes.forEach(updateGroupCheckbox);
-updateLoadedPhrases();
+
+// Initialize AI mode (checked by default)
+aiModeSettingsElement.classList.remove("hidden");
+const savedKey = getApiKey();
+if (savedKey) {
+  apiKeyInputElement.value = savedKey;
+}
+
+// Load saved AI phrases from localStorage
+const savedPhrases = getAIPhrases();
+if (savedPhrases && savedPhrases.length > 0) {
+  aiGeneratedPhrases = savedPhrases;
+  loadedPhrases = [...aiGeneratedPhrases];
+  if (randomizeCheckboxElement.checked) {
+    shuffle(loadedPhrases);
+  }
+  currentPhraseIndex = 0;
+  aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae`;
+  aiStatusElement.className = "ai-success";
+  displayPhrase();
+} else {
+  currentPhraseElement.textContent = "⚠️ Preme 'Generare'";
+}
+
 updateScore();

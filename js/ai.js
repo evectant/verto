@@ -9,8 +9,9 @@ const AI_THINKING_BUDGET = 1024;
 
 // PREPOSITIONS is defined in utils.js (loaded first)
 
-// LocalStorage key for API key
+// LocalStorage keys
 const API_KEY_STORAGE_KEY = "verto_anthropic_api_key";
+const AI_PHRASES_STORAGE_KEY = "verto_ai_phrases";
 
 // Tense name mapping for the LLM prompt (internal key -> full grammatical name)
 const TENSE_NAMES = {
@@ -26,6 +27,17 @@ function getApiKey() {
 // Save API key to localStorage
 function setApiKey(key) {
   localStorage.setItem(API_KEY_STORAGE_KEY, key);
+}
+
+// Get stored AI phrases
+function getAIPhrases() {
+  const stored = localStorage.getItem(AI_PHRASES_STORAGE_KEY);
+  return stored ? JSON.parse(stored) : null;
+}
+
+// Save AI phrases to localStorage
+function saveAIPhrases(phrases) {
+  localStorage.setItem(AI_PHRASES_STORAGE_KEY, JSON.stringify(phrases));
 }
 
 // Get filtered vocabulary based on current settings
