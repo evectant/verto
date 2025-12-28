@@ -72,7 +72,8 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronou
       for (const verbName of verbNames) {
         const verb = verbDatabase[verbName];
         if (verb) {
-          vocabulary.verbs.push(`${verb.la.infinitive} (${verb.en.infinitive})`);
+          const construction = verb.construction ? `, + ${verb.construction}.` : "";
+          vocabulary.verbs.push(`${verb.la.infinitive} (${verb.en.infinitive}${construction})`);
         }
       }
     }

@@ -164,6 +164,7 @@ const verbDatabase = {
 
   // 2nd Conjugation: pāreō, pārēre (obey)
   obey: {
+    construction: "dat",
     en: {
       infinitive: "to obey",
       present: {
@@ -404,6 +405,7 @@ const verbDatabase = {
 
   // 4th Conjugation: serviō, servīre (serve)
   serve: {
+    construction: "dat",
     en: {
       infinitive: "to serve",
       present: {
