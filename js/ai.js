@@ -58,7 +58,7 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronou
       if (nouns) {
         for (const noun of nouns) {
           if (noun.nom.sg) {
-            vocabulary.nouns.push(`${noun.en} (${noun.nom.sg}, ${noun.gender})`);
+            vocabulary.nouns.push(`${noun.nom.sg} (${noun.en})`);
           }
         }
       }
@@ -72,7 +72,7 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronou
       for (const verbName of verbNames) {
         const verb = verbDatabase[verbName];
         if (verb) {
-          vocabulary.verbs.push(`${verb.en.infinitive} (${verb.la.infinitive})`);
+          vocabulary.verbs.push(`${verb.la.infinitive} (${verb.en.infinitive})`);
         }
       }
     }
@@ -82,26 +82,32 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronou
 }
 
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, count) {
+function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, count) {
   const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(" and ");
 
   let pronounRules = "";
   if (pronounsEnabled) {
-    pronounRules = `Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.`;
+    pronounRules = `- Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.`;
   }
 
-  return `Generate ${count} Latin sentences with English translations for language learning. Translate the Latin faithfully; prioritize accuracy over fluency.
+  let adjectiveRules = "- Do NOT use adjectives (except possessives) or adverbs.";
+  if (adjectivesEnabled) {
+    adjectiveRules = `- Use ONLY these adjectives: ${ADJECTIVES.join(", ")}.
+- Do NOT use adverbs.`;
+  }
 
-Vocabulary rules:
+  return `Generate ${count} Latin sentences with English translations for language learning. Follow the Latin vocabulary and grammar rules below very strictly. Translate the Latin faithfully; prioritize accuracy over fluency.
+
+Latin vocabulary rules:
 - Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
 - Use ONLY these verbs: ${vocabulary.verbs.join(", ")}.
 - Use ONLY these tenses: ${tenseList}.
 - Use ONLY these prepositions: ${PREPOSITIONS.join(", ")}.
-- ${pronounRules}
-- Do NOT use adjectives (except possessives) or adverbs.
+${pronounRules}
+${adjectiveRules}
 - Exercise as much vocabulary listed above as possible.
 
-Grammar rules:
+Latin grammar rules:
 - Exercise as many noun cases as possible.
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
 - When using nouns with ambiguous gender, always indicate gender in parentheses: "friend (f.)" or "friend (m.)".
@@ -114,7 +120,7 @@ Format rules:
 }
 
 // Call the Anthropic API to generate phrases
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
@@ -130,7 +136,7 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("No verbs available with selected conjugations");
   }
 
-  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, AI_PHRASE_COUNT);
+  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, AI_PHRASE_COUNT);
 
   const response = await fetch(AI_API_URL, {
     method: "POST",

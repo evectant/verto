@@ -141,3 +141,7 @@ input[type="checkbox"] {
 #aiStatus.ai-error {
   color: #FFA726;
 }
+
+label:has(#adjectivesCheckbox) {
+  margin-bottom: 15px;
+}

@@ -14,6 +14,7 @@ const aiModeSettingsElement = document.getElementById("aiModeSettings");
 const apiKeyInputElement = document.getElementById("apiKeyInput");
 const generateAiButtonElement = document.getElementById("generateAiButton");
 const aiStatusElement = document.getElementById("aiStatus");
+const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
 const conjugationCheckboxes = document.querySelectorAll(
@@ -393,6 +394,8 @@ generateAiButtonElement.addEventListener("click", async function () {
     }
   });
 
+  const adjectivesEnabled = adjectivesCheckboxElement.checked;
+
   // Validate settings
   if (selectedConjugations.length === 0) {
     aiStatusElement.textContent = "⚠️ Selige coniugationes";
@@ -422,7 +425,8 @@ generateAiButtonElement.addEventListener("click", async function () {
       selectedDeclensions,
       selectedConjugations,
       selectedTenses,
-      pronounsEnabled
+      pronounsEnabled,
+      adjectivesEnabled
     );
 
     // Persist phrases to localStorage
