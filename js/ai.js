@@ -90,7 +90,7 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, count) {
     pronounRules = `Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.`;
   }
 
-  return `Generate ${count} Latin sentences with English translations for language learning.
+  return `Generate ${count} Latin sentences with English translations for language learning. Translate the Latin faithfully; prioritize accuracy over fluency.
 
 Vocabulary rules:
 - Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
