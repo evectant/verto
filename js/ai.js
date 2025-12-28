@@ -97,18 +97,19 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 - Do NOT use adverbs.`;
   }
 
-  return `Generate ${count} Latin sentences with English translations for language learning. Follow the Latin vocabulary and grammar rules below very strictly. Translate the Latin faithfully; prioritize accuracy over fluency.
+  return `Generate ${count} Latin sentences with English translations for language learning. Follow the Latin vocabulary and grammar rules below VERY strictly. Translate the Latin faithfully; prioritize accuracy over fluency.
 
-Latin vocabulary rules:
-- Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
-- Use ONLY these verbs: ${vocabulary.verbs.join(", ")}.
-- Use ONLY these tenses: ${tenseList}.
-- Use ONLY these prepositions: ${PREPOSITIONS.join(", ")}.
+Latin vocabulary rules (use ONLY these words, no exceptions):
+- Nouns: ${vocabulary.nouns.join(", ")}.
+- Verbs: ${vocabulary.verbs.join(", ")}.
+- Prepositions: ${PREPOSITIONS.join(", ")}.
 ${pronounRules}
 ${adjectiveRules}
-- Exercise as much vocabulary listed above as possible.
+- Exercise as much of this vocabulary as possible.
+- NEVER use unlisted words.
 
 Latin grammar rules:
+- Use ONLY these tenses: ${tenseList}.
 - Exercise as many noun cases as possible.
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
 - When using nouns with ambiguous gender, always indicate gender in parentheses: "friend (f.)" or "friend (m.)".
