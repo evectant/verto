@@ -53,7 +53,9 @@ function normalize(text) {
     .toLowerCase()
     .replace(/(\w)que\b/g, "$1 CONJ") // Convert -que suffix to word + CONJ.
     .replace(/\bet\b/g, "CONJ") // Convert et to CONJ.
-    .replace(PREPOSITION_REGEX, "PREP"); // Treat all prepositions as equivalent.
+    .replace(PREPOSITION_REGEX, "PREP") // Treat all prepositions as equivalent.
+    .replace(/\b(dei|di|dii)\b/g, "DEI") // Treat nominative plural of "deus" as equivalent.
+    .replace(/\b(deis|dis|diis)\b/g, "DEIS"); // Treat dative/ablative plural of "deus" as equivalent.
 }
 
 function haveSameWords(phrase1, phrase2) {
