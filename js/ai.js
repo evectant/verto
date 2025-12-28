@@ -104,6 +104,7 @@ Vocabulary rules:
 Grammar rules:
 - Exercise as many noun cases as possible.
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
+- When using nouns with ambiguous gender, always indicate gender in parentheses: "friend (f.)" or "friend (m.)".
 - When using "you", "your", "yours", "yourself", always indicate number in parentheses: "you (sg.)" or "you (pl.)".
 - When English uses "his", "her", "its", or "their" referring back to the subject (reflexive possession), the Latin MUST include the appropriate form of "suus, sua, suum" agreeing with the possessed noun in gender, case, and number. Example: "The boy loves his son" → "Puer fīlium suum amat" (not just "fīlium").
 
