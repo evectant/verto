@@ -99,9 +99,12 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 - Do NOT use adverbs.`;
   }
 
-  const storyInstruction = storyModeEnabled
-    ? " These sentences should form a coherent story with a beginning and end."
-    : "";
+  let storyInstruction = "";
+  if (storyModeEnabled) {
+    const roll = Math.random();
+    const endingStyle = roll < 1 / 3 ? "a happy ending" : roll < 2 / 3 ? "an unhappy ending" : "a philosophically ambiguous ending";
+    storyInstruction = ` These sentences should form a coherent story with a beginning and ${endingStyle}.`;
+  }
 
   return `Generate ${count} Latin sentences with English translations for language learning.${storyInstruction}
 
