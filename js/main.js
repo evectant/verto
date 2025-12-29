@@ -14,6 +14,7 @@ const aiModeSettingsElement = document.getElementById("aiModeSettings");
 const apiKeyInputElement = document.getElementById("apiKeyInput");
 const generateAiButtonElement = document.getElementById("generateAiButton");
 const aiStatusElement = document.getElementById("aiStatus");
+const storyModeCheckboxElement = document.getElementById("storyModeCheckbox");
 const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
@@ -433,6 +434,7 @@ generateAiButtonElement.addEventListener("click", async function () {
       selectedTenses,
       pronounsEnabled,
       adjectivesEnabled,
+      storyModeCheckboxElement.checked,
       thinkingBudget
     );
 

@@ -85,7 +85,7 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronou
 }
 
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, count) {
+function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, count) {
   const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(" and ");
 
   let pronounRules = "";
@@ -99,7 +99,13 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 - Do NOT use adverbs.`;
   }
 
-  return `Generate ${count} Latin sentences with English translations for language learning. Follow the Latin vocabulary and grammar rules below VERY strictly. Translate the Latin faithfully; prioritize accuracy over fluency.
+  const storyInstruction = storyModeEnabled
+    ? " These sentences should form a coherent story with a beginning and end."
+    : "";
+
+  return `Generate ${count} Latin sentences with English translations for language learning.${storyInstruction}
+
+Follow the Latin vocabulary and grammar rules below VERY strictly. Translate the Latin faithfully; prioritize accuracy over fluency.
 
 Latin vocabulary rules (use ONLY these words, no exceptions):
 - Nouns: ${vocabulary.nouns.join(", ")}.
@@ -116,7 +122,7 @@ Latin grammar rules:
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
 - When using nouns with ambiguous gender, always indicate gender in parentheses: "friend (f.)" or "friend (m.)".
 - When using "you", "your", "yours", "yourself", always indicate number in parentheses: "you (sg.)" or "you (pl.)".
-- When English uses "his", "her", "its", or "their" referring back to the subject (reflexive possession), the Latin MUST include the appropriate form of "suus, sua, suum" agreeing with the possessed noun in gender, case, and number. Example: "The boy loves his son" → "Puer fīlium suum amat" (not just "fīlium").
+- Use "suus, sua, suum" and similar for reflexive possession (when the possessor is the subject).
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "..."}].
@@ -124,7 +130,7 @@ Format rules:
 }
 
 // Call the Anthropic API to generate phrases
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, thinkingBudget) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, thinkingBudget) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
@@ -140,7 +146,7 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("No verbs available with selected conjugations");
   }
 
-  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, AI_PHRASE_COUNT);
+  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, AI_PHRASE_COUNT);
 
   const response = await fetch(AI_API_URL, {
     method: "POST",
