@@ -4,8 +4,10 @@
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
-const AI_USE_THINKING = true;
-const AI_THINKING_BUDGET = 1024;
+
+// Thinking budget options
+const AI_THINKING_BUDGET_QUICK = 1024;
+const AI_THINKING_BUDGET_SLOW = 4096;
 
 // PREPOSITIONS is defined in utils.js (loaded first)
 
@@ -122,7 +124,7 @@ Format rules:
 }
 
 // Call the Anthropic API to generate phrases
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, thinkingBudget) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
@@ -151,12 +153,10 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     body: JSON.stringify({
       model: AI_MODEL,
       max_tokens: 16000,
-      ...(AI_USE_THINKING && {
-        thinking: {
-          type: "enabled",
-          budget_tokens: AI_THINKING_BUDGET,
-        },
-      }),
+      thinking: {
+        type: "enabled",
+        budget_tokens: thinkingBudget,
+      },
       messages: [
         {
           role: "user",

@@ -105,6 +105,11 @@ input[type="checkbox"] {
   font-size: 14px;
 }
 
+.thinking-mode-options {
+  display: flex;
+  gap: 10px;
+}
+
 #generateAiButton {
   background-color: #2c2c2c;
   color: #e0e0e0;

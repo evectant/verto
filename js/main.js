@@ -415,10 +415,16 @@ generateAiButtonElement.addEventListener("click", async function () {
     return;
   }
 
+  // Get thinking mode from radio buttons
+  const thinkingMode = document.querySelector('input[name="thinkingMode"]:checked').value;
+  const thinkingBudget = thinkingMode === "slow" ? AI_THINKING_BUDGET_SLOW : AI_THINKING_BUDGET_QUICK;
+
   // Show loading state
   aiStatusElement.textContent = "Generans...";
   aiStatusElement.className = "ai-loading";
   generateAiButtonElement.disabled = true;
+
+  const startTime = performance.now();
 
   try {
     aiGeneratedPhrases = await generateAIPhrases(
@@ -426,13 +432,16 @@ generateAiButtonElement.addEventListener("click", async function () {
       selectedConjugations,
       selectedTenses,
       pronounsEnabled,
-      adjectivesEnabled
+      adjectivesEnabled,
+      thinkingBudget
     );
+
+    const elapsedSeconds = ((performance.now() - startTime) / 1000).toFixed(1);
 
     // Persist phrases to localStorage
     saveAIPhrases(aiGeneratedPhrases);
 
-    aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae`;
+    aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae (${elapsedSeconds}s)`;
     aiStatusElement.className = "ai-success";
 
     // Load the AI phrases
