@@ -4,7 +4,7 @@
 // Verb classification by conjugation
 const verbsByConjugation = {
   conj1: ["give", "praise", "call", "forbid"],
-  conj2: ["warn", "move", "obey", "see", "have"],
+  conj2: ["warn", "move", "obey", "see", "have", "owe"],
   conj3: ["lead", "tell", "show", "do"],
   conj3io: ["make", "flee", "take"],
   conj4: ["hear", "serve", "come", "know"],
@@ -670,6 +670,36 @@ const verbDatabase = {
         1: { sg: "vīdī", pl: "vīdimus" },
         2: { sg: "vīdistī", pl: "vīdistis" },
         3: { sg: "vīdit", pl: "vīdērunt" },
+      },
+    },
+  },
+
+  // 2nd Conjugation: dēbeō, dēbēre (owe, ought)
+  owe: {
+    en: {
+      infinitive: "to owe, ought",
+      present: {
+        1: { sg: "owe", pl: "owe" },
+        2: { sg: "owe", pl: "owe" },
+        3: { sg: "owes", pl: "owe" },
+      },
+      perfect: {
+        1: { sg: "owed", pl: "owed" },
+        2: { sg: "owed", pl: "owed" },
+        3: { sg: "owed", pl: "owed" },
+      },
+    },
+    la: {
+      infinitive: "dēbēre",
+      present: {
+        1: { sg: "dēbeō", pl: "dēbēmus" },
+        2: { sg: "dēbēs", pl: "dēbētis" },
+        3: { sg: "dēbet", pl: "dēbent" },
+      },
+      perfect: {
+        1: { sg: "dēbuī", pl: "dēbuimus" },
+        2: { sg: "dēbuistī", pl: "dēbuistis" },
+        3: { sg: "dēbuit", pl: "dēbuērunt" },
       },
     },
   },

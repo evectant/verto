@@ -27,7 +27,7 @@ function toRoman(num) {
 }
 
 // Prepositions: used for grading (all treated as equivalent) and in AI prompt
-const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "sine"];
+const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "per", "sine"];
 
 // Adjectives: used in AI prompt when adjectives are enabled
 const ADJECTIVES = [
