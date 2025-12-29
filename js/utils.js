@@ -27,7 +27,7 @@ function toRoman(num) {
 }
 
 // Prepositions: used for grading (all treated as equivalent) and in AI prompt
-const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "per", "sine"];
+const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "inter", "per", "sine"];
 
 // Adjectives: used in AI prompt when adjectives are enabled
 const ADJECTIVES = [
@@ -47,7 +47,7 @@ function normalize(text) {
   return text
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "") // Drop macrons.
-    .replace(/[.,:\-—!?"'()]/g, "") // Drop punctuation.
+    .replace(/[.,;:\-—!?"'()]/g, "") // Drop punctuation.
     .replace(/\s{2,}/g, " ") // Drop double spaces.
     .trim()
     .toLowerCase()
