@@ -55,7 +55,12 @@ function normalize(text) {
     .replace(/\bet\b/g, "CONJ") // Convert et to CONJ.
     .replace(PREPOSITION_REGEX, "PREP") // Treat all prepositions as equivalent.
     .replace(/\b(dei|di|dii)\b/g, "DEI") // Treat nominative plural of "deus" as equivalent.
-    .replace(/\b(deis|dis|diis)\b/g, "DEIS"); // Treat dative/ablative plural of "deus" as equivalent.
+    .replace(/\b(deis|dis|diis)\b/g, "DEIS") // Treat dative/ablative plural of "deus" as equivalent.
+    .replace(/\bmecum\b/g, "PREP me") // Normalize cum + pronoun enclitics.
+    .replace(/\btecum\b/g, "PREP te")
+    .replace(/\bsecum\b/g, "PREP se")
+    .replace(/\bnobiscum\b/g, "PREP nobis")
+    .replace(/\bvobiscum\b/g, "PREP vobis");
 }
 
 function haveSameWords(phrase1, phrase2) {

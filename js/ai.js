@@ -122,7 +122,7 @@ Latin grammar rules:
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
 - When using nouns with ambiguous gender, always indicate gender in parentheses: "friend (f.)" or "friend (m.)".
 - When using "you", "your", "yours", "yourself", always indicate number in parentheses: "you (sg.)" or "you (pl.)".
-- Use "suus, sua, suum" and similar for reflexive possession (when the possessor is the subject).
+- Use "suus", "sua", "suum", etc. ONLY when the possessor is the grammatical subject. Use the genitive ("eius", "eōrum", "eārum", etc.) when the possessor is NOT the subject.
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "..."}].
