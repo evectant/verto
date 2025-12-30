@@ -18,9 +18,7 @@ const storyModeCheckboxElement = document.getElementById("storyModeCheckbox");
 const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
-const conjugationCheckboxes = document.querySelectorAll(
-  ".conjugation-checkbox"
-);
+const conjugationCheckboxes = document.querySelectorAll(".conjugation-checkbox");
 const declensionCheckboxes = document.querySelectorAll(".declension-checkbox");
 const tenseCheckboxes = document.querySelectorAll(".tense-checkbox");
 const sectionCheckboxes = document.querySelectorAll(".section-checkbox");
@@ -44,42 +42,14 @@ function displayPhrase() {
   translationInputElement.focus();
 }
 
-// Makes the loaded phrases match the checkboxes.
-function updateLoadedPhrases() {
+// Load story phrases based on selected sections.
+function loadStoryPhrases() {
   // Skip if AI mode is enabled - AI phrases are managed separately
   if (aiModeEnabled) {
     return;
   }
 
   loadedPhrases = [];
-  const selectedDeclensions = [];
-  const selectedTenses = [];
-
-  // Get selected conjugations and declensions
-  const selectedConjugations = [];
-  let pronounsEnabled = false;
-
-  conjugationCheckboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      selectedConjugations.push(checkbox.value);
-    }
-  });
-
-  declensionCheckboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      if (checkbox.value === "pronouns") {
-        pronounsEnabled = true;
-      } else {
-        selectedDeclensions.push(checkbox.value);
-      }
-    }
-  });
-
-  tenseCheckboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      selectedTenses.push(checkbox.value);
-    }
-  });
 
   // Get selected sections (stories)
   const selectedSections = [];
@@ -89,7 +59,7 @@ function updateLoadedPhrases() {
     }
   });
 
-  // Load story phrases if sections are selected (stories don't need template expansion)
+  // Load story phrases if sections are selected
   if (selectedSections.length > 0) {
     const filteredPhrases = phrases.filter(
       (phrase) => phrase.section && selectedSections.includes(phrase.section)
@@ -97,34 +67,6 @@ function updateLoadedPhrases() {
     loadedPhrases = loadedPhrases.concat(filteredPhrases);
   }
 
-  // Load template-based phrases if conjugations, tenses, and (declensions or pronouns) are selected
-  if (
-    selectedConjugations.length > 0 &&
-    selectedTenses.length > 0 &&
-    (selectedDeclensions.length > 0 || pronounsEnabled)
-  ) {
-    // Only load template phrases (those without a section property)
-    const templatePhrases = phrases.filter((phrase) => !phrase.section);
-    loadedPhrases = loadedPhrases.concat(templatePhrases);
-  }
-
-  if (loadedPhrases.length === 0) {
-    currentPhraseElement.textContent = "⚠️ Selige sectiones!";
-    return;
-  }
-
-  // Expand any templates in the loaded phrases using selected declensions, tenses, and conjugations
-  if (selectedDeclensions.length > 0 || pronounsEnabled) {
-    loadedPhrases = expandTemplates(
-      loadedPhrases,
-      selectedDeclensions,
-      selectedTenses,
-      selectedConjugations,
-      pronounsEnabled
-    );
-  }
-
-  // If after expansion we have no phrases (templates couldn't expand), show warning
   if (loadedPhrases.length === 0) {
     currentPhraseElement.textContent = "⚠️ Selige sectiones!";
     return;
@@ -239,33 +181,24 @@ function updateGroupCheckbox(checkbox) {
 // Event listeners.
 //
 
-// Handle conjugation checkboxes
+// Handle conjugation checkboxes (for AI vocabulary filtering)
 conjugationCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     updateGroupCheckbox(this);
-    if (!isGroupUpdate) {
-      updateLoadedPhrases();
-    }
   });
 });
 
-// Handle declension checkboxes
+// Handle declension checkboxes (for AI vocabulary filtering)
 declensionCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     updateGroupCheckbox(this);
-    if (!isGroupUpdate) {
-      updateLoadedPhrases();
-    }
   });
 });
 
-// Handle tense checkboxes
+// Handle tense checkboxes (for AI grammar filtering)
 tenseCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     updateGroupCheckbox(this);
-    if (!isGroupUpdate) {
-      updateLoadedPhrases();
-    }
   });
 });
 
@@ -274,7 +207,7 @@ sectionCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     updateGroupCheckbox(this);
     if (!isGroupUpdate) {
-      updateLoadedPhrases();
+      loadStoryPhrases();
     }
   });
 });
@@ -287,20 +220,33 @@ groupCheckboxes.forEach((groupCheckbox) => {
       ".conjugation-checkbox, .declension-checkbox, .tense-checkbox, .section-checkbox"
     );
 
-    // Set flag to prevent child checkboxes from calling updateLoadedPhrases
+    // Set flag to prevent child checkboxes from calling loadStoryPhrases
     isGroupUpdate = true;
     checkboxes.forEach((checkbox) => {
       checkbox.checked = this.checked;
     });
     isGroupUpdate = false;
 
-    // Defer updateLoadedPhrases to next event loop tick for instant UI update
-    setTimeout(() => updateLoadedPhrases(), 0);
+    // Only reload for story sections (Fabulae)
+    if (this.dataset.group === "groupFabulae") {
+      setTimeout(() => loadStoryPhrases(), 0);
+    }
   });
 });
 
-// Changing randomization should trigger reload.
-randomizeCheckboxElement.addEventListener("change", updateLoadedPhrases);
+// Changing randomization should trigger reload (only for story mode).
+randomizeCheckboxElement.addEventListener("change", function () {
+  if (!aiModeEnabled) {
+    loadStoryPhrases();
+  } else if (loadedPhrases.length > 0) {
+    // Reshuffle AI phrases
+    if (this.checked) {
+      shuffle(loadedPhrases);
+    }
+    currentPhraseIndex = 0;
+    displayPhrase();
+  }
+});
 
 // Handle collapsible Fabulae section
 const fabulaeLabel = document.querySelector("#groupFabulae > label");
@@ -343,10 +289,10 @@ aiModeCheckboxElement.addEventListener("change", function () {
       currentPhraseElement.textContent = "⚠️ Preme 'Generare'";
     }
   } else {
-    // Hide AI settings and switch back to template phrases
+    // Hide AI settings and switch to story phrases
     aiModeSettingsElement.classList.add("hidden");
     aiStatusElement.textContent = "";
-    updateLoadedPhrases();
+    loadStoryPhrases();
   }
 });
 
@@ -404,7 +350,7 @@ generateAiButtonElement.addEventListener("click", async function () {
     return;
   }
 
-  if (selectedDeclensions.length === 0 && !pronounsEnabled) {
+  if (selectedDeclensions.length === 0) {
     aiStatusElement.textContent = "⚠️ Selige declinationes";
     aiStatusElement.className = "ai-error";
     return;

@@ -1,6 +1,8 @@
 // Story phrases organized by story ID
 // Automatically adds section metadata to each phrase for filtering
 
+const phrases = [];
+
 const stories = {
   story1: [
     {

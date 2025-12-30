@@ -31,15 +31,15 @@ const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "inter", "p
 
 // Adjectives: used in AI prompt when adjectives are enabled
 const ADJECTIVES = [
-  "māgnus (large, great)",
-  "multus (much, many)",
   "bonus (good)",
+  "dūrus (hard, harsh)",
+  "fessus (tired)",
+  "māgnus (large, great)",
   "malus (bad)",
+  "multus (much, many)",
   "novus (new)",
   "parvus (small)",
   "pulcher (beautiful)",
-  "fessus (tired)",
-  "dūrus (hard, harsh)",
 ];
 const PREPOSITION_REGEX = new RegExp(`\\b(${PREPOSITIONS.join("|")})\\b`, "g");
 

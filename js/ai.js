@@ -1,6 +1,6 @@
 // AI Mode for generating Latin phrases via Anthropic API
 
-// Configuration - easily swappable
+// Configuration
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
@@ -9,13 +9,11 @@ const AI_PHRASE_COUNT = 30;
 const AI_THINKING_BUDGET_QUICK = 1024;
 const AI_THINKING_BUDGET_SLOW = 4096;
 
-// PREPOSITIONS is defined in utils.js (loaded first)
-
 // LocalStorage keys
 const API_KEY_STORAGE_KEY = "verto_anthropic_api_key";
 const AI_PHRASES_STORAGE_KEY = "verto_ai_phrases";
 
-// Tense name mapping for the LLM prompt (internal key -> full grammatical name)
+// Tense name mapping for the LLM prompt
 const TENSE_NAMES = {
   present: "present indicative active",
   perfect: "perfect indicative active",
@@ -43,43 +41,33 @@ function saveAIPhrases(phrases) {
 }
 
 // Get filtered vocabulary based on current settings
-function getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronounsEnabled) {
+function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
   const vocabulary = {
     nouns: [],
     verbs: [],
   };
 
-  // Collect nouns from selected declensions (just English + Latin nominative)
-  const categories = ["person", "location", "thing", "concept", "emotion", "collective"];
-
-  for (const category of categories) {
-    if (!nounDatabase[category]) continue;
-
-    for (const declension of selectedDeclensions) {
-      const nouns = nounDatabase[category][declension];
-      if (nouns) {
-        for (const noun of nouns) {
-          if (noun.nom.sg) {
-            vocabulary.nouns.push(`${noun.nom.sg} (${noun.en})`);
-          }
-        }
+  for (const declension of selectedDeclensions) {
+    const nouns = nounDatabase[declension];
+    if (nouns) {
+      for (const noun of nouns) {
+        vocabulary.nouns.push(`${noun.la} (${noun.en})`);
       }
     }
   }
 
-  // Collect verbs from selected conjugations (just English + Latin infinitive)
   for (const conjugation of selectedConjugations) {
-    const verbNames = verbsByConjugation[conjugation];
-    if (verbNames) {
-      for (const verbName of verbNames) {
-        const verb = verbDatabase[verbName];
-        if (verb) {
-          const construction = verb.construction ? `, + ${verb.construction}.` : "";
-          vocabulary.verbs.push(`${verb.la.infinitive} (${verb.en.infinitive}${construction})`);
-        }
+    const verbs = verbDatabase[conjugation];
+    if (verbs) {
+      for (const verb of verbs) {
+        const construction = verb.construction ? `, + ${verb.construction}.` : "";
+        vocabulary.verbs.push(`${verb.la} (${verb.en}${construction})`);
       }
     }
   }
+
+  vocabulary.nouns.sort();
+  vocabulary.verbs.sort();
 
   return vocabulary;
 }
@@ -139,7 +127,7 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("API key not set");
   }
 
-  const vocabulary = getFilteredVocabulary(selectedDeclensions, selectedConjugations, pronounsEnabled);
+  const vocabulary = getFilteredVocabulary(selectedDeclensions, selectedConjugations);
 
   // Check if we have enough vocabulary
   if (vocabulary.nouns.length === 0) {
@@ -151,6 +139,23 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
 
   const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, AI_PHRASE_COUNT);
 
+  const requestBody = {
+    model: AI_MODEL,
+    max_tokens: 16000,
+    thinking: {
+      type: "enabled",
+      budget_tokens: thinkingBudget,
+    },
+    messages: [
+      {
+        role: "user",
+        content: prompt,
+      },
+    ],
+  };
+
+  console.log("AI Request:", requestBody);
+
   const response = await fetch(AI_API_URL, {
     method: "POST",
     headers: {
@@ -159,20 +164,7 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
       "anthropic-version": "2023-06-01",
       "anthropic-dangerous-direct-browser-access": "true",
     },
-    body: JSON.stringify({
-      model: AI_MODEL,
-      max_tokens: 16000,
-      thinking: {
-        type: "enabled",
-        budget_tokens: thinkingBudget,
-      },
-      messages: [
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-    }),
+    body: JSON.stringify(requestBody),
   });
 
   if (!response.ok) {
@@ -181,6 +173,8 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
   }
 
   const data = await response.json();
+  console.log("AI Response:", data);
+
   const textBlock = data.content.find((block) => block.type === "text");
   const content = textBlock?.text;
 
