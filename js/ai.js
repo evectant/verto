@@ -10,6 +10,47 @@ const WORDS_PER_DECLENSION = 10;
 const AI_THINKING_BUDGET_QUICK = 1024;
 const AI_THINKING_BUDGET_SLOW = 4096;
 
+// 37 Basic Plots (based on Georges Polti's dramatic situations)
+const BASIC_PLOTS = [
+  "Supplication: Someone who needs help, usually due to the antagonist.",
+  "Deliverance: Rescuing another person from danger or captivity.",
+  "Recovery of a lost one: Finding someone who was lost, without necessarily requiring rescue.",
+  "Loss of loved ones: Dealing with the death or departure of those close to the protagonist.",
+  "Abduction: Kidnapping and the negotiation or rescue that follows.",
+  "Crime pursued by vengeance: Revenge taken into the protagonist's own hands.",
+  "Vengeance taken for kin upon kin: Revenge involving family members, with conflict over blood ties.",
+  "Enmity of kin: Hatred or heated disagreement between relatives; a family feud.",
+  "Rivalry of kin: Sibling rivalry or competition between family members.",
+  "Crimes of love: Deliberate crimes of passion.",
+  "Involuntary crimes of love: Unintentional transgressions, such as unknowingly incestuous relationships.",
+  "Murderous adultery: A love triangle where one or more parties are married, ending in death.",
+  "Adultery: A love triangle involving married parties, without murder.",
+  "Slaying of kin unrecognized: Killing a rival who turns out to be a family member.",
+  "Self-sacrifice for an ideal: Giving up something precious for a principle or belief.",
+  "Self-sacrifice for kin: Sacrificing for family, from working overtime to taking a bullet.",
+  "All sacrificed for passion: Giving up everything for love or what feels like love.",
+  "Necessity of sacrificing loved ones: Choosing between loved ones or betraying one for others' protection.",
+  "Discovery of the dishonor of a loved one: Learning of a loved one's shameful actions.",
+  "Obstacles to love: Lovers overcoming barriers, or the tragedy of their failure.",
+  "An enemy loved: Falling for someone who is also an adversary.",
+  "Mistaken jealousy: Acting on incorrect suspicions of betrayal and facing consequences.",
+  "Erroneous judgement: Action taken based on incorrect suspicion or wrongful accusation.",
+  "Pursuit: Hunting down a fugitive or chasing someone for any reason.",
+  "Disaster: Anticipation before or survival after a natural or human-inflicted catastrophe.",
+  "Falling prey to cruelty or misfortune: Becoming a victim and finding a way out.",
+  "Revolt: Overthrowing authority, mutiny, or taking a stand against the status quo.",
+  "Daring enterprise: An adventure story, often involving a quest.",
+  "The enigma: A mystery or mysterious person leading to another plot strand.",
+  "Obtaining: Facing obstacles while trying to attain something valuable.",
+  "Madness: Exploring insanity, whether it claims a victim or blurs the line with sanity.",
+  "Fatal imprudence: A character's naivete or carelessness leading to drastic consequences.",
+  "Rivalry of superior versus inferior: A weaker character facing a stronger rival or former mentor.",
+  "Ambition: From rags to riches, or greed and its consequences.",
+  "Conflict with a god: Mortals versus immortals, superpowers, or superior beings.",
+  "Remorse: Regret over past actions and exploring the motivations behind them.",
+  "Mistaken identity: Being mistaken for someone else, with comedic or tragic results.",
+];
+
 // LocalStorage keys
 const API_KEY_STORAGE_KEY = "verto_anthropic_api_key";
 const AI_PHRASES_STORAGE_KEY = "verto_ai_phrases";
@@ -104,9 +145,10 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 
   let storyInstruction = "";
   if (storyModeEnabled) {
-    const roll = Math.random();
-    const endingStyle = roll < 1 / 3 ? "a happy ending" : roll < 2 / 3 ? "an unhappy ending" : "a philosophically ambiguous ending";
-    storyInstruction = ` These sentences should form a coherent story with a beginning, a plot twist in the middle, and ${endingStyle}. Include some direct speech to exercise 1st and 2nd person grammar.`;
+    const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
+    const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
+    const ending = endings[Math.floor(Math.random() * endings.length)];
+    storyInstruction = ` These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Include some direct speech to exercise 1st and 2nd person grammar.`;
   }
 
   return `Generate ${count} Latin sentences with English translations for language learning.${storyInstruction}
