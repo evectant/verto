@@ -4,6 +4,7 @@
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
+const WORDS_PER_DECLENSION = 10;
 
 // Thinking budget options
 const AI_THINKING_BUDGET_QUICK = 1024;
@@ -40,6 +41,19 @@ function saveAIPhrases(phrases) {
   localStorage.setItem(AI_PHRASES_STORAGE_KEY, JSON.stringify(phrases));
 }
 
+// Sample up to n random items from an array
+function sampleArray(array, n) {
+  if (array.length <= n) {
+    return [...array];
+  }
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled.slice(0, n);
+}
+
 // Get filtered vocabulary based on current settings
 function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
   const vocabulary = {
@@ -50,7 +64,8 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
   for (const declension of selectedDeclensions) {
     const nouns = nounDatabase[declension];
     if (nouns) {
-      for (const noun of nouns) {
+      const sampled = sampleArray(nouns, WORDS_PER_DECLENSION);
+      for (const noun of sampled) {
         vocabulary.nouns.push(`${noun.la} (${noun.en})`);
       }
     }
