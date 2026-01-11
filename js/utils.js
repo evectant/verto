@@ -60,7 +60,19 @@ function normalize(text) {
     .replace(/\btecum\b/g, "PREP te")
     .replace(/\bsecum\b/g, "PREP se")
     .replace(/\bnobiscum\b/g, "PREP nobis")
-    .replace(/\bvobiscum\b/g, "PREP vobis");
+    .replace(/\bvobiscum\b/g, "PREP vobis")
+    // Normalize contracted/uncontracted perfect forms of eo, ire (to go).
+    .replace(/\bivit\b/g, "iit")
+    .replace(/\bivisti\b/g, "iisti")
+    .replace(/\biverunt\b/g, "ierunt")
+    .replace(/\bivimus\b/g, "iimus")
+    .replace(/\bivistis\b/g, "iistis")
+    .replace(/\biveram\b/g, "ieram")
+    .replace(/\biveras\b/g, "ieras")
+    .replace(/\biverat\b/g, "ierat")
+    .replace(/\biveramus\b/g, "ieramus")
+    .replace(/\biveratis\b/g, "ieratis")
+    .replace(/\biverant\b/g, "ierant");
 }
 
 function haveSameWords(phrase1, phrase2) {
