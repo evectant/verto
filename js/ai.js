@@ -4,10 +4,7 @@
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
-
-// Thinking budget options
-const AI_THINKING_BUDGET_QUICK = 1024;
-const AI_THINKING_BUDGET_SLOW = 4096;
+const AI_THINKING_BUDGET = 4096;
 
 // 37 Basic Plots (based on Georges Polti's dramatic situations)
 const BASIC_PLOTS = [
@@ -133,7 +130,7 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations, nounCo
 }
 
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, storyModeEnabled, count) {
+function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, count) {
   const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(" and ");
 
   let pronounRules = "";
@@ -156,13 +153,10 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 - Do NOT use adverbs.`;
   }
 
-  let storyInstruction = "";
-  if (storyModeEnabled) {
-    const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
-    const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
-    const ending = endings[Math.floor(Math.random() * endings.length)];
-    storyInstruction = ` These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Include some direct speech to exercise 1st and 2nd person grammar.`;
-  }
+  const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
+  const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
+  const ending = endings[Math.floor(Math.random() * endings.length)];
+  const storyInstruction = ` These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Include some direct speech to exercise 1st and 2nd person grammar.`;
 
   return `Generate ${count} Latin sentences with English translations for language learning.${storyInstruction}
 
@@ -191,7 +185,7 @@ Format rules:
 }
 
 // Call the Anthropic API to generate phrases
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, thinkingBudget, nounCount, verbCount, adjectiveCount) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, nounCount, verbCount, adjectiveCount) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
@@ -207,14 +201,14 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("No verbs available with selected conjugations");
   }
 
-  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, storyModeEnabled, AI_PHRASE_COUNT);
+  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, AI_PHRASE_COUNT);
 
   const requestBody = {
     model: AI_MODEL,
     max_tokens: 16000,
     thinking: {
       type: "enabled",
-      budget_tokens: thinkingBudget,
+      budget_tokens: AI_THINKING_BUDGET,
     },
     messages: [
       {

@@ -12,12 +12,10 @@ const fullStoryElement = document.getElementById("fullStory");
 const dismissStoryButtonElement = document.getElementById("dismissStoryButton");
 
 // AI Mode elements
-const aiModeCheckboxElement = document.getElementById("aiModeCheckbox");
 const aiModeSettingsElement = document.getElementById("aiModeSettings");
 const apiKeyInputElement = document.getElementById("apiKeyInput");
 const generateAiButtonElement = document.getElementById("generateAiButton");
 const aiStatusElement = document.getElementById("aiStatus");
-const storyModeCheckboxElement = document.getElementById("storyModeCheckbox");
 const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
@@ -33,8 +31,6 @@ let loadedPhrases = [];
 let currentPhraseIndex = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
-let isGroupUpdate = false;
-let aiModeEnabled = true;
 let aiGeneratedPhrases = [];
 
 //
@@ -46,50 +42,6 @@ function displayPhrase() {
   translationInputElement.value = "";
   feedbackElement.textContent = "";
   translationInputElement.focus();
-}
-
-// Load story phrases based on selected sections.
-function loadStoryPhrases() {
-  // Skip if AI mode is enabled - AI phrases are managed separately
-  if (aiModeEnabled) {
-    return;
-  }
-
-  loadedPhrases = [];
-
-  // Get selected sections (stories)
-  const selectedSections = [];
-  sectionCheckboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      selectedSections.push(checkbox.value);
-    }
-  });
-
-  // Load story phrases if sections are selected
-  if (selectedSections.length > 0) {
-    const filteredPhrases = phrases.filter(
-      (phrase) => phrase.section && selectedSections.includes(phrase.section)
-    );
-    loadedPhrases = loadedPhrases.concat(filteredPhrases);
-  }
-
-  if (loadedPhrases.length === 0) {
-    currentPhraseElement.textContent = "⚠️ Selige sectiones!";
-    return;
-  }
-
-  if (randomizeCheckboxElement.checked) {
-    shuffle(loadedPhrases);
-  }
-
-  currentPhraseIndex = 0;
-
-  // Reset to submit mode in case we were in next phrase mode.
-  translationInputElement.removeEventListener("keydown", handleKeyDownNext);
-  translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
-  translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
-
-  displayPhrase();
 }
 
 function updateScore() {
@@ -230,9 +182,6 @@ tenseCheckboxes.forEach((checkbox) => {
 sectionCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     updateGroupCheckbox(this);
-    if (!isGroupUpdate) {
-      loadStoryPhrases();
-    }
   });
 });
 
@@ -244,26 +193,15 @@ groupCheckboxes.forEach((groupCheckbox) => {
       ".conjugation-checkbox, .declension-checkbox, .tense-checkbox, .section-checkbox"
     );
 
-    // Set flag to prevent child checkboxes from calling loadStoryPhrases
-    isGroupUpdate = true;
     checkboxes.forEach((checkbox) => {
       checkbox.checked = this.checked;
     });
-    isGroupUpdate = false;
-
-    // Only reload for story sections (Fabulae)
-    if (this.dataset.group === "groupFabulae") {
-      setTimeout(() => loadStoryPhrases(), 0);
-    }
   });
 });
 
-// Changing randomization should trigger reload (only for story mode).
+// Changing randomization reshuffles AI phrases.
 randomizeCheckboxElement.addEventListener("change", function () {
-  if (!aiModeEnabled) {
-    loadStoryPhrases();
-  } else if (loadedPhrases.length > 0) {
-    // Reshuffle AI phrases
+  if (loadedPhrases.length > 0) {
     if (this.checked) {
       shuffle(loadedPhrases);
     }
@@ -289,39 +227,6 @@ translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
 
 // Dismiss story button
 dismissStoryButtonElement.addEventListener("click", hideFullStory);
-
-// AI Mode event handlers
-aiModeCheckboxElement.addEventListener("change", function () {
-  aiModeEnabled = this.checked;
-
-  if (aiModeEnabled) {
-    // Show AI settings
-    aiModeSettingsElement.classList.remove("hidden");
-
-    // Load saved API key if available
-    const savedKey = getApiKey();
-    if (savedKey) {
-      apiKeyInputElement.value = savedKey;
-    }
-
-    // If we have AI phrases, use them
-    if (aiGeneratedPhrases.length > 0) {
-      loadedPhrases = [...aiGeneratedPhrases];
-      if (randomizeCheckboxElement.checked) {
-        shuffle(loadedPhrases);
-      }
-      currentPhraseIndex = 0;
-      displayPhrase();
-    } else {
-      currentPhraseElement.textContent = "⚠️ Preme 'Generare'";
-    }
-  } else {
-    // Hide AI settings and switch to story phrases
-    aiModeSettingsElement.classList.add("hidden");
-    aiStatusElement.textContent = "";
-    loadStoryPhrases();
-  }
-});
 
 // Save API key when changed
 apiKeyInputElement.addEventListener("change", function () {
@@ -389,10 +294,6 @@ generateAiButtonElement.addEventListener("click", async function () {
     return;
   }
 
-  // Get thinking mode from radio buttons
-  const thinkingMode = document.querySelector('input[name="thinkingMode"]:checked').value;
-  const thinkingBudget = thinkingMode === "slow" ? AI_THINKING_BUDGET_SLOW : AI_THINKING_BUDGET_QUICK;
-
   // Get vocabulary sample counts from selectors
   const nounCount = parseInt(nounCountSelectElement.value, 10);
   const verbCount = parseInt(verbCountSelectElement.value, 10);
@@ -412,8 +313,6 @@ generateAiButtonElement.addEventListener("click", async function () {
       selectedTenses,
       pronounsEnabled,
       adjectivesEnabled,
-      storyModeCheckboxElement.checked,
-      thinkingBudget,
       nounCount,
       verbCount,
       adjectiveCount
@@ -458,8 +357,7 @@ declensionCheckboxes.forEach(updateGroupCheckbox);
 tenseCheckboxes.forEach(updateGroupCheckbox);
 sectionCheckboxes.forEach(updateGroupCheckbox);
 
-// Initialize AI mode (checked by default)
-aiModeSettingsElement.classList.remove("hidden");
+// Load saved API key if available
 const savedKey = getApiKey();
 if (savedKey) {
   apiKeyInputElement.value = savedKey;

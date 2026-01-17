@@ -27,39 +27,16 @@
 
     <div class="settings-container">
       <div class="ai-mode-section">
-        <label
-          ><input type="checkbox" id="aiModeCheckbox" checked />Modus IA</label
-        >
-        <div id="aiModeSettings" class="hidden">
+        <div id="aiModeSettings">
           <input
             type="password"
             id="apiKeyInput"
             placeholder="Clavis API Anthropic"
           />
-          <div class="thinking-mode-options">
-            <label
-              ><input
-                type="radio"
-                name="thinkingMode"
-                value="quick"
-              />Celer</label
-            >
-            <label
-              ><input type="radio" name="thinkingMode" value="slow" checked />Lentus</label
-            >
-          </div>
-          <label
-            ><input type="checkbox" id="storyModeCheckbox" checked />Modus fabulae</label
-          >
           <button id="generateAiButton">Generare</button>
           <span id="aiStatus"></span>
         </div>
       </div>
-
-      <label
-        ><input type="checkbox" id="randomizeCheckbox" />Ordo
-        fortuitus</label
-      >
 
       <div class="section-group" id="groupDeclinationes">
         <label
@@ -212,16 +189,23 @@
         </div>
       </div>
 
+      <div>
+        <label
+          ><input type="checkbox" id="adjectivesCheckbox" checked />Adiectiva</label
+        ><select id="adjectiveCountSelect" class="sample-count-select">
+          <option value="5">V</option>
+          <option value="10" selected>X</option>
+          <option value="15">XV</option>
+          <option value="20">XX</option>
+          <option value="25">XXV</option>
+          <option value="30">XXX</option>
+        </select>
+      </div>
+
       <label
-        ><input type="checkbox" id="adjectivesCheckbox" checked />Adiectiva</label
-      ><select id="adjectiveCountSelect" class="sample-count-select">
-        <option value="5">V</option>
-        <option value="10" selected>X</option>
-        <option value="15">XV</option>
-        <option value="20">XX</option>
-        <option value="25">XXV</option>
-        <option value="30">XXX</option>
-      </select>
+        ><input type="checkbox" id="randomizeCheckbox" />Ordo
+        fortuitus</label
+      >
 
       <div class="section-group collapsed" id="groupFabulae">
         <label

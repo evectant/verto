@@ -178,8 +178,8 @@ input[type="checkbox"] {
   color: #FFA726;
 }
 
-label:has(#adjectivesCheckbox) {
-  margin-bottom: 15px;
+label:has(#randomizeCheckbox) {
+  margin-top: 30px;
 }
 
 .sample-count-select {
