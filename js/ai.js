@@ -4,7 +4,9 @@
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
-const WORDS_PER_DECLENSION = 10;
+const NOUNS_PER_DECLENSION = 10;
+const VERBS_PER_CONJUGATION = 3;
+const ADJECTIVES_PER_GROUP = 5;
 
 // Thinking budget options
 const AI_THINKING_BUDGET_QUICK = 1024;
@@ -105,7 +107,7 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
   for (const declension of selectedDeclensions) {
     const nouns = nounDatabase[declension];
     if (nouns) {
-      const sampled = sampleArray(nouns, WORDS_PER_DECLENSION);
+      const sampled = sampleArray(nouns, NOUNS_PER_DECLENSION);
       for (const noun of sampled) {
         vocabulary.nouns.push(`${noun.la} (${noun.en})`);
       }
@@ -115,7 +117,8 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
   for (const conjugation of selectedConjugations) {
     const verbs = verbDatabase[conjugation];
     if (verbs) {
-      for (const verb of verbs) {
+      const sampled = sampleArray(verbs, VERBS_PER_CONJUGATION);
+      for (const verb of sampled) {
         const construction = verb.construction ? `, + ${verb.construction}.` : "";
         vocabulary.verbs.push(`${verb.la} (${verb.en}${construction})`);
       }
@@ -139,11 +142,14 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 
   let adjectiveRules = "- Do NOT use adjectives (except possessives) or adverbs.";
   if (adjectivesEnabled) {
-    const allAdjectives = [...adjectiveDatabase.declension12, ...adjectiveDatabase.declension3]
+    const sampledAdjectives = [
+      ...sampleArray(adjectiveDatabase.declension12, ADJECTIVES_PER_GROUP),
+      ...sampleArray(adjectiveDatabase.declension3, ADJECTIVES_PER_GROUP),
+    ]
       .map((adj) => `${adj.la} (${adj.en})`)
       .sort()
       .join(", ");
-    adjectiveRules = `- Use ONLY these adjectives: ${allAdjectives}.
+    adjectiveRules = `- Use ONLY these adjectives: ${sampledAdjectives}.
 - Do NOT use adverbs.`;
   }
 
