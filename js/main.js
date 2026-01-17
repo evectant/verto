@@ -7,6 +7,9 @@ const translationInputElement = document.getElementById("translationInput");
 const feedbackElement = document.getElementById("feedback");
 const correctCounterElement = document.getElementById("correctCounter");
 const randomizeCheckboxElement = document.getElementById("randomizeCheckbox");
+const storyContainerElement = document.getElementById("storyContainer");
+const fullStoryElement = document.getElementById("fullStory");
+const dismissStoryButtonElement = document.getElementById("dismissStoryButton");
 
 // AI Mode elements
 const aiModeCheckboxElement = document.getElementById("aiModeCheckbox");
@@ -130,8 +133,26 @@ function checkTranslation() {
   updateScore();
 }
 
+function displayFullStory() {
+  // Display all Latin sentences in the story container
+  const latinStory = loadedPhrases.map((phrase) => phrase.la).join(" ");
+  fullStoryElement.textContent = latinStory;
+  storyContainerElement.classList.remove("hidden");
+}
+
+function hideFullStory() {
+  storyContainerElement.classList.add("hidden");
+}
+
 function nextPhrase() {
-  currentPhraseIndex = (currentPhraseIndex + 1) % loadedPhrases.length;
+  // Check if we've completed all phrases
+  if (currentPhraseIndex === loadedPhrases.length - 1) {
+    displayFullStory();
+    currentPhraseIndex = 0;
+  } else {
+    currentPhraseIndex = currentPhraseIndex + 1;
+  }
+
   displayPhrase();
 
   // Switch Enter to submit mode.
@@ -262,6 +283,9 @@ fabulaeLabel.addEventListener("click", function (event) {
 
 // Enter starts in submit mode.
 translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
+// Dismiss story button
+dismissStoryButtonElement.addEventListener("click", hideFullStory);
 
 // AI Mode event handlers
 aiModeCheckboxElement.addEventListener("change", function () {
