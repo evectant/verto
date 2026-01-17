@@ -181,3 +181,19 @@ input[type="checkbox"] {
 label:has(#adjectivesCheckbox) {
   margin-bottom: 15px;
 }
+
+.sample-count-select {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #2c2c2c;
+  border-radius: 5px;
+  padding: 2px 5px;
+  font-size: 12px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.sample-count-select:focus {
+  outline: none;
+  border: 1px solid #66bb6a;
+}

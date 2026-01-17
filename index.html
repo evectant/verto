@@ -61,96 +61,6 @@
         fortuitus</label
       >
 
-      <div class="section-group" id="groupConiugationes">
-        <label
-          ><input
-            type="checkbox"
-            class="group-checkbox"
-            data-group="groupConiugationes"
-          />Coniugationes</label
-        >
-
-        <div class="section-checkboxes">
-          <label
-            ><input
-              type="checkbox"
-              class="conjugation-checkbox"
-              value="conj1"
-              checked
-            />Cj I</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="conjugation-checkbox"
-              value="conj2"
-              checked
-            />Cj II</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="conjugation-checkbox"
-              value="conj3"
-              checked
-            />Cj III</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="conjugation-checkbox"
-              value="conj3io"
-              checked
-            />Cj III-io</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="conjugation-checkbox"
-              value="conj4"
-              checked
-            />Cj IV</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="conjugation-checkbox"
-              value="irregular"
-              checked
-            />Irreg</label
-          >
-        </div>
-      </div>
-
-      <div class="section-group" id="groupTempora">
-        <label
-          ><input
-            type="checkbox"
-            class="group-checkbox"
-            data-group="groupTempora"
-          />Tempora</label
-        >
-
-        <div class="section-checkboxes">
-          <label
-            ><input
-              type="checkbox"
-              class="tense-checkbox"
-              value="present"
-              checked
-            />Ind. Praes. Act.</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="tense-checkbox"
-              value="perfect"
-              checked
-            />Ind. Perf. Act.</label
-          >
-        </div>
-      </div>
-
       <div class="section-group" id="groupDeclinationes">
         <label
           ><input
@@ -158,7 +68,14 @@
             class="group-checkbox"
             data-group="groupDeclinationes"
           />Nomina</label
-        >
+        ><select id="nounCountSelect" class="sample-count-select">
+          <option value="5">V</option>
+          <option value="10">X</option>
+          <option value="15">XV</option>
+          <option value="20" selected>XX</option>
+          <option value="25">XXV</option>
+          <option value="30">XXX</option>
+        </select>
 
         <div class="section-checkboxes">
           <label
@@ -211,9 +128,100 @@
         </div>
       </div>
 
+      <div class="section-group" id="groupConiugationes">
+        <label
+          ><input
+            type="checkbox"
+            class="group-checkbox"
+            data-group="groupConiugationes"
+          />Verba</label
+        ><select id="verbCountSelect" class="sample-count-select">
+          <option value="5">V</option>
+          <option value="10" selected>X</option>
+          <option value="15">XV</option>
+          <option value="20">XX</option>
+          <option value="25">XXV</option>
+          <option value="30">XXX</option>
+        </select>
+
+        <div class="section-checkboxes">
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj1"
+              checked
+            />Cj I</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj2"
+              checked
+            />Cj II</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj3"
+              checked
+            />Cj III</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj3io"
+              checked
+            />Cj III-io</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="conj4"
+              checked
+            />Cj IV</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="conjugation-checkbox"
+              value="irregular"
+              checked
+            />Irreg</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="tense-checkbox"
+              value="present"
+              checked
+            />Praes</label
+          >
+          <label
+            ><input
+              type="checkbox"
+              class="tense-checkbox"
+              value="perfect"
+              checked
+            />Perf</label
+          >
+        </div>
+      </div>
+
       <label
         ><input type="checkbox" id="adjectivesCheckbox" checked />Adiectiva</label
-      >
+      ><select id="adjectiveCountSelect" class="sample-count-select">
+        <option value="5">V</option>
+        <option value="10" selected>X</option>
+        <option value="15">XV</option>
+        <option value="20">XX</option>
+        <option value="25">XXV</option>
+        <option value="30">XXX</option>
+      </select>
 
       <div class="section-group collapsed" id="groupFabulae">
         <label

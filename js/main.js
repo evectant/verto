@@ -25,6 +25,9 @@ const conjugationCheckboxes = document.querySelectorAll(".conjugation-checkbox")
 const declensionCheckboxes = document.querySelectorAll(".declension-checkbox");
 const tenseCheckboxes = document.querySelectorAll(".tense-checkbox");
 const sectionCheckboxes = document.querySelectorAll(".section-checkbox");
+const nounCountSelectElement = document.getElementById("nounCountSelect");
+const verbCountSelectElement = document.getElementById("verbCountSelect");
+const adjectiveCountSelectElement = document.getElementById("adjectiveCountSelect");
 
 let loadedPhrases = [];
 let currentPhraseIndex = 0;
@@ -390,6 +393,11 @@ generateAiButtonElement.addEventListener("click", async function () {
   const thinkingMode = document.querySelector('input[name="thinkingMode"]:checked').value;
   const thinkingBudget = thinkingMode === "slow" ? AI_THINKING_BUDGET_SLOW : AI_THINKING_BUDGET_QUICK;
 
+  // Get vocabulary sample counts from selectors
+  const nounCount = parseInt(nounCountSelectElement.value, 10);
+  const verbCount = parseInt(verbCountSelectElement.value, 10);
+  const adjectiveCount = parseInt(adjectiveCountSelectElement.value, 10);
+
   // Show loading state
   aiStatusElement.textContent = "Generans...";
   aiStatusElement.className = "ai-loading";
@@ -405,7 +413,10 @@ generateAiButtonElement.addEventListener("click", async function () {
       pronounsEnabled,
       adjectivesEnabled,
       storyModeCheckboxElement.checked,
-      thinkingBudget
+      thinkingBudget,
+      nounCount,
+      verbCount,
+      adjectiveCount
     );
 
     const elapsedSeconds = ((performance.now() - startTime) / 1000).toFixed(1);

@@ -4,9 +4,6 @@
 const AI_MODEL = "claude-opus-4-5-20251101";
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
-const NOUNS_PER_DECLENSION = 10;
-const VERBS_PER_CONJUGATION = 3;
-const ADJECTIVES_PER_GROUP = 5;
 
 // Thinking budget options
 const AI_THINKING_BUDGET_QUICK = 1024;
@@ -98,26 +95,30 @@ function sampleArray(array, n) {
 }
 
 // Get filtered vocabulary based on current settings
-function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
+function getFilteredVocabulary(selectedDeclensions, selectedConjugations, nounCount, verbCount) {
   const vocabulary = {
     nouns: [],
     verbs: [],
   };
 
+  // Distribute total noun count equally across selected declensions
+  const nounsPerDeclension = Math.ceil(nounCount / selectedDeclensions.length);
   for (const declension of selectedDeclensions) {
     const nouns = nounDatabase[declension];
     if (nouns) {
-      const sampled = sampleArray(nouns, NOUNS_PER_DECLENSION);
+      const sampled = sampleArray(nouns, nounsPerDeclension);
       for (const noun of sampled) {
         vocabulary.nouns.push(`${noun.la} (${noun.en})`);
       }
     }
   }
 
+  // Distribute total verb count equally across selected conjugations
+  const verbsPerConjugation = Math.ceil(verbCount / selectedConjugations.length);
   for (const conjugation of selectedConjugations) {
     const verbs = verbDatabase[conjugation];
     if (verbs) {
-      const sampled = sampleArray(verbs, VERBS_PER_CONJUGATION);
+      const sampled = sampleArray(verbs, verbsPerConjugation);
       for (const verb of sampled) {
         const construction = verb.construction ? `, + ${verb.construction}.` : "";
         vocabulary.verbs.push(`${verb.la} (${verb.en}${construction})`);
@@ -132,7 +133,7 @@ function getFilteredVocabulary(selectedDeclensions, selectedConjugations) {
 }
 
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, count) {
+function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, storyModeEnabled, count) {
   const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(" and ");
 
   let pronounRules = "";
@@ -142,9 +143,11 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 
   let adjectiveRules = "- Do NOT use adjectives (except possessives) or adverbs.";
   if (adjectivesEnabled) {
+    // Distribute total adjective count equally across the two declension groups
+    const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
     const sampledAdjectives = [
-      ...sampleArray(adjectiveDatabase.declension12, ADJECTIVES_PER_GROUP),
-      ...sampleArray(adjectiveDatabase.declension3, ADJECTIVES_PER_GROUP),
+      ...sampleArray(adjectiveDatabase.declension12, adjectivesPerGroup),
+      ...sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup),
     ]
       .map((adj) => `${adj.la} (${adj.en})`)
       .sort()
@@ -188,13 +191,13 @@ Format rules:
 }
 
 // Call the Anthropic API to generate phrases
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, thinkingBudget) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, thinkingBudget, nounCount, verbCount, adjectiveCount) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
   }
 
-  const vocabulary = getFilteredVocabulary(selectedDeclensions, selectedConjugations);
+  const vocabulary = getFilteredVocabulary(selectedDeclensions, selectedConjugations, nounCount, verbCount);
 
   // Check if we have enough vocabulary
   if (vocabulary.nouns.length === 0) {
@@ -204,7 +207,7 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("No verbs available with selected conjugations");
   }
 
-  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, storyModeEnabled, AI_PHRASE_COUNT);
+  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, storyModeEnabled, AI_PHRASE_COUNT);
 
   const requestBody = {
     model: AI_MODEL,
