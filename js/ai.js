@@ -139,7 +139,11 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 
   let adjectiveRules = "- Do NOT use adjectives (except possessives) or adverbs.";
   if (adjectivesEnabled) {
-    adjectiveRules = `- Use ONLY these adjectives: ${ADJECTIVES.join(", ")}.
+    const allAdjectives = [...adjectiveDatabase.declension12, ...adjectiveDatabase.declension3]
+      .map((adj) => `${adj.la} (${adj.en})`)
+      .sort()
+      .join(", ");
+    adjectiveRules = `- Use ONLY these adjectives: ${allAdjectives}.
 - Do NOT use adverbs.`;
   }
 

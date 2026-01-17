@@ -29,18 +29,6 @@ function toRoman(num) {
 // Prepositions: used for grading (all treated as equivalent) and in AI prompt
 const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "inter", "per", "sine"];
 
-// Adjectives: used in AI prompt when adjectives are enabled
-const ADJECTIVES = [
-  "bonus (good)",
-  "dūrus (hard, harsh)",
-  "fessus (tired)",
-  "māgnus (large, great)",
-  "malus (bad)",
-  "multus (much, many)",
-  "novus (new)",
-  "parvus (small)",
-  "pulcher (beautiful)",
-];
 const PREPOSITION_REGEX = new RegExp(`\\b(${PREPOSITIONS.join("|")})\\b`, "g");
 
 function normalize(text) {
