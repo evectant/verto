@@ -323,7 +323,7 @@ generateAiButtonElement.addEventListener("click", async function () {
     // Persist phrases to localStorage
     saveAIPhrases(aiGeneratedPhrases);
 
-    aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae (${elapsedSeconds}s)`;
+    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} sententiae (${elapsedSeconds}s)`;
     aiStatusElement.className = "ai-success";
 
     // Load the AI phrases
@@ -372,7 +372,7 @@ if (savedPhrases && savedPhrases.length > 0) {
     shuffle(loadedPhrases);
   }
   currentPhraseIndex = 0;
-  aiStatusElement.textContent = `✓ ${aiGeneratedPhrases.length} sententiae`;
+  aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} sententiae`;
   aiStatusElement.className = "ai-success";
   displayPhrase();
 } else {
