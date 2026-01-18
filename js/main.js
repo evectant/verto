@@ -318,12 +318,12 @@ generateAiButtonElement.addEventListener("click", async function () {
       adjectiveCount
     );
 
-    const elapsedSeconds = ((performance.now() - startTime) / 1000).toFixed(1);
+    const elapsedSeconds = Math.round((performance.now() - startTime) / 1000);
 
     // Persist phrases to localStorage
     saveAIPhrases(aiGeneratedPhrases);
 
-    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} sententiae (${elapsedSeconds}s)`;
+    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} sententiae (${toRoman(elapsedSeconds)} s)`;
     aiStatusElement.className = "ai-success";
 
     // Load the AI phrases
