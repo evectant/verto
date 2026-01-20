@@ -2,6 +2,7 @@
 
 // Configuration
 const AI_MODEL = "claude-opus-4-5-20251101";
+
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
 const AI_THINKING_BUDGET = 4096;
@@ -91,42 +92,48 @@ function sampleArray(array, n) {
   return shuffled.slice(0, n);
 }
 
-// Get filtered vocabulary based on current settings
-function getFilteredVocabulary(selectedDeclensions, selectedConjugations, nounCount, verbCount) {
-  const vocabulary = {
-    nouns: [],
-    verbs: [],
-  };
-
-  // Distribute total noun count equally across selected declensions
+// Sample nouns from selected declensions, distributed equally
+function sampleNouns(selectedDeclensions, nounCount) {
   const nounsPerDeclension = Math.ceil(nounCount / selectedDeclensions.length);
+  const nouns = [];
   for (const declension of selectedDeclensions) {
-    const nouns = nounDatabase[declension];
-    if (nouns) {
-      const sampled = sampleArray(nouns, nounsPerDeclension);
+    const declNouns = nounDatabase[declension];
+    if (declNouns) {
+      const sampled = sampleArray(declNouns, nounsPerDeclension);
       for (const noun of sampled) {
-        vocabulary.nouns.push(`${noun.la} (${noun.en})`);
+        nouns.push(`${noun.la} (${noun.en})`);
       }
     }
   }
+  return nouns.sort();
+}
 
-  // Distribute total verb count equally across selected conjugations
+// Sample verbs from selected conjugations, distributed equally
+function sampleVerbs(selectedConjugations, verbCount) {
   const verbsPerConjugation = Math.ceil(verbCount / selectedConjugations.length);
+  const verbs = [];
   for (const conjugation of selectedConjugations) {
-    const verbs = verbDatabase[conjugation];
-    if (verbs) {
-      const sampled = sampleArray(verbs, verbsPerConjugation);
+    const conjVerbs = verbDatabase[conjugation];
+    if (conjVerbs) {
+      const sampled = sampleArray(conjVerbs, verbsPerConjugation);
       for (const verb of sampled) {
         const construction = verb.construction ? `, + ${verb.construction}.` : "";
-        vocabulary.verbs.push(`${verb.la} (${verb.en}${construction})`);
+        verbs.push(`${verb.la} (${verb.en}${construction})`);
       }
     }
   }
+  return verbs.sort();
+}
 
-  vocabulary.nouns.sort();
-  vocabulary.verbs.sort();
-
-  return vocabulary;
+// Sample adjectives from both declension groups, distributed equally
+function sampleAdjectives(adjectiveCount) {
+  const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
+  return [
+    ...sampleArray(adjectiveDatabase.declension12, adjectivesPerGroup),
+    ...sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup),
+  ]
+    .map((adj) => `${adj.la} (${adj.en})`)
+    .sort();
 }
 
 // Build the prompt for the AI
@@ -140,16 +147,8 @@ function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnab
 
   let adjectiveRules = "- Do NOT use adjectives (except possessives) or adverbs.";
   if (adjectivesEnabled) {
-    // Distribute total adjective count equally across the two declension groups
-    const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
-    const sampledAdjectives = [
-      ...sampleArray(adjectiveDatabase.declension12, adjectivesPerGroup),
-      ...sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup),
-    ]
-      .map((adj) => `${adj.la} (${adj.en})`)
-      .sort()
-      .join(", ");
-    adjectiveRules = `- Use ONLY these adjectives: ${sampledAdjectives}.
+    const adjectives = sampleAdjectives(adjectiveCount);
+    adjectiveRules = `- Use ONLY these adjectives: ${adjectives.join(", ")}.
 - Do NOT use adverbs.`;
   }
 
@@ -184,24 +183,12 @@ Format rules:
 - Use macrons and proper punctuation.`;
 }
 
-// Call the Anthropic API to generate phrases
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, nounCount, verbCount, adjectiveCount) {
+// Call the Anthropic API with a prompt and parse the JSON response
+async function callAI(prompt) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
   }
-
-  const vocabulary = getFilteredVocabulary(selectedDeclensions, selectedConjugations, nounCount, verbCount);
-
-  // Check if we have enough vocabulary
-  if (vocabulary.nouns.length === 0) {
-    throw new Error("No nouns available with selected declensions");
-  }
-  if (vocabulary.verbs.length === 0) {
-    throw new Error("No verbs available with selected conjugations");
-  }
-
-  const prompt = buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, AI_PHRASE_COUNT);
 
   const requestBody = {
     model: AI_MODEL,
@@ -247,29 +234,87 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
   }
 
   // Parse the JSON response
-  try {
-    // Try to extract JSON from the response (in case there's extra text)
-    const jsonMatch = content.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) {
-      throw new Error("No JSON array found in response");
-    }
-
-    const phrases = JSON.parse(jsonMatch[0]);
-
-    // Validate the structure
-    if (!Array.isArray(phrases)) {
-      throw new Error("Response is not an array");
-    }
-
-    for (const phrase of phrases) {
-      if (typeof phrase.en !== "string" || typeof phrase.la !== "string") {
-        throw new Error("Invalid phrase structure");
-      }
-    }
-
-    return phrases;
-  } catch (parseError) {
-    console.error("Failed to parse AI response:", content);
-    throw new Error("Failed to parse AI response: " + parseError.message);
+  const jsonMatch = content.match(/\[[\s\S]*\]/);
+  if (!jsonMatch) {
+    throw new Error("No JSON array found in response");
   }
+
+  const phrases = JSON.parse(jsonMatch[0]);
+
+  if (!Array.isArray(phrases)) {
+    throw new Error("Response is not an array");
+  }
+
+  for (const phrase of phrases) {
+    if (typeof phrase.en !== "string" || typeof phrase.la !== "string") {
+      throw new Error("Invalid phrase structure");
+    }
+  }
+
+  return phrases;
+}
+
+// Generate story phrases via API
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, nounCount, verbCount, adjectiveCount) {
+  const nouns = sampleNouns(selectedDeclensions, nounCount);
+  const verbs = sampleVerbs(selectedConjugations, verbCount);
+
+  if (nouns.length === 0) {
+    throw new Error("No nouns available with selected declensions");
+  }
+  if (verbs.length === 0) {
+    throw new Error("No verbs available with selected conjugations");
+  }
+
+  const prompt = buildPrompt({ nouns, verbs }, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, AI_PHRASE_COUNT);
+  return callAI(prompt);
+}
+
+// Build prompt for agreement practice mode
+function buildAgreementPrompt(nouns, adjectives, count) {
+  return `Generate ${count} Latin agreement exercises for language learning.
+
+Each exercise is an adjective-noun phrase that must agree in case, number, and gender. Use ALL FIVE CASES:
+
+1. NOMINATIVE (nom.): subject phrases - "great city", "strong men"
+2. GENITIVE (gen.): possession phrases - "of great city", "of strong men"
+3. DATIVE (dat.): indirect object phrases - "to/for great city", "to/for strong men"
+4. ACCUSATIVE (acc.): with prepositions - "into great city", "through strong men"
+5. ABLATIVE (abl.): with prepositions - "in great city", "with strong men"
+
+Example outputs:
+- English: "great city (nom.)" → Latin: "urbs magna"
+- English: "of strong men (gen.)" → Latin: "virōrum fortium"
+- English: "to/for good girl (dat.)" → Latin: "puellae bonae"
+- English: "through deep water (acc.)" → Latin: "per aquam altam"
+- English: "with good girl (abl.)" → Latin: "cum puellā bonā"
+
+Rules:
+- Use ONLY these nouns: ${nouns.join(", ")}.
+- Use ONLY these adjectives: ${adjectives.join(", ")}.
+- For acc. and abl., use common Latin prepositions (ad, in, per, cum, ex, sine, etc.).
+- Distribute exercises roughly equally across all 5 cases.
+- Vary the numbers: use both singular and plural forms.
+- Vary the genders: use masculine, feminine, and neuter nouns.
+- The adjective must correctly agree with the noun in case, number, and gender.
+- Use macrons on all long vowels.
+- Use these case abbreviations: nom., gen., dat., acc., abl.
+
+Format rules:
+- Return ONLY a JSON array: [{"en": "...", "la": "..."}].
+- For nom./gen./dat.: English is "<adj> <noun> (case)" or "of/to/for <adj> <noun> (case)", Latin is "<noun> <adj>"
+- For acc./abl.: English is "<prep meaning> <adj> <noun> (case)", Latin is "<prep> <noun> <adj>"`;
+}
+
+// Generate agreement practice phrases via API
+async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiveCount) {
+  const nouns = sampleNouns(selectedDeclensions, nounCount);
+  const adjectives = sampleAdjectives(adjectiveCount);
+
+  if (nouns.length === 0) {
+    throw new Error("No nouns available with selected declensions");
+  }
+
+  const prompt = buildAgreementPrompt(nouns, adjectives, AI_PHRASE_COUNT);
+  return callAI(prompt);
 }

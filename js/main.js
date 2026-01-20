@@ -17,6 +17,7 @@ const apiKeyInputElement = document.getElementById("apiKeyInput");
 const generateAiButtonElement = document.getElementById("generateAiButton");
 const aiStatusElement = document.getElementById("aiStatus");
 const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
+const agreementCheckboxElement = document.getElementById("agreementCheckbox");
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
 const conjugationCheckboxes = document.querySelectorAll(".conjugation-checkbox");
@@ -245,6 +246,9 @@ generateAiButtonElement.addEventListener("click", async function () {
   // Save the API key
   setApiKey(apiKey);
 
+  // Check if agreement mode is enabled
+  const agreementMode = agreementCheckboxElement.checked;
+
   // Get current settings
   const selectedDeclensions = [];
   const selectedConjugations = [];
@@ -275,23 +279,26 @@ generateAiButtonElement.addEventListener("click", async function () {
 
   const adjectivesEnabled = adjectivesCheckboxElement.checked;
 
-  // Validate settings
-  if (selectedConjugations.length === 0) {
-    aiStatusElement.textContent = "⚠️ Selige coniugationes";
-    aiStatusElement.className = "ai-error";
-    return;
-  }
-
+  // Validate settings based on mode
   if (selectedDeclensions.length === 0) {
     aiStatusElement.textContent = "⚠️ Selige declinationes";
     aiStatusElement.className = "ai-error";
     return;
   }
 
-  if (selectedTenses.length === 0) {
-    aiStatusElement.textContent = "⚠️ Selige tempora";
-    aiStatusElement.className = "ai-error";
-    return;
+  if (!agreementMode) {
+    // Story mode requires conjugations and tenses
+    if (selectedConjugations.length === 0) {
+      aiStatusElement.textContent = "⚠️ Selige coniugationes";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
+
+    if (selectedTenses.length === 0) {
+      aiStatusElement.textContent = "⚠️ Selige tempora";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
   }
 
   // Get vocabulary sample counts from selectors
@@ -307,23 +314,34 @@ generateAiButtonElement.addEventListener("click", async function () {
   const startTime = performance.now();
 
   try {
-    aiGeneratedPhrases = await generateAIPhrases(
-      selectedDeclensions,
-      selectedConjugations,
-      selectedTenses,
-      pronounsEnabled,
-      adjectivesEnabled,
-      nounCount,
-      verbCount,
-      adjectiveCount
-    );
+    if (agreementMode) {
+      // Agreement practice mode
+      aiGeneratedPhrases = await generateAgreementPhrases(
+        selectedDeclensions,
+        nounCount,
+        adjectiveCount
+      );
+    } else {
+      // Story mode
+      aiGeneratedPhrases = await generateAIPhrases(
+        selectedDeclensions,
+        selectedConjugations,
+        selectedTenses,
+        pronounsEnabled,
+        adjectivesEnabled,
+        nounCount,
+        verbCount,
+        adjectiveCount
+      );
+    }
 
     const elapsedSeconds = Math.round((performance.now() - startTime) / 1000);
 
     // Persist phrases to localStorage
     saveAIPhrases(aiGeneratedPhrases);
 
-    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} sententiae (${toRoman(elapsedSeconds)} s)`;
+    const countLabel = agreementMode ? "locutiones" : "sententiae";
+    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} ${countLabel} (${toRoman(elapsedSeconds)} s)`;
     aiStatusElement.className = "ai-success";
 
     // Load the AI phrases
