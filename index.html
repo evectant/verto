@@ -36,6 +36,22 @@
           <button id="generateAiButton">Generare</button>
           <span id="aiStatus"></span>
         </div>
+        <div class="mode-group">
+          <label
+            ><input type="radio" name="mode" id="storyMode" value="story" checked />Fabula (IA)</label
+          >
+          <label
+            ><input type="radio" name="mode" id="agreementMode" value="agreement" />Congruentia (IA)</label
+          >
+          <label
+            ><input type="radio" name="mode" id="vocabularyMode" value="vocabulary" />Vocabula</label
+          >
+        </div>
+        <div class="options-group">
+          <label
+            ><input type="checkbox" id="randomizeCheckbox" />Ordo fortuitus</label
+          >
+        </div>
       </div>
 
       <div class="section-group" id="groupDeclinationes">
@@ -52,6 +68,7 @@
           <option value="20" selected>XX</option>
           <option value="25">XXV</option>
           <option value="30">XXX</option>
+          <option value="all">Omnia</option>
         </select>
 
         <div class="section-checkboxes">
@@ -119,6 +136,7 @@
           <option value="20">XX</option>
           <option value="25">XXV</option>
           <option value="30">XXX</option>
+          <option value="all">Omnia</option>
         </select>
 
         <div class="section-checkboxes">
@@ -199,130 +217,10 @@
           <option value="20">XX</option>
           <option value="25">XXV</option>
           <option value="30">XXX</option>
+          <option value="all">Omnia</option>
         </select>
       </div>
 
-      <div class="options-group">
-        <label
-          ><input type="checkbox" id="agreementCheckbox" />Congruentia</label
-        >
-        <label
-          ><input type="checkbox" id="randomizeCheckbox" />Ordo
-          fortuitus</label
-        >
-      </div>
-
-      <div class="section-group collapsed" id="groupFabulae">
-        <label
-          ><input
-            type="checkbox"
-            class="group-checkbox"
-            data-group="groupFabulae"
-          />Fabulae</label
-        >
-
-        <div class="section-checkboxes">
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story1" />Fb
-            I</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story2" />Fb
-            II</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story3" />Fb
-            III</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story4" />Fb
-            IV</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story5" />Fb
-            V</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story6" />Fb
-            VI</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story7" />Fb
-            VII</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story8" />Fb
-            VIII</label
-          >
-          <label
-            ><input type="checkbox" class="section-checkbox" value="story9" />Fb
-            IX</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story10"
-            />Fb X</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story11"
-            />Fb XI</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story12"
-            />Fb XII</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story13"
-            />Fb XIII</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story14"
-            />Fb XIV</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story15"
-            />Fb XV</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story16"
-            />Fb XVI</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story17"
-            />Fb XVII</label
-          >
-          <label
-            ><input
-              type="checkbox"
-              class="section-checkbox"
-              value="story18"
-            />Fb XVIII</label
-          >
-        </div>
-      </div>
     </div>
 
     <script src="js/data/nouns.js"></script>

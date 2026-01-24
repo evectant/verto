@@ -17,7 +17,7 @@ const apiKeyInputElement = document.getElementById("apiKeyInput");
 const generateAiButtonElement = document.getElementById("generateAiButton");
 const aiStatusElement = document.getElementById("aiStatus");
 const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
-const agreementCheckboxElement = document.getElementById("agreementCheckbox");
+const modeRadios = document.querySelectorAll('input[name="mode"]');
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
 const conjugationCheckboxes = document.querySelectorAll(".conjugation-checkbox");
@@ -211,17 +211,19 @@ randomizeCheckboxElement.addEventListener("change", function () {
   }
 });
 
-// Handle collapsible Fabulae section
+// Handle collapsible Fabulae section (if it exists)
 const fabulaeLabel = document.querySelector("#groupFabulae > label");
-fabulaeLabel.addEventListener("click", function (event) {
-  // Don't toggle if clicking directly on the checkbox
-  if (event.target.tagName === "INPUT") {
-    return;
-  }
-  // Prevent the label from toggling the checkbox
-  event.preventDefault();
-  document.getElementById("groupFabulae").classList.toggle("collapsed");
-});
+if (fabulaeLabel) {
+  fabulaeLabel.addEventListener("click", function (event) {
+    // Don't toggle if clicking directly on the checkbox
+    if (event.target.tagName === "INPUT") {
+      return;
+    }
+    // Prevent the label from toggling the checkbox
+    event.preventDefault();
+    document.getElementById("groupFabulae").classList.toggle("collapsed");
+  });
+}
 
 // Enter starts in submit mode.
 translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
@@ -236,18 +238,26 @@ apiKeyInputElement.addEventListener("change", function () {
 
 // Generate AI phrases button
 generateAiButtonElement.addEventListener("click", async function () {
-  const apiKey = apiKeyInputElement.value.trim();
-  if (!apiKey) {
-    aiStatusElement.textContent = "⚠️ Insere clavem API";
-    aiStatusElement.className = "ai-error";
-    return;
+  // Check which mode is selected
+  const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+  const storyMode = selectedMode === "story";
+  const agreementMode = selectedMode === "agreement";
+  const vocabularyMode = selectedMode === "vocabulary";
+  const phrasesMode = selectedMode === "phrases";
+
+  // Vocabulary and Phrases modes don't need API key
+  const needsApiKey = storyMode || agreementMode;
+
+  if (needsApiKey) {
+    const apiKey = apiKeyInputElement.value.trim();
+    if (!apiKey) {
+      aiStatusElement.textContent = "⚠️ Insere clavem API";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
+    // Save the API key
+    setApiKey(apiKey);
   }
-
-  // Save the API key
-  setApiKey(apiKey);
-
-  // Check if agreement mode is enabled
-  const agreementMode = agreementCheckboxElement.checked;
 
   // Get current settings
   const selectedDeclensions = [];
@@ -279,21 +289,48 @@ generateAiButtonElement.addEventListener("click", async function () {
 
   const adjectivesEnabled = adjectivesCheckboxElement.checked;
 
-  // Validate settings based on mode
-  if (selectedDeclensions.length === 0) {
-    aiStatusElement.textContent = "⚠️ Selige declinationes";
-    aiStatusElement.className = "ai-error";
-    return;
-  }
+  // Get selected stories for phrases mode
+  const selectedStories = [];
+  sectionCheckboxes.forEach((checkbox) => {
+    if (checkbox.checked) {
+      selectedStories.push(checkbox.value);
+    }
+  });
 
-  if (!agreementMode) {
-    // Story mode requires conjugations and tenses
+  // Validate settings based on mode
+  if (phrasesMode) {
+    // Phrases mode needs at least one story selected
+    if (selectedStories.length === 0) {
+      aiStatusElement.textContent = "⚠️ Selige fabulās";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
+  } else if (vocabularyMode) {
+    // Vocabulary mode needs at least nouns, verbs, or adjectives
+    if (selectedDeclensions.length === 0 && selectedConjugations.length === 0 && !adjectivesEnabled) {
+      aiStatusElement.textContent = "⚠️ Selige vocabula";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
+  } else if (agreementMode) {
+    // Agreement mode needs declensions
+    if (selectedDeclensions.length === 0) {
+      aiStatusElement.textContent = "⚠️ Selige declinationes";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
+  } else if (storyMode) {
+    // Story mode requires declensions, conjugations, and tenses
+    if (selectedDeclensions.length === 0) {
+      aiStatusElement.textContent = "⚠️ Selige declinationes";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
     if (selectedConjugations.length === 0) {
       aiStatusElement.textContent = "⚠️ Selige coniugationes";
       aiStatusElement.className = "ai-error";
       return;
     }
-
     if (selectedTenses.length === 0) {
       aiStatusElement.textContent = "⚠️ Selige tempora";
       aiStatusElement.className = "ai-error";
@@ -301,12 +338,69 @@ generateAiButtonElement.addEventListener("click", async function () {
     }
   }
 
-  // Get vocabulary sample counts from selectors
-  const nounCount = parseInt(nounCountSelectElement.value, 10);
-  const verbCount = parseInt(verbCountSelectElement.value, 10);
-  const adjectiveCount = parseInt(adjectiveCountSelectElement.value, 10);
+  // Get vocabulary sample counts from selectors ("all" means no limit)
+  const nounCountValue = nounCountSelectElement.value;
+  const verbCountValue = verbCountSelectElement.value;
+  const adjectiveCountValue = adjectiveCountSelectElement.value;
+  const nounCount = nounCountValue === "all" ? Infinity : parseInt(nounCountValue, 10);
+  const verbCount = verbCountValue === "all" ? Infinity : parseInt(verbCountValue, 10);
+  const adjectiveCount = adjectiveCountValue === "all" ? Infinity : parseInt(adjectiveCountValue, 10);
 
-  // Show loading state
+  // Handle non-AI modes synchronously
+  if (vocabularyMode) {
+    aiGeneratedPhrases = generateVocabularyPhrases(
+      selectedDeclensions,
+      selectedConjugations,
+      adjectivesEnabled,
+      nounCount,
+      verbCount,
+      adjectiveCount
+    );
+
+    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} vocābula`;
+    aiStatusElement.className = "ai-success";
+
+    loadedPhrases = [...aiGeneratedPhrases];
+    if (randomizeCheckboxElement.checked) {
+      shuffle(loadedPhrases);
+    }
+    currentPhraseIndex = 0;
+
+    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
+    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
+    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
+    displayPhrase();
+    return;
+  }
+
+  if (phrasesMode) {
+    // Collect phrases from selected stories
+    aiGeneratedPhrases = [];
+    selectedStories.forEach((storyId) => {
+      if (stories[storyId]) {
+        aiGeneratedPhrases.push(...stories[storyId]);
+      }
+    });
+
+    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} locutiones`;
+    aiStatusElement.className = "ai-success";
+
+    loadedPhrases = [...aiGeneratedPhrases];
+    if (randomizeCheckboxElement.checked) {
+      shuffle(loadedPhrases);
+    }
+    currentPhraseIndex = 0;
+
+    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
+    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
+    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
+    displayPhrase();
+    return;
+  }
+
+  // Show loading state for AI modes
   aiStatusElement.textContent = "Generans...";
   aiStatusElement.className = "ai-loading";
   generateAiButtonElement.disabled = true;

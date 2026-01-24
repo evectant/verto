@@ -318,3 +318,85 @@ async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiv
   const prompt = buildAgreementPrompt(nouns, adjectives, AI_PHRASE_COUNT);
   return callAI(prompt);
 }
+
+// Vocabulary mode: English -> Latin + declension/conjugation
+// No AI - samples based on count settings
+function generateVocabularyPhrases(selectedDeclensions, selectedConjugations, adjectivesEnabled, nounCount, verbCount, adjectiveCount) {
+  const phrases = [];
+
+  // Map declension keys to numbers
+  const declensionNumbers = {
+    declension1: "1",
+    declension2: "2",
+    declension3: "3",
+    declension4: "4",
+    declension5: "5",
+  };
+
+  // Map conjugation keys to numbers
+  const conjugationNumbers = {
+    conj1: "1",
+    conj2: "2",
+    conj3: "3",
+    conj3io: "3io",
+    conj4: "4",
+    irregular: "irreg",
+  };
+
+  // Add nouns (nominative form), distributed across declensions
+  if (selectedDeclensions.length > 0) {
+    const nounsPerDeclension = Math.ceil(nounCount / selectedDeclensions.length);
+    for (const declension of selectedDeclensions) {
+      const declNouns = nounDatabase[declension];
+      if (declNouns) {
+        const declNum = declensionNumbers[declension];
+        const sampled = sampleArray(declNouns, nounsPerDeclension);
+        for (const noun of sampled) {
+          phrases.push({
+            en: `${noun.en} (noun)`,
+            la: `${noun.la} ${declNum}${noun.gender}`,
+          });
+        }
+      }
+    }
+  }
+
+  // Add verbs (infinitive form), distributed across conjugations
+  if (selectedConjugations.length > 0) {
+    const verbsPerConjugation = Math.ceil(verbCount / selectedConjugations.length);
+    for (const conjugation of selectedConjugations) {
+      const conjVerbs = verbDatabase[conjugation];
+      if (conjVerbs) {
+        const conjNum = conjugationNumbers[conjugation];
+        const sampled = sampleArray(conjVerbs, verbsPerConjugation);
+        for (const verb of sampled) {
+          phrases.push({
+            en: `${verb.en} (verb)`,
+            la: `${verb.la} ${conjNum}`,
+          });
+        }
+      }
+    }
+  }
+
+  // Add adjectives (nominative masculine singular), distributed across groups
+  if (adjectivesEnabled) {
+    const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
+    const sampled12 = sampleArray(adjectiveDatabase.declension12, adjectivesPerGroup);
+    const sampled3 = sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup);
+    for (const adj of sampled12) {
+      phrases.push({
+        en: `${adj.en} (adj.)`,
+        la: `${adj.la} 12`,
+      });
+    }
+    for (const adj of sampled3) {
+      phrases.push({
+        en: `${adj.en} (adj.)`,
+        la: `${adj.la} 3`,
+      });
+    }
+  }
+
+  return phrases;
+}
