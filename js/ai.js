@@ -56,6 +56,7 @@ const AI_PHRASES_STORAGE_KEY = "verto_ai_phrases";
 const TENSE_NAMES = {
   present: "present indicative active",
   perfect: "perfect indicative active",
+  future: "future indicative active",
 };
 
 // Get stored API key
@@ -171,7 +172,7 @@ ${adjectiveRules}
 - NEVER use unlisted words.
 
 Latin grammar rules:
-- Use ONLY these tenses: ${tenseList}.
+- Use ONLY these tenses: ${tenseList}. Distribute tenses roughly equally across the sentences.
 - Exercise as many noun cases as possible.
 - When using nouns with ambiguous number, always indicate number in parentheses: "people (sg.)" or "people (pl.)".
 - When using nouns with ambiguous gender, always indicate gender in parentheses: "friend (f.)" or "friend (m.)".
