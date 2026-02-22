@@ -1,7 +1,7 @@
 // AI Mode for generating Latin phrases via Anthropic API
 
 // Configuration
-const AI_MODEL = "claude-opus-4-5-20251101";
+const AI_MODEL = "claude-opus-4-6";
 
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
