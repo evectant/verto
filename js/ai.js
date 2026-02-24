@@ -5,7 +5,7 @@ const AI_MODEL = "claude-opus-4-6";
 
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_PHRASE_COUNT = 30;
-const AI_THINKING_BUDGET = 4096;
+const AI_THINKING_EFFORT = "low";
 
 // 37 Basic Plots (based on Georges Polti's dramatic situations)
 const BASIC_PLOTS = [
@@ -195,8 +195,10 @@ async function callAI(prompt) {
     model: AI_MODEL,
     max_tokens: 16000,
     thinking: {
-      type: "enabled",
-      budget_tokens: AI_THINKING_BUDGET,
+      type: "adaptive",
+    },
+    output_config: {
+      effort: AI_THINKING_EFFORT,
     },
     messages: [
       {
