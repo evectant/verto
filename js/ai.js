@@ -174,9 +174,7 @@ ${adjectiveRules}
 Latin grammar rules:
 - Use ONLY these tenses: ${tenseList}. Distribute tenses roughly equally across the sentences.
 - Exercise as many noun cases as possible.
-- When using nouns with ambiguous number, always indicate number in the ENGLISH translation in parentheses: "people (sg.)" or "people (pl.)". Never add these annotations to the Latin.
-- When using nouns with ambiguous gender, always indicate gender in the ENGLISH translation in parentheses: "friend (f.)" or "friend (m.)". Never add these annotations to the Latin.
-- When using "you", "your", "yours", "yourself", always indicate number in the ENGLISH translation in parentheses: "you (sg.)" or "you (pl.)". Never add these annotations to the Latin.
+- In the English, annotate ONLY words that are genuinely ambiguous in English but unambiguous in Latin. Common examples: "you (sg.)" vs "you (pl.)", "people (sg.)" vs "people (pl.)", "friend (m.)" vs "friend (f.)". Do NOT annotate words like "man", "woman", "council", "nation", "king" — these already have clear number/gender in English. Never add annotations to the Latin.
 - Use "suus", "sua", "suum", etc. ONLY when the possessor is the grammatical subject. Use the genitive ("eius", "eōrum", "eārum", etc.) when the possessor is NOT the subject.
 
 Format rules:
