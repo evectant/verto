@@ -4,8 +4,10 @@
 const AI_MODEL = "claude-opus-4-6";
 
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
+const AI_MAX_TOKENS = 32000;
 const AI_PHRASE_COUNT = 30;
-const AI_THINKING_EFFORT = "low";
+const AI_GENERATE_EFFORT = "low";
+const AI_VERIFY_EFFORT = "medium";
 
 // 37 Basic Plots (based on Georges Polti's dramatic situations)
 const BASIC_PLOTS = [
@@ -46,6 +48,15 @@ const BASIC_PLOTS = [
   "Conflict with a god: Mortals versus immortals, superpowers, or superior beings.",
   "Remorse: Regret over past actions and exploring the motivations behind them.",
   "Mistaken identity: Being mistaken for someone else, with comedic or tragic results.",
+];
+
+// Verbs always included in story mode regardless of conjugation selection
+const ALWAYS_AVAILABLE_VERBS = [
+  { en: "to be", la: "esse" },
+  { en: "to make", la: "facere" },
+  { en: "to have", la: "habēre" },
+  { en: "to tell", la: "dīcere" },
+  { en: "to be able", la: "posse" },
 ];
 
 // LocalStorage keys
@@ -111,15 +122,23 @@ function sampleNouns(selectedDeclensions, nounCount) {
 
 // Sample verbs from selected conjugations, distributed equally
 function sampleVerbs(selectedConjugations, verbCount) {
-  const verbsPerConjugation = Math.ceil(verbCount / selectedConjugations.length);
   const verbs = [];
-  for (const conjugation of selectedConjugations) {
-    const conjVerbs = verbDatabase[conjugation];
-    if (conjVerbs) {
-      const sampled = sampleArray(conjVerbs, verbsPerConjugation);
-      for (const verb of sampled) {
-        const construction = verb.construction ? `, + ${verb.construction}.` : "";
-        verbs.push(`${verb.la} (${verb.en}${construction})`);
+  for (const verb of ALWAYS_AVAILABLE_VERBS) {
+    verbs.push(`${verb.la} (${verb.en})`);
+  }
+  const remaining = Math.max(0, verbCount - verbs.length);
+  if (remaining > 0 && selectedConjugations.length > 0) {
+    const verbsPerConjugation = Math.ceil(remaining / selectedConjugations.length);
+    for (const conjugation of selectedConjugations) {
+      const conjVerbs = verbDatabase[conjugation];
+      if (conjVerbs) {
+        const sampled = sampleArray(conjVerbs, verbsPerConjugation);
+        for (const verb of sampled) {
+          const formatted = `${verb.la} (${verb.en}${verb.construction ? `, + ${verb.construction}.` : ""})`;
+          if (!verbs.includes(formatted)) {
+            verbs.push(formatted);
+          }
+        }
       }
     }
   }
@@ -138,44 +157,44 @@ function sampleAdjectives(adjectiveCount) {
 }
 
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, count) {
-  const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(" and ");
+function buildPrompt(vocabulary, selectedTenses, adjectivesEnabled, adjectiveCount, count) {
+  const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(", ");
 
-  let pronounRules = "";
-  if (pronounsEnabled) {
-    pronounRules = `- Use pronouns often, including all three persons, reflexive pronouns, and possessive adjectives.`;
-  }
-
-  let adjectiveRules = "- Do NOT use adjectives (except possessives) or adverbs.";
+  let adjectiveRules = "Do NOT use adjectives (except possessives).";
   if (adjectivesEnabled) {
     const adjectives = sampleAdjectives(adjectiveCount);
-    adjectiveRules = `- Use ONLY these adjectives: ${adjectives.join(", ")}.
-- Do NOT use adverbs.`;
+    adjectiveRules = `Use ONLY these adjectives: ${adjectives.join(", ")}.`;
   }
 
   const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
   const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
   const ending = endings[Math.floor(Math.random() * endings.length)];
-  const storyInstruction = ` These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Include some direct speech to exercise 1st and 2nd person grammar.`;
+  const storyInstruction = `These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}".`;
 
-  return `Generate ${count} Latin sentences with English translations for language learning.${storyInstruction}
+  return `Generate ${count} Latin sentences with English translations for language learning. ${storyInstruction}
 
-Follow the Latin vocabulary and grammar rules below VERY strictly. Translate the Latin faithfully; prioritize accuracy over fluency.
+Follow the rules below VERY strictly.
 
-Latin vocabulary rules (use ONLY these words, no exceptions):
-- Nouns: ${vocabulary.nouns.join(", ")}.
-- Verbs: ${vocabulary.verbs.join(", ")}.
-- Prepositions: ${PREPOSITIONS.join(", ")}.
-${pronounRules}
-${adjectiveRules}
-- Exercise as much of this vocabulary as possible.
-- NEVER use unlisted words.
+Latin vocabulary rules:
+- Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
+- Use ONLY these verbs: ${vocabulary.verbs.join(", ")}.
+- ${adjectiveRules}
+- Exercise as much of the given vocabulary as possible.
+- Use common conjunctions and prepositions.
+- Use pronouns, reflexive pronouns, and possessive adjectives in all three persons.
+- Do NOT use adverbs except common particles like "non" and "quoque".
 
 Latin grammar rules:
-- Use ONLY these tenses: ${tenseList}. Distribute tenses roughly equally across the sentences.
-- Exercise as many noun cases as possible.
-- In the English, annotate ONLY words that are genuinely ambiguous in English but unambiguous in Latin. Common examples: "you (sg.)" vs "you (pl.)", "people (sg.)" vs "people (pl.)", "friend (m.)" vs "friend (f.)". Do NOT annotate words like "man", "woman", "council", "nation", "king" — these already have clear number/gender in English. Never add annotations to the Latin.
-- Use "suus", "sua", "suum", etc. ONLY when the possessor is the grammatical subject. Use the genitive ("eius", "eōrum", "eārum", etc.) when the possessor is NOT the subject.
+- Use ONLY these tenses: ${tenseList}.
+- Exercise ALL of the given tenses in roughly equal proportion.
+- Exercise ALL five noun cases (except vocative) in roughly equal proportion.
+- Include direct speech to exercise 1st and 2nd person grammar.
+- Use "suus", etc. only when the possessor is the grammatical subject; use "eius", etc. otherwise.
+
+English translation rules:
+- Translate the Latin faithfully, prioritizing accuracy over fluency.
+- When an English word has an ambiguous gender, annotate it - for example: "friend (f.)".
+- When an English word has an ambiguous number, annotate it - for example: "you (pl.)".
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "..."}].
@@ -183,7 +202,7 @@ Format rules:
 }
 
 // Call the Anthropic API with a prompt and parse the JSON response
-async function callAI(prompt) {
+async function callAI(prompt, effort) {
   const apiKey = getApiKey();
   if (!apiKey) {
     throw new Error("API key not set");
@@ -191,12 +210,12 @@ async function callAI(prompt) {
 
   const requestBody = {
     model: AI_MODEL,
-    max_tokens: 16000,
+    max_tokens: AI_MAX_TOKENS,
     thinking: {
       type: "adaptive",
     },
     output_config: {
-      effort: AI_THINKING_EFFORT,
+      effort: effort,
     },
     messages: [
       {
@@ -206,7 +225,7 @@ async function callAI(prompt) {
     ],
   };
 
-  console.log("AI Request:", requestBody);
+  const startTime = performance.now();
 
   const response = await fetch(AI_API_URL, {
     method: "POST",
@@ -225,10 +244,17 @@ async function callAI(prompt) {
   }
 
   const data = await response.json();
-  console.log("AI Response:", data);
-
+  const elapsed = ((performance.now() - startTime) / 1000).toFixed(1);
+  const thinkingBlock = data.content.find((block) => block.type === "thinking");
   const textBlock = data.content.find((block) => block.type === "text");
   const content = textBlock?.text;
+
+  console.log(
+    `=== AI Log (${elapsed}s) ===\n\n` +
+    "--- Prompt ---\n" + prompt + "\n\n" +
+    (thinkingBlock ? "--- Thinking ---\n" + thinkingBlock.thinking + "\n\n" : "") +
+    "--- Response ---\n" + (content || "(empty)")
+  );
 
   if (!content) {
     throw new Error("No content in API response");
@@ -252,11 +278,49 @@ async function callAI(prompt) {
     }
   }
 
-  return phrases;
+  return { phrases, elapsed: parseFloat(elapsed) };
+}
+
+// Build a verification prompt to check generated phrases against the original rules
+function buildVerificationPrompt(phrases, originalPrompt) {
+  const phrasesJson = JSON.stringify(phrases, null, 2);
+
+  return `Review these AI-generated Latin sentences for a language learning app.
+
+Below are the RULES that were used to generate the sentences, followed by the GENERATED SENTENCES.
+
+Your task:
+1. Check every Latin sentence for grammar errors. It is okay for Latin to be unidiomatic.
+2. Check that only the allowed vocabulary was used - it is VERY important that no unexpected words were introduced.
+3. Check that the grammar rules were followed (only allowed tenses, case distribution, etc.) - it is VERY important that no unexpected grammar was introduced.
+4. Check that the English translations are accurate (prioritize accuracy over fluency), follow the translation rules, and annotate words with ambiguous gender or number.
+
+Fix any errors you find. Do NOT add, remove, or reorder sentences - only correct mistakes in place.
+
+=== RULES ===
+${originalPrompt}
+
+=== GENERATED SENTENCES ===
+${phrasesJson}
+
+Return ONLY the corrected JSON array: [{"en": "...", "la": "..."}].
+If no corrections are needed, return the original array unchanged.`;
+}
+
+// Verify and correct generated phrases using a second AI pass
+async function verifyPhrases(generateResult, originalPrompt, onStatus) {
+  if (onStatus) onStatus("Probans...");
+  const prompt = buildVerificationPrompt(generateResult.phrases, originalPrompt);
+  const verifyResult = await callAI(prompt, AI_VERIFY_EFFORT);
+  return {
+    phrases: verifyResult.phrases,
+    generateSeconds: Math.round(generateResult.elapsed),
+    verifySeconds: Math.round(verifyResult.elapsed),
+  };
 }
 
 // Generate story phrases via API
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, pronounsEnabled, adjectivesEnabled, nounCount, verbCount, adjectiveCount) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount, verbCount, adjectiveCount, onStatus) {
   const nouns = sampleNouns(selectedDeclensions, nounCount);
   const verbs = sampleVerbs(selectedConjugations, verbCount);
 
@@ -267,8 +331,9 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("No verbs available with selected conjugations");
   }
 
-  const prompt = buildPrompt({ nouns, verbs }, selectedTenses, pronounsEnabled, adjectivesEnabled, adjectiveCount, AI_PHRASE_COUNT);
-  return callAI(prompt);
+  const prompt = buildPrompt({ nouns, verbs }, selectedTenses, adjectivesEnabled, adjectiveCount, AI_PHRASE_COUNT);
+  const result = await callAI(prompt, AI_GENERATE_EFFORT);
+  return verifyPhrases(result, prompt, onStatus);
 }
 
 // Build prompt for agreement practice mode
@@ -308,7 +373,7 @@ Format rules:
 }
 
 // Generate agreement practice phrases via API
-async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiveCount) {
+async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiveCount, onStatus) {
   const nouns = sampleNouns(selectedDeclensions, nounCount);
   const adjectives = sampleAdjectives(adjectiveCount);
 
@@ -317,7 +382,8 @@ async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiv
   }
 
   const prompt = buildAgreementPrompt(nouns, adjectives, AI_PHRASE_COUNT);
-  return callAI(prompt);
+  const result = await callAI(prompt, AI_GENERATE_EFFORT);
+  return verifyPhrases(result, prompt, onStatus);
 }
 
 // Vocabulary mode: English -> Latin + declension/conjugation

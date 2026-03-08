@@ -405,37 +405,39 @@ generateAiButtonElement.addEventListener("click", async function () {
   aiStatusElement.className = "ai-loading";
   generateAiButtonElement.disabled = true;
 
-  const startTime = performance.now();
+  const updateStatus = (text) => { aiStatusElement.textContent = text; };
 
   try {
+    let result;
     if (agreementMode) {
       // Agreement practice mode
-      aiGeneratedPhrases = await generateAgreementPhrases(
+      result = await generateAgreementPhrases(
         selectedDeclensions,
         nounCount,
-        adjectiveCount
+        adjectiveCount,
+        updateStatus
       );
     } else {
       // Story mode
-      aiGeneratedPhrases = await generateAIPhrases(
+      result = await generateAIPhrases(
         selectedDeclensions,
         selectedConjugations,
         selectedTenses,
-        pronounsEnabled,
         adjectivesEnabled,
         nounCount,
         verbCount,
-        adjectiveCount
+        adjectiveCount,
+        updateStatus
       );
     }
 
-    const elapsedSeconds = Math.round((performance.now() - startTime) / 1000);
+    aiGeneratedPhrases = result.phrases;
 
     // Persist phrases to localStorage
     saveAIPhrases(aiGeneratedPhrases);
 
     const countLabel = agreementMode ? "locutiones" : "sententiae";
-    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} ${countLabel} (${toRoman(elapsedSeconds)} s)`;
+    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} ${countLabel} (${toRoman(result.generateSeconds)} + ${toRoman(result.verifySeconds)} s)`;
     aiStatusElement.className = "ai-success";
 
     // Load the AI phrases
