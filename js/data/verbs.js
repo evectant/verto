@@ -58,7 +58,7 @@ const verbDatabase = {
     { en: "to punish", la: "pūnīre" },
     { en: "to serve", la: "servīre", construction: "dat" },
     { en: "to sleep", la: "dormīre" },
-    { en: "to strengthen", la: "mūnīre" },
+    { en: "to fortify", la: "mūnīre" },
   ],
   irregular: [
     { en: "to be able", la: "posse" },
