@@ -32,6 +32,7 @@ let loadedPhrases = [];
 let currentPhraseIndex = 0;
 let correctAnswers = 0;
 let totalAnswers = 0;
+let phraseResults = [];
 let aiGeneratedPhrases = [];
 
 //
@@ -73,13 +74,16 @@ function checkTranslation() {
   const userTranslation = translationInputElement.value;
   const correctTranslation = loadedPhrases[currentPhraseIndex].la;
 
-  if (haveSameWords(userTranslation, correctTranslation)) {
+  const isCorrect = haveSameWords(userTranslation, correctTranslation);
+  phraseResults[currentPhraseIndex] = isCorrect;
+
+  if (isCorrect) {
     feedbackElement.style.color = "#66BB6A";
-    feedbackElement.textContent = "Recte!";
+    feedbackElement.textContent = "✓ " + correctTranslation;
     correctAnswers++;
   } else {
     feedbackElement.style.color = "";
-    feedbackElement.innerHTML = getColoredFeedback(
+    feedbackElement.innerHTML = "<span style=\"color: #EF5350\">✗</span> " + getColoredFeedback(
       userTranslation,
       correctTranslation
     );
@@ -90,9 +94,13 @@ function checkTranslation() {
 }
 
 function displayFullStory() {
-  // Display all Latin sentences in the story container
-  const latinStory = loadedPhrases.map((phrase) => phrase.la).join(" ");
-  fullStoryElement.textContent = latinStory;
+  const latinStory = loadedPhrases
+    .map((phrase, i) => {
+      const color = phraseResults[i] ? "#66BB6A" : "#EF5350";
+      return `<span style="color: ${color}">${phrase.la}</span>`;
+    })
+    .join(" ");
+  fullStoryElement.innerHTML = latinStory;
   storyContainerElement.classList.remove("hidden");
 }
 
