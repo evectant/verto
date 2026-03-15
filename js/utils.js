@@ -75,7 +75,11 @@ function haveSameWords(phrase1, phrase2) {
   // Latin subject pronouns that can be omitted (nominative case)
   // ego (I), tu (you sg.), nos (we), vos (you pl.),
   // is/ea/id (he/she/it), ei/eae/ea (they)
-  const OPTIONAL_SUBJECT_PRONOUNS = ["ego", "tu", "nos", "vos", "is", "ea", "id", "ei", "eae"];
+  const OPTIONAL_SUBJECT_PRONOUNS = [
+    "ego", "tu", "nos", "vos",
+    "is", "ea", "id", "ei", "eae",           // is, ea, id
+    "ille", "illa", "illud", "illi", "illae",  // ille, illa, illud
+  ];
 
   // Reflexive possessive adjective "suus, sua, suum" - all forms
   // Often omitted in Latin when context makes possession clear
