@@ -68,7 +68,7 @@ const TENSE_NAMES = {
   present: "present indicative active",
   perfect: "perfect indicative active",
   future: "future indicative active",
-  ppp: "perfect passive participle",
+  ppp: "perfect passive",
 };
 
 // Get stored API key
@@ -186,9 +186,9 @@ Latin vocabulary rules:
 - Do NOT use adverbs except common particles like "non" and "quoque".
 
 Latin grammar rules:
-- Use ONLY these tenses/forms: ${tenseList}.${selectedTenses.includes("ppp") ? `
-- For perfect passive participles, only uses them as participial adjectives modifying nouns (e.g., "mīlitēs missī").` : ""}
-- Exercise ALL of the given tenses/forms in roughly equal proportion.
+- Use ONLY these tenses: ${tenseList}.${selectedTenses.includes("ppp") ? `
+- For perfect passive, use both participial adjectives (e.g., "mīlitēs missī") and full perfect passive indicative with esse (e.g., "urbs capta est").` : ""}
+- Exercise ALL of the given tenses in roughly equal proportion.
 - Exercise ALL five noun cases (except vocative) in roughly equal proportion.
 - Include direct speech to exercise 1st and 2nd person grammar.
 - Use "suus", etc. only when the possessor is the grammatical subject; use "eius", etc. otherwise.
