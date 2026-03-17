@@ -129,9 +129,9 @@ function haveSameWords(phrase1, phrase2) {
     }
   }
 
-  // Check if all remaining words in the longer phrase are optional words
-  // (subject pronouns or reflexive possessives) and there are no remaining words in the shorter phrase
-  if (shorterCopy.length === 0 && longerCopy.every((w) => OPTIONAL_WORDS.includes(w))) {
+  // Check if all remaining words on both sides are optional words
+  // (subject pronouns or reflexive possessives)
+  if (longerCopy.every((w) => OPTIONAL_WORDS.includes(w)) && shorterCopy.every((w) => OPTIONAL_WORDS.includes(w))) {
     return true;
   }
 
