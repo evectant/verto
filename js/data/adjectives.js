@@ -2,7 +2,6 @@
 const adjectiveDatabase = {
   // 1st/2nd declension (-us/-a/-um, -er/-ra/-rum)
   declension12: [
-    { en: "alive", la: "vīvus" },
     { en: "alone, only", la: "sōlus" },
     { en: "ancient", la: "antīquus" },
     { en: "angry", la: "īrātus" },
@@ -10,8 +9,8 @@ const adjectiveDatabase = {
     { en: "beautiful", la: "pulcher" },
     { en: "black", la: "niger" },
     { en: "certain, sure", la: "certus" },
-    { en: "clear", la: "clārus" },
     { en: "dead", la: "mortuus" },
+    { en: "clear, famous", la: "clārus" },
     { en: "dear", la: "cārus" },
     { en: "eternal", la: "aeternus" },
     { en: "first", la: "prīmus" },
@@ -49,7 +48,6 @@ const adjectiveDatabase = {
     { en: "difficult", la: "difficilis" },
     { en: "easy", la: "facilis" },
     { en: "faithful", la: "fidēlis" },
-    { en: "famous", la: "celeber" },
     { en: "fierce", la: "ferōx" },
     { en: "gentle, mild", la: "mītis" },
     { en: "large", la: "grandis" },
