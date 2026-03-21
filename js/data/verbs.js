@@ -39,7 +39,6 @@ const verbDatabase = {
   conj3io: [
     { en: "to begin", la: "incipere" },
     { en: "to desire", la: "cupere" },
-    { en: "to die", la: "morī" },
     { en: "to fall", la: "cadere" },
     { en: "to flee", la: "fugere" },
     { en: "to look at", la: "aspicere" },

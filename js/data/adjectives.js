@@ -2,6 +2,7 @@
 const adjectiveDatabase = {
   // 1st/2nd declension (-us/-a/-um, -er/-ra/-rum)
   declension12: [
+    { en: "alive", la: "vīvus" },
     { en: "alone, only", la: "sōlus" },
     { en: "ancient", la: "antīquus" },
     { en: "angry", la: "īrātus" },
@@ -59,7 +60,7 @@ const adjectiveDatabase = {
     { en: "kind", la: "clēmēns" },
     { en: "light", la: "levis" },
     { en: "like, similar", la: "similis" },
-    { en: "living", la: "vīvēns" },
+
     { en: "noble", la: "nōbilis" },
     { en: "poor", la: "pauper" },
     { en: "powerful", la: "potēns" },
