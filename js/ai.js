@@ -1,13 +1,13 @@
 // AI Mode for generating Latin phrases via Anthropic API
 
 // Configuration
-const AI_MODEL = "claude-opus-4-6";
+const AI_MODEL = "claude-opus-4-7";
 
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_MAX_TOKENS = 32000;
 const AI_PHRASE_COUNT = 30;
 const AI_GENERATE_EFFORT = "low";
-const AI_VERIFY_EFFORT = "medium";
+const AI_VERIFY_EFFORT = "high";
 
 // 37 Basic Plots (based on Georges Polti's dramatic situations)
 const BASIC_PLOTS = [
