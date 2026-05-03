@@ -93,6 +93,22 @@ function checkTranslation() {
   updateScore();
 }
 
+function displaySampledWords(words) {
+  const stripGloss = (w) => w.replace(/\s*\(.*\)\s*$/, "");
+  const lines = [];
+  if (words.nouns && words.nouns.length > 0) {
+    lines.push(`Nōmina: ${words.nouns.map(stripGloss).join(", ")}`);
+  }
+  if (words.verbs && words.verbs.length > 0) {
+    lines.push(`Verba: ${words.verbs.map(stripGloss).join(", ")}`);
+  }
+  if (words.adjectives && words.adjectives.length > 0) {
+    lines.push(`Adiectīva: ${words.adjectives.map(stripGloss).join(", ")}`);
+  }
+  fullStoryElement.innerHTML = lines.join("<br><br>");
+  storyContainerElement.classList.remove("hidden");
+}
+
 function displayFullStory() {
   const latinStory = loadedPhrases
     .map((phrase, i) => {
@@ -414,6 +430,7 @@ generateAiButtonElement.addEventListener("click", async function () {
   generateAiButtonElement.disabled = true;
 
   const updateStatus = (text) => { aiStatusElement.textContent = text; };
+  const showWords = (words) => { displaySampledWords(words); };
 
   try {
     let result;
@@ -423,7 +440,8 @@ generateAiButtonElement.addEventListener("click", async function () {
         selectedDeclensions,
         nounCount,
         adjectiveCount,
-        updateStatus
+        updateStatus,
+        showWords
       );
     } else {
       // Story mode
@@ -435,7 +453,8 @@ generateAiButtonElement.addEventListener("click", async function () {
         nounCount,
         verbCount,
         adjectiveCount,
-        updateStatus
+        updateStatus,
+        showWords
       );
     }
 

@@ -159,14 +159,12 @@ function sampleAdjectives(adjectiveCount) {
 }
 
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, adjectivesEnabled, adjectiveCount, count) {
+function buildPrompt(vocabulary, selectedTenses, count) {
   const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(", ");
 
-  let adjectiveRules = "Do NOT use adjectives (except possessives).";
-  if (adjectivesEnabled) {
-    const adjectives = sampleAdjectives(adjectiveCount);
-    adjectiveRules = `Use ONLY these adjectives: ${adjectives.join(", ")}.`;
-  }
+  const adjectiveRules = vocabulary.adjectives && vocabulary.adjectives.length > 0
+    ? `Use ONLY these adjectives: ${vocabulary.adjectives.join(", ")}.`
+    : "Do NOT use adjectives (except possessives).";
 
   const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
   const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
@@ -324,9 +322,10 @@ async function verifyPhrases(generateResult, originalPrompt, onStatus) {
 }
 
 // Generate story phrases via API
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount, verbCount, adjectiveCount, onStatus) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount, verbCount, adjectiveCount, onStatus, onWords) {
   const nouns = sampleNouns(selectedDeclensions, nounCount);
   const verbs = sampleVerbs(selectedConjugations, verbCount);
+  const adjectives = adjectivesEnabled ? sampleAdjectives(adjectiveCount) : [];
 
   if (nouns.length === 0) {
     throw new Error("No nouns available with selected declensions");
@@ -335,7 +334,9 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     throw new Error("No verbs available with selected conjugations");
   }
 
-  const prompt = buildPrompt({ nouns, verbs }, selectedTenses, adjectivesEnabled, adjectiveCount, AI_PHRASE_COUNT);
+  if (onWords) onWords({ nouns, verbs, adjectives });
+
+  const prompt = buildPrompt({ nouns, verbs, adjectives }, selectedTenses, AI_PHRASE_COUNT);
   const result = await callAI(prompt, AI_GENERATE_EFFORT);
   return verifyPhrases(result, prompt, onStatus);
 }
@@ -377,13 +378,15 @@ Format rules:
 }
 
 // Generate agreement practice phrases via API
-async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiveCount, onStatus) {
+async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiveCount, onStatus, onWords) {
   const nouns = sampleNouns(selectedDeclensions, nounCount);
   const adjectives = sampleAdjectives(adjectiveCount);
 
   if (nouns.length === 0) {
     throw new Error("No nouns available with selected declensions");
   }
+
+  if (onWords) onWords({ nouns, adjectives });
 
   const prompt = buildAgreementPrompt(nouns, adjectives, AI_PHRASE_COUNT);
   const result = await callAI(prompt, AI_GENERATE_EFFORT);
