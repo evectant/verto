@@ -69,6 +69,7 @@ const TENSE_NAMES = {
   perfect: "perfect indicative active",
   future: "future indicative active",
   ppp: "perfect passive",
+  fpp: "future perfect passive",
 };
 
 // Get stored API key
@@ -187,7 +188,8 @@ Latin vocabulary rules:
 
 Latin grammar rules:
 - Use ONLY these tenses: ${tenseList}.${selectedTenses.includes("ppp") ? `
-- For perfect passive, use both participial adjectives (e.g., "mīlitēs missī") and full perfect passive indicative with esse (e.g., "urbs capta est").` : ""}
+- For perfect passive, use both participial adjectives (e.g., "mīlitēs missī") and full perfect passive indicative with esse (e.g., "urbs capta est").` : ""}${selectedTenses.includes("fpp") ? `
+- For future perfect passive, use the perfect passive participle with the future of esse (e.g., "urbs capta erit" = "the city will have been captured").` : ""}
 - Exercise ALL of the given tenses in roughly equal proportion.
 - Exercise ALL five noun cases (except vocative) in roughly equal proportion.
 - Include direct speech to exercise 1st and 2nd person grammar.
