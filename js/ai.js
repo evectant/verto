@@ -119,7 +119,7 @@ function sampleNouns(selectedDeclensions, nounCount) {
       }
     }
   }
-  return nouns.sort();
+  return nouns.sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
 // Sample verbs from selected conjugations, distributed equally
@@ -144,7 +144,7 @@ function sampleVerbs(selectedConjugations, verbCount) {
       }
     }
   }
-  return verbs.sort();
+  return verbs.sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
 // Sample adjectives from both declension groups, distributed equally
@@ -155,7 +155,7 @@ function sampleAdjectives(adjectiveCount) {
     ...sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup),
   ]
     .map((adj) => `${adj.la} (${adj.en})`)
-    .sort();
+    .sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
 // Build the prompt for the AI
