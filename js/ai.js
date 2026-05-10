@@ -199,7 +199,13 @@ English translation rules:
 - When an English word has an ambiguous number, annotate it - for example: "you (pl.)".
 
 Format rules:
-- Return ONLY a JSON array: [{"en": "...", "la": "..."}].
+- Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
+- "lemmas" lists the dictionary form of EVERY content word (noun, verb, or adjective from the lists above) used in the sentence, in order of appearance:
+  - Nominative singular for nouns (e.g., "puella")
+  - Infinitive for verbs (e.g., "amāre")
+  - Masculine nominative singular for adjectives (e.g., "magnus")
+  - Do NOT include function words: pronouns, possessives (meus, suus, etc.), conjunctions, prepositions, particles.
+- A validator will programmatically check every entry in "lemmas" against the allowed vocabulary, so list each content word honestly and use the exact dictionary form.
 - Use macrons and proper punctuation.`;
 }
 
@@ -283,36 +289,84 @@ async function callAI(prompt, effort) {
   return { phrases, elapsed: parseFloat(elapsed) };
 }
 
+// Strip macrons and lowercase a Latin word for matching (̀-ͯ = combining marks)
+function normalizeLemma(s) {
+  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().trim();
+}
+
+// Build a set of allowed content lemmas from the sampled vocabulary
+function buildAllowedLemmas(vocabulary) {
+  const allowed = new Set();
+  const all = [...(vocabulary.nouns || []), ...(vocabulary.verbs || []), ...(vocabulary.adjectives || [])];
+  for (const item of all) {
+    const lemma = item.split(" (")[0];
+    allowed.add(normalizeLemma(lemma));
+  }
+  return allowed;
+}
+
+// Find lemmas reported by the generator that are not in the allowed vocabulary
+function validateVocabulary(phrases, allowedLemmas) {
+  const violations = [];
+  for (let i = 0; i < phrases.length; i++) {
+    const phrase = phrases[i];
+    if (!Array.isArray(phrase.lemmas)) continue;
+    const violatingLemmas = [];
+    for (const lemma of phrase.lemmas) {
+      if (typeof lemma === "string" && !allowedLemmas.has(normalizeLemma(lemma))) {
+        violatingLemmas.push(lemma);
+      }
+    }
+    if (violatingLemmas.length > 0) {
+      violations.push({
+        index: i,
+        la: phrase.la,
+        violations: violatingLemmas,
+      });
+    }
+  }
+  return violations;
+}
+
 // Build a verification prompt to check generated phrases against the original rules
-function buildVerificationPrompt(phrases, originalPrompt) {
+function buildVerificationPrompt(phrases, originalPrompt, violations) {
   const phrasesJson = JSON.stringify(phrases, null, 2);
+
+  const violationSection = violations.length === 0
+    ? `=== AUTOMATED VOCABULARY CHECK ===
+The vocabulary check passed: every lemma reported by the generator is in the allowed list. Still verify nothing was missed - e.g., a content word used in the Latin but not listed in "lemmas".
+
+`
+    : `=== AUTOMATED VOCABULARY CHECK ===
+The following content words appear in the generated sentences but are NOT in the allowed vocabulary. You MUST rewrite each affected sentence to remove the disallowed words.
+${violations.map((v) => `- Sentence ${v.index + 1} ("${v.la}"): unauthorized words: ${v.violations.join(", ")}`).join("\n")}
+
+Full sentence rewrites are encouraged. A single-word substitution often will not work because the surrounding grammar depends on the word.
+
+`;
 
   return `Review these AI-generated Latin sentences for a language learning app.
 
-Below are the RULES that were used to generate the sentences, followed by the GENERATED SENTENCES.
-
-Your task:
-1. Check every Latin sentence for grammar errors. It is okay for Latin to be unidiomatic.
-2. Check that only the allowed vocabulary was used - it is VERY important that no unexpected words were introduced.
-3. Check that the grammar rules were followed (only allowed tenses, case distribution, etc.) - it is VERY important that no unexpected grammar was introduced.
-4. Check that the English translations are accurate (prioritize accuracy over fluency), follow the translation rules, and annotate words with ambiguous gender or number.
-
-Fix any errors you find. Do NOT add, remove, or reorder sentences - only correct mistakes in place.
-
-=== RULES ===
+${violationSection}=== ORIGINAL RULES ===
 ${originalPrompt}
 
 === GENERATED SENTENCES ===
 ${phrasesJson}
 
-Return ONLY the corrected JSON array: [{"en": "...", "la": "..."}].
-If no corrections are needed, return the original array unchanged.`;
+Your task:
+1. Vocabulary: Fix any vocabulary violations listed above. Use ONLY words from the allowed lists. Update each sentence's "lemmas" to reflect any rewrites.
+2. Grammar: Check every Latin sentence for grammar errors. It is okay for Latin to be unidiomatic.
+3. Translation: Check that English translations are accurate (prioritize accuracy over fluency), follow the translation rules, and annotate words with ambiguous gender or number.
+
+Maintain the same number of sentences in the same order. Full rewrites of individual sentences are allowed when needed to fix vocabulary.
+
+Return ONLY the corrected JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].`;
 }
 
 // Verify and correct generated phrases using a second AI pass
-async function verifyPhrases(generateResult, originalPrompt, onStatus) {
+async function verifyPhrases(generateResult, originalPrompt, violations, onStatus) {
   if (onStatus) onStatus("Probans...");
-  const prompt = buildVerificationPrompt(generateResult.phrases, originalPrompt);
+  const prompt = buildVerificationPrompt(generateResult.phrases, originalPrompt, violations);
   const verifyResult = await callAI(prompt, AI_VERIFY_EFFORT);
   return {
     phrases: verifyResult.phrases,
@@ -336,9 +390,20 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
 
   if (onWords) onWords({ nouns, verbs, adjectives });
 
-  const prompt = buildPrompt({ nouns, verbs, adjectives }, selectedTenses, AI_PHRASE_COUNT);
+  const vocabulary = { nouns, verbs, adjectives };
+  const prompt = buildPrompt(vocabulary, selectedTenses, AI_PHRASE_COUNT);
   const result = await callAI(prompt, AI_GENERATE_EFFORT);
-  return verifyPhrases(result, prompt, onStatus);
+
+  const allowedLemmas = buildAllowedLemmas(vocabulary);
+  const violations = validateVocabulary(result.phrases, allowedLemmas);
+  if (violations.length > 0) {
+    console.log(
+      `=== Vocab violations: ${violations.length} sentences ===\n` +
+      violations.map((v) => `Sentence ${v.index + 1} ("${v.la}"): ${v.violations.join(", ")}`).join("\n")
+    );
+  }
+
+  return verifyPhrases(result, prompt, violations, onStatus);
 }
 
 // Build prompt for agreement practice mode
@@ -372,7 +437,9 @@ Rules:
 - Use these case abbreviations: nom., gen., dat., acc., abl.
 
 Format rules:
-- Return ONLY a JSON array: [{"en": "...", "la": "..."}].
+- Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
+- "lemmas" lists the dictionary form of the noun and adjective used: nominative singular for the noun, masculine nominative singular for the adjective. Do NOT include the preposition.
+- A validator will programmatically check every entry in "lemmas" against the allowed vocabulary.
 - For nom./gen./dat.: English is "<adj> <noun> (case)" or "of/to/for <adj> <noun> (case)", Latin is "<noun> <adj>"
 - For acc./abl.: English is "<prep meaning> <adj> <noun> (case)", Latin is "<prep> <noun> <adj>"`;
 }
@@ -388,9 +455,20 @@ async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiv
 
   if (onWords) onWords({ nouns, adjectives });
 
+  const vocabulary = { nouns, adjectives };
   const prompt = buildAgreementPrompt(nouns, adjectives, AI_PHRASE_COUNT);
   const result = await callAI(prompt, AI_GENERATE_EFFORT);
-  return verifyPhrases(result, prompt, onStatus);
+
+  const allowedLemmas = buildAllowedLemmas(vocabulary);
+  const violations = validateVocabulary(result.phrases, allowedLemmas);
+  if (violations.length > 0) {
+    console.log(
+      `=== Vocab violations: ${violations.length} sentences ===\n` +
+      violations.map((v) => `Sentence ${v.index + 1} ("${v.la}"): ${v.violations.join(", ")}`).join("\n")
+    );
+  }
+
+  return verifyPhrases(result, prompt, violations, onStatus);
 }
 
 // Vocabulary mode: English -> Latin + declension/conjugation
