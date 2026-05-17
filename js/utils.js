@@ -31,6 +31,17 @@ const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "inter", "p
 
 const PREPOSITION_REGEX = new RegExp(`\\b(${PREPOSITIONS.join("|")})\\b`, "g");
 
+// Conjunctions grouped by meaning - within each group, all forms are treated as equivalent for grading.
+const CONJUNCTION_REGEX = /\b(et|atque|ac)\b/g;                    // "and"
+const NEGATIVE_CONJUNCTION_REGEX = /\b(nec|neque)\b/g;             // "nor"
+
+// Particles grouped by meaning - within each group, all forms are treated as equivalent for grading.
+const DISJUNCTIVE_REGEX = /\b(aut|vel|sive|seu|an)\b/g;            // "or"
+const CAUSAL_REGEX = /\b(nam|enim|namque|etenim)\b/g;              // "for"
+const CONCLUSIVE_REGEX = /\b(ergo|igitur|itaque|ideo|idcirco)\b/g; // "therefore"
+const ADVERSATIVE_REGEX = /\b(sed|autem|at|atqui|tamen)\b/g;       // "but"
+const ADDITIVE_REGEX = /\b(quoque|etiam)\b/g;                      // "also"
+
 function normalize(text) {
   return text
     .normalize("NFD")
@@ -40,8 +51,16 @@ function normalize(text) {
     .replace(/\s{2,}/g, " ") // Drop double spaces.
     .trim()
     .toLowerCase()
+    // These groups must run BEFORE -que stripping: words like "itaque", "quoque", "namque",
+    // "atque", "neque" end in -que but are not enclitic forms - they must be matched whole first.
+    .replace(CONJUNCTION_REGEX, "CONJ") // Treat "and" forms (et/atque/ac) as equivalent.
+    .replace(NEGATIVE_CONJUNCTION_REGEX, "NEC") // Treat "nor" forms (nec/neque) as equivalent.
+    .replace(DISJUNCTIVE_REGEX, "DISJ") // Treat "or" particles (aut/vel/sive/seu/an) as equivalent.
+    .replace(CAUSAL_REGEX, "CAUSAL") // Treat causal particles (nam/enim/etc.) as equivalent.
+    .replace(CONCLUSIVE_REGEX, "CONCL") // Treat conclusive particles (ergo/igitur/etc.) as equivalent.
+    .replace(ADVERSATIVE_REGEX, "ADVERS") // Treat adversative particles (sed/autem/etc.) as equivalent.
+    .replace(ADDITIVE_REGEX, "ADDIT") // Treat additive particles (quoque/etiam) as equivalent.
     .replace(/(\w)que\b/g, "$1 CONJ") // Convert -que suffix to word + CONJ.
-    .replace(/\bet\b/g, "CONJ") // Convert et to CONJ.
     .replace(PREPOSITION_REGEX, "PREP") // Treat all prepositions as equivalent.
     .replace(/\b(dei|di|dii)\b/g, "DEI") // Treat nominative plural of "deus" as equivalent.
     .replace(/\b(deis|dis|diis)\b/g, "DEIS") // Treat dative/ablative plural of "deus" as equivalent.
