@@ -42,6 +42,50 @@ const CONCLUSIVE_REGEX = /\b(ergo|igitur|itaque|ideo|idcirco)\b/g; // "therefore
 const ADVERSATIVE_REGEX = /\b(sed|autem|at|atqui|tamen)\b/g;       // "but"
 const ADDITIVE_REGEX = /\b(quoque|etiam)\b/g;                      // "also"
 
+// Forms of "volo" that contract with a preceding "non" to form the corresponding nolo form.
+// 2sg/3sg/2pl of the present indicative (non vis, non vult, non vultis) don't contract and are left as-is.
+// Imperatives (noli, nolite) have no "non + X" equivalent.
+const NOLO_CONTRACTIONS = {
+  // Present indicative (only 1sg/1pl/3pl contract)
+  volo: "nolo", volumus: "nolumus", volunt: "nolunt",
+  // Imperfect indicative
+  volebam: "nolebam", volebas: "nolebas", volebat: "nolebat",
+  volebamus: "nolebamus", volebatis: "nolebatis", volebant: "nolebant",
+  // Future indicative
+  volam: "nolam", voles: "noles", volet: "nolet",
+  volemus: "nolemus", voletis: "noletis", volent: "nolent",
+  // Perfect indicative (voluere is the alternative 3pl)
+  volui: "nolui", voluisti: "noluisti", voluit: "noluit",
+  voluimus: "noluimus", voluistis: "noluistis",
+  voluerunt: "noluerunt", voluere: "noluere",
+  // Pluperfect indicative
+  volueram: "nolueram", volueras: "nolueras", voluerat: "noluerat",
+  volueramus: "nolueramus", volueratis: "nolueratis", voluerant: "noluerant",
+  // Future perfect indicative (2sg/1pl/2pl/3pl are spelled identically to perfect subjunctive)
+  voluero: "noluero", volueris: "nolueris", voluerit: "noluerit",
+  voluerimus: "noluerimus", volueritis: "nolueritis", voluerint: "noluerint",
+  // Perfect subjunctive 1sg (others already covered above)
+  voluerim: "noluerim",
+  // Present subjunctive
+  velim: "nolim", velis: "nolis", velit: "nolit",
+  velimus: "nolimus", velitis: "nolitis", velint: "nolint",
+  // Imperfect subjunctive
+  vellem: "nollem", velles: "nolles", vellet: "nollet",
+  vellemus: "nollemus", velletis: "nolletis", vellent: "nollent",
+  // Pluperfect subjunctive
+  voluissem: "noluissem", voluisses: "noluisses", voluisset: "noluisset",
+  voluissemus: "noluissemus", voluissetis: "noluissetis", voluissent: "noluissent",
+  // Infinitives
+  velle: "nolle", voluisse: "noluisse",
+  // Present participle (used adjectivally, declines like a 3rd-decl. adjective)
+  volens: "nolens", volentis: "nolentis", volenti: "nolenti",
+  volentem: "nolentem", volente: "nolente",
+  volentes: "nolentes", volentia: "nolentia",
+  volentium: "nolentium", volentibus: "nolentibus",
+};
+
+const NOLO_REGEX = new RegExp(`\\bnon\\s+(${Object.keys(NOLO_CONTRACTIONS).join("|")})\\b`, "g");
+
 function normalize(text) {
   return text
     .normalize("NFD")
@@ -69,6 +113,8 @@ function normalize(text) {
     .replace(/\bsecum\b/g, "PREP se")
     .replace(/\bnobiscum\b/g, "PREP nobis")
     .replace(/\bvobiscum\b/g, "PREP vobis")
+    // Normalize uncontracted "non + volo form" to the contracted nolo form (e.g. "non volo" -> "nolo").
+    .replace(NOLO_REGEX, (_, word) => NOLO_CONTRACTIONS[word])
     // Normalize contracted/uncontracted perfect forms of eo, ire (to go).
     .replace(/\bivit\b/g, "iit")
     .replace(/\bivisti\b/g, "iisti")
