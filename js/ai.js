@@ -66,6 +66,7 @@ const AI_PHRASES_STORAGE_KEY = "verto_ai_phrases";
 // Tense name mapping for the LLM prompt
 const TENSE_NAMES = {
   present: "present indicative active",
+  imperfect: "imperfect indicative active",
   perfect: "perfect indicative active",
   future: "future indicative active",
   ppp: "perfect passive",
