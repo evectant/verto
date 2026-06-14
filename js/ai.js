@@ -197,7 +197,8 @@ Latin grammar rules:
 English translation rules:
 - Translate the Latin faithfully, prioritizing accuracy over fluency.
 - When an English word has an ambiguous gender, annotate it - for example: "friend (f.)".
-- When an English word has an ambiguous number, annotate it - for example: "you (pl.)".
+- When an English word has an ambiguous number, annotate it - for example: "you (pl.)".${selectedTenses.includes("imperfect") ? `
+- The simple-past English (e.g. "she walked") is ambiguous between the imperfect and perfect. When a sentence is in the imperfect, annotate the verb to signal the ongoing/repeated aspect - for example: "she walked (impf.)".` : ""}
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
