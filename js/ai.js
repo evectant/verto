@@ -50,6 +50,22 @@ const BASIC_PLOTS = [
   "Mistaken identity: Being mistaken for someone else, with comedic or tragic results.",
 ];
 
+// Genre/mood layer applied on top of the basic plot to set the story's vibe
+const STORY_GENRES = [
+  "Tragic: a somber tone moving toward loss, ruin, or downfall.",
+  "Mythological: gods, fate, and legend shaping mortal affairs.",
+  "Epic: war, sieges, and armies on the march, with glory and slaughter at grand scale.",
+  "Political intrigue: conspiracy, betrayal, and the ruthless struggle for power.",
+  "Apocalyptic: plague, divine wrath, and a city or world coming to its end.",
+  "Noir: a jaded investigator, shadows and lies, betrayal and a fatal attraction.",
+  "Heist: a crew, a meticulous plan to steal a great prize, and the inevitable double-cross.",
+  "Courtroom drama: a trial swinging on fierce oratory, hidden evidence, and a surprise witness.",
+  "Horror: relentless terror, monsters, and the macabre, with mounting dread.",
+  "Gothic: decaying ruins, family curses, and brooding gloom.",
+  "Dreamlike: surreal and shifting, where logic dissolves and the strange feels ordinary.",
+  "Picaresque: a roguish wanderer surviving by wit through episodic misadventure.",
+];
+
 // Verbs always included in story mode regardless of conjugation selection
 const ALWAYS_AVAILABLE_VERBS = [
   { en: "to be", la: "esse" },
@@ -168,9 +184,10 @@ function buildPrompt(vocabulary, selectedTenses, count) {
     : "Do NOT use adjectives (except possessives).";
 
   const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
+  const genre = STORY_GENRES[Math.floor(Math.random() * STORY_GENRES.length)];
   const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
   const ending = endings[Math.floor(Math.random() * endings.length)];
-  const storyInstruction = `These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}".`;
+  const storyInstruction = `These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Give the story a ${genre.split(":")[0].toLowerCase()} mood: ${genre.split(": ")[1]}`;
 
   return `Generate ${count} Latin sentences with English translations for language learning. ${storyInstruction}
 
