@@ -97,6 +97,7 @@ const nounDatabase = {
     { en: "woman", la: "fēmina", gender: "f" },
   ],
   declension2: [
+    { en: "abyss", la: "abyssus", gender: "f" },
     { en: "ally", la: "socius", gender: "m" },
     { en: "announcement", la: "nūntium", gender: "n" },
     { en: "assistance", la: "auxilium", gender: "n" },
@@ -114,6 +115,7 @@ const nounDatabase = {
     { en: "danger", la: "perīculum", gender: "n" },
     { en: "deed", la: "factum", gender: "n" },
     { en: "duty", la: "officium", gender: "n" },
+    { en: "evening", la: "vesper", gender: "m" },
     { en: "example", la: "exemplum", gender: "n" },
     { en: "eye", la: "oculus", gender: "m" },
     { en: "fate", la: "fātum", gender: "n" },
@@ -295,12 +297,14 @@ const nounDatabase = {
   ],
   declension4: [
     { en: "army", la: "exercitus", gender: "m" },
+    { en: "fruit", la: "frūctus", gender: "m" },
     { en: "hand", la: "manus", gender: "f" },
     { en: "horn", la: "cornū", gender: "n" },
     { en: "house", la: "domus", gender: "f" },
   ],
   declension5: [
     { en: "day", la: "diēs", gender: "m" },
+    { en: "face, appearance", la: "faciēs", gender: "f" },
     { en: "hope", la: "spēs", gender: "f" },
     { en: "thing", la: "rēs", gender: "f" },
     { en: "faith", la: "fidēs", gender: "f" },
