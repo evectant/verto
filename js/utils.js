@@ -26,8 +26,17 @@ function toRoman(num) {
   }
 }
 
-// Prepositions: used for grading (all treated as equivalent) and in AI prompt
-const PREPOSITIONS = ["a", "ab", "ad", "cum", "de", "e", "ex", "in", "inter", "per", "sine"];
+// Prepositions: used for grading (all treated as equivalent) and in AI prompt.
+// All prepositions collapse to a single token, so the learner is never penalized for choosing
+// a different (but plausible) preposition - only the noun's case still distinguishes answers.
+// NOTE: words that are also content-word forms are deliberately excluded, e.g. "secundum"
+// (acc. of secundus, "second") - adding it would mis-grade that adjective.
+const PREPOSITIONS = [
+  "a", "ab", "ad", "adversus", "ante", "apud", "circa", "circum", "citra", "contra",
+  "coram", "cum", "de", "e", "erga", "ex", "extra", "in", "infra", "inter", "intra",
+  "iuxta", "ob", "per", "post", "prae", "praeter", "pro", "prope", "propter", "sine",
+  "sub", "super", "supra", "trans", "ultra",
+];
 
 const PREPOSITION_REGEX = new RegExp(`\\b(${PREPOSITIONS.join("|")})\\b`, "g");
 
@@ -38,9 +47,26 @@ const NEGATIVE_CONJUNCTION_REGEX = /\b(nec|neque)\b/g;             // "nor"
 // Particles grouped by meaning - within each group, all forms are treated as equivalent for grading.
 const DISJUNCTIVE_REGEX = /\b(aut|vel|sive|seu|an)\b/g;            // "or"
 const CAUSAL_REGEX = /\b(nam|enim|namque|etenim)\b/g;              // "for"
-const CONCLUSIVE_REGEX = /\b(ergo|igitur|itaque|ideo|idcirco)\b/g; // "therefore"
-const ADVERSATIVE_REGEX = /\b(sed|autem|at|atqui|tamen)\b/g;       // "but"
-const ADDITIVE_REGEX = /\b(quoque|etiam)\b/g;                      // "also"
+const CONCLUSIVE_REGEX = /\b(ergo|igitur|itaque|ideo|idcirco|quare|quapropter|quamobrem|proinde|quocirca)\b/g; // "therefore"
+const ADVERSATIVE_REGEX = /\b(sed|autem|atqui|attamen|veruntamen|verumtamen|tamen|at)\b/g; // "but" (verum/vero/ceterum excluded - they collide with vērus/cēterus)
+const ADDITIVE_REGEX = /\b(quoque|etiam|item|itidem|insuper|praeterea)\b/g; // "also"
+
+// Subordinators grouped by meaning - within each group, all forms are treated as equivalent for grading.
+// "ut/uti" are folded into "as": grading is word-set based, so a purpose/result "ut" will also be
+// accepted where the answer expects "as" (and vice versa). This is intentional leniency - the
+// learner still sees the correct word and should not be penalized for a near-synonym.
+const COMPARISON_REGEX = /\b(sicut|sicuti|velut|veluti|ut|uti|quemadmodum|prout|quasi|tamquam|tanquam|ceu)\b/g; // "as, as if"
+const BECAUSE_REGEX = /\b(quod|quia|quoniam)\b/g;                  // "because"
+const CONCESSIVE_REGEX = /\b(quamquam|quamvis|etsi|etiamsi|tametsi|licet)\b/g; // "although"
+const BEFORE_REGEX = /\b(antequam|priusquam)\b/g;                 // "before" (kept distinct from "after")
+const AFTER_REGEX = /\b(postquam|posteaquam)\b/g;                 // "after"
+const WHILE_REGEX = /\b(dum|donec|quoad)\b/g;                     // "while, until"
+
+// Adverbial particles grouped by meaning - within each group, all forms are treated as equivalent.
+const THEN_REGEX = /\b(tum|tunc|deinde|dein|exinde|exin|inde)\b/g; // "then, next"
+const AGAIN_REGEX = /\b(rursus|rursum|iterum|denuo)\b/g;           // "again"
+const THUS_REGEX = /\b(sic|ita)\b/g;                              // "thus, so"
+const PERHAPS_REGEX = /\b(fortasse|fortassis|forsan|forsitan)\b/g; // "perhaps" (forte excluded - collides with fortis)
 
 // Forms of "volo" that contract with a preceding "non" to form the corresponding nolo form.
 // 2sg/3sg/2pl of the present indicative (non vis, non vult, non vultis) don't contract and are left as-is.
@@ -103,7 +129,17 @@ function normalize(text) {
     .replace(CAUSAL_REGEX, "CAUSAL") // Treat causal particles (nam/enim/etc.) as equivalent.
     .replace(CONCLUSIVE_REGEX, "CONCL") // Treat conclusive particles (ergo/igitur/etc.) as equivalent.
     .replace(ADVERSATIVE_REGEX, "ADVERS") // Treat adversative particles (sed/autem/etc.) as equivalent.
-    .replace(ADDITIVE_REGEX, "ADDIT") // Treat additive particles (quoque/etiam) as equivalent.
+    .replace(ADDITIVE_REGEX, "ADDIT") // Treat additive particles (quoque/etiam/etc.) as equivalent.
+    .replace(COMPARISON_REGEX, "AS") // Treat "as/as if" forms (sicut/ut/velut/quasi/etc.) as equivalent.
+    .replace(BECAUSE_REGEX, "BECAUSE") // Treat causal subordinators (quod/quia/quoniam) as equivalent.
+    .replace(CONCESSIVE_REGEX, "ALTHOUGH") // Treat concessive subordinators (quamquam/etsi/etc.) as equivalent.
+    .replace(BEFORE_REGEX, "BEFORE") // Treat "before" subordinators (antequam/priusquam) as equivalent.
+    .replace(AFTER_REGEX, "AFTER") // Treat "after" subordinators (postquam/posteaquam) as equivalent.
+    .replace(WHILE_REGEX, "WHILE") // Treat "while/until" subordinators (dum/donec/quoad) as equivalent.
+    .replace(THEN_REGEX, "THEN") // Treat "then/next" adverbs (tum/tunc/deinde/etc.) as equivalent.
+    .replace(AGAIN_REGEX, "AGAIN") // Treat "again" adverbs (rursus/iterum/denuo) as equivalent.
+    .replace(THUS_REGEX, "THUS") // Treat "thus/so" adverbs (sic/ita) as equivalent.
+    .replace(PERHAPS_REGEX, "PERHAPS") // Treat "perhaps" adverbs (fortasse/forsan/etc.) as equivalent.
     .replace(/(\w)que\b/g, "$1 CONJ") // Convert -que suffix to word + CONJ.
     .replace(PREPOSITION_REGEX, "PREP") // Treat all prepositions as equivalent.
     .replace(/\b(dei|di|dii)\b/g, "DEI") // Treat nominative plural of "deus" as equivalent.
