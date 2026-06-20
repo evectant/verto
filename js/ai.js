@@ -215,7 +215,7 @@ English translation rules:
 - Translate the Latin faithfully, prioritizing accuracy over fluency.
 - When an English word has an ambiguous gender, annotate it - for example: "friend (f.)".
 - When an English word has an ambiguous number, annotate it - for example: "you (pl.)".${selectedTenses.includes("imperfect") ? `
-- The simple-past English (e.g. "she walked") is ambiguous between the imperfect and perfect. When a sentence is in the imperfect, annotate the verb to signal the ongoing/repeated aspect - for example: "she walked (impf.)".` : ""}
+- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - NEVER the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
@@ -364,6 +364,11 @@ Full sentence rewrites are encouraged. A single-word substitution often will not
 
 `;
 
+  const aspectTask = originalPrompt.includes("ASPECT (important)")
+    ? `
+4. Aspect: for EVERY sentence whose Latin verb is in the imperfect tense, the English MUST use ongoing or habitual phrasing ("was walking", "used to walk"), NOT the bare simple past ("walked"). The bare simple past is reserved for the perfect tense. Rewrite any imperfect sentence that uses a bare simple past; only fall back to an "(impf.)" annotation when natural progressive/habitual English is genuinely impossible.`
+    : "";
+
   return `Review these AI-generated Latin sentences for a language learning app.
 
 ${violationSection}=== ORIGINAL RULES ===
@@ -375,7 +380,7 @@ ${phrasesJson}
 Your task:
 1. Vocabulary: Fix any vocabulary violations listed above. Use ONLY words from the allowed lists. Update each sentence's "lemmas" to reflect any rewrites.
 2. Grammar: Check every Latin sentence for grammar errors. It is okay for Latin to be unidiomatic.
-3. Translation: Check that English translations are accurate (prioritize accuracy over fluency), follow the translation rules, and annotate words with ambiguous gender or number.
+3. Translation: Check that English translations are accurate (prioritize accuracy over fluency), follow the translation rules, and annotate words with ambiguous gender or number.${aspectTask}
 
 Maintain the same number of sentences in the same order. Full rewrites of individual sentences are allowed when needed to fix vocabulary.
 
