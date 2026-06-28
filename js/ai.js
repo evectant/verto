@@ -85,6 +85,7 @@ const TENSE_NAMES = {
   imperfect: "imperfect indicative active",
   perfect: "perfect indicative active",
   future: "future indicative active",
+  presentPassive: "present indicative passive",
   ppp: "perfect passive",
   fpp: "future perfect passive",
 };
@@ -215,7 +216,8 @@ English translation rules:
 - Translate the Latin faithfully, prioritizing accuracy over fluency.
 - When an English word has an ambiguous gender, annotate it - for example: "friend (f.)".
 - When an English word has an ambiguous number, annotate it - for example: "you (pl.)".${selectedTenses.includes("imperfect") ? `
-- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - NEVER the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}
+- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - NEVER the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") ? `
+- VOICE (important): the present passive (e.g. "laudātur") describes an ongoing action and must be translated with the progressive "is being praised" / "am being praised" - NEVER the bare "is praised", which collides with the perfect passive ("laudāta est" = "she was praised / has been praised"). Reserve "was/has been praised" for the perfect passive.` : ""}
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
