@@ -7,7 +7,7 @@ const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_MAX_TOKENS = 32000;
 const AI_PHRASE_COUNT = 30;
 const AI_GENERATE_EFFORT = "medium";
-const AI_VERIFY_EFFORT = "medium";
+const AI_VERIFY_EFFORT = "high";
 
 // 37 Basic Plots (based on Georges Polti's dramatic situations)
 const BASIC_PLOTS = [
@@ -74,6 +74,28 @@ const ALWAYS_AVAILABLE_VERBS = [
   { en: "to tell", la: "dīcere" },
   { en: "to be able", la: "posse" },
 ];
+
+// JSON schema enforced via structured outputs (output_config.format)
+const PHRASES_SCHEMA = {
+  type: "object",
+  properties: {
+    phrases: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          en: { type: "string" },
+          la: { type: "string" },
+          lemmas: { type: "array", items: { type: "string" } },
+        },
+        required: ["en", "la", "lemmas"],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ["phrases"],
+  additionalProperties: false,
+};
 
 // LocalStorage keys
 const API_KEY_STORAGE_KEY = "verto_anthropic_api_key";
@@ -229,8 +251,7 @@ English translation rules:
 - Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), NEVER as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}
 
 Format rules:
-- Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
-- "lemmas" lists the dictionary form of EVERY content word (noun, verb, or adjective from the lists above) used in the sentence, in order of appearance:
+- Each phrase's "lemmas" lists the dictionary form of EVERY content word (noun, verb, or adjective from the lists above) used in the sentence, in order of appearance:
   - Nominative singular for nouns (e.g., "puella")
   - Infinitive for verbs (e.g., "amāre")
   - Masculine nominative singular for adjectives (e.g., "magnus")
@@ -251,9 +272,14 @@ async function callAI(prompt, effort) {
     max_tokens: AI_MAX_TOKENS,
     thinking: {
       type: "adaptive",
+      display: "summarized",
     },
     output_config: {
       effort: effort,
+      format: {
+        type: "json_schema",
+        schema: PHRASES_SCHEMA,
+      },
     },
     messages: [
       {
@@ -294,17 +320,19 @@ async function callAI(prompt, effort) {
     "--- Response ---\n" + (content || "(empty)")
   );
 
+  if (data.stop_reason === "refusal") {
+    throw new Error(data.stop_details?.explanation || "The model declined to answer this request");
+  }
+  if (data.stop_reason === "max_tokens") {
+    throw new Error("Response was cut off by the token limit");
+  }
+
   if (!content) {
     throw new Error("No content in API response");
   }
 
-  // Parse the JSON response
-  const jsonMatch = content.match(/\[[\s\S]*\]/);
-  if (!jsonMatch) {
-    throw new Error("No JSON array found in response");
-  }
-
-  const phrases = JSON.parse(jsonMatch[0]);
+  // Structured outputs guarantee the response matches PHRASES_SCHEMA
+  const phrases = JSON.parse(content).phrases;
 
   if (!Array.isArray(phrases)) {
     throw new Error("Response is not an array");
@@ -395,7 +423,7 @@ Your task:
 
 Maintain the same number of sentences in the same order. Full rewrites of individual sentences are allowed when needed to fix vocabulary.
 
-Return ONLY the corrected JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].`;
+Return the complete corrected list of sentences.`;
 }
 
 // Verify and correct generated phrases using a second AI pass
@@ -472,8 +500,7 @@ Rules:
 - Use these case abbreviations: nom., gen., dat., acc., abl.
 
 Format rules:
-- Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
-- "lemmas" lists the dictionary form of the noun and adjective used: nominative singular for the noun, masculine nominative singular for the adjective. Do NOT include the preposition.
+- Each phrase's "lemmas" lists the dictionary form of the noun and adjective used: nominative singular for the noun, masculine nominative singular for the adjective. Do NOT include the preposition.
 - A validator will programmatically check every entry in "lemmas" against the allowed vocabulary.
 - For nom./gen./dat.: English is "<adj> <noun> (case)" or "of/to/for <adj> <noun> (case)", Latin is "<noun> <adj>"
 - For acc./abl.: English is "<prep meaning> <adj> <noun> (case)", Latin is "<prep> <noun> <adj>"`;
