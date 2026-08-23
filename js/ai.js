@@ -83,11 +83,17 @@ const AI_PHRASES_STORAGE_KEY = "verto_ai_phrases";
 const TENSE_NAMES = {
   present: "present indicative active",
   imperfect: "imperfect indicative active",
-  perfect: "perfect indicative active",
   future: "future indicative active",
+  perfect: "perfect indicative active",
+  pluperfect: "pluperfect indicative active",
+  futurePerfect: "future perfect indicative active",
   presentPassive: "present indicative passive",
+  imperfectPassive: "imperfect indicative passive",
+  futurePassive: "future indicative passive",
   ppp: "perfect passive",
+  pluperfectPassive: "pluperfect indicative passive",
   fpp: "future perfect passive",
+  presentParticiple: "present active participle",
 };
 
 // Get stored API key
@@ -205,8 +211,10 @@ Latin vocabulary rules:
 
 Latin grammar rules:
 - Use ONLY these tenses: ${tenseList}.${selectedTenses.includes("ppp") ? `
-- For perfect passive, use both participial adjectives (e.g., "mīlitēs missī") and full perfect passive indicative with esse (e.g., "urbs capta est").` : ""}${selectedTenses.includes("fpp") ? `
-- For future perfect passive, use the perfect passive participle with the future of esse (e.g., "urbs capta erit" = "the city will have been captured").` : ""}
+- For perfect passive, use both participial adjectives (e.g., "mīlitēs missī") and full perfect passive indicative with esse (e.g., "urbs capta est").` : ""}${selectedTenses.includes("pluperfectPassive") ? `
+- For pluperfect passive, use the perfect passive participle with the imperfect of esse (e.g., "urbs capta erat" = "the city had been captured").` : ""}${selectedTenses.includes("fpp") ? `
+- For future perfect passive, use the perfect passive participle with the future of esse (e.g., "urbs capta erit" = "the city will have been captured").` : ""}${selectedTenses.includes("presentParticiple") ? `
+- For the present active participle, attach the participle to a noun, agreeing in case and number (e.g., "vir audiēns" = "the listening man", "mīlitibus fugientibus" = "for the fleeing soldiers"); the sentence's main verb must still be in one of the allowed finite tenses.` : ""}
 - Exercise ALL of the given tenses in roughly equal proportion.
 - Exercise ALL five noun cases (except vocative) in roughly equal proportion.
 - Include direct speech to exercise 1st and 2nd person grammar.
@@ -216,8 +224,9 @@ English translation rules:
 - Translate the Latin faithfully, prioritizing accuracy over fluency.
 - When an English word has an ambiguous gender, annotate it - for example: "friend (f.)".
 - When an English word has an ambiguous number, annotate it - for example: "you (pl.)".${selectedTenses.includes("imperfect") ? `
-- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - NEVER the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") ? `
-- VOICE (important): the present passive (e.g. "laudātur") describes an ongoing action and must be translated with the progressive "is being praised" / "am being praised" - NEVER the bare "is praised", which collides with the perfect passive ("laudāta est" = "she was praised / has been praised"). Reserve "was/has been praised" for the perfect passive.` : ""}
+- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - NEVER the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") || selectedTenses.includes("imperfectPassive") ? `
+- VOICE (important): the present and imperfect passive describe ongoing actions and must be translated with the progressive: "laudātur" = "is being praised" (NEVER the bare "is praised") and "laudābātur" = "was being praised" (NEVER the bare "was praised"). The bare forms collide with the perfect passive ("laudāta est" = "she was praised / has been praised"); reserve those for the perfect passive.` : ""}${selectedTenses.includes("futurePerfect") ? `
+- Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), NEVER as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}
 
 Format rules:
 - Return ONLY a JSON array: [{"en": "...", "la": "...", "lemmas": ["..."]}].
