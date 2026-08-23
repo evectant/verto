@@ -210,26 +210,27 @@ function buildPrompt(vocabulary, selectedTenses, count) {
 
   const adjectiveRules = vocabulary.adjectives && vocabulary.adjectives.length > 0
     ? `Use ONLY these adjectives: ${vocabulary.adjectives.join(", ")}.`
-    : "Do NOT use adjectives (except possessives).";
+    : "Do not use adjectives (except possessives).";
 
   const plot = BASIC_PLOTS[Math.floor(Math.random() * BASIC_PLOTS.length)];
   const genre = STORY_GENRES[Math.floor(Math.random() * STORY_GENRES.length)];
   const endings = ["a happy ending", "an unhappy ending", "an ambiguous ending"];
   const ending = endings[Math.floor(Math.random() * endings.length)];
-  const storyInstruction = `These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Give the story a ${genre.split(":")[0].toLowerCase()} mood: ${genre.split(": ")[1]}`;
+  const storyInstruction = `These sentences should form a coherent story with ${ending}, based on the following plot: "${plot}". Tell it in the ${genre.split(":")[0].toLowerCase()} style: ${genre.split(": ")[1]}`;
 
   return `Generate ${count} Latin sentences with English translations for language learning. ${storyInstruction}
 
-Follow the rules below VERY strictly.
+Follow the rules below exactly.
 
 Latin vocabulary rules:
 - Use ONLY these nouns: ${vocabulary.nouns.join(", ")}.
 - Use ONLY these verbs: ${vocabulary.verbs.join(", ")}.
 - ${adjectiveRules}
+- Do not use proper nouns or invented character names; refer to characters and places with the allowed common nouns.
 - Exercise as much of the given vocabulary as possible.
-- Use common conjunctions and prepositions.
-- Use pronouns, reflexive pronouns, and possessive adjectives in all three persons.
-- Do NOT use adverbs except common particles like "non" and "quoque".
+- Common conjunctions and prepositions are allowed; they are not restricted to any list.
+- Use personal pronouns, reflexive pronouns, and possessive adjectives in all three persons.
+- Do not use adverbs except common particles like "non" and "quoque".
 
 Latin grammar rules:
 - Use ONLY these tenses: ${tenseList}.${selectedTenses.includes("ppp") ? `
@@ -237,27 +238,28 @@ Latin grammar rules:
 - For pluperfect passive, use the perfect passive participle with the imperfect of esse (e.g., "urbs capta erat" = "the city had been captured").` : ""}${selectedTenses.includes("fpp") ? `
 - For future perfect passive, use the perfect passive participle with the future of esse (e.g., "urbs capta erit" = "the city will have been captured").` : ""}${selectedTenses.includes("presentParticiple") ? `
 - For the present active participle, attach the participle to a noun, agreeing in case and number (e.g., "vir audiēns" = "the listening man", "mīlitibus fugientibus" = "for the fleeing soldiers"); the sentence's main verb must still be in one of the allowed finite tenses.` : ""}
-- Exercise ALL of the given tenses in roughly equal proportion.
-- Exercise ALL five noun cases (except vocative) in roughly equal proportion.
+- Favor complex sentences of two or more clauses: link clauses with coordinating conjunctions, and use relative clauses (quī, quae, quod) and subordinate clauses with indicative conjunctions (quod, ubi, dum, sī, postquam, quamquam). Avoid conjunctions that require the subjunctive.
+- Exercise all of the given tenses in roughly equal proportion.
+- Exercise all five noun cases (nominative, genitive, dative, accusative, ablative) in roughly equal proportion; do not use the vocative.
 - Include direct speech to exercise 1st and 2nd person grammar.
 - Use "suus", etc. only when the possessor is the grammatical subject; use "eius", etc. otherwise.
 
 English translation rules:
 - Translate the Latin faithfully, prioritizing accuracy over fluency.
-- When an English word has an ambiguous gender, annotate it - for example: "friend (f.)".
-- When an English word has an ambiguous number, annotate it - for example: "you (pl.)".${selectedTenses.includes("imperfect") ? `
-- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - NEVER the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") || selectedTenses.includes("imperfectPassive") ? `
-- VOICE (important): the present and imperfect passive describe ongoing actions and must be translated with the progressive: "laudātur" = "is being praised" (NEVER the bare "is praised") and "laudābātur" = "was being praised" (NEVER the bare "was praised"). The bare forms collide with the perfect passive ("laudāta est" = "she was praised / has been praised"); reserve those for the perfect passive.` : ""}${selectedTenses.includes("futurePerfect") ? `
-- Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), NEVER as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}
+- When an English word is ambiguous in gender or number, annotate it - for example: "friend (f.)", "you (pl.)".${selectedTenses.includes("imperfect") ? `
+- ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - never the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") || selectedTenses.includes("imperfectPassive") ? `
+- VOICE (important): the present and imperfect passive describe ongoing actions and must be translated with the progressive: "laudātur" = "is being praised" (never the bare "is praised") and "laudābātur" = "was being praised" (never the bare "was praised"). The bare forms collide with the perfect passive ("laudāta est" = "she was praised / has been praised"); reserve those for the perfect passive.` : ""}${selectedTenses.includes("futurePerfect") ? `
+- Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), never as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}
 
 Format rules:
-- Each phrase's "lemmas" lists the dictionary form of EVERY content word (noun, verb, or adjective from the lists above) used in the sentence, in order of appearance:
+- Each phrase's "lemmas" lists the dictionary form of every noun, verb, and adjective used in the sentence - including any that are not in the allowed vocabulary - in order of appearance:
   - Nominative singular for nouns (e.g., "puella")
   - Infinitive for verbs (e.g., "amāre")
   - Masculine nominative singular for adjectives (e.g., "magnus")
-  - Do NOT include function words: pronouns, possessives (meus, suus, etc.), conjunctions, prepositions, particles.
+  - For participles, the infinitive of the verb (e.g., "mittere" for "missī"), never the participle form
+  - Do not include function words: pronouns, possessives (meus, suus, etc.), conjunctions, prepositions, particles.
 - A validator will programmatically check every entry in "lemmas" against the allowed vocabulary, so list each content word honestly and use the exact dictionary form.
-- Use macrons and proper punctuation.`;
+- Use macrons on all long vowels, and proper punctuation.`;
 }
 
 // Call the Anthropic API with a prompt and parse the JSON response
@@ -386,26 +388,29 @@ function validateVocabulary(phrases, allowedLemmas) {
   return violations;
 }
 
+// Tenses whose translation rules get an extra verification pass
+const VERIFY_TENSE_RULES = ["imperfect", "presentPassive", "imperfectPassive", "futurePerfect"];
+
 // Build a verification prompt to check generated phrases against the original rules
-function buildVerificationPrompt(phrases, originalPrompt, violations) {
+function buildVerificationPrompt(phrases, originalPrompt, violations, selectedTenses) {
   const phrasesJson = JSON.stringify(phrases, null, 2);
 
   const violationSection = violations.length === 0
     ? `=== AUTOMATED VOCABULARY CHECK ===
-The vocabulary check passed: every lemma reported by the generator is in the allowed list. Still verify nothing was missed - e.g., a content word used in the Latin but not listed in "lemmas".
+The vocabulary check passed: every lemma reported by the generator is in the allowed vocabulary. Still verify nothing was missed - e.g., a content word used in the Latin but not listed in "lemmas".
 
 `
     : `=== AUTOMATED VOCABULARY CHECK ===
-The following content words appear in the generated sentences but are NOT in the allowed vocabulary. You MUST rewrite each affected sentence to remove the disallowed words.
-${violations.map((v) => `- Sentence ${v.index + 1} ("${v.la}"): unauthorized words: ${v.violations.join(", ")}`).join("\n")}
+The following content words appear in the generated sentences but are not in the allowed vocabulary. You MUST rewrite each affected sentence to remove the disallowed words.
+${violations.map((v) => `- Sentence ${v.index + 1} ("${v.la}"): disallowed words: ${v.violations.join(", ")}`).join("\n")}
 
-Full sentence rewrites are encouraged. A single-word substitution often will not work because the surrounding grammar depends on the word.
+Rewrite the whole sentence if needed - a single-word substitution often fails because the surrounding grammar depends on the word.
 
 `;
 
-  const aspectTask = originalPrompt.includes("ASPECT (important)")
+  const tenseTask = VERIFY_TENSE_RULES.some((tense) => selectedTenses.includes(tense))
     ? `
-4. Aspect: for EVERY sentence whose Latin verb is in the imperfect tense, the English MUST use ongoing or habitual phrasing ("was walking", "used to walk"), NOT the bare simple past ("walked"). The bare simple past is reserved for the perfect tense. Rewrite any imperfect sentence that uses a bare simple past; only fall back to an "(impf.)" annotation when natural progressive/habitual English is genuinely impossible.`
+4. Tense translation: re-check every English translation against the ASPECT, VOICE, and future perfect rules in the original rules above. These are the most commonly violated rules - rewrite any translation that uses a bare simple past for an imperfect ("walked" instead of "was walking"), a bare passive for a present/imperfect passive ("is praised" instead of "is being praised"), or a simple future for a future perfect ("will hear" instead of "will have heard").`
     : "";
 
   return `Review these AI-generated Latin sentences for a language learning app.
@@ -417,19 +422,19 @@ ${originalPrompt}
 ${phrasesJson}
 
 Your task:
-1. Vocabulary: Fix any vocabulary violations listed above. Use ONLY words from the allowed lists. Update each sentence's "lemmas" to reflect any rewrites.
-2. Grammar: Check every Latin sentence for grammar errors. It is okay for Latin to be unidiomatic.
-3. Translation: Check that English translations are accurate (prioritize accuracy over fluency), follow the translation rules, and annotate words with ambiguous gender or number.${aspectTask}
+1. Vocabulary: Fix any vocabulary violations listed above. Use ONLY words from the allowed vocabulary.
+2. Grammar: Check every Latin sentence for grammar errors and fix any you find. It is okay for Latin to be unidiomatic, but it must be grammatically correct.
+3. Translation: Check that English translations are accurate and follow the translation rules (including gender/number annotations); fix any that fall short.${tenseTask}
 
-Maintain the same number of sentences in the same order. Full rewrites of individual sentences are allowed when needed to fix vocabulary.
+Maintain the same number of sentences in the same order. Full rewrites of individual sentences are allowed when needed to fix vocabulary; when rewriting, keep the sentence coherent with the surrounding story. Whenever you change a sentence, update its "lemmas" to match. If a sentence already satisfies every rule, return it verbatim - do NOT reword correct sentences.
 
 Return the complete corrected list of sentences.`;
 }
 
 // Verify and correct generated phrases using a second AI pass
-async function verifyPhrases(generateResult, originalPrompt, violations, onStatus) {
+async function verifyPhrases(generateResult, originalPrompt, violations, selectedTenses, onStatus) {
   if (onStatus) onStatus("Probans...");
-  const prompt = buildVerificationPrompt(generateResult.phrases, originalPrompt, violations);
+  const prompt = buildVerificationPrompt(generateResult.phrases, originalPrompt, violations, selectedTenses);
   const verifyResult = await callAI(prompt, AI_VERIFY_EFFORT);
   return {
     phrases: verifyResult.phrases,
@@ -466,44 +471,36 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
     );
   }
 
-  return verifyPhrases(result, prompt, violations, onStatus);
+  return verifyPhrases(result, prompt, violations, selectedTenses, onStatus);
 }
 
 // Build prompt for agreement practice mode
 function buildAgreementPrompt(nouns, adjectives, count) {
   return `Generate ${count} Latin agreement exercises for language learning.
 
-Each exercise is an adjective-noun phrase that must agree in case, number, and gender. Use ALL FIVE CASES:
+Each exercise is an adjective-noun phrase in one of the five cases:
 
-1. NOMINATIVE (nom.): subject phrases - "great city", "strong men"
-2. GENITIVE (gen.): possession phrases - "of great city", "of strong men"
-3. DATIVE (dat.): indirect object phrases - "to/for great city", "to/for strong men"
-4. ACCUSATIVE (acc.): with prepositions - "into great city", "through strong men"
-5. ABLATIVE (abl.): with prepositions - "in great city", "with strong men"
-
-Example outputs:
-- English: "great city (nom.)" → Latin: "urbs magna"
-- English: "of strong men (gen.)" → Latin: "virōrum fortium"
-- English: "to/for good girl (dat.)" → Latin: "puellae bonae"
-- English: "through deep water (acc.)" → Latin: "per aquam altam"
-- English: "with good girl (abl.)" → Latin: "cum puellā bonā"
+1. NOMINATIVE (nom.): subjects - "great city (nom.)" → "urbs magna"
+2. GENITIVE (gen.): possession - "of strong men (gen.)" → "virōrum fortium"
+3. DATIVE (dat.): indirect objects - "to/for good girl (dat.)" → "puellae bonae"
+4. ACCUSATIVE (acc.): with acc. prepositions - "through deep water (acc.)" → "per aquam altam"
+5. ABLATIVE (abl.): with abl. prepositions - "with good girl (abl.)" → "cum puellā bonā"
 
 Rules:
 - Use ONLY these nouns: ${nouns.join(", ")}.
 - Use ONLY these adjectives: ${adjectives.join(", ")}.
-- For acc. and abl., use common Latin prepositions (ad, in, per, cum, ex, sine, etc.).
+- For acc., use prepositions that govern the accusative (ad, in, per, trāns, etc.); for abl., use prepositions that govern the ablative (ā/ab, cum, dē, ē/ex, in, sine, etc.).
 - Distribute exercises roughly equally across all 5 cases.
 - Vary the numbers: use both singular and plural forms.
-- Vary the genders: use masculine, feminine, and neuter nouns.
+- Vary the genders as far as the given nouns allow: use masculine, feminine, and neuter.
 - The adjective must correctly agree with the noun in case, number, and gender.
 - Use macrons on all long vowels.
-- Use these case abbreviations: nom., gen., dat., acc., abl.
 
 Format rules:
-- Each phrase's "lemmas" lists the dictionary form of the noun and adjective used: nominative singular for the noun, masculine nominative singular for the adjective. Do NOT include the preposition.
-- A validator will programmatically check every entry in "lemmas" against the allowed vocabulary.
-- For nom./gen./dat.: English is "<adj> <noun> (case)" or "of/to/for <adj> <noun> (case)", Latin is "<noun> <adj>"
-- For acc./abl.: English is "<prep meaning> <adj> <noun> (case)", Latin is "<prep> <noun> <adj>"`;
+- Each phrase's "lemmas" lists the dictionary forms of the noun and adjective used (nominative singular for the noun, masculine nominative singular for the adjective), including any that are not in the allowed vocabulary. Do not include the preposition.
+- A validator will programmatically check every entry in "lemmas" against the allowed vocabulary, so list each word honestly and use the exact dictionary form.
+- For nom./gen./dat.: English is "<adj> <noun> (case)" or "of/to/for <adj> <noun> (case)", Latin is "<noun> <adj>".
+- For acc./abl.: English is "<prep meaning> <adj> <noun> (case)", Latin is "<prep> <noun> <adj>".`;
 }
 
 // Generate agreement practice phrases via API
@@ -530,7 +527,7 @@ async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiv
     );
   }
 
-  return verifyPhrases(result, prompt, violations, onStatus);
+  return verifyPhrases(result, prompt, violations, [], onStatus);
 }
 
 // Vocabulary mode: English -> Latin + declension/conjugation
