@@ -152,20 +152,32 @@ function sampleArray(array, n) {
   return shuffled.slice(0, n);
 }
 
-// Sample nouns from selected declensions, distributed equally
-function sampleNouns(selectedDeclensions, nounCount) {
-  const nounsPerDeclension = Math.ceil(nounCount / selectedDeclensions.length);
-  const nouns = [];
-  for (const declension of selectedDeclensions) {
-    const declNouns = nounDatabase[declension];
-    if (declNouns) {
-      const sampled = sampleArray(declNouns, nounsPerDeclension);
-      for (const noun of sampled) {
-        nouns.push(`${noun.la} (${noun.en})`);
+// Sample noun entries from selected declensions. Counts are separate for
+// declensions 1-3 and 4-5, distributed equally within each group.
+function sampleNounEntries(selectedDeclensions, nounCount123, nounCount45) {
+  const groups = [
+    { members: ["declension1", "declension2", "declension3"], count: nounCount123 },
+    { members: ["declension4", "declension5"], count: nounCount45 },
+  ];
+  const entries = [];
+  for (const { members, count } of groups) {
+    const declensions = selectedDeclensions.filter((d) => members.includes(d));
+    if (declensions.length === 0 || count <= 0) continue;
+    const nounsPerDeclension = Math.ceil(count / declensions.length);
+    for (const declension of declensions) {
+      for (const noun of sampleArray(nounDatabase[declension], nounsPerDeclension)) {
+        entries.push({ declension, noun });
       }
     }
   }
-  return nouns.sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
+  return entries;
+}
+
+// Sample nouns from selected declensions, formatted for AI prompts
+function sampleNouns(selectedDeclensions, nounCount123, nounCount45) {
+  return sampleNounEntries(selectedDeclensions, nounCount123, nounCount45)
+    .map(({ noun }) => `${noun.la} (${noun.en})`)
+    .sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
 // Sample verbs from selected conjugations, distributed equally
@@ -444,8 +456,8 @@ async function verifyPhrases(generateResult, originalPrompt, violations, selecte
 }
 
 // Generate story phrases via API
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount, verbCount, adjectiveCount, onStatus, onWords) {
-  const nouns = sampleNouns(selectedDeclensions, nounCount);
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount123, nounCount45, verbCount, adjectiveCount, onStatus, onWords) {
+  const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45);
   const verbs = sampleVerbs(selectedConjugations, verbCount);
   const adjectives = adjectivesEnabled ? sampleAdjectives(adjectiveCount) : [];
 
@@ -504,8 +516,8 @@ Format rules:
 }
 
 // Generate agreement practice phrases via API
-async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiveCount, onStatus, onWords) {
-  const nouns = sampleNouns(selectedDeclensions, nounCount);
+async function generateAgreementPhrases(selectedDeclensions, nounCount123, nounCount45, adjectiveCount, onStatus, onWords) {
+  const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45);
   const adjectives = sampleAdjectives(adjectiveCount);
 
   if (nouns.length === 0) {
@@ -532,7 +544,7 @@ async function generateAgreementPhrases(selectedDeclensions, nounCount, adjectiv
 
 // Vocabulary mode: English -> Latin + declension/conjugation
 // No AI - samples based on count settings
-function generateVocabularyPhrases(selectedDeclensions, selectedConjugations, adjectivesEnabled, nounCount, verbCount, adjectiveCount) {
+function generateVocabularyPhrases(selectedDeclensions, selectedConjugations, adjectivesEnabled, nounCount123, nounCount45, verbCount, adjectiveCount) {
   const phrases = [];
 
   // Map declension keys to numbers
@@ -555,21 +567,11 @@ function generateVocabularyPhrases(selectedDeclensions, selectedConjugations, ad
   };
 
   // Add nouns (nominative form), distributed across declensions
-  if (selectedDeclensions.length > 0) {
-    const nounsPerDeclension = Math.ceil(nounCount / selectedDeclensions.length);
-    for (const declension of selectedDeclensions) {
-      const declNouns = nounDatabase[declension];
-      if (declNouns) {
-        const declNum = declensionNumbers[declension];
-        const sampled = sampleArray(declNouns, nounsPerDeclension);
-        for (const noun of sampled) {
-          phrases.push({
-            en: `${noun.en} (noun)`,
-            la: `${noun.la} ${declNum}${noun.gender}`,
-          });
-        }
-      }
-    }
+  for (const { declension, noun } of sampleNounEntries(selectedDeclensions, nounCount123, nounCount45)) {
+    phrases.push({
+      en: `${noun.en} (noun)`,
+      la: `${noun.la} ${declensionNumbers[declension]}${noun.gender}`,
+    });
   }
 
   // Add verbs (infinitive form), distributed across conjugations

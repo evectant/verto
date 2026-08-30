@@ -216,3 +216,9 @@ input[type="radio"] {
   outline: none;
   border: 1px solid #66bb6a;
 }
+
+.count-group-label {
+  font-size: 11px;
+  color: #888;
+  margin-left: 8px;
+}

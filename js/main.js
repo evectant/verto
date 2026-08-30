@@ -25,6 +25,7 @@ const declensionCheckboxes = document.querySelectorAll(".declension-checkbox");
 const tenseCheckboxes = document.querySelectorAll(".tense-checkbox");
 const sectionCheckboxes = document.querySelectorAll(".section-checkbox");
 const nounCountSelectElement = document.getElementById("nounCountSelect");
+const nounCount45SelectElement = document.getElementById("nounCount45Select");
 const verbCountSelectElement = document.getElementById("verbCountSelect");
 const adjectiveCountSelectElement = document.getElementById("adjectiveCountSelect");
 
@@ -364,9 +365,11 @@ generateAiButtonElement.addEventListener("click", async function () {
 
   // Get vocabulary sample counts from selectors ("all" means no limit)
   const nounCountValue = nounCountSelectElement.value;
+  const nounCount45Value = nounCount45SelectElement.value;
   const verbCountValue = verbCountSelectElement.value;
   const adjectiveCountValue = adjectiveCountSelectElement.value;
-  const nounCount = nounCountValue === "all" ? Infinity : parseInt(nounCountValue, 10);
+  const nounCount123 = nounCountValue === "all" ? Infinity : parseInt(nounCountValue, 10);
+  const nounCount45 = nounCount45Value === "all" ? Infinity : parseInt(nounCount45Value, 10);
   const verbCount = verbCountValue === "all" ? Infinity : parseInt(verbCountValue, 10);
   const adjectiveCount = adjectiveCountValue === "all" ? Infinity : parseInt(adjectiveCountValue, 10);
 
@@ -376,7 +379,8 @@ generateAiButtonElement.addEventListener("click", async function () {
       selectedDeclensions,
       selectedConjugations,
       adjectivesEnabled,
-      nounCount,
+      nounCount123,
+      nounCount45,
       verbCount,
       adjectiveCount
     );
@@ -438,7 +442,8 @@ generateAiButtonElement.addEventListener("click", async function () {
       // Agreement practice mode
       result = await generateAgreementPhrases(
         selectedDeclensions,
-        nounCount,
+        nounCount123,
+        nounCount45,
         adjectiveCount,
         updateStatus,
         showWords
@@ -450,7 +455,8 @@ generateAiButtonElement.addEventListener("click", async function () {
         selectedConjugations,
         selectedTenses,
         adjectivesEnabled,
-        nounCount,
+        nounCount123,
+        nounCount45,
         verbCount,
         adjectiveCount,
         updateStatus,
