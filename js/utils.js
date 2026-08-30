@@ -151,18 +151,13 @@ function normalize(text) {
     .replace(/\bvobiscum\b/g, "PREP vobis")
     // Normalize uncontracted "non + volo form" to the contracted nolo form (e.g. "non volo" -> "nolo").
     .replace(NOLO_REGEX, (_, word) => NOLO_CONTRACTIONS[word])
-    // Normalize contracted/uncontracted perfect forms of eo, ire (to go).
-    .replace(/\bivit\b/g, "iit")
-    .replace(/\bivisti\b/g, "iisti")
-    .replace(/\biverunt\b/g, "ierunt")
-    .replace(/\bivimus\b/g, "iimus")
-    .replace(/\bivistis\b/g, "iistis")
-    .replace(/\biveram\b/g, "ieram")
-    .replace(/\biveras\b/g, "ieras")
-    .replace(/\biverat\b/g, "ierat")
-    .replace(/\biveramus\b/g, "ieramus")
-    .replace(/\biveratis\b/g, "ieratis")
-    .replace(/\biverant\b/g, "ierant");
+    // Normalize uncontracted perfect-system forms of eo, ire (to go) to the contracted ones:
+    // perfect (ivi -> ii, ivit -> iit), pluperfect (iveram -> ieram), future perfect (ivero -> iero),
+    // and the perfect infinitive (ivisse -> iisse).
+    .replace(
+      /\biv(i|isti|it|imus|istis|erunt|eram|eras|erat|eramus|eratis|erant|ero|eris|erit|erimus|eritis|erint|isse)\b/g,
+      "i$1"
+    );
 }
 
 function haveSameWords(phrase1, phrase2) {
