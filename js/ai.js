@@ -152,9 +152,22 @@ function sampleArray(array, n) {
   return shuffled.slice(0, n);
 }
 
+// Pick one random survivor per synonym group and return the set of excluded
+// lemmas, so a sampling pass never offers two easily-confused words together.
+function buildSynonymExclusions() {
+  const excluded = new Set();
+  for (const group of SYNONYM_GROUPS) {
+    const survivor = Math.floor(Math.random() * group.length);
+    group.forEach((lemma, i) => {
+      if (i !== survivor) excluded.add(lemma);
+    });
+  }
+  return excluded;
+}
+
 // Sample noun entries from selected declensions. Counts are separate for
 // declensions 1-3 and 4-5, distributed equally within each group.
-function sampleNounEntries(selectedDeclensions, nounCount123, nounCount45) {
+function sampleNounEntries(selectedDeclensions, nounCount123, nounCount45, excluded = null) {
   const groups = [
     { members: ["declension1", "declension2", "declension3"], count: nounCount123 },
     { members: ["declension4", "declension5"], count: nounCount45 },
@@ -165,7 +178,10 @@ function sampleNounEntries(selectedDeclensions, nounCount123, nounCount45) {
     if (declensions.length === 0 || count <= 0) continue;
     const nounsPerDeclension = Math.ceil(count / declensions.length);
     for (const declension of declensions) {
-      for (const noun of sampleArray(nounDatabase[declension], nounsPerDeclension)) {
+      const pool = excluded
+        ? nounDatabase[declension].filter((noun) => !excluded.has(noun.la))
+        : nounDatabase[declension];
+      for (const noun of sampleArray(pool, nounsPerDeclension)) {
         entries.push({ declension, noun });
       }
     }
@@ -174,14 +190,14 @@ function sampleNounEntries(selectedDeclensions, nounCount123, nounCount45) {
 }
 
 // Sample nouns from selected declensions, formatted for AI prompts
-function sampleNouns(selectedDeclensions, nounCount123, nounCount45) {
-  return sampleNounEntries(selectedDeclensions, nounCount123, nounCount45)
+function sampleNouns(selectedDeclensions, nounCount123, nounCount45, excluded = null) {
+  return sampleNounEntries(selectedDeclensions, nounCount123, nounCount45, excluded)
     .map(({ noun }) => `${noun.la} (${noun.en})`)
     .sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
 // Sample verbs from selected conjugations, distributed equally
-function sampleVerbs(selectedConjugations, verbCount) {
+function sampleVerbs(selectedConjugations, verbCount, excluded = null) {
   const verbs = [];
   for (const verb of ALWAYS_AVAILABLE_VERBS) {
     verbs.push(`${verb.la} (${verb.en})`);
@@ -190,7 +206,10 @@ function sampleVerbs(selectedConjugations, verbCount) {
   if (remaining > 0 && selectedConjugations.length > 0) {
     const verbsPerConjugation = Math.ceil(remaining / selectedConjugations.length);
     for (const conjugation of selectedConjugations) {
-      const conjVerbs = verbDatabase[conjugation];
+      let conjVerbs = verbDatabase[conjugation];
+      if (conjVerbs && excluded) {
+        conjVerbs = conjVerbs.filter((verb) => !excluded.has(verb.la));
+      }
       if (conjVerbs) {
         const sampled = sampleArray(conjVerbs, verbsPerConjugation);
         for (const verb of sampled) {
@@ -206,11 +225,14 @@ function sampleVerbs(selectedConjugations, verbCount) {
 }
 
 // Sample adjectives from both declension groups, distributed equally
-function sampleAdjectives(adjectiveCount) {
+function sampleAdjectives(adjectiveCount, excluded = null) {
   const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
+  const pools = [adjectiveDatabase.declension12, adjectiveDatabase.declension3].map(
+    (pool) => (excluded ? pool.filter((adj) => !excluded.has(adj.la)) : pool)
+  );
   return [
-    ...sampleArray(adjectiveDatabase.declension12, adjectivesPerGroup),
-    ...sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup),
+    ...sampleArray(pools[0], adjectivesPerGroup),
+    ...sampleArray(pools[1], adjectivesPerGroup),
   ]
     .map((adj) => `${adj.la} (${adj.en})`)
     .sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
@@ -457,9 +479,10 @@ async function verifyPhrases(generateResult, originalPrompt, violations, selecte
 
 // Generate story phrases via API
 async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount123, nounCount45, verbCount, adjectiveCount, onStatus, onWords) {
-  const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45);
-  const verbs = sampleVerbs(selectedConjugations, verbCount);
-  const adjectives = adjectivesEnabled ? sampleAdjectives(adjectiveCount) : [];
+  const excluded = buildSynonymExclusions();
+  const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45, excluded);
+  const verbs = sampleVerbs(selectedConjugations, verbCount, excluded);
+  const adjectives = adjectivesEnabled ? sampleAdjectives(adjectiveCount, excluded) : [];
 
   if (nouns.length === 0) {
     throw new Error("No nouns available with selected declensions");
@@ -517,8 +540,9 @@ Format rules:
 
 // Generate agreement practice phrases via API
 async function generateAgreementPhrases(selectedDeclensions, nounCount123, nounCount45, adjectiveCount, onStatus, onWords) {
-  const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45);
-  const adjectives = sampleAdjectives(adjectiveCount);
+  const excluded = buildSynonymExclusions();
+  const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45, excluded);
+  const adjectives = sampleAdjectives(adjectiveCount, excluded);
 
   if (nouns.length === 0) {
     throw new Error("No nouns available with selected declensions");
