@@ -160,13 +160,19 @@ function normalize(text) {
     );
 }
 
-function haveSameWords(phrase1, phrase2) {
+// Grade a user translation against the expected answer after normalization.
+// Word order is ignored; optional words (subject pronouns, reflexive
+// possessives) may be freely added or omitted by either side. Returns:
+//   "correct" - no difference
+//   "almost"  - at most one word per side is wrong, missing, or extra
+//   "wrong"   - anything more
+function gradeTranslation(userPhrase, correctPhrase) {
   function toSortedWords(text) {
     return text.split(/\s+/).filter((w) => w).sort();
   }
 
-  const words1 = toSortedWords(normalize(phrase1));
-  const words2 = toSortedWords(normalize(phrase2));
+  const words1 = toSortedWords(normalize(userPhrase));
+  const words2 = toSortedWords(normalize(correctPhrase));
 
   // Latin subject pronouns that can be omitted (nominative case)
   // ego (I), tu (you sg.), nos (we), vos (you pl.),
@@ -193,45 +199,24 @@ function haveSameWords(phrase1, phrase2) {
 
   const OPTIONAL_WORDS = [...OPTIONAL_SUBJECT_PRONOUNS, ...OPTIONAL_REFLEXIVE_POSSESSIVES];
 
-  // Try exact match first
-  if (words1.length === words2.length) {
-    let allMatch = true;
-    for (let i = 0; i < words1.length; i++) {
-      if (words1[i] !== words2[i]) {
-        allMatch = false;
-        break;
-      }
-    }
-    if (allMatch) {
-      return true;
-    }
-  }
-
-  // If lengths differ, check if the difference is only optional subject pronouns
-  // This allows either the user or the correct answer to omit subject pronouns
-  const longer = words1.length > words2.length ? words1 : words2;
-  const shorter = words1.length > words2.length ? words2 : words1;
-
-  // Find words that are in the longer phrase but not in the shorter
-  const longerCopy = [...longer];
-  const shorterCopy = [...shorter];
-
-  // Remove all matching words
-  for (let i = longerCopy.length - 1; i >= 0; i--) {
-    const matchIndex = shorterCopy.indexOf(longerCopy[i]);
+  // Cancel out words present on both sides
+  const leftover1 = [...words1];
+  const leftover2 = [...words2];
+  for (let i = leftover1.length - 1; i >= 0; i--) {
+    const matchIndex = leftover2.indexOf(leftover1[i]);
     if (matchIndex !== -1) {
-      longerCopy.splice(i, 1);
-      shorterCopy.splice(matchIndex, 1);
+      leftover1.splice(i, 1);
+      leftover2.splice(matchIndex, 1);
     }
   }
 
-  // Check if all remaining words on both sides are optional words
-  // (subject pronouns or reflexive possessives)
-  if (longerCopy.every((w) => OPTIONAL_WORDS.includes(w)) && shorterCopy.every((w) => OPTIONAL_WORDS.includes(w))) {
-    return true;
-  }
+  // Optional words never count as a difference, whichever side has them
+  const diff1 = leftover1.filter((w) => !OPTIONAL_WORDS.includes(w));
+  const diff2 = leftover2.filter((w) => !OPTIONAL_WORDS.includes(w));
 
-  return false;
+  if (diff1.length === 0 && diff2.length === 0) return "correct";
+  if (diff1.length <= 1 && diff2.length <= 1) return "almost";
+  return "wrong";
 }
 
 function shuffle(array) {
@@ -270,14 +255,15 @@ function getColoredFeedback(userInput, correctPhrase) {
     })
     .join(" ");
 
-  // Collect extra words the user typed that weren't in the correct answer.
-  const extraWords = originalUserWords.filter((_, i) => !userWordsUsed[i]);
+  // Collect extra words the user typed that weren't in the correct answer,
+  // stripped of surrounding punctuation for cleaner display.
+  const extraWords = originalUserWords
+    .filter((_, i) => !userWordsUsed[i])
+    .map((word) => word.replace(/^[.,;:!?"'()«»—]+|[.,;:!?"'()«»—]+$/g, ""))
+    .filter((word) => word);
 
   if (extraWords.length > 0) {
-    const coloredExtra = extraWords
-      .map((word) => `<span style="color: #FFA726">${word}</span>`)
-      .join(" ");
-    return coloredCorrect + " (" + coloredExtra + ")";
+    return coloredCorrect + `<br><span style="color: #FFA726">(${extraWords.join(" ")})</span>`;
   }
 
   return coloredCorrect;

@@ -68,6 +68,12 @@ p {
   height: 20px;
 }
 
+#feedback {
+  /* Reserve three lines (wrapped answer + error line) so the score below doesn't jump */
+  height: auto;
+  min-height: 3.6em;
+}
+
 #currentPhrase {
   height: 50px;
 }

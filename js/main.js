@@ -48,7 +48,11 @@ function displayPhrase() {
 }
 
 function updateScore() {
-  const correctText = correctAnswers > 0 ? toRoman(correctAnswers) : "Nulla";
+  // Half points ("almost" answers) are written the Roman way: S for semis, e.g. "VII S"
+  const wholeCorrect = Math.floor(correctAnswers);
+  const correctText = correctAnswers > 0
+    ? [wholeCorrect > 0 ? toRoman(wholeCorrect) : "", correctAnswers % 1 !== 0 ? "S" : ""].filter((p) => p).join(" ")
+    : "Nulla";
   const totalText = totalAnswers > 0 ? toRoman(totalAnswers) : "nullis";
 
   const percentage = Math.round((correctAnswers * 100.0) / totalAnswers);
@@ -75,13 +79,20 @@ function checkTranslation() {
   const userTranslation = translationInputElement.value;
   const correctTranslation = loadedPhrases[currentPhraseIndex].la;
 
-  const isCorrect = haveSameWords(userTranslation, correctTranslation);
-  phraseResults[currentPhraseIndex] = isCorrect;
+  const verdict = gradeTranslation(userTranslation, correctTranslation);
+  phraseResults[currentPhraseIndex] = verdict;
 
-  if (isCorrect) {
+  if (verdict === "correct") {
     feedbackElement.style.color = "#66BB6A";
     feedbackElement.textContent = "✓ " + correctTranslation;
     correctAnswers++;
+  } else if (verdict === "almost") {
+    feedbackElement.style.color = "";
+    feedbackElement.innerHTML = "<span style=\"color: #FFEE58\">≈</span> " + getColoredFeedback(
+      userTranslation,
+      correctTranslation
+    );
+    correctAnswers += 0.5;
   } else {
     feedbackElement.style.color = "";
     feedbackElement.innerHTML = "<span style=\"color: #EF5350\">✗</span> " + getColoredFeedback(
@@ -113,7 +124,7 @@ function displaySampledWords(words) {
 function displayFullStory() {
   const latinStory = loadedPhrases
     .map((phrase, i) => {
-      const color = phraseResults[i] ? "#66BB6A" : "#EF5350";
+      const color = phraseResults[i] === "correct" ? "#66BB6A" : phraseResults[i] === "almost" ? "#FFEE58" : "#EF5350";
       return `<span style="color: ${color}">${phrase.la}</span>`;
     })
     .join(" ");
