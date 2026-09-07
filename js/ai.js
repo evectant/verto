@@ -1,7 +1,7 @@
 // AI Mode for generating Latin phrases via Anthropic API
 
 // Configuration
-const AI_MODEL = "claude-fable-5";
+const AI_MODEL = "claude-fable-5-1";
 
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_MAX_TOKENS = 32000;
@@ -350,7 +350,7 @@ async function callAI(prompt, effort) {
   const content = textBlock?.text;
 
   console.log(
-    `=== AI Log (${elapsed}s) ===\n\n` +
+    `=== AI Log (${elapsed}s, ${data.model}) ===\n\n` +
     "--- Prompt ---\n" + prompt + "\n\n" +
     (thinkingBlock ? "--- Thinking ---\n" + thinkingBlock.thinking + "\n\n" : "") +
     "--- Response ---\n" + (content || "(empty)")
