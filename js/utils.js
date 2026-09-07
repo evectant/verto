@@ -117,7 +117,7 @@ function normalize(text) {
     .normalize("NFD")
     .replace(/\p{Diacritic}/gu, "") // Drop macrons.
     .replace(/—/g, " ") // Replace em-dashes with spaces (before dropping punctuation).
-    .replace(/[.,;:\-!?"'()«»]/g, "") // Drop punctuation.
+    .replace(/[.,;:\-!?"'()«»“”‘’]/g, "") // Drop punctuation.
     .replace(/\s{2,}/g, " ") // Drop double spaces.
     .trim()
     .toLowerCase()
@@ -270,7 +270,7 @@ function getColoredFeedback(userInput, correctPhrase) {
   // stripped of surrounding punctuation for cleaner display.
   const extraWords = originalUserWords
     .filter((_, i) => !userWordsUsed[i])
-    .map((word) => word.replace(/^[.,;:!?"'()«»—]+|[.,;:!?"'()«»—]+$/g, ""))
+    .map((word) => word.replace(/^[.,;:!?"'()«»“”‘’—]+|[.,;:!?"'()«»“”‘’—]+$/g, ""))
     .filter((word) => word);
 
   if (extraWords.length > 0) {
