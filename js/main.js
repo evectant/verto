@@ -7,6 +7,7 @@ const translationInputElement = document.getElementById("translationInput");
 const feedbackElement = document.getElementById("feedback");
 const correctCounterElement = document.getElementById("correctCounter");
 const randomizeCheckboxElement = document.getElementById("randomizeCheckbox");
+const difficultySelectElement = document.getElementById("difficultySelect");
 const storyContainerElement = document.getElementById("storyContainer");
 const fullStoryElement = document.getElementById("fullStory");
 const dismissStoryButtonElement = document.getElementById("dismissStoryButton");
@@ -465,6 +466,7 @@ generateAiButtonElement.addEventListener("click", async function () {
         selectedDeclensions,
         selectedConjugations,
         selectedTenses,
+        difficultySelectElement.value,
         adjectivesEnabled,
         nounCount123,
         nounCount45,

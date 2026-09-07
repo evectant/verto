@@ -203,8 +203,8 @@ input[type="radio"] {
 }
 
 .options-group label {
-  display: block;
-  margin-bottom: 8px;
+  display: inline-block;
+  margin: 5px 10px;
 }
 
 .sample-count-select {

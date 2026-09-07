@@ -238,8 +238,15 @@ function sampleAdjectives(adjectiveCount, excluded = null) {
     .sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
+// Sentence-complexity rules for the story prompt, keyed by the difficulty selector
+const DIFFICULTY_RULES = {
+  easy: `- Keep sentences short and simple: one clause each, about 4-7 Latin words, with a single finite verb (a short quoted clause in direct speech is fine). Do not use relative or subordinate clauses, and do not join clauses with conjunctions; "et" may join two nouns or adjectives.`,
+  medium: `- Keep most sentences to a single clause of about 6-10 Latin words. Roughly one sentence in three may have two clauses - joined by a coordinating conjunction, a relative clause (quī, quae, quod), or a subordinate clause with an indicative conjunction (quod, ubi, dum, sī, postquam) - but never more than two clauses, and never a clause nested inside another. Direct speech may add a short quoted clause.`,
+  hard: `- Favor complex sentences of two or three clauses, up to about 15 Latin words: link clauses with coordinating conjunctions, and use relative clauses (quī, quae, quod) and subordinate clauses with indicative conjunctions (quod, ubi, dum, sī, postquam, quamquam); a clause may be nested inside another.`,
+};
+
 // Build the prompt for the AI
-function buildPrompt(vocabulary, selectedTenses, count) {
+function buildPrompt(vocabulary, selectedTenses, count, difficulty) {
   const tenseList = selectedTenses.map((t) => TENSE_NAMES[t] || t).join(", ");
 
   const adjectiveRules = vocabulary.adjectives && vocabulary.adjectives.length > 0
@@ -272,7 +279,8 @@ Latin grammar rules:
 - For pluperfect passive, use the perfect passive participle with the imperfect of esse (e.g., "urbs capta erat" = "the city had been captured").` : ""}${selectedTenses.includes("fpp") ? `
 - For future perfect passive, use the perfect passive participle with the future of esse (e.g., "urbs capta erit" = "the city will have been captured").` : ""}${selectedTenses.includes("presentParticiple") ? `
 - For the present active participle, attach the participle to a noun, agreeing in case and number (e.g., "vir audiēns" = "the listening man", "mīlitibus fugientibus" = "for the fleeing soldiers"); the sentence's main verb must still be in one of the allowed finite tenses.` : ""}
-- Favor complex sentences of two or more clauses: link clauses with coordinating conjunctions, and use relative clauses (quī, quae, quod) and subordinate clauses with indicative conjunctions (quod, ubi, dum, sī, postquam, quamquam). Avoid conjunctions that require the subjunctive.
+${DIFFICULTY_RULES[difficulty] || DIFFICULTY_RULES.medium}
+- Avoid conjunctions that require the subjunctive.
 - Exercise all of the given tenses in roughly equal proportion.
 - Exercise all five noun cases (nominative, genitive, dative, accusative, ablative) in roughly equal proportion; do not use the vocative.
 - Include direct speech to exercise 1st and 2nd person grammar.
@@ -480,7 +488,7 @@ async function verifyPhrases(generateResult, originalPrompt, violations, selecte
 }
 
 // Generate story phrases via API
-async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, adjectivesEnabled, nounCount123, nounCount45, verbCount, adjectiveCount, onStatus, onWords) {
+async function generateAIPhrases(selectedDeclensions, selectedConjugations, selectedTenses, difficulty, adjectivesEnabled, nounCount123, nounCount45, verbCount, adjectiveCount, onStatus, onWords) {
   const excluded = buildSynonymExclusions();
   const nouns = sampleNouns(selectedDeclensions, nounCount123, nounCount45, excluded);
   const verbs = sampleVerbs(selectedConjugations, verbCount, excluded);
@@ -496,7 +504,7 @@ async function generateAIPhrases(selectedDeclensions, selectedConjugations, sele
   if (onWords) onWords({ nouns, verbs, adjectives });
 
   const vocabulary = { nouns, verbs, adjectives };
-  const prompt = buildPrompt(vocabulary, selectedTenses, AI_PHRASE_COUNT);
+  const prompt = buildPrompt(vocabulary, selectedTenses, AI_PHRASE_COUNT, difficulty);
   const result = await callAI(prompt, AI_GENERATE_EFFORT);
 
   const allowedLemmas = buildAllowedLemmas(vocabulary);
