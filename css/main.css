@@ -75,7 +75,9 @@ p {
 }
 
 #currentPhrase {
-  height: 50px;
+  /* Grow for long sentences from authentic texts, without shifting short phrases */
+  height: auto;
+  min-height: 50px;
 }
 
 input {
@@ -98,26 +100,6 @@ input[type="text"] {
 
 input[type="checkbox"] {
   margin-right: 5px;
-}
-
-#groupFabulae > label {
-  cursor: pointer;
-  user-select: none;
-}
-
-#groupFabulae > label::before {
-  content: "▼";
-  display: inline-block;
-  margin-right: 8px;
-  transition: transform 0.2s;
-}
-
-#groupFabulae.collapsed > label::before {
-  transform: rotate(-90deg);
-}
-
-#groupFabulae.collapsed .section-checkboxes {
-  display: none;
 }
 
 /* AI Mode styles */
@@ -205,6 +187,29 @@ input[type="radio"] {
 .options-group label {
   display: inline-block;
   margin: 5px 10px;
+}
+
+/* Mode-specific settings: main.js stamps the selected mode on the settings panel as data-mode,
+   and these rules show or hide what each mode uses. */
+#textOptions {
+  display: none;
+}
+
+.settings-container[data-mode="text"] #textOptions {
+  display: block;
+}
+
+.settings-container[data-mode="text"] #apiKeyInput,
+.settings-container[data-mode="text"] #phraseOptions,
+.settings-container[data-mode="text"] .section-group,
+.settings-container[data-mode="text"] #groupAdiectiva {
+  display: none;
+}
+
+#textSelect {
+  font-size: 14px;
+  max-width: 320px;
+  margin: 5px 0;
 }
 
 .sample-count-select {

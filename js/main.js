@@ -19,12 +19,17 @@ const generateAiButtonElement = document.getElementById("generateAiButton");
 const aiStatusElement = document.getElementById("aiStatus");
 const adjectivesCheckboxElement = document.getElementById("adjectivesCheckbox");
 const modeRadios = document.querySelectorAll('input[name="mode"]');
+const settingsContainerElement = document.querySelector(".settings-container");
+
+// Text mode elements
+const textSelectElement = document.getElementById("textSelect");
+const TEXT_SELECTION_STORAGE_KEY = "verto_selected_text";
+const MODE_STORAGE_KEY = "verto_mode";
 
 const groupCheckboxes = document.querySelectorAll(".group-checkbox");
 const conjugationCheckboxes = document.querySelectorAll(".conjugation-checkbox");
 const declensionCheckboxes = document.querySelectorAll(".declension-checkbox");
 const tenseCheckboxes = document.querySelectorAll(".tense-checkbox");
-const sectionCheckboxes = document.querySelectorAll(".section-checkbox");
 const nounCountSelectElement = document.getElementById("nounCountSelect");
 const nounCount45SelectElement = document.getElementById("nounCount45Select");
 const verbCountSelectElement = document.getElementById("verbCountSelect");
@@ -36,6 +41,7 @@ let correctAnswers = 0;
 let totalAnswers = 0;
 let phraseResults = [];
 let aiGeneratedPhrases = [];
+let loadedPhrasesShufflable = true; // false for texts, whose units must stay in source order
 
 //
 // Functions
@@ -46,6 +52,24 @@ function displayPhrase() {
   translationInputElement.value = "";
   feedbackElement.textContent = "";
   translationInputElement.focus();
+}
+
+// Replace the current phrase set and restart from the first phrase, with Enter in submit mode.
+// Texts pass shufflable = false: their units build on each other and must stay in source order.
+function loadPhrases(phrases, shufflable = true) {
+  loadedPhrases = [...phrases];
+  loadedPhrasesShufflable = shufflable;
+  if (shufflable && randomizeCheckboxElement.checked) {
+    shuffle(loadedPhrases);
+  }
+  currentPhraseIndex = 0;
+  phraseResults = [];
+
+  translationInputElement.removeEventListener("keydown", handleKeyDownNext);
+  translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
+  translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
+
+  displayPhrase();
 }
 
 function updateScore() {
@@ -181,7 +205,7 @@ function updateGroupCheckbox(checkbox) {
   const group = checkbox.closest(".section-group");
   const groupCheckbox = group.querySelector(".group-checkbox");
   const checkboxes = group.querySelectorAll(
-    ".conjugation-checkbox, .declension-checkbox, .tense-checkbox, .section-checkbox"
+    ".conjugation-checkbox, .declension-checkbox, .tense-checkbox"
   );
 
   const checkedCount = Array.from(checkboxes).filter((cb) => cb.checked).length;
@@ -189,6 +213,53 @@ function updateGroupCheckbox(checkbox) {
   groupCheckbox.checked = checkedCount === checkboxes.length;
   groupCheckbox.indeterminate =
     checkedCount > 0 && checkedCount < checkboxes.length;
+}
+
+// Fill the text dropdown from the library (see js/data/texts.js) and restore the last selection.
+function populateTextSelect() {
+  textSelectElement.innerHTML = "";
+
+  if (textLibrary.length === 0) {
+    const option = document.createElement("option");
+    option.textContent = "Nulli textus";
+    option.disabled = true;
+    option.selected = true;
+    textSelectElement.appendChild(option);
+    textSelectElement.disabled = true;
+    return;
+  }
+
+  for (const text of textLibrary) {
+    const option = document.createElement("option");
+    option.value = text.id;
+    option.textContent = text.author ? `${text.title} (${text.author})` : text.title;
+    textSelectElement.appendChild(option);
+  }
+
+  const savedId = localStorage.getItem(TEXT_SELECTION_STORAGE_KEY);
+  if (savedId && textLibrary.some((text) => text.id === savedId)) {
+    textSelectElement.value = savedId;
+  }
+}
+
+function getSelectedMode() {
+  return document.querySelector('input[name="mode"]:checked').value;
+}
+
+// Apply the selected mode to the settings panel: CSS shows or hides the settings each mode uses
+// (see the [data-mode] rules in main.css), and the action button gets a fitting label.
+function updateModeOptions() {
+  const selectedMode = getSelectedMode();
+  settingsContainerElement.dataset.mode = selectedMode;
+  generateAiButtonElement.textContent = selectedMode === "text" ? "Aperire" : "Generare";
+}
+
+// Make a library text the current phrase set, in source order, and remember it for reloads.
+function loadText(text) {
+  localStorage.setItem(TEXT_SELECTION_STORAGE_KEY, text.id);
+  aiStatusElement.textContent = `✓ ${toRoman(text.sentences.length)} sententiae`;
+  aiStatusElement.className = "ai-success";
+  loadPhrases(text.sentences, false);
 }
 
 //
@@ -216,19 +287,12 @@ tenseCheckboxes.forEach((checkbox) => {
   });
 });
 
-// Handle story section checkboxes
-sectionCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", function () {
-    updateGroupCheckbox(this);
-  });
-});
-
 // Handle group checkboxes
 groupCheckboxes.forEach((groupCheckbox) => {
   groupCheckbox.addEventListener("change", function () {
     const group = document.getElementById(this.dataset.group);
     const checkboxes = group.querySelectorAll(
-      ".conjugation-checkbox, .declension-checkbox, .tense-checkbox, .section-checkbox"
+      ".conjugation-checkbox, .declension-checkbox, .tense-checkbox"
     );
 
     checkboxes.forEach((checkbox) => {
@@ -237,9 +301,9 @@ groupCheckboxes.forEach((groupCheckbox) => {
   });
 });
 
-// Changing randomization reshuffles AI phrases.
+// Changing randomization reshuffles the loaded phrases (texts excepted: they keep their order).
 randomizeCheckboxElement.addEventListener("change", function () {
-  if (loadedPhrases.length > 0) {
+  if (loadedPhrases.length > 0 && loadedPhrasesShufflable) {
     if (this.checked) {
       shuffle(loadedPhrases);
     }
@@ -248,19 +312,18 @@ randomizeCheckboxElement.addEventListener("change", function () {
   }
 });
 
-// Handle collapsible Fabulae section (if it exists)
-const fabulaeLabel = document.querySelector("#groupFabulae > label");
-if (fabulaeLabel) {
-  fabulaeLabel.addEventListener("click", function (event) {
-    // Don't toggle if clicking directly on the checkbox
-    if (event.target.tagName === "INPUT") {
-      return;
-    }
-    // Prevent the label from toggling the checkbox
-    event.preventDefault();
-    document.getElementById("groupFabulae").classList.toggle("collapsed");
+// The selected mode is remembered across reloads, and the settings panel follows it.
+modeRadios.forEach((radio) => {
+  radio.addEventListener("change", function () {
+    localStorage.setItem(MODE_STORAGE_KEY, this.value);
+    updateModeOptions();
   });
-}
+});
+
+// Remember the chosen text across reloads.
+textSelectElement.addEventListener("change", function () {
+  localStorage.setItem(TEXT_SELECTION_STORAGE_KEY, this.value);
+});
 
 // Enter starts in submit mode.
 translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
@@ -273,16 +336,16 @@ apiKeyInputElement.addEventListener("change", function () {
   setApiKey(this.value);
 });
 
-// Generate AI phrases button
+// The Generare / Aperire button: loads the selected text, samples vocabulary, or generates via AI
 generateAiButtonElement.addEventListener("click", async function () {
   // Check which mode is selected
-  const selectedMode = document.querySelector('input[name="mode"]:checked').value;
+  const selectedMode = getSelectedMode();
   const storyMode = selectedMode === "story";
   const agreementMode = selectedMode === "agreement";
   const vocabularyMode = selectedMode === "vocabulary";
-  const phrasesMode = selectedMode === "phrases";
+  const textMode = selectedMode === "text";
 
-  // Vocabulary and Phrases modes don't need API key
+  // Vocabulary and Text modes don't need API key
   const needsApiKey = storyMode || agreementMode;
 
   if (needsApiKey) {
@@ -294,6 +357,18 @@ generateAiButtonElement.addEventListener("click", async function () {
     }
     // Save the API key
     setApiKey(apiKey);
+  }
+
+  // Text mode: load the selected authentic text as-is; no sampling or vocabulary settings involved
+  if (textMode) {
+    const text = textLibrary.find((t) => t.id === textSelectElement.value);
+    if (!text) {
+      aiStatusElement.textContent = "⚠️ Selige textum";
+      aiStatusElement.className = "ai-error";
+      return;
+    }
+    loadText(text);
+    return;
   }
 
   // Get current settings
@@ -326,23 +401,8 @@ generateAiButtonElement.addEventListener("click", async function () {
 
   const adjectivesEnabled = adjectivesCheckboxElement.checked;
 
-  // Get selected stories for phrases mode
-  const selectedStories = [];
-  sectionCheckboxes.forEach((checkbox) => {
-    if (checkbox.checked) {
-      selectedStories.push(checkbox.value);
-    }
-  });
-
   // Validate settings based on mode
-  if (phrasesMode) {
-    // Phrases mode needs at least one story selected
-    if (selectedStories.length === 0) {
-      aiStatusElement.textContent = "⚠️ Selige fabulās";
-      aiStatusElement.className = "ai-error";
-      return;
-    }
-  } else if (vocabularyMode) {
+  if (vocabularyMode) {
     // Vocabulary mode needs at least nouns, verbs, or adjectives
     if (selectedDeclensions.length === 0 && selectedConjugations.length === 0 && !adjectivesEnabled) {
       aiStatusElement.textContent = "⚠️ Selige vocabula";
@@ -400,43 +460,7 @@ generateAiButtonElement.addEventListener("click", async function () {
     aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} vocābula`;
     aiStatusElement.className = "ai-success";
 
-    loadedPhrases = [...aiGeneratedPhrases];
-    if (randomizeCheckboxElement.checked) {
-      shuffle(loadedPhrases);
-    }
-    currentPhraseIndex = 0;
-
-    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
-    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
-    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
-
-    displayPhrase();
-    return;
-  }
-
-  if (phrasesMode) {
-    // Collect phrases from selected stories
-    aiGeneratedPhrases = [];
-    selectedStories.forEach((storyId) => {
-      if (stories[storyId]) {
-        aiGeneratedPhrases.push(...stories[storyId]);
-      }
-    });
-
-    aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} locutiones`;
-    aiStatusElement.className = "ai-success";
-
-    loadedPhrases = [...aiGeneratedPhrases];
-    if (randomizeCheckboxElement.checked) {
-      shuffle(loadedPhrases);
-    }
-    currentPhraseIndex = 0;
-
-    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
-    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
-    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
-
-    displayPhrase();
+    loadPhrases(aiGeneratedPhrases);
     return;
   }
 
@@ -486,19 +510,7 @@ generateAiButtonElement.addEventListener("click", async function () {
     aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} ${countLabel} (${toRoman(result.generateSeconds)} + ${toRoman(result.verifySeconds)} s)`;
     aiStatusElement.className = "ai-success";
 
-    // Load the AI phrases
-    loadedPhrases = [...aiGeneratedPhrases];
-    if (randomizeCheckboxElement.checked) {
-      shuffle(loadedPhrases);
-    }
-    currentPhraseIndex = 0;
-
-    // Reset to submit mode
-    translationInputElement.removeEventListener("keydown", handleKeyDownNext);
-    translationInputElement.removeEventListener("keydown", handleKeyDownSubmit);
-    translationInputElement.addEventListener("keydown", handleKeyDownSubmit);
-
-    displayPhrase();
+    loadPhrases(aiGeneratedPhrases);
   } catch (error) {
     console.error("AI generation error:", error);
     aiStatusElement.textContent = `⚠️ ${error.message}`;
@@ -515,7 +527,15 @@ generateAiButtonElement.addEventListener("click", async function () {
 conjugationCheckboxes.forEach(updateGroupCheckbox);
 declensionCheckboxes.forEach(updateGroupCheckbox);
 tenseCheckboxes.forEach(updateGroupCheckbox);
-sectionCheckboxes.forEach(updateGroupCheckbox);
+
+// Restore the last mode (the radios carry autocomplete="off", so the browser leaves them to us).
+const savedMode = localStorage.getItem(MODE_STORAGE_KEY);
+const savedModeRadio = Array.from(modeRadios).find((radio) => radio.value === savedMode);
+if (savedModeRadio) {
+  savedModeRadio.checked = true;
+}
+populateTextSelect();
+updateModeOptions();
 
 // Load saved API key if available
 const savedKey = getApiKey();
@@ -523,18 +543,20 @@ if (savedKey) {
   apiKeyInputElement.value = savedKey;
 }
 
-// Load saved AI phrases from localStorage
+// Restore the last phrase set: the chosen text in text mode, otherwise the saved AI phrases.
+const savedText = textLibrary.find((t) => t.id === textSelectElement.value);
 const savedPhrases = getAIPhrases();
-if (savedPhrases && savedPhrases.length > 0) {
-  aiGeneratedPhrases = savedPhrases;
-  loadedPhrases = [...aiGeneratedPhrases];
-  if (randomizeCheckboxElement.checked) {
-    shuffle(loadedPhrases);
+if (getSelectedMode() === "text") {
+  if (savedText) {
+    loadText(savedText);
+  } else {
+    currentPhraseElement.textContent = "⚠️ Preme 'Aperire'";
   }
-  currentPhraseIndex = 0;
+} else if (savedPhrases && savedPhrases.length > 0) {
+  aiGeneratedPhrases = savedPhrases;
   aiStatusElement.textContent = `✓ ${toRoman(aiGeneratedPhrases.length)} sententiae`;
   aiStatusElement.className = "ai-success";
-  displayPhrase();
+  loadPhrases(aiGeneratedPhrases);
 } else {
   currentPhraseElement.textContent = "⚠️ Preme 'Generare'";
 }

@@ -38,16 +38,19 @@
         </div>
         <div class="mode-group">
           <label
-            ><input type="radio" name="mode" id="storyMode" value="story" checked />Fabula (IA)</label
+            ><input type="radio" name="mode" autocomplete="off" id="storyMode" value="story" checked />Fabula (IA)</label
           >
           <label
-            ><input type="radio" name="mode" id="agreementMode" value="agreement" />Congruentia (IA)</label
+            ><input type="radio" name="mode" autocomplete="off" id="textMode" value="text" />Textus</label
           >
           <label
-            ><input type="radio" name="mode" id="vocabularyMode" value="vocabulary" />Vocabula</label
+            ><input type="radio" name="mode" autocomplete="off" id="agreementMode" value="agreement" />Congruentia (IA)</label
+          >
+          <label
+            ><input type="radio" name="mode" autocomplete="off" id="vocabularyMode" value="vocabulary" />Vocabula</label
           >
         </div>
-        <div class="options-group">
+        <div class="options-group" id="phraseOptions">
           <label
             >Gradus<select id="difficultySelect" class="sample-count-select">
               <option value="easy">Facilis</option>
@@ -58,6 +61,9 @@
           <label
             ><input type="checkbox" id="randomizeCheckbox" />Ordo fortuitus</label
           >
+        </div>
+        <div class="options-group" id="textOptions">
+          <select id="textSelect" class="sample-count-select" autocomplete="off" aria-label="Textus"></select>
         </div>
       </div>
 
@@ -306,7 +312,7 @@
         </div>
       </div>
 
-      <div>
+      <div id="groupAdiectiva">
         <label
           ><input type="checkbox" id="adjectivesCheckbox" checked />Adiectiva</label
         ><select id="adjectiveCountSelect" class="sample-count-select">
@@ -326,7 +332,9 @@
     <script src="js/data/verbs.js"></script>
     <script src="js/data/adjectives.js"></script>
     <script src="js/data/synonyms.js"></script>
-    <script src="js/data/stories.js"></script>
+    <script src="js/data/texts.js"></script>
+    <script src="js/data/texts/nepos-praefatio.js"></script>
+    <script src="js/data/texts/voragine-macario.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/ai.js"></script>
     <script src="js/main.js"></script>
