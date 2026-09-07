@@ -279,8 +279,10 @@ Latin grammar rules:
 - Use "suus", etc. only when the possessor is the grammatical subject; use "eius", etc. otherwise.
 
 English translation rules:
-- Translate the Latin faithfully, prioritizing accuracy over fluency.
-- When an English word is ambiguous in gender or number, annotate it - for example: "friend (f.)", "you (pl.)".${selectedTenses.includes("imperfect") ? `
+- Translate literally, even if the English reads stiffly: every content word in the English must correspond to a word in the Latin, and every Latin content word must appear in the English. Do not add words for smoothness or clarity.
+- When English grammar genuinely requires a word with no Latin counterpart, put it in square brackets so the learner knows not to translate it - for example: "pars gemmam cupit, pars mortem cupit" = "[one] part desires the gem, [another] part desires death". Articles ("the", "a") never need brackets.
+- Keep the Latin's part of speech and structure: a noun stays a noun, a repeated verb stays repeated, a genitive stays "of ...", and clauses stay in the Latin's order.
+- When an English word is ambiguous in gender or number, annotate it in parentheses - for example: "friend (f.)", "you (pl.)".${selectedTenses.includes("imperfect") ? `
 - ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - never the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") || selectedTenses.includes("imperfectPassive") ? `
 - VOICE (important): the present and imperfect passive describe ongoing actions and must be translated with the progressive: "laudātur" = "is being praised" (never the bare "is praised") and "laudābātur" = "was being praised" (never the bare "was praised"). The bare forms collide with the perfect passive ("laudāta est" = "she was praised / has been praised"); reserve those for the perfect passive.` : ""}${selectedTenses.includes("futurePerfect") ? `
 - Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), never as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}
@@ -458,7 +460,7 @@ ${phrasesJson}
 Your task:
 1. Vocabulary: Fix any vocabulary violations listed above. Use ONLY words from the allowed vocabulary.
 2. Grammar: Check every Latin sentence for grammar errors and fix any you find. It is okay for Latin to be unidiomatic, but it must be grammatically correct.
-3. Translation: Check that English translations are accurate and follow the translation rules (including gender/number annotations); fix any that fall short.${tenseTask}
+3. Translation: Check that English translations are accurate, literal, and follow the translation rules: every English content word must correspond to a Latin word or be in square brackets, every Latin content word must appear in the English, and gender/number annotations must be present. Fix any that fall short - in particular, remove or bracket words added for smoothness.${tenseTask}
 
 Maintain the same number of sentences in the same order. Full rewrites of individual sentences are allowed when needed to fix vocabulary; when rewriting, keep the sentence coherent with the surrounding story. Whenever you change a sentence, update its "lemmas" to match. If a sentence already satisfies every rule, return it verbatim - do NOT reword correct sentences.
 
