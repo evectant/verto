@@ -151,12 +151,23 @@ function normalize(text) {
     .replace(/\bvobiscum\b/g, "PREP vobis")
     // Normalize uncontracted "non + volo form" to the contracted nolo form (e.g. "non volo" -> "nolo").
     .replace(NOLO_REGEX, (_, word) => NOLO_CONTRACTIONS[word])
-    // Normalize uncontracted perfect-system forms of eo, ire (to go) to the contracted ones:
-    // perfect (ivi -> ii, ivit -> iit), pluperfect (iveram -> ieram), future perfect (ivero -> iero),
-    // and the perfect infinitive (ivisse -> iisse).
+    // Normalize syncopated perfect-system forms. Both the user's answer and the expected
+    // answer pass through here, so a spurious rewrite is harmless unless it makes two
+    // different real words collide - the ending lists below are enumerated to prevent that
+    // (e.g. a bare "-ve(r...)" rule would turn the infinitive cavere into "care", the
+    // vocative of carus).
+    // 1. Perfect stems in -iv- drop the v: audivit -> audiit, serviverat -> servierat,
+    //    petiverunt -> petierunt. With an empty stem this also covers eo, ire (ivi -> ii).
     .replace(
-      /\biv(i|isti|it|imus|istis|erunt|eram|eras|erat|eramus|eratis|erant|ero|eris|erit|erimus|eritis|erint|isse)\b/g,
-      "i$1"
+      /\b(\w*)iv(i|isti|it|imus|istis|erunt|eram|eras|erat|eramus|eratis|erant|ero|eris|erit|erimus|eritis|erint|isse)\b/g,
+      "$1i$2"
+    )
+    // 2. Perfect stems in -av- drop -vi-/-ve- before s or r: amaverunt -> amarunt,
+    //    amaverat -> amarat, amavisti -> amasti, amavisse -> amasse.
+    //    (-avit and -avimus never contract - a bare amamus would be the present.)
+    .replace(
+      /\b(\w+a)v[ei](runt|ram|ras|rat|ramus|ratis|rant|ro|ris|rit|rimus|ritis|rint|sti|stis|sse)\b/g,
+      "$1$2"
     );
 }
 
