@@ -152,6 +152,15 @@ function sampleArray(array, n) {
   return shuffled.slice(0, n);
 }
 
+// Split `count` as evenly as possible across `n` pools. The remainder goes to
+// randomly chosen pools so the total is exact and no pool is always favored.
+function distributeCount(count, n) {
+  if (!Number.isFinite(count)) return Array(n).fill(count);
+  const quotas = Array(n).fill(Math.floor(count / n));
+  for (const i of sampleArray([...quotas.keys()], count % n)) quotas[i]++;
+  return quotas;
+}
+
 // Pick one random survivor per synonym group and return the set of excluded
 // lemmas, so a sampling pass never offers two easily-confused words together.
 function buildSynonymExclusions() {
@@ -176,15 +185,15 @@ function sampleNounEntries(selectedDeclensions, nounCount123, nounCount45, exclu
   for (const { members, count } of groups) {
     const declensions = selectedDeclensions.filter((d) => members.includes(d));
     if (declensions.length === 0 || count <= 0) continue;
-    const nounsPerDeclension = Math.ceil(count / declensions.length);
-    for (const declension of declensions) {
+    const quotas = distributeCount(count, declensions.length);
+    declensions.forEach((declension, i) => {
       const pool = excluded
         ? nounDatabase[declension].filter((noun) => !excluded.has(noun.la))
         : nounDatabase[declension];
-      for (const noun of sampleArray(pool, nounsPerDeclension)) {
+      for (const noun of sampleArray(pool, quotas[i])) {
         entries.push({ declension, noun });
       }
-    }
+    });
   }
   return entries;
 }
@@ -204,14 +213,14 @@ function sampleVerbs(selectedConjugations, verbCount, excluded = null) {
   }
   const remaining = Math.max(0, verbCount - verbs.length);
   if (remaining > 0 && selectedConjugations.length > 0) {
-    const verbsPerConjugation = Math.ceil(remaining / selectedConjugations.length);
-    for (const conjugation of selectedConjugations) {
+    const quotas = distributeCount(remaining, selectedConjugations.length);
+    selectedConjugations.forEach((conjugation, i) => {
       let conjVerbs = verbDatabase[conjugation];
       if (conjVerbs && excluded) {
         conjVerbs = conjVerbs.filter((verb) => !excluded.has(verb.la));
       }
       if (conjVerbs) {
-        const sampled = sampleArray(conjVerbs, verbsPerConjugation);
+        const sampled = sampleArray(conjVerbs, quotas[i]);
         for (const verb of sampled) {
           const formatted = `${verb.la} (${verb.en}${verb.construction ? `, + ${verb.construction}.` : ""})`;
           if (!verbs.includes(formatted)) {
@@ -219,20 +228,20 @@ function sampleVerbs(selectedConjugations, verbCount, excluded = null) {
           }
         }
       }
-    }
+    });
   }
   return verbs.sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
 }
 
 // Sample adjectives from both declension groups, distributed equally
 function sampleAdjectives(adjectiveCount, excluded = null) {
-  const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
+  const quotas = distributeCount(adjectiveCount, 2);
   const pools = [adjectiveDatabase.declension12, adjectiveDatabase.declension3].map(
     (pool) => (excluded ? pool.filter((adj) => !excluded.has(adj.la)) : pool)
   );
   return [
-    ...sampleArray(pools[0], adjectivesPerGroup),
-    ...sampleArray(pools[1], adjectivesPerGroup),
+    ...sampleArray(pools[0], quotas[0]),
+    ...sampleArray(pools[1], quotas[1]),
   ]
     .map((adj) => `${adj.la} (${adj.en})`)
     .sort((a, b) => normalizeLemma(a).localeCompare(normalizeLemma(b)));
@@ -610,12 +619,12 @@ function generateVocabularyPhrases(selectedDeclensions, selectedConjugations, ad
 
   // Add verbs (infinitive form), distributed across conjugations
   if (selectedConjugations.length > 0) {
-    const verbsPerConjugation = Math.ceil(verbCount / selectedConjugations.length);
-    for (const conjugation of selectedConjugations) {
+    const quotas = distributeCount(verbCount, selectedConjugations.length);
+    selectedConjugations.forEach((conjugation, i) => {
       const conjVerbs = verbDatabase[conjugation];
       if (conjVerbs) {
         const conjNum = conjugationNumbers[conjugation];
-        const sampled = sampleArray(conjVerbs, verbsPerConjugation);
+        const sampled = sampleArray(conjVerbs, quotas[i]);
         for (const verb of sampled) {
           phrases.push({
             en: `${verb.en} (verb)`,
@@ -623,14 +632,14 @@ function generateVocabularyPhrases(selectedDeclensions, selectedConjugations, ad
           });
         }
       }
-    }
+    });
   }
 
   // Add adjectives (nominative masculine singular), distributed across groups
   if (adjectivesEnabled) {
-    const adjectivesPerGroup = Math.ceil(adjectiveCount / 2);
-    const sampled12 = sampleArray(adjectiveDatabase.declension12, adjectivesPerGroup);
-    const sampled3 = sampleArray(adjectiveDatabase.declension3, adjectivesPerGroup);
+    const [quota12, quota3] = distributeCount(adjectiveCount, 2);
+    const sampled12 = sampleArray(adjectiveDatabase.declension12, quota12);
+    const sampled3 = sampleArray(adjectiveDatabase.declension3, quota3);
     for (const adj of sampled12) {
       phrases.push({
         en: `${adj.en} (adj.)`,
