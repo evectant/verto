@@ -116,6 +116,8 @@ const TENSE_NAMES = {
   pluperfectPassive: "pluperfect indicative passive",
   fpp: "future perfect passive",
   presentParticiple: "present active participle",
+  futureParticiple: "future active participle",
+  gerundive: "gerundive (future passive participle)",
 };
 
 // Get stored API key
@@ -287,7 +289,9 @@ Latin grammar rules:
 - For perfect passive, use both participial adjectives (e.g., "mīlitēs missī") and full perfect passive indicative with esse (e.g., "urbs capta est").` : ""}${selectedTenses.includes("pluperfectPassive") ? `
 - For pluperfect passive, use the perfect passive participle with the imperfect of esse (e.g., "urbs capta erat" = "the city had been captured").` : ""}${selectedTenses.includes("fpp") ? `
 - For future perfect passive, use the perfect passive participle with the future of esse (e.g., "urbs capta erit" = "the city will have been captured").` : ""}${selectedTenses.includes("presentParticiple") ? `
-- For the present active participle, attach the participle to a noun, agreeing in case and number (e.g., "vir audiēns" = "the listening man", "mīlitibus fugientibus" = "for the fleeing soldiers"); the sentence's main verb must still be in one of the allowed finite tenses.` : ""}
+- For the present active participle, attach the participle to a noun, agreeing in case and number (e.g., "vir audiēns" = "the listening man", "mīlitibus fugientibus" = "for the fleeing soldiers"); the sentence's main verb must still be in one of the allowed finite tenses.` : ""}${selectedTenses.includes("futureParticiple") ? `
+- For the future active participle, use both the participle attached to a noun, agreeing in gender, case, and number (e.g., "mīles moritūrus" = "the soldier about to die"), and the active periphrastic with esse (e.g., "iūdex ventūrus est" = "the judge is about to come"); esse, like any main verb, must be in one of the allowed finite tenses.` : ""}${selectedTenses.includes("gerundive") ? `
+- For the gerundive, use both the gerundive attached to a noun, agreeing in gender, case, and number (e.g., "liber legendus" = "a book to be read"), and the passive periphrastic with esse, with any agent in the dative (e.g., "urbs nōbīs capienda est" = "the city is to be captured [by] us"); esse, like any main verb, must be in one of the allowed finite tenses. Use only transitive verbs: no impersonal gerundive (e.g., "pugnandum est"), no gerund, and no gerundive standing in for a gerund (e.g., "ad urbem capiendam").` : ""}
 ${DIFFICULTY_RULES[difficulty] || DIFFICULTY_RULES.medium}
 - Avoid conjunctions that require the subjunctive.
 - Exercise all of the given tenses in roughly equal proportion.
@@ -302,7 +306,9 @@ English translation rules:
 - When an English word is ambiguous in gender or number, annotate it in parentheses - for example: "friend (f.)", "you (pl.)".${selectedTenses.includes("imperfect") ? `
 - ASPECT (important): the imperfect and perfect both map to the English simple past (e.g. "she walked"), which is ambiguous. To disambiguate, translate the imperfect with explicitly ongoing or habitual English - "she was walking" or "she used to walk" - never the bare simple past. Reserve the simple past ("she walked") for the perfect. Only if natural progressive/habitual English is genuinely impossible, fall back to annotating the verb - for example: "she walked (impf.)".` : ""}${selectedTenses.includes("presentPassive") || selectedTenses.includes("imperfectPassive") ? `
 - VOICE (important): the present and imperfect passive describe ongoing actions and must be translated with the progressive: "laudātur" = "is being praised" (never the bare "is praised") and "laudābātur" = "was being praised" (never the bare "was praised"). The bare forms collide with the perfect passive ("laudāta est" = "she was praised / has been praised"); reserve those for the perfect passive.` : ""}${selectedTenses.includes("futurePerfect") ? `
-- Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), never as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}
+- Translate the future perfect with "will have ..." (e.g., "audīverō" = "I will have heard"), never as a bare simple future or present - even in subordinate clauses where English would prefer one.` : ""}${selectedTenses.includes("futureParticiple") ? `
+- Translate the future active participle with "about to ..." (e.g., "ventūrus est" = "is about to come"), never as a bare simple future ("will come").` : ""}${selectedTenses.includes("gerundive") ? `
+- Translate the gerundive with "to be ..." (e.g., "capienda est" = "is to be captured"), never with "must", "should", or "ought to", and its dative of agent with a bracketed "[by]", since the Latin has no preposition there.` : ""}
 
 Format rules:
 - Each phrase's "lemmas" lists the dictionary form of every noun, verb, and adjective used in the sentence - including any that are not in the allowed vocabulary - in order of appearance:
