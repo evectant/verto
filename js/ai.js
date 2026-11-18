@@ -1,7 +1,7 @@
 // AI Mode for generating Latin phrases via Anthropic API
 
 // Configuration
-const AI_MODEL = "claude-fable-5-1";
+const AI_MODEL = "claude-fable-5-2";
 
 const AI_API_URL = "https://api.anthropic.com/v1/messages";
 const AI_MAX_TOKENS = 32000;
